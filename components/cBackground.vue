@@ -1,0 +1,51 @@
+<template>
+  <div id="particle-container">
+    <div class="particle" v-for="n in 100" :key="n"></div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "cBackground",
+};
+</script>
+
+<style lang="scss">
+#particle-container {
+  position: fixed;
+  top: 0px;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--white);
+}
+
+@for $i from 1 through 100 {
+  @keyframes particle-animation-#{$i} {
+    100% {
+      transform: translate3d(
+        (random(100) * 1vw),
+        (random(100) * 1vh),
+        (random(100) * 1px)
+      );
+    }
+  }
+
+  .particle:nth-child(#{$i}) {
+    animation: particle-animation-#{$i} 100s infinite;
+    $size: random(5) + 1 + px;
+    opacity: random(100) / 100;
+    height: $size;
+    width: $size;
+    animation-delay: -$i * 0.2s;
+    transform: translate3d(
+      (random(100) * 1vw),
+      (random(100) * 1vh),
+      (random(100) * 1px)
+    );
+  }
+}
+</style>

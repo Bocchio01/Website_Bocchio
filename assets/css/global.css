@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+:root {
+  --black: black;
+  --white: white;
+  --orange: orange;
+  --gray: gray;
+  --header_height: 80px;
+  --max_font_size: 120px;
+  --header_font_size: 28px;
+  --paragraph_font_size: 20px;
+  --padding_articles: 64px;
+  --border_radius: 20px;
+}
+
+body,
+html {
+  min-height: 100vh;
+}
+
+body {
+  font-family: "Bungee Shade", cursive;
+  line-height: 1.6;
+  margin: 0;
+  background-color: var(--black);
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--black);
+  text-decoration: none;
+}
