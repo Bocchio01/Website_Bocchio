@@ -13,8 +13,8 @@
         <div class="dropdown-content">
           <nuxt-link to="/App/IoT/">IoT</nuxt-link>
 
-          <a href="/App/IoT/" target="_self">IoT</a>
-          <a href="/App/Orienteering/" target="_self">Orienteering</a>
+      <!--     <a href="/App/IoT/" target="_self">IoT</a>
+          <a href="/App/Orienteering/" target="_self">Orienteering</a>-->
         </div>
       </li>
 

@@ -1,4 +1,6 @@
 export default {
+  target: 'static',
+  
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Bocchio_nuxt',
@@ -7,7 +9,7 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'author', content: 'Tommaso Bocchietti'},
+      { name: 'author', content: 'Tommaso Bocchietti' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
 
       { hid: 'description', name: 'description', content: '' },
