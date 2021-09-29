@@ -3,7 +3,7 @@ export default {
   
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Bocchio_nuxt',
+    title: 'Bocchio WebSite',
     htmlAttrs: {
       lang: 'it'
     },

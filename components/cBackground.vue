@@ -20,7 +20,7 @@ export default {
 .particle {
   position: absolute;
   border-radius: 50%;
-  background: var(--white);
+  background: var(--background_color);
 }
 
 @for $i from 1 through 100 {
@@ -37,7 +37,7 @@ export default {
   .particle:nth-child(#{$i}) {
     animation: particle-animation-#{$i} 100s infinite;
     $size: random(5) + 1 + px;
-    opacity: random(100) / 100;
+    opacity: random(100) * 0.01;
     height: $size;
     width: $size;
     animation-delay: -$i * 0.2s;

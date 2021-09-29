@@ -1,126 +1,113 @@
 <template>
-  <header class="header">
-    <nuxt-link id="header_name" to="/Home">Tommaso Bocchietti</nuxt-link>
-    <input class="menu-btn" type="checkbox" id="menu-btn" />
-    <label class="menu-icon" for="menu-btn">
-      <span class="navicon"></span>
-    </label>
-    <ul class="menu">
-      <li><nuxt-link to="/Chi sono?">Chi sono?</nuxt-link></li>
-      <li><nuxt-link to="/Articoli">Articoli</nuxt-link></li>
-      <li class="dropdown">
-        <a><p>App</p></a>
-        <div class="dropdown-content">
-          <nuxt-link to="/App/IoT/">IoT</nuxt-link>
-
-      <!--     <a href="/App/IoT/" target="_self">IoT</a>
-          <a href="/App/Orienteering/" target="_self">Orienteering</a>-->
-        </div>
+  <header>
+    <div>
+      <nuxt-link to="/Home">Tommaso Bocchietti</nuxt-link>
+      <input class="menu-btn" type="checkbox" id="menu-btn" />
+      <label class="menu-icon" for="menu-btn" @click="Clickthis">
+        <span class="navicon"></span>
+      </label>
+    </div>
+    <ul :style="{ 'max-height': [showMenu ? '240px' : '0px'] }">
+      <li><nuxt-link to="/Articolo/Chi sono">Chi sono?</nuxt-link></li>
+      <li><nuxt-link to="/ElencoArticoli">Articoli</nuxt-link></li>
+      <li>
+        <a class="dropdown">App</a>
+        <ul class="dropdown-content">
+          <li><nuxt-link to="#">IoT</nuxt-link></li>
+          <li><nuxt-link to="#">Orienteering</nuxt-link></li>
+        </ul>
       </li>
-
-      <!-- <li><a href="/main_pages/Forum/">Forum</a></li> -->
     </ul>
   </header>
 </template>
 
 <script>
 export default {
-  name: "cHeader",
-};
+  data() {
+    return {
+      showMenu: false,
+    }
+  },
+  methods: {
+    Clickthis() {
+      this.showMenu = !this.showMenu
+    },
+  },
+}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-/*--- header ---*/
-
-.dropdown:hover p {
-  color: var(--orange);
-}
-
-.dropdown:hover .dropdown-content {
-  display: flex !important;
-  flex-direction: column;
-}
-
+header,
 .dropdown-content {
-  display: none;
-  position: fixed !important;
-  right: 0px;
-  width: auto !important;
-}
-
-.header,
-.dropdown-content {
-  position: relative;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  font-size: var(--header_font_size);
-  font-weight: bold;
   padding-inline: 15px;
-  border: 1px solid var(--gray);
-  background-color: var(--white);
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
   z-index: 2;
+  background-color: var(--background_color);
+  border: var(--border_setting);
+  border-radius: var(--header_border_radius);
+  -webkit-border-radius: var(--header_border_radius);
+  -moz-border-radius: var(--header_border_radius);
 }
 
-.header a:hover {
-  color: var(--orange);
+header a {
+  display: block;
+  margin: 15px 15px;
+  font-weight: bold;
+  font-family: var(--Special_font);
+  font-size: var(--header_font_size);
 }
 
-.header #header_name {
-  font-size: 1.1em;
-  padding-inline-end: 0px !important;
+header a:hover {
+  color: var(--link_hover_color);
 }
 
-.header #header_name,
-.header .menu li a {
-  height: var(--header_height);
-  display: inline-flex;
-  flex-direction: column;
+header div {
+  display: flex;
+  justify-content: space-between;
+}
+
+header ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0px;
+}
+
+header .dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0px;
+  width: auto;
   justify-content: center;
-  padding-inline: 15px;
 }
 
-.header .menu {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  overflow: hidden;
-  clear: both;
-  max-height: 0;
-  transition: max-height 0.3s ease-out;
+header .dropdown:hover + .dropdown-content,
+header .dropdown-content:hover {
+  display: block;
 }
 
 /* menu icon */
 
-.header .menu-icon {
+header .menu-icon {
+  display: none;
   cursor: pointer;
-  float: right;
-  position: relative;
-  user-select: none;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  width: var(--header_height);
-  height: var(--header_height);
+  padding: 30px;
 }
 
-.header .menu-icon .navicon {
+header .menu-icon .navicon {
   align-self: center;
   background: #333;
-  display: block;
   height: 2px;
   position: relative;
   transition: all 0.2s ease-out;
   width: 18px;
 }
 
-.header .menu-icon .navicon:before,
-.header .menu-icon .navicon:after {
+header .menu-icon .navicon:before,
+header .menu-icon .navicon:after {
   background: #333;
-  content: "";
-  display: block;
+  content: '';
   height: 100%;
   position: absolute;
   transition: all 0.2s ease-out;
@@ -137,71 +124,56 @@ export default {
 
 /* menu btn */
 
-.header .menu-btn {
+header .menu-btn {
   display: none;
 }
 
-.header .menu-btn:checked ~ .menu {
-  max-height: 240px;
-}
-
-.header .menu-btn:checked ~ .menu-icon .navicon {
+header .menu-btn:checked ~ .menu-icon .navicon {
   background: transparent;
 }
 
-.header .menu-btn:checked ~ .menu-icon .navicon:before {
+header .menu-btn:checked ~ .menu-icon .navicon:before {
   transform: rotate(-45deg);
 }
 
-.header .menu-btn:checked ~ .menu-icon .navicon:after {
+header .menu-btn:checked ~ .menu-icon .navicon:after {
   transform: rotate(45deg);
 }
 
-.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
-.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+header .menu-btn:checked ~ .menu-icon .navicon:before,
+header .menu-btn:checked ~ .menu-icon .navicon:after {
   top: 0;
 }
 
-@media (min-width: 1200px) {
-  .header .menu li {
-    float: left;
-  }
-  .header .menu {
-    clear: none;
-    float: right;
-    max-height: none;
-  }
-  .header .menu-icon {
-    display: none;
-  }
-}
-
 @media (max-width: 1200px) {
-  .header .menu li {
+  header {
+    display: block;
+  }
+  header .menu-icon {
+    display: inline-flex;
+  }
+  header li {
     text-align: center;
   }
-  .header .menu li a {
-    height: calc(0.6 * var(--header_height));
+  header .dropdown-content {
+    width: 100%;
   }
-  .dropdown-content {
-    width: 100% !important;
+  header ul {
+    display: block;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
   }
 }
 
 @media (max-width: 570px) {
   :root {
-    --header_height: 70px !important;
+    --header_font_size: 19px;
   }
-  .header {
-    padding-inline: 0px;
+  header a {
+    margin: 15px 0px;
   }
-  .header #header_name {
-    padding-inline: 0px;
-    padding-inline-start: 13px;
-  }
-  .header #header_name,
-  .menu li a {
-    font-size: 0.7em;
+  header .menu-icon {
+    padding: 15px;
   }
 }
 </style>

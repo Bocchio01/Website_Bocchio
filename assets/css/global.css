@@ -4,16 +4,31 @@
 }
 
 :root {
-  --black: black;
-  --white: white;
-  --orange: orange;
-  --gray: gray;
-  --header_height: 80px;
-  --max_font_size: 120px;
-  --header_font_size: 28px;
-  --paragraph_font_size: 20px;
-  --padding_articles: 64px;
-  --border_radius: 20px;
+/* General */
+--text_color: black;
+--background_color: white;
+--background_color_body: black;
+--link_hover_color: orange;
+--Special_font: "Bungee Shade", cursive;
+--Base_font: "Roboto Condensed", sans-serif;
+--border_setting: 1px solid #a2a2a2;
+
+/* Wrap */
+--transition_setting: all 0.2s ease-in-out;
+--border_radius: 20px;
+--title_size: 40px;
+--paragraph_size: 20px;
+--padding_articles: 64px;
+
+/* Header - Footer*/
+--header_font_size: 30px;
+--header_border_radius: 10px;
+
+--footer_font_size: 27px;
+
+/* Slogan */
+--slogan_font_size: 80px;
+
 }
 
 body,
@@ -22,15 +37,14 @@ html {
 }
 
 body {
-  font-family: "Bungee Shade", cursive;
   line-height: 1.6;
   margin: 0;
-  background-color: var(--black);
+  background-color: var(--background_color_body);
   display: flex;
   flex-direction: column;
 }
 
 a {
-  color: var(--black);
+  color: black;
   text-decoration: none;
 }

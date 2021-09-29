@@ -1,26 +1,31 @@
 <template>
-  <div class="sloganBase" v-bind:class="[isHome ? 'sloganHome' : 'sloganNotHome']">{{ sloganMsg }}</div>
+  <div
+    class="sloganBase"
+    v-bind:class="[isHome ? 'sloganHome' : 'sloganNotHome']"
+  >
+    {{ sloganMsg }}
+  </div>
 </template>
 
 <script>
 export default {
-  name: "cSlogan",
+  name: 'cSlogan',
   props: {
-      sloganMsg: {
-        type: String,
-        default: "What's Next?"
-      }
+    sloganMsg: {
+      type: String,
+      default: "What's Next?",
     },
+  },
 
   computed: {
     isHome() {
-      if (this.$route.path == "/Home") {
-        return true;
+      if (this.$route.path == '/Home') {
+        return true
       }
-      return false;
+      return false
     },
   },
-};
+}
 </script>
 
 <style>
@@ -30,25 +35,26 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--orange);
+  color: var(--link_hover_color);
   z-index: 1;
+  font-family: var(--Special_font);
 }
 
 .sloganNotHome {
-  margin: 27px auto 0px auto;
-  font-size: var(--header_height);
+  margin: 27px auto;
+  font-size: var(--slogan_font_size);
 }
 
 .sloganHome {
   padding: 20px;
-  font-size: var(--max_font_size);
-  min-height: calc(100vh - var(--header_height));
+  font-size: 130px;
+  min-height: calc(100vh - var(--slogan_font_size));
   padding-bottom: 50px;
 }
 
 @media (max-width: 1200px) {
-  .sloganNotHome {
-    font-size: 60px;
+  :root {
+    --slogan_font_size: 60px;
   }
   .sloganHome {
     font-size: 90px;
@@ -56,11 +62,11 @@ export default {
 }
 
 @media (max-width: 570px) {
-  .sloganNotHome {
-    font-size: 35px !important;
+  :root {
+    --slogan_font_size: 35px;
   }
   .sloganHome {
-    font-size: 35px;
+    font-size: var(--slogan_font_size);
   }
 }
 </style>

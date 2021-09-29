@@ -1,20 +1,20 @@
 [
     {
         "tag": "Programmazione",
-        "linkpath": "/Gorlu la stampante",
+        "linkpath": "/Articolo/Gorlu la stampante",
         "title": "Gorlu la stampante",
         "description": [
             "Un piccolo e simpatico plotter per stampare immagini o testo.",
             "Grazie all'utilizzo di Arduino, Python e qualche componente di un vecchio PC, potrai costruirlo anche tu!"
         ],
         "img": {
-            "src": "https://res.cloudinary.com/bocchio/image/upload/v1632662892/Articoli/Gorlu%20la%20stampante/Gorlu_jjeztj.png",
+            "src": "https://res.cloudinary.com/bocchio/image/upload/v1632662892/Articoli/Gorlu%20la%20stampante/Gorlu.png",
             "alt": "Gorlu la stampante"
         }
     },
     {
         "tag": "Orienteering Programmazione",
-        "linkpath": "/A caccia di lanterne",
+        "linkpath": "/Articolo/A caccia di lanterne",
         "title": "A caccia di lanterne",
         "description": [
             "Da oggi tutti avranno la possibiltà di provare l'orienteering (e perdersi un pò nei boschi dietro casa.. o forse no..).",

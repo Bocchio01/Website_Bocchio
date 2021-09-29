@@ -1,0 +1,65 @@
+.container, .nuxt-content {
+    position: relative;
+    width: 60%;
+    text-align: justify;
+    margin: 25px auto;
+    color: var(--text_color);
+    background-color: var(--background_color);
+    padding: var(--padding_articles);
+    border: var(--border_setting);
+    border-radius: var(--border_radius);
+    -webkit-border-radius: var(--border_radius);
+    -moz-border-radius: var(--border_radius);
+    transition: var(--transition_setting);
+}
+
+.link_hidden {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: var(--link_hover_color);
+    z-index: 1;
+    font-family: var(--Special_font);
+    font-size: calc(1.5 * var(--title_size));
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    right: 0px;
+    visibility: hidden;
+}
+
+.nuxt-content h1, .container h1 {
+    font-size: var(--title_size);
+    font-family: var(--Special_font);
+    text-align: center;
+}
+
+.nuxt-content p, .nuxt-content li, .container .text_container {
+    font-size: var(--paragraph_size);
+    font-family: var(--Base_font);
+}
+
+@media (max-width: 1030px) {
+    :root {
+        --padding_articles: 40px !important;
+        --paragraph_size: 15px !important;
+        --title_size: 25px !important;
+    }
+    .nuxt-content h2 {
+        font-size: calc(var(--title_size) - 5px) !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .container, .nuxt-content {
+        width: 70%;
+    }
+}
+
+@media (max-width: 750px) {
+    .container, .nuxt-content {
+        width: 93%;
+    }
+}

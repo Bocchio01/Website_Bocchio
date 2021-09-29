@@ -14,7 +14,7 @@
         }
     },
     {
-        "linkpath": "/Articoli",
+        "linkpath": "/ElencoArticoli",
         "title": "Contenuti del sito",
         "description": [
             "Suddivisi per aree tematiche, sul sito sono presenti 'articoli' riguardanti:",
