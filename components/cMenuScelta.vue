@@ -1,102 +1,95 @@
 <template>
-  <nav class="sub_menu_wrapper">
-    <div class="arguments">
-      <label class="sub_menu" v-for="(ele, index) in arg" :key="index">
-        <input type="checkbox" />
-        <p @click="toggle">{{ ele }}</p>
-      </label>
+  <nav>
+    <div>
+      <p
+        @click="addOrRemove(tag)"
+        v-for="(tag, index) in tags"
+        :key="index"
+        v-bind:class="{ active: isActive[tag] }"
+      >
+        {{ tag }}
+      </p>
     </div>
-    <div class="select_argument"><p>Seleziona un argomento.</p></div>
+    <p class="fallback" v-show="!tags_selected.length">Seleziona un argomento.</p>
   </nav>
 </template>
 
 <script>
 export default {
-  name: "cMenuScelta",
-    props: {
-    msg: String,
-    sProgrammazione: Boolean
+  props: {
+    tags: {
+      type: Array,
+      default() {
+        return [
+          'Programmazione',
+          'Meccanica',
+          'Fisica',
+          'Matematica',
+          'Orienteering',
+        ]
+      },
+    },
   },
   data() {
     return {
-      arg: [
-        "Programmazione",
-        "Meccanica",
-        "Fisica",
-        "Matematica",
-        "Orienteering",
-      ],
-    };
+      tags_selected: [],
+      isActive: Object.assign(...this.tags.map((k) => ({ [k]: false }))),
+    }
   },
-  methods:
-  {
-  }
-};
+  methods: {
+    addOrRemove(tag_clicked) {
+      var index = this.tags_selected.indexOf(tag_clicked)
+
+      if (index === -1) {
+        this.tags_selected.push(tag_clicked)
+        this.isActive[tag_clicked] = true
+      } else {
+        this.tags_selected.splice(index, 1)
+        this.isActive[tag_clicked] = false
+      }
+      this.$emit('toParent', this.tags_selected)
+    },
+  },
+}
 </script>
 
 <style>
-/**/
-.sub_menu_wrapper {
-  text-align: center;
-  position: relative;
-  margin-block: 15px;
-}
-
-.sub_menu_wrapper .sub_menu p {
-  font-weight: bold;
-  line-height: 50px;
-  padding-inline: 20px;
-  border-radius: 8px;
-  font-size: 25px;
-  display: inline-block;
-  position: relative;
-  z-index: 1;
-  text-transform: uppercase;
-  color: var(--black);
-  background-color: var(--white);
-  cursor: pointer;
-  margin: 10px;
-}
-
-.sub_menu_wrapper .sub_menu p:hover {
-  background-color: var(--orange);
-}
-
-.d0,
-.d1,
-.d2,
-.d3,
-.d4 {
-  display: block !important;
-}
-
-.sub_menu_wrapper .sub_menu input,
-.list_container .container {
-  display: none;
-}
-
-.select_argument {
-  margin-inline: auto;
+nav {
+  display: block;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 100px;
-  font-size: 25px;
-  color: white;
-  text-align: center;
 }
 
-@media (max-width: 600px) {
-  .sub_menu_wrapper .sub_menu p {
-    font-size: 17px !important;
-    line-height: 30px !important;
-  }
-  .sub_menu_wrapper .sub_menu p:hover {
-    background-color: var(--white);
-  }
-  .select_argument {
-    font-size: 17px !important;
-    padding: 50px !important;
-  }
+nav div {
+  display: flex;
+  flex: auto;
+  row-gap: 15px;
+  column-gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav div p {
+  font-weight: bold;
+  font-family: var(--Special_font);
+  font-size: var(--paragraph_size);
+  cursor: pointer;
+
+  border-radius: var(--header_border_radius);
+  z-index: 1;
+  color: var(--text_color);
+  background-color: var(--background_color);
+  padding: 5px 10px;
+}
+
+nav .active {
+  background-color: var(--link_hover_color);
+}
+
+nav .fallback {
+  text-align: center;
+  color: var(--background_color);
+  font-size: var(--paragraph_size);
+  font-family: var(--text_font);
+  padding: var(--padding_articles);
 }
 </style>

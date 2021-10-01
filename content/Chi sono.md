@@ -1,11 +1,12 @@
 ---
 title: 'Chi sono'
 description: 'About page'
+tag: 'About tag!!'
 ---
 
 # Chi sono?
 
-<cImg s="https://res.cloudinary.com/bocchio/image/upload/v1632886355/Articoli/Chi%20sono/Maturita.png" a="Il giorno della Maturità"></cImg>
+<cImg s="https://res.cloudinary.com/bocchio/image/upload/v1632886355/Chi%20sono/Maturita.png" a="Il giorno della Maturità"></cImg>
 
 ## Ciao!
 
@@ -14,7 +15,7 @@ Mi chiamo Tommaso, ho 20 anni e abito a Como, Italia.
 Fin da piccolo ho avuto una certa propensione verso tutto ciò che avesse all'interno ingranaggi e in generale meccanismi complessi che ne governavano il movimento. In particolare, sono sempre stato estremamente affascinato da macchine pesanti da cantiere come gru, camion ed escavatori.
 **L'idea che l'uomo sia in grado di aumentare la propria forza lavoro costruendosi da solo il mezzo per riuscirci è probabilmente quello che da sempre più mi attira.** Per questo motivo attualmente studio ingegneria meccanica presso il Politecnico di Milano e spero in futuro di poter contribuire anche io con le mie conoscenze e la mia passione allo sviluppo e al miglioramento tecnologico nei settori della meccanica "pesante".
 
-<cImg s="https://res.cloudinary.com/bocchio/image/upload/v1632886357/Articoli/Chi%20sono/Ruspetta_4.png" c="L'ho detto che gli escavatori mi attirano?"></cImg>
+<cImg s="https://res.cloudinary.com/bocchio/image/upload/v1632886357/Chi%20sono/Ruspetta_4.png" c="L'ho detto che gli escavatori mi attirano?"></cImg>
 
 ## Le mie passioni
 
@@ -31,6 +32,6 @@ Questa semplice scheda offre infatti la **possibilità di creare delle vere e pr
 Può sembrare controverso viste le mie passioni ed interessi, ma un aspetto importante che per me non deve mai mancare, è il contatto con la natura. **Credo infatti fortemente nel contatto con la natura quale fonte di ispirazione per i miei progetti e non solo**: molte volte mi ritrovo a guardare il cielo completamente perso nei miei pensieri o ancora più spesso una corsa nei boschi mi aiuta a schiarire le idee e a rasserenarmi.
 Probabilmente per questo motivo, da ormai 5 anni, **pratico “Orienteering” o “Corsa d’orientamento”**.
 
-<cImg s="https://res.cloudinary.com/bocchio/image/upload/v1632886357/Articoli/Chi%20sono/IMG_3798_3.jpg" c="Io impegnato durante una gara"></cImg>
+<cImg s="https://res.cloudinary.com/bocchio/image/upload/v1632886357/Chi%20sono/IMG_3798_3.jpg" c="Io impegnato durante una gara"></cImg>
 
 Per chi non lo sapesse, questo sport consiste nella ricerca con l'uso di mappa e bussola di alcuni punti di controllo immersi completamente nel bel mezzo di boschi e foreste. La libertà di scelta del percorso da seguire, unita alla componente tecnica, essenziale per l'orientamento con la bussola e cartina, nonché la componente fisica, necessaria ai fini di gare molto lunghe e non, rende questo sport uno dei più completi e dei più affascinanti dal mio punto di vista. Peccato sia poco conosciuto se non a livello scolastico...

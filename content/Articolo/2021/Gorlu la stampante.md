@@ -1,6 +1,17 @@
 ---
-title: 'Gorlu la stampante'
-description: 'Gorlu la stampante descr.'
+title: Gorlu la stampante
+description: Gorlu descr
+paragraph: [
+            "Un piccolo e simpatico plotter per stampare immagini o testo.",
+            "Grazie all'utilizzo di Arduino, Python e qualche componente di un vecchio PC, potrai costruirlo anche tu!"
+        ]
+img: 
+    src: https://res.cloudinary.com/bocchio/image/upload/v1632662892/Articoli/Gorlu%20la%20stampante/Gorlu.png
+    alt: Gorlu la stampante
+tag: [
+    Programmazione,
+    Matematica
+]
 ---
 
 # Gorlu la stampante

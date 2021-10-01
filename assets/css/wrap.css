@@ -13,23 +13,6 @@
     transition: var(--transition_setting);
 }
 
-.link_hidden {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    color: var(--link_hover_color);
-    z-index: 1;
-    font-family: var(--Special_font);
-    font-size: calc(1.5 * var(--title_size));
-    height: 100%;
-    width: 100%;
-    top: 0px;
-    right: 0px;
-    visibility: hidden;
-}
-
 .nuxt-content h1, .container h1 {
     font-size: var(--title_size);
     font-family: var(--Special_font);

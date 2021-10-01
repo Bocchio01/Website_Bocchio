@@ -59,17 +59,17 @@ footer div a {
 }
 
 footer div a:nth-child(1) {
-  background: url('~assets/img/GitHub.png') no-repeat;
+  background: url('https://res.cloudinary.com/bocchio/image/upload/v1632947036/GitHub.png') no-repeat;
   background-size: contain;
 }
 
 footer div a:nth-child(2) {
-  background: url('~assets/img/Telegram.png') no-repeat;
+  background: url('https://res.cloudinary.com/bocchio/image/upload/v1632947036/Telegram.png') no-repeat;
   background-size: contain;
 }
 
 footer div a:nth-child(3) {
-  background: url('~assets/img/Instagram.png') no-repeat;
+  background: url('https://res.cloudinary.com/bocchio/image/upload/v1632947036/Instagram.png') no-repeat;
   background-size: contain;
 }
 

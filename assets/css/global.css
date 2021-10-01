@@ -1,4 +1,6 @@
 * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0px;
 }
@@ -39,9 +41,6 @@ html {
 body {
   line-height: 1.6;
   margin: 0;
-  background-color: var(--background_color_body);
-  display: flex;
-  flex-direction: column;
 }
 
 a {
