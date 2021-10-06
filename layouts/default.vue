@@ -11,13 +11,23 @@
   </main>
 </template>
 
+<script>
+export default {
+  head () {
+    return {
+      link: [
+        { rel: 'stylesheet', href: '/css/global.css' },
+        { rel: 'stylesheet', href: '/css/base_element.css' },
+        { rel: 'stylesheet', href: '/css/media.css' },
+        { rel: 'stylesheet', href: '/css/wrap.css' },
+      ]
+    }
+  }
+}
+</script>
+
 <style>
 div#upper_wrap {
   min-height: calc(100vh - 207px);
 }
-
-body {
-  background-color: var(--background_color_body);
-}
-
 </style>

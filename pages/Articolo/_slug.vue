@@ -1,10 +1,13 @@
 <template>
   <article>
     <nuxt-content :document="article" />
+    <cNavigation :prev="prev" :next="next" v-if="prev || next"/>
   </article>
 </template>
 
 <script>
+import getSiteMeta from '@/assets/js/getSiteMeta.js'
+
 export default {
   async asyncData({ $content, params }) {
     const [article] = await $content({ deep: true })
@@ -13,38 +16,63 @@ export default {
       .catch((err) => {
         error({ statusCode: 404, message: 'Page not found' })
       })
-
-    return { article }
-  }
+    const [prev, next] = await $content('Articolo', { deep: true })
+      .only(['title', 'slug'])
+      .sortBy('createdAt', 'asc')
+      .surround(params.slug)
+      .fetch()
+console.log(prev, next)
+    return {
+      article,
+      prev,
+      next,
+    }
+  },
+  head() {
+    return {
+      title: 'Bocchio | Articolo: ' + this.article.title,
+      meta: [
+        ...this.meta,
+        {
+          property: 'article:published_time',
+          content: this.article.createdAt,
+        },
+        {
+          property: 'article:modified_time',
+          content: this.article.updatedAt,
+        },
+        {
+          property: 'article:tag',
+          content: this.article.tag ? this.article.tag.toString() : '',
+        },
+        { name: 'twitter:label1', content: 'Written by' },
+        { name: 'twitter:data1', content: 'Tommaso Bocchietti' },
+        { name: 'twitter:label2', content: 'Filed under' },
+        {
+          name: 'twitter:data2',
+          content: this.article.tag ? this.article.tag.toString() : '',
+        },
+      ],
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `https://bocchionuxt.netlify.app/Articolo/${this.$route.params.slug}`,
+        },
+      ],
+    }
+  },
+  computed: {
+    meta() {
+      const metaData = {
+        type: 'article',
+        title: this.article.title,
+        description: this.article.description,
+        url: `/Articolo/${this.$route.params.slug}`,
+        mainImage: this.article.img.src,
+      }
+      return getSiteMeta(metaData)
+    },
+  },
 }
 </script>
-
-<style>
-@import url('@/assets/css/wrap.css');
-.nuxt-content a {
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-.nuxt-content code {
-  overflow-wrap: anywhere;
-  display: inline-block;
-  background-color: #b3b3b38c;
-  border: 3px solid darkgray;
-  border-radius: 5px;
-  padding-inline: 5px;
-  font-weight: bold;
-  font-size: calc(0.7 * var(--paragraph_size));
-}
-
-.nuxt-content a:hover {
-  color: var(--link_hover_color);
-}
-
-.nuxt-content h2 {
-  margin-top: 50px;
-  border-bottom: 1px solid #a2a2a2;
-  font-size: calc(1.5 * var(--paragraph_size));
-  font-family: var(--Base_font);
-}
-</style>

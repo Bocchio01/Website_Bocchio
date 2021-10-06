@@ -1,7 +1,11 @@
 ---
-title: 'Chi sono'
-description: 'About page'
-tag: 'About tag!!'
+title: Chi sono
+escription: 'About page'
+description: About page
+
+img: 
+    src: https://res.cloudinary.com/bocchio/image/upload/v1632886355/Chi%20sono/Maturita.png
+    alt: Il giorno della Maturità
 ---
 
 # Chi sono?

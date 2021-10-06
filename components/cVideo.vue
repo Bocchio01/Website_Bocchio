@@ -13,7 +13,3 @@ export default {
   props: ['s', 'a', 'c'],
 }
 </script>
-
-<style>
-@import url('@/assets/css/media.css');
-</style>

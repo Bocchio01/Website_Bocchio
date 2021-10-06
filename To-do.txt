@@ -10,5 +10,5 @@ Portali
 ---
 
 Link a fondo pagina component
-Link di navigazione interni al sito
-Blog component
+//Link di navigazione interni al sito
+Blog/forum component

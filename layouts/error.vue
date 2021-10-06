@@ -13,8 +13,8 @@
 
 <script>
 export default {
-    layout: "blank",
-    props: ['error'],
+  layout: 'blank',
+  props: ['error'],
   data() {
     return {
       val: {
@@ -25,10 +25,19 @@ export default {
           'Se pensi possa essere un problema del sito, faccelo sapere tramite uno dei canali indicati a fondo pagina.',
         ],
         img: {
-            src: "https://res.cloudinary.com/bocchio/image/upload/v1633054972/Undefined.png",
-            alt: "Icona non trovato",
-        }
+          src: 'https://res.cloudinary.com/bocchio/image/upload/v1633054972/Undefined.png',
+          alt: 'Icona non trovato',
+        },
       },
+    }
+  },
+  head() {
+    return {
+      link: [
+        { rel: 'stylesheet', href: '/css/base_element.css' },
+        { rel: 'stylesheet', href: '/css/media.css' },
+        { rel: 'stylesheet', href: '/css/wrap.css' },
+      ],
     }
   },
 }

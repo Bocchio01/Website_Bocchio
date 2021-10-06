@@ -21,7 +21,3 @@ this.espansione = !this.espansione
   }
 }
 </script>
-
-<style>
-@import url('@/assets/css/media.css');
-</style>

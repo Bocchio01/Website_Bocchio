@@ -6,11 +6,51 @@
 
 
 <script>
-import json from '@/assets/json/Home.json'
 export default {
   data() {
     return {
-      datas: json,
+      datas: [
+        {
+          path: '/Articolo/Chi sono',
+          title: 'Chi sono?',
+          paragraph: [
+            'Mi chiamo Tommaso e sono uno studente di ingegneria meccanica al Politecnico di Milano (1°anno).',
+            'Ho sempre voglia di creare cose nuove e molte volte mi ritrovo a guardare il cielo completamente perso nei miei pensieri.',
+            "Parallelamente agli studi universitari, sviluppo nel tempo libero la passione per l'informatica e la programmazione.",
+            "Credo fortemente nel contatto con la natura quale fonte di ispirazione, ed è forse anche questo uno dei motivi che mi ha spinto verso l'Orienteering..",
+          ],
+          img: {
+            src: 'https://res.cloudinary.com/bocchio/image/upload/v1632947037/Chi_sono.svg',
+            alt: 'Chi sono',
+          },
+        },
+        {
+          path: '/Elenco/Articolo',
+          title: 'Contenuti del sito',
+          paragraph: [
+            "Suddivisi per aree tematiche, sul sito sono presenti 'articoli' riguardanti:",
+            '<ul><li>Programmazione;</li><li>Meccanica;</li><li>Fisica;</li><li>Matematica;</li><li>Orienteering.</li></ul>',
+            'I contenuti si divido poi ulteriormente in mie personali riflessioni, curiosità o approfondimenti, e inpagine dedicate alla descrizione di progetti e quindi di natura più strettamente descrittiva.',
+          ],
+          img: {
+            src: 'https://res.cloudinary.com/bocchio/image/upload/v1632947035/Contenuti.svg',
+            alt: 'I contenuti del sito',
+          },
+        },
+        {
+          path: '/#',
+          title: 'Qual é lo scopo?',
+          paragraph: [
+            'Sentivo il bisogno di avere uno spazio completamente mio dove poter condividere con altri le mie idee e i miei progetti.',
+            'Lo scopo è quindi quello di riuscire a creare una piccola community online di persone aventi interessi o passioni in comune, così da poter sviluppare nuovi progetti insieme.',
+            "Credo infatti fortemente nella crescita di se stessi tramite il confronto con altri e spero che questo sito possa essere lo strumento giusto per raggiungere quell'obbiettivo.",
+          ],
+          img: {
+            src: 'https://res.cloudinary.com/bocchio/image/upload/v1632947036/Scopo.svg',
+            alt: 'Lo scopo del sito',
+          },
+        },
+      ],
     }
   },
 }

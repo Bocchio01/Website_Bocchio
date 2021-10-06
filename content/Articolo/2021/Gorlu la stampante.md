@@ -1,6 +1,6 @@
 ---
 title: Gorlu la stampante
-description: Gorlu descr
+description: Un piccolo plotter CNC costruito con Arduino e programmato in Python. Come è nato il progetto, l'algoritmo che ne regola il movimento e analizza le immagini, e come fare per realizzarlo da sé
 paragraph: [
             "Un piccolo e simpatico plotter per stampare immagini o testo.",
             "Grazie all'utilizzo di Arduino, Python e qualche componente di un vecchio PC, potrai costruirlo anche tu!"
