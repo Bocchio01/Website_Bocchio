@@ -1,157 +1,94 @@
-h1 {
-    text-align: center;
-    font-size: var(--title_size);
-    font-family: var(--Special_font);
+body {
+    font-family: var(--App_font);
+    text-align: justify;
 }
 
-h3 {
-    text-align: center;
-}
-
-:root {
-    --f_small: 13px;
-    --f_medium: 18px;
-    --f_big: 26px;
-}
-
-#map {
-    width: 100%;
-    height: 100%;
-}
-
-.sinistra {
-    overflow-y: auto;
-    height: 100vh;
-    width: 35%;
-    min-width: 500px;
-}
-
-.destra {
-    margin-left: 10px;
-    width: 65%;
-    height: 100vh;
-}
-
-.container {
-    display: block;
-}
-
-#Guida, #Dati {
-    padding: 10px;
-}
-
-.horizontal_line {
-    margin-top: 30px;
-    border-bottom: black 2px solid;
+.o_separator {
+    margin-block: 15px;
+    border-bottom: var(--app_border_setting);
     width: 80%;
     margin-inline: auto;
 }
 
-.vertical_line {
-    border-right: black 2px solid;
+.v_separator {
+    border-right: var(--app_border_setting);
     height: 80vh;
     margin-block: auto;
-    margin-left: 10px;
+    margin-inline: 15px;
 }
 
-.footer_min {
-    padding: 10px;
-    bottom: 0px;
-    margin-inline: auto;
-    position: relative;
+nav {
+    width: 100%;
+    border-radius: var(--header_border_radius);
+    border: var(--app_border_setting);
+    background-color: var(--Nav_color);
 }
 
-.footer_min #copyright {
-    font-size: var(--f_medium);
-    font-weight: bold;
+nav div {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
+
+nav div p {
+    cursor: pointer;
+    font-size: var(--paragraph_size);
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+nav p {
+    text-align: center;
+}
+
+main {
+    display: grid;
+    flex-direction: row;
+    column-gap: 20px;
+    row-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    min-height: 100vh;
+}
+
+.wrap_element {
+    display: block;
+    overflow-y: auto;
+    padding: 10px;
+    font-size: var(--app_paragraph_size);
+}
+
+h2 {
+    font-size: var(--app_subtitle_size);
+
+}
+
+
 
 span {
     content: "\2195";
-    padding-inline: 8px;
+    padding-inline: 10px;
 }
 
-.from, .to {
-    font-size: var(--f_medium);
-    display: flex;
-}
 
 input {
-    border-radius: 10px;
-    font-size: var(--f_medium);
+    border: var(--app_border_setting);
+    border-radius: var(--header_border_radius);
     width: 100%;
-    margin-inline: 7px;
 }
 
 table {
-    border-spacing: 5px;
-    font-size: var(--f_medium);
-    padding: 10px;
+    border-spacing: 15px;
+
     margin-block: 15px;
     margin-inline: auto;
     width: 90%;
+    border: var(--app_border_setting_evidence);
+    border-radius: var(--header_border_radius);
 }
-
-.border {
-    border: 3px solid orange;
-    border-radius: 10px;
+table caption {
+    font-weight: bold;
 }
 
 button {
     background-color: var(--white);
     border: 0px
-}
-
-@media (max-width: 1300px) {
-    .sinistra {
-        min-width: 400px !important;
-    }
-    :root {
-        --f_medium: 13px;
-        --f_big: 18px;
-        --max_font_size: 20px
-    }
-    h1 {
-        font-size: var(--max_font_size);
-    }
-    .compass-bg {
-        width: 100px !important;
-        height: 100px !important;
-        background-size: 100px
-    }
-    .compass-pointer {
-        width: 100px;
-    }
-}
-
-@media (max-width: 900px) {
-    .vertical_line {
-        display: none;
-    }
-    body {
-        flex-direction: column-reverse;
-    }
-    .destra {
-        width: 100%;
-        height: 80vh;
-        margin-left: 0px;
-    }
-    .sinistra {
-        min-width: unset !important;
-        width: 100%;
-        overflow: unset;
-    }
-}
-
-.compass-bg {
-    width: 200px;
-    height: 200px;
-    background-image: url("http://vasilis-tsirimokos.com/codepen/compass-bg.png");
-    margin-inline: auto;
-}
-
-.compass-pointer {
-    transform: rotate(45deg);
 }

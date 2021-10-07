@@ -9,4 +9,7 @@ img:
     alt: Around_the_globe
 ---
 
+<Portali-cpHeader title="Around_the_globe" subtitle="Script per il calcolo di direzioni e distanze tra luoghi geografici del mondo."></Portali-cpHeader>
+
 <Portali-cAround-the-world></Portali-cAround-the-world>
+<Portali-cpFooter></Portali-cpFooter>

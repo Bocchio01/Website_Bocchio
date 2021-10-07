@@ -31,6 +31,17 @@
 /* Slogan */
 --slogan_font_size: 80px;
 
+/* Portali */
+--Nav_color: orange;
+/*--App_font: "Times New Roman";*/
+--App_font: "monospace";
+--app_border_setting: 2px solid black;
+--app_paragraph_size: 17px;
+--app_subtitle_size: 22px;
+--app_title_size: 28px;
+--app_border_setting_evidence: 3px solid orange;
+
+
 }
 
 body,
