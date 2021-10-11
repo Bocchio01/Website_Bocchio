@@ -6,7 +6,7 @@
         <h2>Istruzioni</h2>
         <div>
           Questo script ti permetterà di calcolare con facilità l'azimut e la
-          distanza tra due punti del mondo.<br><br>
+          distanza tra due punti del mondo.<br /><br />
           <b>Comandi disponibili:</b>
           <ul>
             <li>
@@ -16,9 +16,9 @@
             <li>Modifica -> Trascinamento del punto sulla mappa</li>
             <li>Eliminazione -> Doppio click del punto sulla mappa</li>
           </ul>
-          <br>
+          <br />
           Con il tasto <span>&#8597;</span> è possibile invertire le coordinate
-          di partenza con quelle di arrivo.<br>
+          di partenza con quelle di arrivo.<br />
           Il punto di partenza è segnato in verde, mentre quello di arrivo in
           rosso.
         </div>
@@ -56,7 +56,7 @@
                 <span @click="clean(data[type])">🗑️</span>
               </td>
               <td rowspan="2" v-if="type == 'partenza'">
-                  <span @click="inverti()">&#8597;</span>
+                <span @click="inverti()">&#8597;</span>
               </td>
             </tr>
           </tbody>
@@ -97,7 +97,19 @@
           </caption>
           <tbody>
             <tr>
-              <td colspan="2"></td>
+              <td colspan="2">
+                <div class="tunnel-bg">
+                  <img
+                    class="tunnel-pointer"
+                    src="https://res.cloudinary.com/bocchio/image/upload/v1633648333/Portali/Around_the_globe/Tunnel_main.png"
+                    :style="
+                      'transform: rotate(' +
+                      (parseInt(risultati.inclinazione) - 45) +
+                      'deg);'
+                    "
+                  />
+                </div>
+              </td>
             </tr>
             <tr>
               <td id="tunnel">Inclinazione: {{ risultati.inclinazione }} °</td>
@@ -160,13 +172,16 @@ export default {
           hid: 'stripe',
           src: 'https://cdn.jsdelivr.net/npm/leaflet.geodesic',
           defer: true,
-          //		  callback: () => { Around_the_globe.loadMap }
         },
       ],
     }
   },
   mounted() {
-    Around_the_globe.loadMap()
+    try {
+      Around_the_globe.loadMap()
+    } catch (error) {
+      location.reload()
+    }
   },
   methods: {
     handler(value) {
@@ -185,22 +200,25 @@ export default {
       Around_the_globe.inverti()
     },
   },
-    beforeDestroy() {
-      console.log('Cambio di route')
-      Around_the_globe.clean(this.data.partenza)
-      Around_the_globe.clean(this.data.arrivo)
-      Around_the_globe.map.off();
-Around_the_globe.map.remove();
+  beforeDestroy() {
+    Around_the_globe.clean(this.data.partenza)
+    Around_the_globe.clean(this.data.arrivo)
   },
 }
 </script>
 
-<style>
+<style scoped>
 main.specify {
+  min-height: 100vh;
+  display: grid;
   grid-template-columns: 450px 30px auto;
   column-gap: 0px;
+  justify-content: normal;
 }
-
+span,
+td img {
+  cursor: pointer;
+}
 .compass-bg {
   width: 150px;
   height: 150px;
@@ -208,10 +226,22 @@ main.specify {
   background-image: url('http://vasilis-tsirimokos.com/codepen/compass-bg.png');
   margin-inline: auto;
 }
+.tunnel-bg {
+  width: 150px;
+  height: 150px;
+  background-size: 150px;
+  background-image: url('https://res.cloudinary.com/bocchio/image/upload/v1633647876/Portali/Around_the_globe/Tunnel_sfondo.jpg');
+  margin-inline: auto;
+}
 
 .compass-pointer {
   transform: rotate(45deg);
   width: 150px;
+}
+.tunnel-pointer {
+  transform: rotate(45deg);
+  width: 130px;
+  margin: 10px;
 }
 
 #map {
@@ -228,8 +258,8 @@ main.specify {
     display: none;
   }
   #map {
-  width: 95%;
-  min-height: 90vh;
-}
+    width: 95%;
+    min-height: 90vh;
+  }
 }
 </style>

@@ -3,9 +3,8 @@
     class="container"
     v-show="useTag ? tags.some((r) => obj.tag.includes(r)) : true"
   >
-    <nuxt-link class="link_hidden" :to="obj.path" target="_self"
-      ><mark> {{ msg }}</mark></nuxt-link
-    >
+    <nuxt-link class="link_hidden" :to="obj.path" v-if="type == 'nuxt-link'"><mark> {{ msg }}</mark></nuxt-link>
+    <a class="link_hidden" :href="obj.path" v-else ><mark> {{ msg }}</mark></a>
     <div style="flex: auto">
       <h1>{{ obj.title }}</h1>
       <div class="text_container" v-html="obj.paragraph.join('<br>')"></div>
@@ -31,6 +30,10 @@ export default {
       type: String,
       default: 'Scopri di più',
     },
+    type: {
+      type: String,
+      default: 'nuxt-link'
+    }
   },
 }
 </script>

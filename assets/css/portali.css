@@ -27,6 +27,8 @@ nav {
 nav div {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    column-gap: var(--app_row_column_gap);
 }
 
 nav div p {
@@ -41,12 +43,11 @@ nav p {
 }
 
 main {
-    display: grid;
+    display: flex;
     flex-direction: row;
-    column-gap: 20px;
-    row-gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    min-height: 100vh;
+    column-gap:  var(--app_row_column_gap);;
+    row-gap: var(--app_row_column_gap);
+    justify-content: center;
 }
 
 .wrap_element {
@@ -58,16 +59,12 @@ main {
 
 h2 {
     font-size: var(--app_subtitle_size);
-
 }
-
-
 
 span {
     content: "\2195";
     padding-inline: 10px;
 }
-
 
 input {
     border: var(--app_border_setting);
@@ -77,18 +74,29 @@ input {
 
 table {
     border-spacing: 15px;
-
     margin-block: 15px;
     margin-inline: auto;
     width: 90%;
     border: var(--app_border_setting_evidence);
     border-radius: var(--header_border_radius);
 }
+
 table caption {
     font-weight: bold;
 }
 
 button {
-    background-color: var(--white);
-    border: 0px
+    cursor: pointer;
+    padding: 10px;
+    font-size: var(--app_paragraph_size);
+    background-color: var(--Nav_color);
+    border-radius: var(--header_border_radius);
+    border: var(--app_border_setting);
+}
+
+@media (max-width: 1000px) {
+    :root {
+        --app_title_size: 20px;
+        --app_paragraph_size: 15px
+    }
 }

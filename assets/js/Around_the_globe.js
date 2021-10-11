@@ -21,13 +21,13 @@ var Around_the_globe = {
     inclinazione: 'NaN',
     lunghezza: 'NaN',
   },
-  map: {},
-  geodesic: {},
+  map: null,
+  geodesic: null,
 
   //function
   loadMap: function () {
 
-    var map = new L.map('map').locate({ watch: true, setView: true })
+    var map = L.map('map').locate({ watch: true, setView: true })
 
     map.on('locationfound', function (e) {
       map.stopLocate()

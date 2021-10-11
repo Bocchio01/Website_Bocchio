@@ -8,6 +8,7 @@
       :useTag="showMenu"
       :tags="tags_to_view"
       :msg="msg_link"
+      :type="type_of_link"
     />
   </div>
 </template>
@@ -35,6 +36,7 @@ export default {
       msg_link: '',
       tags_to_view: [],
       showMenu: false,
+      type_of_link: 'nuxt-link',
     }
   },
   methods: {
@@ -46,7 +48,10 @@ export default {
     if (this.tags_array.length > 0) this.showMenu = true
     if (this.$route.params.slug == 'Articolo')
       this.msg_link = "Vai all'articolo"
-    else this.msg_link = 'Vai al portale'
+    else {
+      this.msg_link = 'Vai al portale'
+      this.type_of_link = 'a'
+    }
   },
 }
 </script>
