@@ -1,24 +1,17 @@
 <template>
-  <main>
-    <div id="upper_wrap">
-      <cHeader />
-      <cSlogan :sloganMsg="'Errore ' + error.statusCode" />
-      <cWrap :obj="val" :msg="'Torna alla home'" />
-    </div>
-    <cFooter />
-
-    <cBackground />
-  </main>
+  <div>
+    <cSlogan :sloganMsg="'Errore ' + error.statusCode" />
+    <cWrap :obj="val" :msg="'Torna alla home'" />
+  </div>
 </template>
 
 <script>
 export default {
-  layout: 'blank',
   props: ['error'],
   data() {
     return {
       val: {
-        path: '/Home',
+        path: '/',
         title: 'Cosa è successo?',
         paragraph: [
           'Pensiamo che qualcosa sia andato storto.',
@@ -29,15 +22,6 @@ export default {
           alt: 'Icona non trovato',
         },
       },
-    }
-  },
-  head() {
-    return {
-      link: [
-        { rel: 'stylesheet', href: '/css/base_element.css' },
-        { rel: 'stylesheet', href: '/css/media.css' },
-        { rel: 'stylesheet', href: '/css/wrap.css' },
-      ],
     }
   },
 }

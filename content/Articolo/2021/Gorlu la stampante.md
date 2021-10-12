@@ -16,7 +16,7 @@ tag: [
 
 # Gorlu la stampante
 
-<cImg s="https://res.cloudinary.com/bocchio/image/upload/v1632662892/Articoli/Gorlu%20la%20stampante/Gorlu.png" a="Gorlu la stampante"></cImg>
+<cMedia type="img" s="https://res.cloudinary.com/bocchio/image/upload/v1632662892/Articoli/Gorlu%20la%20stampante/Gorlu.png" a="Gorlu la stampante"></cMedia>
 
 ## L'idea iniziale
 
@@ -29,7 +29,7 @@ Una sera di Ottobre, vedendo la scatola di Arduino sulla mensola, mi è venuta v
 
 Per semplicità, ho deciso di basare l'intero progetto su **Python per quanto riguarda l'elaborazione delle immagini**, e sul **C++ per quanto riguarda il codice di Arduino**.
 
-<cImg s="https://i0.wp.com/www.insidevcode.eu/wp-content/uploads/2015/05/python-logo.png?ssl=1" c="Logo di Python 3.9"></cImg>
+<cMedia type="img" s="https://i0.wp.com/www.insidevcode.eu/wp-content/uploads/2015/05/python-logo.png?ssl=1" c="Logo di Python 3.9"></cMedia>
 
 Python presenta infatti una sintassi molto leggera rispetto ad altri linguaggi (Java per esempio), e le innumerevoli librerie già presenti online sapevo ma avrebbero aiutato e velocizzato nella scrittura del codice. In particolar modo, ho adoperato:
 
@@ -44,12 +44,12 @@ L'algoritmo principale, ovvero quello che si occupa della stampa di immagini dig
 
 Data un'immagine in input, il programma esegue una ricerca dei pixel che compongono i tratti principali dell'immagine utilizzando la **funzione [Canny()](https://docs.opencv.org/3.4/da/d22/tutorial_py_canny.html) presente in OpenCV**.
 
-<cImg s="https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/51124/versions/1/screenshot.jpg" c="Un esempio di immagine elaborata con la funzione Canny()"></cImg>
+<cMedia type="img" s="https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/51124/versions/1/screenshot.jpg" c="Un esempio di immagine elaborata con la funzione Canny()"></cMedia>
 
 Dopo aver mappato i dati all'interno di una matrice bidimensionale, ne viene eseguita la scansione con la logica di andare a stampare non singoli punti (rischiando così di avere problemi con l'inchiostro della penna), ma linee continue. **Preso un elemento A, l'algoritmo ne analizza i pixel in posizioni limitrofe in cerca di un elemento B da stampare. In caso di successo ne invia le coordinate ad Arduino, altrimenti allarga il campo di ricerca sempre centranto in A fino a che non viene identificato un elemento B**. Il programma poi cicla prendendo come punto di partenza le coordinate dell'elemento B appena individuato, e continua in maniera analoga fino a che tutta la matrice non è stata scansionata.
 
-<cImg s="https://res.cloudinary.com/bocchio/image/upload/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_1.png" c="Simulazione grafica dell'algoritmo di ricerca"></cImg>
-<cImg s="https://res.cloudinary.com/bocchio/image/upload/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_2.png" c="Uno screen dell'algoritmo di ricerca"></cImg>
+<cMedia type="img" s="https://res.cloudinary.com/bocchio/image/upload/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_1.png" c="Simulazione grafica dell'algoritmo di ricerca"></cMedia>
+<cMedia type="img" s="https://res.cloudinary.com/bocchio/image/upload/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_2.png" c="Uno screen dell'algoritmo di ricerca"></cMedia>
 
 Vista la semplicità dell'algoritmo e la sua bassa complessità computazionale, il programma risulta essere rapido e poco dispendioso di risorse. Inoltre, **lavorando sempre e solo all'interno della RAM**, non vi è mai la necessità di salvare dati sul disco fisso e questo permette di **lasciare il PC libero da superflui file di salvataggio**.
 
@@ -61,18 +61,18 @@ Meccanicamente la stampante è composta da 2 elementi primari:
 
 In particolare, i due carrelli hanno come base le componenti di vecchi lettori di DVD. Quest'ultimi presentano al loro interno, un motorino primario che si occupa della rotazione ad alta velocità del DVD, e un motore secondario incaricato dello scorrimento del lettore ottico. Questo motore passo-passo è proprio colui che una volta modificato sostituendone l'unità ottica con una base in legno, permette alla stampante di muovere il foglio e la penna lungo i due assi X e Y.
 
-<cVideo s="https://res.cloudinary.com/bocchio/video/upload/v1632851317/Articoli/Gorlu%20la%20stampante/Movimento_carrelli.mp4" c="Scorrimento dei due carrelli"></cVideo>
+<cMedia type="vid" s="https://res.cloudinary.com/bocchio/video/upload/v1632851317/Articoli/Gorlu%20la%20stampante/Movimento_carrelli.mp4" c="Scorrimento dei due carrelli"></cMedia>
 
 Il meccanismo legato invece al movimento della penna lungo l'asse Z è invece leggermente più fine e delicato. Esso si compone di un servo-motore legato con un filo inestensibile alla mina della penna. Quando la penna deve essere alzata, il servo compie una rotazione di qualche grado, mandando in tensione il filo e tirando così verso l'alto la mina. Per ritornare con la mina sul foglio, il servo rilascia la tensione lungo il filo, e un elastico spinge verso il basso la mina.
 
-<cVideo s="https://res.cloudinary.com/bocchio/video/upload/v1632851576/Articoli/Gorlu%20la%20stampante/Movimento_penna.mp4" c="Il meccanismo per alzare e abbasare la penna"></cVideo>
+<cMedia type="vid" s="https://res.cloudinary.com/bocchio/video/upload/v1632851576/Articoli/Gorlu%20la%20stampante/Movimento_penna.mp4" c="Il meccanismo per alzare e abbasare la penna"></cMedia>
 
 In questo modo visto che l'elastico genera sempre la stessa forza sulla mina, la stampa avrà una distribuzione di inchiostro omogenea.
 
 ## Gorlu la stampante!
 
 Ecco qualche video del progetto finito.
-<cFrame s="https://www.youtube.com/embed/qBS6WiSzQmI" c="Stampa di Pikachu"></cFrame>
+<cMedia type="frame" s="https://www.youtube.com/embed/qBS6WiSzQmI" c="Stampa di Pikachu"></cMedia>
 P. S. Il nome "Gorlu" è nato nel pieno della sua costruzione. Non ha mai avuto un significato ben preciso, ma mi sembrava simpatico e quindi perché no? :).
 
 ## Breve guida per realizzarlo da sé
@@ -86,7 +86,7 @@ Partendo dalla lista dei materiali, serviranno:
 * Sottili cavi elettrici; 
 * Una tavola di legno; 
 * Viti e bulloni
-<cImg s="https://res.cloudinary.com/bocchio/image/upload/v1632851580/Articoli/Gorlu%20la%20stampante/Materiali.png" c="Componenti principali"></cImg>
+<cMedia type="img" s="https://res.cloudinary.com/bocchio/image/upload/v1632851580/Articoli/Gorlu%20la%20stampante/Materiali.png" c="Componenti principali"></cMedia>
 
 Lascio tra gli allegati in fondo alla pagina i link a cui poter comperare online le componenti elettroniche non facilmente reperibili nei negozi fisici.
 
@@ -100,7 +100,7 @@ Passando ora alla parte software, l'intero codice necessario per il corretto fun
 
 Per poterlo scaricare basterà **cliccare sul tasto verde "Code" e successivamente su "download ZIP"**. All'interno della cartella, troverete questi file:
 
-<cImg s="https://res.cloudinary.com/bocchio/image/upload/v1632851575/Articoli/Gorlu%20la%20stampante/Cartella_GitHub.png" c="Files presenti nella repository del progetto"></cImg>
+<cMedia type="img" s="https://res.cloudinary.com/bocchio/image/upload/v1632851575/Articoli/Gorlu%20la%20stampante/Cartella_GitHub.png" c="Files presenti nella repository del progetto"></cMedia>
 
 Nella cartella "Arduino_code", potrete trovare lo sketch da caricare tramite l'IDE Arduino direttamente sulla scheda. Da notare che è necessario importare la libreria [AF_Motor.h](https://learn.adafruit.com/adafruit-motor-shield/library-install).
 

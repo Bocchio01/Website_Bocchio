@@ -46,6 +46,8 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/global.css',
+    '@/assets/css/portali.css',
+    '@/assets/css/wrap.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -71,5 +73,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+  ssr: false,
+  loadingIndicator: '~/components/loading.html'
 }

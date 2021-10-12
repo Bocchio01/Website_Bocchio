@@ -1,6 +1,6 @@
 <template>
   <article>
-    <nuxt-content :document="article" />
+    <nuxt-content class="wrap" :document="article" />
     <cNavigation :prev="prev" :next="next" v-if="prev || next"/>
   </article>
 </template>

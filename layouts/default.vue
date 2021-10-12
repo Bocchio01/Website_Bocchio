@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <div class="Default">
     <div id="upper_wrap">
       <cHeader />
       <cSlogan />
@@ -8,24 +8,10 @@
     <cFooter />
 
     <cBackground />
-  </main>
+  </div>
 </template>
 
-<script>
-export default {
-  head () {
-    return {
-      link: [
-        { rel: 'stylesheet', href: '/css/base_element.css' },
-        { rel: 'stylesheet', href: '/css/media.css' },
-        { rel: 'stylesheet', href: '/css/wrap.css' },
-      ]
-    }
-  }
-}
-</script>
-
-<style>
+<style >
 div#upper_wrap {
   min-height: calc(100vh - 207px);
 }

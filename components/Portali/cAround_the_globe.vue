@@ -1,131 +1,127 @@
 <template>
-  <main class="specify">
-    <div class="wrap_element">
-      <CMenuScelta @toParent="handler" :tags="tags_array" />
-      <div v-show="tags_to_view.includes(tags_array[0])">
-        <h2>Istruzioni</h2>
-        <div>
-          Questo script ti permetterà di calcolare con facilità l'azimut e la
-          distanza tra due punti del mondo.<br /><br />
-          <b>Comandi disponibili:</b>
-          <ul>
-            <li>
-              Ricerca -> Lente di ingrandimento in alto a destra sulla mappa
-            </li>
-            <li>Selezione -> Click sulla mappa</li>
-            <li>Modifica -> Trascinamento del punto sulla mappa</li>
-            <li>Eliminazione -> Doppio click del punto sulla mappa</li>
-          </ul>
-          <br />
-          Con il tasto <span>&#8597;</span> è possibile invertire le coordinate
-          di partenza con quelle di arrivo.<br />
-          Il punto di partenza è segnato in verde, mentre quello di arrivo in
-          rosso.
-        </div>
+  <div class="wrap portal">
+    <CMenuScelta @toParent="handler" :tags="tags_array" />
+    <div v-show="tags_to_view.includes(tags_array[0])">
+      <h2>Istruzioni</h2>
+      <div>
+        <p>Questo script ti permetterà di calcolare con facilità l'azimut e la
+        distanza tra due punti del mondo.</p>
+        <br />
+        <p><strong>Comandi disponibili:</strong></p>
+        <ul>
+          <li>
+            Ricerca -> Lente di ingrandimento in alto a destra sulla mappa
+          </li>
+          <li>Selezione -> Click sulla mappa</li>
+          <li>Modifica -> Trascinamento del punto sulla mappa</li>
+          <li>Eliminazione -> Doppio click del punto sulla mappa</li>
+        </ul>
+        <br />
+        <p>Con il tasto <span>&#8597;</span> è possibile invertire le coordinate di
+        partenza con quelle di arrivo.</p>
+        <p>Il punto di partenza è segnato in verde, mentre quello di arrivo in
+        rosso.</p>
       </div>
-      <div
-        class="o_separator"
-        v-show="
-          tags_to_view.includes(tags_array[0]) &&
-          tags_to_view.includes(tags_array[1])
-        "
-      ></div>
-      <div v-show="tags_to_view.includes(tags_array[1])">
-        <h2>Dati in input</h2>
-        <p>Inserisci di seguito le coordinate o clicca sulla mappa:</p>
+    <div class="o_separator"></div>
+    </div>
+    <main>
 
-        <table>
-          <tbody>
-            <tr v-for="(type, index) in ['partenza', 'arrivo']" :key="index">
-              <td>
+    <div v-show="tags_to_view.includes(tags_array[1])">
+      <h2>Dati in input</h2>
+      <p>Inserisci di seguito le coordinate o clicca sulla mappa:</p>
+
+      <table>
+        <tbody>
+          <tr v-for="(type, index) in ['partenza', 'arrivo']" :key="index">
+            <td>
+              <img
+                style="height: 25px"
+                :src="data[type].IconUrl"
+                @click="focusOn(data[type])"
+              />
+            </td>
+            <td>
+              <input
+                v-model="data[type].coord_to_show"
+                placeholder="Nessun punto selezionato"
+                type="text"
+                @change="update(data[type])"
+              />
+            </td>
+            <td>
+              <span @click="clean(data[type])">🗑️</span>
+            </td>
+            <td rowspan="2" v-if="type == 'partenza'">
+              <span @click="inverti()">&#8597;</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Dati in output</h2>
+      <p>Visualizza qui i risultati:</p>
+      <table>
+        <caption>
+          Indicazioni reali
+        </caption>
+        <tbody>
+          <tr>
+            <td colspan="2">
+              <div class="compass-bg">
                 <img
-                  style="height: 25px"
-                  :src="data[type].IconUrl"
-                  @click="focusOn(data[type])"
+                  class="compass-pointer"
+                  src="http://vasilis-tsirimokos.com/codepen/compass-pointer.png"
+                  :style="
+                    'transform: rotate(' +
+                    (parseInt(risultati.azimut) + 45) +
+                    'deg);'
+                  "
                 />
-              </td>
-              <td>
-                <input
-                  v-model="data[type].coord_to_show"
-                  placeholder="Nessun punto selezionato"
-                  type="text"
-                  @change="update(data[type])"
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td id="compass">Azimut: {{ risultati.azimut }} °</td>
+            <td id="compass_dist">Distanza: {{ risultati.distanza }} km</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table>
+        <caption>
+          Tunnel
+        </caption>
+        <tbody>
+          <tr>
+            <td colspan="2">
+              <div class="tunnel-bg">
+                <img
+                  class="tunnel-pointer"
+                  src="https://res.cloudinary.com/bocchio/image/upload/v1633648333/Portali/Around_the_globe/Tunnel_main.png"
+                  :style="
+                    'transform: rotate(' +
+                    (parseInt(risultati.inclinazione) - 45) +
+                    'deg);'
+                  "
                 />
-              </td>
-              <td>
-                <span @click="clean(data[type])">🗑️</span>
-              </td>
-              <td rowspan="2" v-if="type == 'partenza'">
-                <span @click="inverti()">&#8597;</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h2>Dati in output</h2>
-        <p>Visualizza qui i risultati:</p>
-        <table>
-          <caption>
-            Indicazioni reali
-          </caption>
-          <tbody>
-            <tr>
-              <td colspan="2">
-                <div class="compass-bg">
-                  <img
-                    class="compass-pointer"
-                    src="http://vasilis-tsirimokos.com/codepen/compass-pointer.png"
-                    :style="
-                      'transform: rotate(' +
-                      (parseInt(risultati.azimut) + 45) +
-                      'deg);'
-                    "
-                  />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td id="compass">Azimut: {{ risultati.azimut }} °</td>
-              <td id="compass_dist">Distanza: {{ risultati.distanza }} km</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <table>
-          <caption>
-            Tunnel
-          </caption>
-          <tbody>
-            <tr>
-              <td colspan="2">
-                <div class="tunnel-bg">
-                  <img
-                    class="tunnel-pointer"
-                    src="https://res.cloudinary.com/bocchio/image/upload/v1633648333/Portali/Around_the_globe/Tunnel_main.png"
-                    :style="
-                      'transform: rotate(' +
-                      (parseInt(risultati.inclinazione) - 45) +
-                      'deg);'
-                    "
-                  />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td id="tunnel">Inclinazione: {{ risultati.inclinazione }} °</td>
-              <td id="tunnel_dist">Lunghezza: {{ risultati.lunghezza }} km</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td id="tunnel">Inclinazione: {{ risultati.inclinazione }} °</td>
+            <td id="tunnel_dist">Lunghezza: {{ risultati.lunghezza }} km</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="v_separator"></div>
+    <div class="map_container" v-show="tags_to_view.includes(tags_array[2])">
+      <h2>Mappa</h2>
 
-    <div class="wrap_element map_container">
       <div id="map"></div>
     </div>
-  </main>
+    </main>
+  </div>
 </template>
 
 <script>
@@ -134,7 +130,7 @@ import { Around_the_globe } from '@/assets/js/Around_the_globe.js'
 export default {
   data() {
     return {
-      tags_array: ['Guida', 'Dati'],
+      tags_array: ['Guida', 'Dati', 'Mappa'],
       tags_to_view: [],
       data: Around_the_globe.dati,
       risultati: Around_the_globe.result,
@@ -207,15 +203,12 @@ export default {
 }
 </script>
 
-<style scoped>
-main.specify {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 450px 30px auto;
-  column-gap: 0px;
-  justify-content: normal;
+<style >
+.map_container {
+  width: 100%;
+  max-width: 900px;
 }
-span,
+.portal span,
 td img {
   cursor: pointer;
 }
@@ -223,7 +216,7 @@ td img {
   width: 150px;
   height: 150px;
   background-size: 150px;
-  background-image: url('http://vasilis-tsirimokos.com/codepen/compass-bg.png');
+  background-image: url('https://vasilis-tsirimokos.com/codepen/compass-bg.png');
   margin-inline: auto;
 }
 .tunnel-bg {

@@ -1,7 +1,11 @@
-body {
-    font-family: var(--App_font);
-    text-align: justify;
+.wrap.portal {
+    width: 95%;
+
 }
+
+
+
+
 
 .o_separator {
     margin-block: 15px;
@@ -10,58 +14,18 @@ body {
     margin-inline: auto;
 }
 
-.v_separator {
-    border-right: var(--app_border_setting);
-    height: 80vh;
-    margin-block: auto;
-    margin-inline: 15px;
-}
 
-nav {
-    width: 100%;
-    border-radius: var(--header_border_radius);
-    border: var(--app_border_setting);
-    background-color: var(--Nav_color);
-}
-
-nav div {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    column-gap: var(--app_row_column_gap);
-}
-
-nav div p {
-    cursor: pointer;
-    font-size: var(--paragraph_size);
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-nav p {
-    text-align: center;
-}
 
 main {
     display: flex;
-    flex-direction: row;
     column-gap:  var(--app_row_column_gap);;
     row-gap: var(--app_row_column_gap);
-    justify-content: center;
+    flex-wrap: wrap;
+    flex: auto;
+    justify-content: space-between;
 }
 
-.wrap_element {
-    display: block;
-    overflow-y: auto;
-    padding: 10px;
-    font-size: var(--app_paragraph_size);
-}
-
-h2 {
-    font-size: var(--app_subtitle_size);
-}
-
-span {
+.portal span {
     content: "\2195";
     padding-inline: 10px;
 }

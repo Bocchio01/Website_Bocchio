@@ -13,7 +13,7 @@
       <div class="o_separator"></div>
 
       <div class="link">
-        <NuxtLink to="/Home">Torna alla Home</NuxtLink>
+        <NuxtLink to="/">Torna alla Home</NuxtLink>
         <p>|</p>
         <NuxtLink to="/Elenco/Portale">Torna all'elenco dei portali</NuxtLink>
       </div>
@@ -26,7 +26,7 @@
 import getSiteMeta from '@/assets/js/getSiteMeta.js'
 
 export default {
-  layout: 'blank',
+  layout: 'portale',
   async asyncData({ $content, params }) {
     const [article] = await $content({ deep: true })
       .where({ title: params.slag })
@@ -39,6 +39,9 @@ export default {
   },
   head() {
     return {
+      bodyAttrs: {
+          class: 'Portale'
+        },
       title: 'Bocchio | Portale: ' + this.article.title,
       meta: [
         ...this.meta,
@@ -89,7 +92,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 header {
   width: 100%;

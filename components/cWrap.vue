@@ -1,15 +1,19 @@
 <template>
   <div
-    class="container"
+    class="wrap card"
     v-show="useTag ? tags.some((r) => obj.tag.includes(r)) : true"
   >
-    <nuxt-link class="link_hidden" :to="obj.path" v-if="type == 'nuxt-link'"><mark> {{ msg }}</mark></nuxt-link>
-    <a class="link_hidden" :href="obj.path" v-else ><mark> {{ msg }}</mark></a>
-    <div style="flex: auto">
+    <nuxt-link :to="obj.path" v-if="type == 'nuxt-link'"
+      ><mark> {{ msg }}</mark></nuxt-link
+    >
+    <a :href="obj.path" v-else
+      ><mark> {{ msg }}</mark></a
+    >
+    <div>
       <h1>{{ obj.title }}</h1>
-      <div class="text_container" v-html="obj.paragraph.join('<br>')"></div>
+      <p v-html="obj.paragraph.join('<br>')"></p>
     </div>
-    <img class="img_container" :src="obj.img.src" :alt="obj.img.alt" />
+    <img :src="obj.img.src" :alt="obj.img.alt" />
   </div>
 </template>
 
@@ -32,8 +36,70 @@ export default {
     },
     type: {
       type: String,
-      default: 'nuxt-link'
-    }
+      default: 'nuxt-link',
+    },
   },
 }
 </script>
+
+<style lang="scss">
+.wrap.card {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
+  column-gap: 64px;
+  > div {
+    flex: auto;
+    > p {
+      margin-block: 10px;
+      max-width: fit-content;
+    }
+  }
+  > a {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    right: 0px;
+    visibility: hidden;
+    color: var(--link_hover_color);
+    font-family: var(--Special_font);
+    font-size: var(--title_size);
+    text-decoration: unset;
+    > mark {
+      background-color: #0a0a0a;
+      color: var(--link_hover_color);
+      border-radius: 10px;
+      align-self: center;
+      width: min-content;
+      padding-inline: 20px;
+    }
+  }
+  > img {
+    margin: auto;
+    max-height: 300px;
+    transition: all 0.2s ease-in-out;
+  }
+  &:hover {
+    transform: scale(1.05);
+    background-color: gray;
+    > a {
+      visibility: visible;
+    }
+    > img {
+      transform: scale(1.1);
+    }
+  }
+}
+@media (max-width: 1030px) {
+  .wrap.card > img {
+    max-height: 200px;
+    max-width: 100%;
+  }
+}
+</style>

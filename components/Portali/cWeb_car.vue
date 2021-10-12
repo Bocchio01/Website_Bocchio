@@ -1,20 +1,12 @@
 <template>
-  <div>
+  <div class="wrap portal">
     <CMenuScelta @toParent="handler" :tags="tags_array" />
-    <main class="specify">
-      <div class="wrap_element" v-show="tags_to_view.includes(tags_array[0])">
+    <main >
+      <div v-show="tags_to_view.includes(tags_array[0])">
         <h2>Location map</h2>
       </div>
-      <div
-        class="v_separator"
-        v-show="
-          (tags_to_view.includes(tags_array[0]) &&
-            tags_to_view.includes(tags_array[1])) ||
-          (tags_to_view.includes(tags_array[0]) &&
-            tags_to_view.includes(tags_array[2]))
-        "
-      ></div>
-      <div class="wrap_element" v-show="tags_to_view.includes(tags_array[1])">
+
+      <div v-show="tags_to_view.includes(tags_array[1])">
         <h2>Joystick</h2>
         <div id="joy_link"></div>
         <div id="frequency_box">
@@ -23,14 +15,8 @@
           <span>Massima frequenza</span>
         </div>
       </div>
-      <div
-        class="v_separator"
-        v-show="
-          tags_to_view.includes(tags_array[2]) &&
-          tags_to_view.includes(tags_array[1])
-        "
-      ></div>
-      <div class="wrap_element" v-show="tags_to_view.includes(tags_array[2])">
+
+      <div v-show="tags_to_view.includes(tags_array[2])">
         <h2>Video streaming</h2>
       </div>
     </main>

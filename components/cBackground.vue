@@ -6,8 +6,8 @@
 
 <script>
 export default {
-  name: "cBackground",
-};
+  name: 'cBackground',
+}
 </script>
 
 <style lang="scss">
@@ -15,12 +15,15 @@ export default {
   position: fixed;
   top: 0px;
   z-index: -1;
-}
+  width: 100%;
+  height: 100vh;
+  background-color: var(--background_color_body);
 
-.particle {
-  position: absolute;
-  border-radius: 50%;
-  background: var(--background_color);
+  > div {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--background_color);
+  }
 }
 
 @for $i from 1 through 100 {

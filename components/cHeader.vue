@@ -1,7 +1,7 @@
 <template>
   <header>
     <div>
-      <nuxt-link to="/Home">Tommaso Bocchietti</nuxt-link>
+      <nuxt-link to="/">Tommaso Bocchietti</nuxt-link>
       <input class="menu-btn" type="checkbox" id="menu-btn" />
       <label class="menu-icon" for="menu-btn" @click="Menu_click">
         <span class="navicon"></span>
@@ -11,8 +11,8 @@
       <li><nuxt-link to="/Articolo/Chi sono">Chi sono?</nuxt-link></li>
       <li><nuxt-link to="/Elenco/Articolo">Articoli</nuxt-link></li>
       <li>
-        <a @click="SubMenu_click" :class="{hover: showSubMenu}">App</a>
-        <ul class="dropdown-content" v-show="(showSubMenu)">
+        <a @click="SubMenu_click" :class="{ hover: showSubMenu }">App</a>
+        <ul class="dropdown-content" v-show="showSubMenu">
           <li><nuxt-link to="/Elenco/Portale">Portali</nuxt-link></li>
           <li><nuxt-link to="#">Orienteering</nuxt-link></li>
         </ul>
@@ -47,3 +47,133 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.Default {
+  header,
+  .dropdown-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-inline: 15px;
+    z-index: 2;
+    background-color: var(--background_color);
+    border: var(--border_setting);
+    border-radius: var(--header_border_radius);
+    -webkit-border-radius: var(--header_border_radius);
+    -moz-border-radius: var(--header_border_radius);
+  }
+
+  header {
+    a {
+      display: block;
+      margin: 15px 15px;
+      font-weight: bold;
+      font-family: var(--Special_font);
+      font-size: var(--header_font_size);
+      &:hover,
+      &.hover {
+        color: var(--link_hover_color);
+      }
+    }
+    > div {
+      display: flex;
+      justify-content: space-between;
+      > .menu-btn {
+        display: none;
+        &:checked ~ .menu-icon {
+          background: transparent;
+          &::after,
+          &::before {
+            top: 0;
+          }
+          &::before {
+            transform: rotate(-45deg);
+          }
+          &::after {
+            transform: rotate(45deg);
+          }
+        }
+      }
+      > .menu-icon {
+        display: none;
+        cursor: pointer;
+        padding: 30px;
+        > .navicon {
+          align-self: center;
+          background: #333;
+          height: 2px;
+          position: relative;
+          transition: all 0.2s ease-out;
+          width: 18px;
+          &::after,
+          &::before {
+            background: #333;
+            content: '';
+            height: 100%;
+            position: absolute;
+            transition: all 0.2s ease-out;
+            width: 100%;
+          }
+          &::before {
+            top: 6px;
+          }
+          &::after {
+            top: -6px;
+          }
+        }
+      }
+    }
+    ul {
+      display: flex;
+      list-style-type: none;
+      padding: 0px;
+    }
+    .dropdown-content {
+      display: block;
+      position: absolute;
+      right: 0px;
+      width: auto;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .Default {
+    header {
+      display: block;
+      > div > .menu-icon {
+        display: inline-flex;
+      }
+      ul {
+        display: block;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        > li {
+          text-align: center;
+        }
+      }
+      .dropdown-content {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 570px) {
+  :root {
+    --header_font_size: 19px;
+  }
+  .Default {
+    header {
+      a {
+        margin: 15px 0px;
+      }
+      > div > .menu-icon {
+        padding: 15px;
+      }
+    }
+  }
+}
+</style>
