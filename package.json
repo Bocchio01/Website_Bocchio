@@ -11,7 +11,7 @@
   "dependencies": {
     "@nuxt/content": "^1.14.0",
     "@nuxtjs/composition-api": "^0.29.2",
-    "core-js": "^3.18.2",
+    "core-js": "^3.18.3",
     "json-pointer": "^0.6.1",
     "leaflet-geosearch": "^3.6.0",
     "leaflet.geodesic": "^2.5.5-0",
