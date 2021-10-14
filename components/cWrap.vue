@@ -3,12 +3,12 @@
     class="wrap card"
     v-show="useTag ? tags.some((r) => obj.tag.includes(r)) : true"
   >
-    <nuxt-link :to="obj.path" v-if="type == 'nuxt-link'"
-      ><mark> {{ msg }}</mark></nuxt-link
+    <nuxt-link :to="obj.path"
+      ><div> {{ msg }}</div></nuxt-link
     >
-    <a :href="obj.path" v-else
-      ><mark> {{ msg }}</mark></a
-    >
+    <!--<a :href="obj.path" v-else
+      ><div> {{ msg }}</div></a
+    >-->
     <div>
       <h1>{{ obj.title }}</h1>
       <p v-html="obj.paragraph.join('<br>')"></p>
@@ -71,7 +71,7 @@ export default {
     font-family: var(--Special_font);
     font-size: var(--title_size);
     text-decoration: unset;
-    > mark {
+    > div {
       background-color: #0a0a0a;
       color: var(--link_hover_color);
       border-radius: 10px;

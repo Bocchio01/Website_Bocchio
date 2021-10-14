@@ -1,126 +1,152 @@
 <template>
-  <div class="wrap portal">
+  <div class="wrap portal Around_the_globe">
     <CMenuScelta @toParent="handler" :tags="tags_array" />
-    <div v-show="tags_to_view.includes(tags_array[0])">
-      <h2>Istruzioni</h2>
-      <div>
-        <p>Questo script ti permetterà di calcolare con facilità l'azimut e la
-        distanza tra due punti del mondo.</p>
-        <br />
-        <p><strong>Comandi disponibili:</strong></p>
-        <ul>
-          <li>
-            Ricerca -> Lente di ingrandimento in alto a destra sulla mappa
-          </li>
-          <li>Selezione -> Click sulla mappa</li>
-          <li>Modifica -> Trascinamento del punto sulla mappa</li>
-          <li>Eliminazione -> Doppio click del punto sulla mappa</li>
-        </ul>
-        <br />
-        <p>Con il tasto <span>&#8597;</span> è possibile invertire le coordinate di
-        partenza con quelle di arrivo.</p>
-        <p>Il punto di partenza è segnato in verde, mentre quello di arrivo in
-        rosso.</p>
+    <div class="affianca">
+      <div
+        class="box"
+        v-show="tags_to_view.includes(tags_array[0])"
+        style="flex: 1 1 300px"
+      >
+        <h2>Istruzioni</h2>
+        <div>
+          <p>
+            Questo script ti permetterà di calcolare con facilità l'azimut e la
+            distanza tra due punti del mondo.
+          </p>
+          <br />
+          <p><strong>Comandi disponibili:</strong></p>
+          <ul>
+            <li>
+              Ricerca -> Lente di ingrandimento in alto a destra sulla mappa
+            </li>
+            <li>Selezione -> Click sulla mappa</li>
+            <li>Modifica -> Trascinamento del punto sulla mappa</li>
+            <li>Eliminazione -> Doppio click del punto sulla mappa</li>
+          </ul>
+          <br />
+          <p>
+            Con il tasto <span class="arrow">&#8597;</span> è possibile
+            invertire le coordinate di partenza con quelle di arrivo.
+          </p>
+          <p>
+            Il punto di partenza è segnato in verde, mentre quello di arrivo in
+            rosso.
+          </p>
+        </div>
       </div>
-    <div class="o_separator"></div>
-    </div>
-    <main>
+      <div
+        class="affianca"
+        style="flex: 1 1 300px"
+        v-show="tags_to_view.includes(tags_array[1])"
+      >
+        <div class="box">
+          <h2>Dati in input</h2>
+          <p>Inserisci di seguito le coordinate o clicca sulla mappa:</p>
 
-    <div v-show="tags_to_view.includes(tags_array[1])">
-      <h2>Dati in input</h2>
-      <p>Inserisci di seguito le coordinate o clicca sulla mappa:</p>
-
-      <table>
-        <tbody>
-          <tr v-for="(type, index) in ['partenza', 'arrivo']" :key="index">
-            <td>
+          <div class="result">
+            <div>
+              <div
+                v-for="(marker, index) in markers"
+                :key="marker.id"
+                style="display: flex"
+              >
+                <img
+                  style="height: 25px"
+                  :src="marker.IconUrl"
+                  @click="initialLocation = marker.position"
+                />
+                <input
+                  v-model="marker.position"
+                  placeholder="Nessun punto selezionato"
+                  type="text"
+                  disabled
+                />
+                <span @click="clean(index)">🗑️</span>
+              </div>
+            </div>
+            <span class="arrow" @click="inverti()">&#8597;</span>
+          </div>
+        </div>
+        <div class="box">
+          <h2>Dati in output</h2>
+          <p>Visualizza qui i risultati:</p>
+          <div class="result affianca">
+            <div class="compass-bg">
               <img
-                style="height: 25px"
-                :src="data[type].IconUrl"
-                @click="focusOn(data[type])"
+                class="compass-pointer"
+                src="http://vasilis-tsirimokos.com/codepen/compass-pointer.png"
+                :style="
+                  'transform: rotate(' +
+                  (parseInt(risultati.azimut) + 45) +
+                  'deg);margin:0px'
+                "
               />
-            </td>
-            <td>
-              <input
-                v-model="data[type].coord_to_show"
-                placeholder="Nessun punto selezionato"
-                type="text"
-                @change="update(data[type])"
+            </div>
+            <div>
+              <p>Azimut tra i due punti: {{ risultati.azimut }} °</p>
+              <p>Distanza sulla superficie: {{ risultati.distanza }} km</p>
+              <p>Inclinazione del tunnel: {{ risultati.inclinazione }} °</p>
+              <p>Lunghezza del tunnel: {{ risultati.lunghezza }} km</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="box"
+        style="flex: 10 1 400px"
+        v-show="tags_to_view.includes(tags_array[2])"
+      >
+        <h2>Mappa</h2>
+        <div style="height: 90vh">
+          <client-only>
+            <l-map
+              ref="myMap"
+              :zoom="zoom"
+              @ready="onReady"
+              @locationfound="onLocationFound"
+              :center="initialLocation"
+              :options="{ attributionControl: false }"
+              @click="addMarker"
+            >
+              <l-control-scale
+                position="bottomleft"
+                :imperial="true"
+                :metric="true"
+              ></l-control-scale>
+              <l-control-layers position="topright"></l-control-layers>
+              <l-control-attribution
+                position="bottomright"
+                prefix="Bocchio | <a href='https://leafletjs.com' title='A JS library for interactive maps'>Leaflet</a>"
+              ></l-control-attribution>
+              <l-tile-layer
+                v-for="tileProvider in tileProviders"
+                :key="tileProvider.name"
+                :name="tileProvider.name"
+                :visible="tileProvider.visible"
+                :url="tileProvider.url"
+                :attribution="tileProvider.attribution"
+                layer-type="base"
               />
-            </td>
-            <td>
-              <span @click="clean(data[type])">🗑️</span>
-            </td>
-            <td rowspan="2" v-if="type == 'partenza'">
-              <span @click="inverti()">&#8597;</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>Dati in output</h2>
-      <p>Visualizza qui i risultati:</p>
-      <table>
-        <caption>
-          Indicazioni reali
-        </caption>
-        <tbody>
-          <tr>
-            <td colspan="2">
-              <div class="compass-bg">
-                <img
-                  class="compass-pointer"
-                  src="http://vasilis-tsirimokos.com/codepen/compass-pointer.png"
-                  :style="
-                    'transform: rotate(' +
-                    (parseInt(risultati.azimut) + 45) +
-                    'deg);'
-                  "
-                />
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td id="compass">Azimut: {{ risultati.azimut }} °</td>
-            <td id="compass_dist">Distanza: {{ risultati.distanza }} km</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <table>
-        <caption>
-          Tunnel
-        </caption>
-        <tbody>
-          <tr>
-            <td colspan="2">
-              <div class="tunnel-bg">
-                <img
-                  class="tunnel-pointer"
-                  src="https://res.cloudinary.com/bocchio/image/upload/v1633648333/Portali/Around_the_globe/Tunnel_main.png"
-                  :style="
-                    'transform: rotate(' +
-                    (parseInt(risultati.inclinazione) - 45) +
-                    'deg);'
-                  "
-                />
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td id="tunnel">Inclinazione: {{ risultati.inclinazione }} °</td>
-            <td id="tunnel_dist">Lunghezza: {{ risultati.lunghezza }} km</td>
-          </tr>
-        </tbody>
-      </table>
+              <l-marker
+                v-for="marker in markers"
+                :key="marker.id"
+                draggable
+                :visible="marker.visible"
+                :icon="createIcon(marker.IconUrl)"
+                :lat-lng.sync="marker.position"
+                @dblclick="marker.visible = false"
+              >
+                <l-popup
+                  >Questo punto di {{ marker.id }} ha coordinate
+                  {{ marker.position }}</l-popup
+                >
+              </l-marker>
+            </l-map>
+          </client-only>
+        </div>
+      </div>
     </div>
-
-    <div class="map_container" v-show="tags_to_view.includes(tags_array[2])">
-      <h2>Mappa</h2>
-
-      <div id="map"></div>
-    </div>
-    </main>
   </div>
 </template>
 
@@ -131,9 +157,47 @@ export default {
   data() {
     return {
       tags_array: ['Guida', 'Dati', 'Mappa'],
-      tags_to_view: [],
-      data: Around_the_globe.dati,
+      tags_to_view: ['Mappa'],
+
       risultati: Around_the_globe.result,
+      initialLocation: [0, 0],
+      zoom: 13,
+      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      attribution:
+        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+
+      markers: [
+        {
+          id: 'Partenza',
+          position: { lat: 0, lng: 0 },
+          visible: false,
+          IconUrl:
+            'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+        },
+        {
+          id: 'Arrivo',
+          position: { lat: 0, lng: 0 },
+          visible: false,
+          IconUrl:
+            'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+        },
+      ],
+      tileProviders: [
+        {
+          name: 'OpenStreetMap',
+          visible: true,
+          attribution:
+            '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+          url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        },
+        {
+          name: 'OpenTopoMap',
+          visible: false,
+          url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+          attribution:
+            'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
+        },
+      ],
     }
   },
   head() {
@@ -156,60 +220,95 @@ export default {
         },
         {
           hid: 'stripe',
-          src: 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js',
-          defer: true,
-        },
-        {
-          hid: 'stripe',
-          src: 'https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js',
-          defer: true,
-        },
-        {
-          hid: 'stripe',
           src: 'https://cdn.jsdelivr.net/npm/leaflet.geodesic',
           defer: true,
         },
       ],
     }
   },
-  mounted() {
-    try {
-      Around_the_globe.loadMap()
-    } catch (error) {
-      location.reload()
-    }
-  },
   methods: {
+    onReady(mapObject) {
+      this.tags_to_view = []
+      mapObject.locate()
+
+      setTimeout(() => {
+        try {
+          this.geodesic = new this.$L.Geodesic().addTo(mapObject)
+        } catch (error) {
+          console.log('Errore')
+        }
+      }, 2000)
+    },
+    onLocationFound(location) {
+      this.initialLocation = location.latlng
+    },
     handler(value) {
       this.tags_to_view = value
     },
-    clean(el) {
-      Around_the_globe.clean(el)
-    },
-    focusOn(el) {
-      Around_the_globe.focusOn(el)
-    },
-    update(el) {
-      Around_the_globe.update(el)
-    },
     inverti() {
-      Around_the_globe.inverti()
+      var foo = this.markers[0].position
+      this.markers[0].position = this.markers[1].position
+      this.markers[1].position = foo
+    },
+    addMarker(event) {
+      for (let i = 0; i < 2; i++) {
+        if (!this.markers[i].visible) {
+          this.markers[i].position = event.latlng
+          this.markers[i].visible = true
+          return
+        }
+      }
+      console.log('Marker gia segnati')
+    },
+    createIcon(url) {
+      return new L.Icon({
+        iconUrl: url,
+        shadowUrl:
+          'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41],
+      })
+    },
+    clean(id) {
+      this.geodesic.setLatLngs([])
+      this.markers[id].position = { lat: 0, lng: 0 }
+      this.markers[id].visible = false
     },
   },
-  beforeDestroy() {
-    Around_the_globe.clean(this.data.partenza)
-    Around_the_globe.clean(this.data.arrivo)
+  watch: {
+    markers: {
+      handler(val) {
+        var points = []
+        if (this.markers[0].visible && this.markers[1].visible) {
+          val.forEach((element) => {
+            points.push(element.position)
+          })
+          this.geodesic.setLatLngs(points)
+          this.risultati.distanza = (this.geodesic.statistics.totalDistance/ 1000).toFixed(2)
+          Around_the_globe.init(points)
+        } else {
+          this.risultati.azimut = 'NaN'
+          this.risultati.distanza = 'NaN'
+          this.risultati.inclinazione = 'NaN'
+          this.risultati.lunghezza = 'NaN'
+        }
+      },
+      deep: true,
+    },
   },
 }
+//manca da sistemare la location iniziale e aggiungere un button per ritornaci
+//anche aggiungere il box di ricerca dei luochi => markgeocode geocoder
+//sistemare il rilascio automatico del drag se si va troppo pianno con il cursone
 </script>
 
 <style >
-.map_container {
-  width: 100%;
-  max-width: 900px;
+.Around_the_globe .arrow {
+  padding-inline: 10px;
 }
-.portal span,
-td img {
+.Around_the_globe span {
   cursor: pointer;
 }
 .compass-bg {
@@ -219,40 +318,9 @@ td img {
   background-image: url('https://vasilis-tsirimokos.com/codepen/compass-bg.png');
   margin-inline: auto;
 }
-.tunnel-bg {
-  width: 150px;
-  height: 150px;
-  background-size: 150px;
-  background-image: url('https://res.cloudinary.com/bocchio/image/upload/v1633647876/Portali/Around_the_globe/Tunnel_sfondo.jpg');
-  margin-inline: auto;
-}
 
 .compass-pointer {
   transform: rotate(45deg);
   width: 150px;
-}
-.tunnel-pointer {
-  transform: rotate(45deg);
-  width: 130px;
-  margin: 10px;
-}
-
-#map {
-  width: 100%;
-  min-height: 100vh;
-  margin-inline: auto;
-}
-
-@media (max-width: 1000px) {
-  main.specify {
-    display: block;
-  }
-  .v_separator {
-    display: none;
-  }
-  #map {
-    width: 95%;
-    min-height: 90vh;
-  }
 }
 </style>

@@ -67,7 +67,7 @@ nav {
     flex: auto;
     > p {
       cursor: pointer;
-        font-weight: bold;
+      font-weight: bold;
     }
   }
   > p {

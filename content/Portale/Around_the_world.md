@@ -1,6 +1,7 @@
 ---
 title: Around_the_globe
 description: Script per il calcolo di direzioni e distanze tra luoghi geografici del mondo.
+
 paragraph: [
             Script per il calcolo di direzioni e distanze tra luoghi geografici del mondo.
         ]

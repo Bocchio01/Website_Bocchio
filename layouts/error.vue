@@ -1,6 +1,5 @@
 <template>
   <div>
-    <cSlogan :sloganMsg="'Errore ' + error.statusCode" />
     <cWrap :obj="val" :msg="'Torna alla home'" />
   </div>
 </template>
@@ -12,7 +11,7 @@ export default {
     return {
       val: {
         path: '/',
-        title: 'Cosa è successo?',
+        title: 'Errore ' + this.error.statusCode,
         paragraph: [
           'Pensiamo che qualcosa sia andato storto.',
           'Se pensi possa essere un problema del sito, faccelo sapere tramite uno dei canali indicati a fondo pagina.',

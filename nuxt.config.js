@@ -46,7 +46,7 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/global.css',
-    '@/assets/css/portali.css',
+    '@/assets/css/portali.scss',
     '@/assets/css/wrap.scss',
   ],
 
@@ -66,6 +66,7 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     '@nuxtjs/composition-api/module',
+    'nuxt-leaflet',
   ],
 
   // Content module configuration: https://go.nuxtjs.dev/config-content

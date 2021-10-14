@@ -5,19 +5,18 @@
         <h1>{{ article.title }}</h1>
         <img :src="article.img.src" :alt="article.img.alt" />
       </div>
-      <h3>{{ article.paragraph }}</h3>
-      <div class="o_separator"></div>
+      <h3 v-html="article.paragraph.join('<br>')"></h3>
     </header>
-    <nuxt-content :document="article" />
-    <footer>
-      <div class="o_separator"></div>
 
-      <div class="link">
+    <nuxt-content :document="article" />
+
+    <footer>
+      <div>
         <NuxtLink to="/">Torna alla Home</NuxtLink>
         <p>|</p>
         <NuxtLink to="/Elenco/Portale">Torna all'elenco dei portali</NuxtLink>
       </div>
-      <p class="copyright">Tommaso Bocchietti © {{ year }}</p>
+      <p>Tommaso Bocchietti © {{ year }}</p>
     </footer>
   </article>
 </template>
@@ -40,8 +39,8 @@ export default {
   head() {
     return {
       bodyAttrs: {
-          class: 'Portale'
-        },
+        class: 'Portale',
+      },
       title: 'Bocchio | Portale: ' + this.article.title,
       meta: [
         ...this.meta,
@@ -92,62 +91,56 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+.Portale {
+  header,
+  footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    > div {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
 
-header {
-  width: 100%;
-  text-align: center;
-  padding-top: 10px;
-  padding-inline: 10px;
-}
-header div {
-  align-items: center;
-  display: flex;
-  min-width: fit-content;
-  margin-inline: auto;
-  column-gap: 10px;
-  justify-content: center;
-}
-header div img {
-  height: 40px;
-}
+    }
+  }
 
-header h1 {
-  font-size: var(--app_title_size);
-  font-family: var(--Special_font);
-}
+  header {
+    > div {
+      > h1 {
+        font-size: var(--header_font_size);
+        font-family: var(--Special_font);
+      }
+      > img {
+        height: 40px;
+      }
+    }
+    > h3 {
+      font-size: var(--paragraph_size);
+    }
+  }
 
-header h3 {
-  font-size: var(--app_paragraph_size);
-}
-
-footer {
-  width: 100%;
-  padding-bottom: 10px;
-  padding-inline: 10px;
-  text-align: center;
-  font-weight: bold;
-}
-footer .link {
-  font-size: var(--app_paragraph_size);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-footer .link a {
-  padding-inline: 10px;
-  text-decoration: underline;
-  z-index: 5;
-}
-footer .link a:hover {
-  color: var(--link_hover_color);
-}
-
-footer .copyright {
-  color: #a2a2a2;
-  font-family: var(--Special_font);
-  font-size: var(--app_title_size);
-  display: flex;
-  justify-content: center;
+  footer {
+    > div {
+      > a {
+        text-decoration: underline;
+        &:hover {
+          color: var(--link_hover_color);
+        }
+      }
+      * {
+        font-size: var(--paragraph_size);
+      }
+    }
+    > p {
+      color: #a2a2a2;
+      font-family: var(--Special_font);
+      font-size: var(--footer_font_size);
+    }
+  }
 }
 </style>
