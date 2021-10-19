@@ -68,7 +68,7 @@ export default {
     --slogan_font_size: 35px;
   }
   .Default div.sloganBase.sloganHome {
-    font-size: var(--slogan_font_size);
+    font-size: 60px;
   }
 }
 </style>

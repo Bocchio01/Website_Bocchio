@@ -16,12 +16,11 @@
           <br />
           <p><strong>Comandi disponibili:</strong></p>
           <ul>
-            <li>
-              Ricerca -> Lente di ingrandimento in alto a destra sulla mappa
-            </li>
+            <li>Ricerca -> Lente di ingrandimento sulla mappa</li>
             <li>Selezione -> Click sulla mappa</li>
             <li>Modifica -> Trascinamento del punto sulla mappa</li>
-            <li>Eliminazione -> Doppio click del punto sulla mappa</li>
+            <li>Eliminazione -> Icona del cestino dal box di input dati</li>
+            <li>Geolocalizzazione -> Icona apposita sulla mappa</li>
           </ul>
           <br />
           <p>
@@ -128,6 +127,7 @@
                 :attribution="tileProvider.attribution"
                 layer-type="base"
               />
+              <v-locatecontrol />
               <l-marker
                 v-for="marker in markers"
                 :key="marker.id"
@@ -135,8 +135,8 @@
                 :visible="marker.visible"
                 :icon="createIcon(marker.IconUrl)"
                 :lat-lng.sync="marker.position"
-                @dblclick="marker.visible = false"
               >
+                <!--@dblclick="marker.visible = false"-->
                 <l-popup
                   >Questo punto di {{ marker.id }} ha coordinate
                   {{ marker.position }}</l-popup
@@ -152,8 +152,13 @@
 
 <script>
 import { Around_the_globe } from '@/assets/js/Around_the_globe.js'
+import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch'
+import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol'
 
 export default {
+  components: {
+    'v-locatecontrol': Vue2LeafletLocatecontrol,
+  },
   data() {
     return {
       tags_array: ['Guida', 'Dati', 'Mappa'],
@@ -162,9 +167,6 @@ export default {
       risultati: Around_the_globe.result,
       initialLocation: [0, 0],
       zoom: 13,
-      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      attribution:
-        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 
       markers: [
         {
@@ -206,10 +208,17 @@ export default {
         {
           rel: 'stylesheet',
           href: 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
+          defer: true,
         },
         {
           rel: 'stylesheet',
           href: 'https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css',
+          defer: true,
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css',
+          defer: true,
         },
       ],
       script: [
@@ -228,6 +237,19 @@ export default {
   },
   methods: {
     onReady(mapObject) {
+      const provider = new OpenStreetMapProvider()
+
+      const searchControl = new GeoSearchControl({
+        notFoundMessage:
+          'Sembra non esista alcuna località associata a questo indirizzo...',
+        provider: provider,
+        autoCompleteDelay: 100,
+        autoClose: true,
+        keepResult: true,
+      })
+
+      mapObject.addControl(searchControl)
+
       this.tags_to_view = []
       mapObject.locate()
 
@@ -286,7 +308,9 @@ export default {
             points.push(element.position)
           })
           this.geodesic.setLatLngs(points)
-          this.risultati.distanza = (this.geodesic.statistics.totalDistance/ 1000).toFixed(2)
+          this.risultati.distanza = (
+            this.geodesic.statistics.totalDistance / 1000
+          ).toFixed(2)
           Around_the_globe.init(points)
         } else {
           this.risultati.azimut = 'NaN'
@@ -299,12 +323,12 @@ export default {
     },
   },
 }
-//manca da sistemare la location iniziale e aggiungere un button per ritornaci
-//anche aggiungere il box di ricerca dei luochi => markgeocode geocoder
 //sistemare il rilascio automatico del drag se si va troppo pianno con il cursone
 </script>
 
-<style >
+<style defer>
+@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+
 .Around_the_globe .arrow {
   padding-inline: 10px;
 }
@@ -322,5 +346,9 @@ export default {
 .compass-pointer {
   transform: rotate(45deg);
   width: 150px;
+}
+
+input.glass {
+  height: 30px !important;
 }
 </style>
