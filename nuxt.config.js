@@ -81,20 +81,7 @@ export default {
 
   },
 
-
-  sitemap: {
-    hostname: 'https://bocchionuxt.netlify.app',
-    gzip: true,
-    routes: [
-      '/Elenco/Articolo',
-      '/Elenco/Portale',
-      {
-        url: '/page/3',
-        changefreq: 'daily',
-        priority: 1,
-        lastmod: '2017-06-30T13:30:00.000Z'
-      }
-    ]
-  }
-
+  generate: {
+    fallback: true
+  },
 }

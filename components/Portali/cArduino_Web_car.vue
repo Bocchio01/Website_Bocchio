@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="wrap portal Arduino_Web_Car">
-      <CMenuScelta @toParent="handler" :tags="tags_array" />
+      <cMenuScelta @toParent="handler" :tags="tags_array" />
       <div class="affianca">
         <div class="box" v-show="tags_to_view.includes(tags_array[0])">
           <h2>Location map</h2>
@@ -9,7 +9,9 @@
 
         <div class="box" v-show="tags_to_view.includes(tags_array[1])">
           <h2>Joystick</h2>
-          <div id="joy_link"></div>
+
+          <cJoyStick style="margin:auto"/>
+
           <div id="frequency_box">
             <span>Minima frequenza</span>
             <input id="frequency" type="range" value="150" min="0" max="300" />
@@ -31,7 +33,7 @@
         <button @click="disconnect(name_of_client)">
           Scollegati dal server
         </button>
-        <CMenuScelta @toParent="handler2" :tags="Object.keys(this.consoles)" />
+        <cMenuScelta @toParent="handler2" :tags="Object.keys(this.consoles)" />
       </div>
       <div class="console_upper_control" v-else>
         <button
@@ -63,7 +65,6 @@
 import { toRef } from '@nuxtjs/composition-api'
 
 import { Web_car } from '@/assets/js/Web_car.js'
-import { JoyStick } from '@/assets/js/library/JoyStick-lib/joy.min.js'
 
 export default {
   setup() {
@@ -82,17 +83,24 @@ export default {
       tags_array: ['Location', 'Joystick', 'Video'],
       tags_to_view: ['Joystick'],
       console_to_view: [],
+
+      x: 0,
+      y: 0,
+      speed: 0,
+      angle: 0,
     }
   },
-  mounted() {
-    new JoyStick('joy_link', {
-      title: 'joystick_canvas',
-      internalFillColor: 'orange',
-      internalStrokeColor: 'orange',
-      externalStrokeColor: 'black',
-    })
-  },
+
   methods: {
+    dragg() {
+      console.log(event.offsetX, event.offsetY)
+    },
+    handleChange({ x, y, speed, angle }) {
+      this.x = x
+      this.y = y
+      this.speed = speed
+      this.angle = angle
+    },
     handler(value) {
       this.tags_to_view = value
     },

@@ -105,7 +105,6 @@ export default {
       column-gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
-
     }
   }
 
@@ -133,6 +132,7 @@ export default {
         }
       }
       * {
+        z-index: 5;
         font-size: var(--paragraph_size);
       }
     }
