@@ -7,12 +7,6 @@
     </div>
     <cFooter />
 
-    <cBackground />
+    <lazy-cBackground />
   </div>
 </template>
-
-<style >
-div#upper_wrap {
-  min-height: calc(100vh - 207px);
-}
-</style>

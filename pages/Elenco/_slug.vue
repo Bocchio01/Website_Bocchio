@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CMenuScelta @toParent="handler" v-if="showMenu" :tags="tags_array" />
+    <cMenuScelta @toParent="handler" v-if="showMenu" :tags="tags_array" />
     <cWrap
       v-for="(article, index) in articles"
       :key="index"

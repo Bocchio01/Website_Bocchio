@@ -129,14 +129,14 @@
               />
               <v-locatecontrol />
               <l-marker
-                v-for="marker in markers"
+                v-for="(marker, index) in markers"
                 :key="marker.id"
                 draggable
                 :visible="marker.visible"
                 :icon="createIcon(marker.IconUrl)"
                 :lat-lng.sync="marker.position"
+                @dblclick="clean(index)"
               >
-                <!--@dblclick="marker.visible = false"-->
                 <l-popup
                   >Questo punto di {{ marker.id }} ha coordinate
                   {{ marker.position }}</l-popup

@@ -6,9 +6,6 @@
     <nuxt-link :to="obj.path"
       ><div> {{ msg }}</div></nuxt-link
     >
-    <!--<a :href="obj.path" v-else
-      ><div> {{ msg }}</div></a
-    >-->
     <div>
       <h1>{{ obj.title }}</h1>
       <p v-html="obj.paragraph.join('<br>')"></p>

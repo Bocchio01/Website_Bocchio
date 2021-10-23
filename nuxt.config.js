@@ -43,7 +43,6 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@/modules/generator.ts'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -61,6 +60,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    //analyze: true,
   },
   ssr: false,
   loadingIndicator: '~/components/loading.html',
@@ -82,6 +82,25 @@ export default {
   },
 
   generate: {
-    fallback: true
+    fallback: true,
+
+    async routes() {
+      const { $content } = require('@nuxt/content')
+      const Articoli = await $content('Articolo', { deep: true }).only(['title']).fetch()
+      const Portali = await $content('Portale', { deep: true }).only(['title']).fetch()
+
+      var link_Articoli = Articoli.map(articolo => '/Articolo/' + articolo.title)
+      var link_Portali = Portali.map(portale => '/Portale/' + portale.title)
+
+      return ['/Articolo/Chi sono'].concat(link_Articoli, link_Portali)
+    }
+
   },
+
+  sitemap: {
+    hostname: 'https://bocchionuxt.netlify.app',
+    gzip: true,
+    exclude: [],
+
+  }
 }
