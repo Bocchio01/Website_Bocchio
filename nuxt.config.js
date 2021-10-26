@@ -20,8 +20,6 @@ export default {
       { name: 'theme-color', content: '#ffffff' },
     ],
     link: [
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Permanent+Marker&display=swap' },
       { hid: 'canonical', rel: 'canonical', href: 'https://bocchionuxt.netlify.app/' },
       { rel: 'dns-prefetch', href: 'https://res.cloudinary.com' },
     ]
@@ -43,12 +41,14 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    'nuxt-font-loader'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxt/image',
     '@nuxtjs/composition-api/module',
     'nuxt-leaflet',
     '@nuxtjs/pwa',
@@ -64,6 +64,12 @@ export default {
   },
   ssr: false,
   loadingIndicator: '~/components/loading.html',
+
+  image: {
+    cloudinary: {
+      baseURL: 'https://res.cloudinary.com/bocchio/image/upload/'
+    }
+  },
 
   pwa: {
     icon: {
@@ -85,14 +91,15 @@ export default {
     fallback: true,
 
     async routes() {
+      const static_routes = ['/elenco/articolo', '/elenco/portale', '/articolo/chi sono']
       const { $content } = require('@nuxt/content')
-      const Articoli = await $content('Articolo', { deep: true }).only(['title']).fetch()
-      const Portali = await $content('Portale', { deep: true }).only(['title']).fetch()
+      const Articoli = await $content('articolo', { deep: true }).only(['slug']).fetch()
+      const Portali = await $content('portale', { deep: true }).only(['slug']).fetch()
 
-      var link_Articoli = Articoli.map(articolo => '/Articolo/' + articolo.title)
-      var link_Portali = Portali.map(portale => '/Portale/' + portale.title)
+      var link_Articoli = Articoli.map(articolo => '/articolo/' + articolo.slug)
+      var link_Portali = Portali.map(portale => '/portale/' + portale.slug)
 
-      return ['/Articolo/Chi sono'].concat(link_Articoli, link_Portali)
+      return static_routes.concat(link_Articoli, link_Portali)
     }
 
   },
@@ -102,5 +109,14 @@ export default {
     gzip: true,
     exclude: [],
 
+  },
+
+  fontLoader: {
+    url: {
+      local: 'https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap',
+      google: 'https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Permanent+Marker&display=swap'
+    },
+    prefetch: true,
+    preconnect: true
   }
 }

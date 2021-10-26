@@ -3,7 +3,21 @@
     <header>
       <div>
         <h1>{{ article.title }}</h1>
-        <img :src="article.img.src" :alt="article.img.alt" />
+        <nuxt-img
+          v-if="article.img.src.indexOf('http') == -1"
+          provider="cloudinary"
+          :src="article.img.src"
+          width="40"
+          height="40"
+          v-bind:alt="article.img.src ? article.img.src : article.img.alt"
+        />
+        <img
+          v-else
+          :src="article.img.src"
+          :alt="article.img.alt"
+          width="40"
+          height="40"
+        />
       </div>
       <h3 v-html="article.paragraph.join('<br>')"></h3>
     </header>
@@ -14,7 +28,7 @@
       <div>
         <NuxtLink to="/">Torna alla Home</NuxtLink>
         <p>|</p>
-        <NuxtLink to="/Elenco/Portale">Torna all'elenco dei portali</NuxtLink>
+        <NuxtLink to="/elenco/portale">Torna all'elenco dei portali</NuxtLink>
       </div>
       <p>Tommaso Bocchietti © {{ year }}</p>
     </footer>
@@ -28,7 +42,7 @@ export default {
   layout: 'portale',
   async asyncData({ $content, params }) {
     const [article] = await $content({ deep: true })
-      .where({ title: params.slag })
+      .where({ slug: params.slag })
       .fetch()
       .catch((err) => {
         error({ statusCode: 404, message: 'Page not found' })
@@ -38,9 +52,6 @@ export default {
   },
   head() {
     return {
-      bodyAttrs: {
-        class: 'Portale',
-      },
       title: 'Bocchio | Portale: ' + this.article.title,
       meta: [
         ...this.meta,
@@ -56,19 +67,14 @@ export default {
           property: 'article:tag',
           content: this.article.tag ? this.article.tag.toString() : '',
         },
-        { name: 'twitter:label1', content: 'Written by' },
+        { name: 'twitter:label1', content: 'Created by' },
         { name: 'twitter:data1', content: 'Tommaso Bocchietti' },
-        { name: 'twitter:label2', content: 'Filed under' },
-        {
-          name: 'twitter:data2',
-          content: this.article.tag ? this.article.tag.toString() : '',
-        },
       ],
       link: [
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `https://bocchionuxt.netlify.app/Portale/${this.$route.params.slag}`,
+          href: `https://bocchionuxt.netlify.app/portale/${this.$route.params.slag}`,
         },
       ],
     }
@@ -82,7 +88,7 @@ export default {
         type: 'game',
         title: this.article.title,
         description: this.article.description,
-        url: `/Portale/${this.$route.params.slag}`,
+        url: `/portale/${this.$route.params.slag}`,
         mainImage: this.article.img.src,
       }
       return getSiteMeta(metaData)
@@ -109,6 +115,7 @@ export default {
   }
 
   header {
+    margin-top: 10px;
     > div {
       > h1 {
         font-size: var(--header_font_size);

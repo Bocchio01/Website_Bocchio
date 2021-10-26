@@ -19,11 +19,14 @@ export default {
   async asyncData({ $content, params }) {
     var tags_array = []
     const articles = await $content(params.slug, { deep: true })
-      .only(['title', 'paragraph', 'img', 'tag'])
+      .only(['title', 'slug', 'paragraph', 'img', 'tag'])
       .sortBy('createdAt', 'desc')
       .fetch()
+      .catch((err) => {
+        error({ statusCode: 404, message: 'Page not found' })
+      })
     articles.forEach(function (element) {
-      element.path = '/' + params.slug + '/' + element.title
+      element.path = '/' + params.slug + '/' + element.slug
       if (element.tag) tags_array = tags_array.concat(element.tag)
     })
     tags_array = tags_array.filter(function (item, pos) {

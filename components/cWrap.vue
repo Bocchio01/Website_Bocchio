@@ -4,13 +4,20 @@
     v-show="useTag ? tags.some((r) => obj.tag.includes(r)) : true"
   >
     <nuxt-link :to="obj.path"
-      ><div> {{ msg }}</div></nuxt-link
+      ><div>{{ msg }}</div></nuxt-link
     >
     <div>
       <h1>{{ obj.title }}</h1>
       <p v-html="obj.paragraph.join('<br>')"></p>
     </div>
-    <img :src="obj.img.src" :alt="obj.img.alt" />
+    <nuxt-img
+      v-if="obj.img.src.indexOf('http') == -1"
+      provider="cloudinary"
+      :src="obj.img.src"
+      :alt="obj.img.alt"
+      height="300px"
+    />
+    <img v-else :src="obj.img.src" :alt="obj.img.alt" height="300px"/>
   </div>
 </template>
 
@@ -47,6 +54,7 @@ export default {
   column-gap: 64px;
   > div {
     flex: auto;
+    overflow-wrap: anywhere;
     > p {
       margin-block: 10px;
       max-width: fit-content;

@@ -17,7 +17,7 @@ export default {
           'Se pensi possa essere un problema del sito, faccelo sapere tramite uno dei canali indicati a fondo pagina.',
         ],
         img: {
-          src: 'https://res.cloudinary.com/bocchio/image/upload/v1633054972/Undefined.png',
+          src: '/v1633054972/Undefined.png',
           alt: 'Icona non trovato',
         },
       },

@@ -2,7 +2,7 @@ const type = "website";
 const url = "https://bocchionuxt.netlify.app";
 const title = "Bocchio WebSite - Sito personale di Tommaso Bocchietti";
 const description = "Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione alla fisica fino all'orienteering.";
-const mainImage = "./Lampadina_ingraggi.svg";
+const mainImage = "https://bocchionuxt.netlify.app/Lampadina_ingraggi.svg";
 
 export default (meta) => {
   return [

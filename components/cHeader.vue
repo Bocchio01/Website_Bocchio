@@ -8,12 +8,12 @@
       </label>
     </div>
     <ul :style="{ 'max-height': [showMenu ? '240px' : '0px'] }">
-      <li><nuxt-link to="/Articolo/Chi sono">Chi sono?</nuxt-link></li>
-      <li><nuxt-link to="/Elenco/Articolo">Articoli</nuxt-link></li>
+      <li><nuxt-link to="/articolo/chi sono">Chi sono?</nuxt-link></li>
+      <li><nuxt-link to="/elenco/articolo">Articoli</nuxt-link></li>
       <li>
         <a @click="SubMenu_click" :class="{ hover: showSubMenu }">App</a>
         <ul class="dropdown-content" v-show="showSubMenu">
-          <li><nuxt-link to="/Elenco/Portale">Portali</nuxt-link></li>
+          <li><nuxt-link to="/elenco/portale">Portali</nuxt-link></li>
           <li><nuxt-link to="#">Orienteering</nuxt-link></li>
         </ul>
       </li>

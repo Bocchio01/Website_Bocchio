@@ -60,6 +60,7 @@ nav {
   font-size: var(--paragraph_size);
 
   > div {
+    padding-inline: 10px;
     display: flex;
     flex-wrap: wrap;
     column-gap: var(--app_row_column_gap);

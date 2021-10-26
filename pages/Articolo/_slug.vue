@@ -11,17 +11,18 @@ import getSiteMeta from '@/assets/js/getSiteMeta.js'
 export default {
   async asyncData({ $content, params }) {
     const [article] = await $content({ deep: true })
-      .where({ title: params.slug })
+      .where({ slug: params.slug })
       .fetch()
       .catch((err) => {
         error({ statusCode: 404, message: 'Page not found' })
       })
-    const [prev, next] = await $content('Articolo', { deep: true })
+      console.log(article.slug)
+    const [prev, next] = await $content('articolo', { deep: true })
       .only(['title', 'slug'])
       .sortBy('createdAt', 'asc')
       .surround(params.slug)
       .fetch()
-console.log(prev, next)
+
     return {
       article,
       prev,
@@ -57,7 +58,7 @@ console.log(prev, next)
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `https://bocchionuxt.netlify.app/Articolo/${this.$route.params.slug}`,
+          href: `https://bocchionuxt.netlify.app/articolo/${this.$route.params.slug}`,
         },
       ],
     }
@@ -68,7 +69,7 @@ console.log(prev, next)
         type: 'article',
         title: this.article.title,
         description: this.article.description,
-        url: `/Articolo/${this.$route.params.slug}`,
+        url: `/articolo/${this.$route.params.slug}`,
         mainImage: this.article.img.src,
       }
       return getSiteMeta(metaData)
