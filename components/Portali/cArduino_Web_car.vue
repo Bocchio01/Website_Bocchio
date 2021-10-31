@@ -10,7 +10,7 @@
         <div class="box" v-show="tags_to_view.includes(tags_array[1])">
           <h2>Joystick</h2>
 
-          <cJoyStick style="margin:auto"/>
+          <cJoyStick style="margin:auto" @change="handleChange"/>
 
           <div id="frequency_box">
             <span>Minima frequenza</span>
@@ -52,6 +52,7 @@
         >
           <h3 :class="checkStatus(console.status)">{{ index }}</h3>
           <p v-html="console.sended_data.join('<br>')"></p>
+          <button @click="ripulisci_console(index)" v-if="index != 'Server'">Ripulisci la console</button>
           <button @click="disconnect(index)" v-if="index != 'Server'">
             Forza disconnessione dal Server
           </button>
@@ -92,14 +93,12 @@ export default {
   },
 
   methods: {
-    dragg() {
-      console.log(event.offsetX, event.offsetY)
-    },
     handleChange({ x, y, speed, angle }) {
       this.x = x
       this.y = y
       this.speed = speed
       this.angle = angle
+      Web_car.senda({speed, angle})
     },
     handler(value) {
       this.tags_to_view = value
@@ -123,6 +122,9 @@ export default {
     disconnect(target) {
       Web_car.disconnect(target)
     },
+    ripulisci_console(target) {
+      this.consoles[target].sended_data = ["Console ripulita..."]
+    }
   },
 }
 </script>
@@ -166,6 +168,8 @@ export default {
     }
   }
   > p {
+    display: flex;
+    flex-direction: column-reverse;
     overflow: auto;
     text-align: left;
     font-family: 'Lucida Console', 'Courier New', monospace;
@@ -174,6 +178,7 @@ export default {
     background-color: var(--background_color_body);
     height: 200px;
     white-space: nowrap;
+    padding-inline: 5px;
   }
   * {
     margin-block: 5px;

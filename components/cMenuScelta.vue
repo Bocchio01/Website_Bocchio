@@ -86,9 +86,9 @@ nav {
         border-radius: var(--header_border_radius);
         color: var(--text_color);
         background-color: var(--background_color);
-      }
-      > p.active {
-        background-color: var(--link_hover_color);
+        &.active {
+          background-color: var(--link_hover_color);
+        }
       }
     }
     > p {
@@ -104,10 +104,16 @@ nav {
     border-radius: var(--header_border_radius);
     border: var(--app_border_setting);
     background-color: var(--Nav_color);
+    margin-bottom: var(--app_row_column_gap);
     > div {
       justify-content: space-evenly;
       > p {
         text-decoration: underline;
+        padding-inline: 10px;
+        &.active {
+          border-radius: var(--header_border_radius);
+          background-color: rgb(0,0,0,0.2);
+        }
       }
     }
   }

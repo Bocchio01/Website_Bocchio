@@ -6,7 +6,7 @@ paragraph: [
             "Grazie all'utilizzo di Arduino, Python e qualche componente di un vecchio PC, potrai costruirlo anche tu!"
         ]
 img: 
-    src: /v1632662892/Articoli/Gorlu%20la%20stampante/Gorlu.png
+    src: /v1635033169/Articoli/Gorlu%20la%20stampante/Step_1.jpg
     alt: Gorlu la stampante
 tag: [
     Programmazione
@@ -15,7 +15,7 @@ tag: [
 
 # Gorlu la stampante
 
-<cMedia type="img" s="/v1632662892/Articoli/Gorlu%20la%20stampante/Gorlu.png" a="Gorlu la stampante"></cMedia>
+<cMedia type="img" s="/v1635033169/Articoli/Gorlu%20la%20stampante/Step_1.jpg" a="Gorlu la stampante"></cMedia>
 
 ## L'idea iniziale
 

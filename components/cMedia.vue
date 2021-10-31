@@ -26,18 +26,16 @@
       <figcaption>{{ c }}</figcaption>
     </figure>
 
-    <div v-if="type == 'vid'">
+    <figure v-if="type == 'vid'">
       <video controls>
         <source :src="s" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <p>{{ c }}</p>
-    </div>
+      <figcaption>{{ c }}</figcaption>
+    </figure>
 
-    <div v-if="type == 'frame'">
+    <figure v-if="type == 'frame'">
       <iframe
-        width="80%"
-
         :src="s"
         v-bind:title="[a ? a : c]"
         frameborder="0"
@@ -45,8 +43,8 @@
         allowfullscreen
       ></iframe>
 
-      <p>{{ c }}</p>
-    </div>
+      <figcaption>{{ c }}</figcaption>
+    </figure>
   </div>
 </template>
 
@@ -56,7 +54,7 @@ export default {
     s: { type: String },
     a: { type: String },
     c: { type: String },
-    type: { type: String },
+    type: { type: String, default: 'img' },
     provider: { type: String, default: 'Cloudinary' },
   },
   data() {
@@ -75,50 +73,63 @@ export default {
 .media {
   margin-block: 30px;
   text-align: center;
+  &:first-of-type img {
+    max-height: 450px;
+    width: unset;
+  }
+  > figure {
+    img,
+    > video,
+    > iframe {
+      max-width: 100%;
+      width: 700px;
+      border-radius: 20px;
+    }
+    > figcaption {
+      font-style: italic;
+      font-size: var(--paragraph_font_size);
+      font-family: var(--Base_font);
+      text-align: center;
+      padding-inline: 10px;
+    }
+    &.embedded_img {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      top: 0px;
+      left: 0px;
+      z-index: 5;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      overflow: auto;
+      img {
+        z-index: 7;
+        max-width: 90vw;
+        max-height: 90vh !important;
+        width: unset;
+        background-color: white;
+
+      }
+      > figcaption {
+        font-size: calc(5px + var(--paragraph_size));
+      }
+    }
+  }
 }
 
-.media figcaption,
-.embedded_img figcaption {
-  font-style: italic;
-  font-size: var(--paragraph_font_size);
-  font-family: var(--Base_font);
-  text-align: center;
+@media (min-width: 700px) {
+  .media > figure > iframe {
+    height: 400px;
+  }
 }
 
-.media img {
-  max-width: 100%;
-  //max-height: 450px;
-}
-
-.media video {
-  width: 80%;
-}
-
-.media iframe {
-  width: 80%;
-  height: 400px;
-}
-
-/*--- embedded_img ---*/
-
-.embedded_img {
-  position: fixed;
-  z-index: 5;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: white;
-  overflow: auto;
-}
-
-.embedded_img img {
-  z-index: 7;
-  margin: auto;
-  display: block;
-  max-width: 90vw;
-  max-height: 90vh;
+@media (max-width: 700px) {
+  .media > figure > iframe {
+    height: 300px;
+  }
 }
 </style>

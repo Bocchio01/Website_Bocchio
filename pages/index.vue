@@ -14,23 +14,24 @@ export default {
           path: '/articolo/chi sono',
           title: 'Chi sono?',
           paragraph: [
-            'Mi chiamo Tommaso e sono uno studente di ingegneria meccanica al Politecnico di Milano (1°anno).',
-            'Ho sempre voglia di creare cose nuove e molte volte mi ritrovo a guardare il cielo completamente perso nei miei pensieri.',
+            'Ciao! Mi chiamo Tommaso e sono uno studente di ingegneria meccanica al Politecnico di Milano.',
             "Parallelamente agli studi universitari, sviluppo nel tempo libero la passione per l'informatica e la programmazione.",
-            "Credo fortemente nel contatto con la natura quale fonte di ispirazione, ed è forse anche questo uno dei motivi che mi ha spinto verso l'Orienteering..",
+            '<b>Ho sempre voglia di creare cose nuove, cimentarmi in nuove sfide e molte volte mi intestardisco finchè non riesco o non sono pienamente soddisfatto.</b>',
+            'Infine credo fortemente nel contatto con la natura quale fonte di ispirazione, ed è probabilmente per questo che pratico Orienteering...',
           ],
           img: {
             src: '/v1632947037/Chi_sono.svg',
-            alt: 'Chi sono',
+            alt: 'Chi sono?',
           },
         },
         {
-          path: '/elenco/articolo',
+          path: '/elenco/articolo/',
           title: 'Contenuti del sito',
           paragraph: [
-            "Suddivisi per aree tematiche, sul sito sono presenti 'articoli' riguardanti:",
-            '<ul><li>Programmazione;</li><li>Meccanica;</li><li>Fisica;</li><li>Matematica;</li><li>Orienteering.</li></ul>',
-            'I contenuti si divido poi ulteriormente in mie personali riflessioni, curiosità o approfondimenti, e inpagine dedicate alla descrizione di progetti e quindi di natura più strettamente descrittiva.',
+            'Il sito è strutturato su tre sezioni pricipali:',
+            '<ul><li>Articoli: <b>tutti i progetti realizzati descritti in maniera approfondita</b></li><li>Portali: <b>WebApp programmate per soddisfare esigenze specifiche di alcuni progetti</b></li><li>Forum (in costruzione..): pensato <b>per favorire la discussione e lo scambio di idee.</b> Sarà presto integrato a fondo di ogni articolo</li></ul>',
+            'In generale tutti gli articoli, i portali e il sito in sé sono da considerarsi di assoluto libero utilizzo.',
+            '<b>La diffusione dei contenuti, delle idee o dei concetti che è possibile trovare tra queste pagine è assolutamente un atto positivo e da promuovere.</b>',
           ],
           img: {
             src: '/v1632947035/Contenuti.svg',
@@ -38,12 +39,12 @@ export default {
           },
         },
         {
-          path: '/#',
+          path: '/articolo/qual é lo scopo',
           title: 'Qual é lo scopo?',
           paragraph: [
-            'Sentivo il bisogno di avere uno spazio completamente mio dove poter condividere con altri le mie idee e i miei progetti.',
-            'Lo scopo è quindi quello di riuscire a creare una piccola community online di persone aventi interessi o passioni in comune, così da poter sviluppare nuovi progetti insieme.',
-            "Credo infatti fortemente nella crescita di se stessi tramite il confronto con altri e spero che questo sito possa essere lo strumento giusto per raggiungere quell'obbiettivo.",
+            "Questo sito nasce dall'esigenza di avere uno spazio completamente mio dove poter condividere con altri le mie idee e i miei progetti.",
+            'Sono infatti convinto che i social media siano per certi versi restrittivi e costringano a troppe limitazioni.',
+            '<b>Lo scopo è quindi sempre stato quello di creare uno spazio web che fosse al 100% personale</b> e da gestire in completa autonomia. Durante il suo sviluppo mi sono però reso conto del suo <b>enorme potenziale</b>, che andava ben oltre la semplice vetrina di articoli e post...',
           ],
           img: {
             src: '/v1632947036/Scopo.svg',

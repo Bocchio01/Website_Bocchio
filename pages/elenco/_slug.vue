@@ -15,6 +15,8 @@
 
 
 <script>
+import getSiteMeta from '@/assets/js/getSiteMeta.js'
+
 export default {
   async asyncData({ $content, params }) {
     var tags_array = []
@@ -56,5 +58,31 @@ export default {
       this.type_of_link = 'a'
     }
   },
+  head() {
+    return {
+      title: 'Bocchio | Elenco ' + (this.$route.params.slug == 'articolo' ? 'Articoli' : 'Portali'),
+      meta: [
+        ...this.meta,
+      ],
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `https://bocchionuxt.netlify.app/elenco/${this.$route.params.slug}`,
+        },
+      ],
+    }
+  },
+  computed: {
+    meta() {
+      const metaData = {
+        type: 'site',
+        title: 'Elenco ' + (this.$route.params.slug == 'articolo' ? 'Articoli' : 'Portali'),
+        description: 'Pagina di elenco del sito Bocchio WebSite, tipologia elemento ' + this.$route.params.slug,
+        url: `/elenco/${this.$route.params.slug}`,
+      }
+      return getSiteMeta(metaData)
+    },
+  }
 }
 </script>

@@ -87,8 +87,18 @@ var Web_car = {
     },
     disconnect: function (target) {
         this.ws.send(JSON.stringify({ type: 'Disconnect', value: [target] }))
+    },
 
+    senda(data) {
+//        console.log(data)
+        try {
+            this.ws.send(JSON.stringify({ value: data }))
+            
+        } catch (error) {
+            
+        }
     }
+
 
 
 }

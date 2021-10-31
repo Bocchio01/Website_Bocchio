@@ -12,6 +12,9 @@
   -moz-border-radius: var(--border_radius);
   transition: var(--transition_setting);
   font-family: var(--Base_font);
+  > :first-child {
+    margin-top: 0px;
+  }
   h1 {
     font-size: var(--title_size);
     font-family: var(--Special_font);

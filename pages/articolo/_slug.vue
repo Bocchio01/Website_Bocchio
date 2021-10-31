@@ -1,7 +1,8 @@
 <template>
   <article>
     <nuxt-content class="wrap" :document="article" />
-    <cNavigation :prev="prev" :next="next" v-if="prev || next"/>
+    <cNavigation :prev="prev" :next="next" v-if="prev || next" />
+    <cToTop/>
   </article>
 </template>
 
@@ -16,7 +17,7 @@ export default {
       .catch((err) => {
         error({ statusCode: 404, message: 'Page not found' })
       })
-      console.log(article.slug)
+
     const [prev, next] = await $content('articolo', { deep: true })
       .only(['title', 'slug'])
       .sortBy('createdAt', 'asc')

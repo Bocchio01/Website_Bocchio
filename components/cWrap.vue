@@ -52,6 +52,9 @@ export default {
   flex-wrap: wrap;
   row-gap: 15px;
   column-gap: 64px;
+  &:nth-child(2n) {
+    flex-direction: row-reverse;
+  }
   > div {
     flex: auto;
     overflow-wrap: anywhere;
@@ -87,6 +90,7 @@ export default {
   }
   > img {
     margin: auto;
+    border-radius: 20px;
     max-height: 300px;
     transition: all 0.2s ease-in-out;
   }

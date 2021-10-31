@@ -56,7 +56,9 @@ export default {
   ],
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
-  content: {},
+  content: {
+    liveEdit: false
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -91,15 +93,17 @@ export default {
     fallback: true,
 
     async routes() {
-      const static_routes = ['/elenco/articolo', '/elenco/portale', '/articolo/chi sono']
+      const static_routes = ['/elenco/articolo', '/elenco/portale']
       const { $content } = require('@nuxt/content')
       const Articoli = await $content('articolo', { deep: true }).only(['slug']).fetch()
       const Portali = await $content('portale', { deep: true }).only(['slug']).fetch()
+      const Generici = await $content().only(['slug']).fetch()
 
-      var link_Articoli = Articoli.map(articolo => '/articolo/' + articolo.slug)
-      var link_Portali = Portali.map(portale => '/portale/' + portale.slug)
+      var link_Articoli = Articoli.map(articolo => '/articolo/' + articolo.slug + '/')
+      var link_Generici = Generici.map(generico => '/articolo/' + generico.slug + '/')
+      var link_Portali = Portali.map(portale => '/portale/' + portale.slug + '/')
 
-      return static_routes.concat(link_Articoli, link_Portali)
+      return static_routes.concat(link_Articoli, link_Portali, link_Generici)
     }
 
   },

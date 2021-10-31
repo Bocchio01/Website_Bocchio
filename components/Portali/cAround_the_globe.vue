@@ -40,7 +40,7 @@
       >
         <div class="box">
           <h2>Dati in input</h2>
-          <p>Inserisci di seguito le coordinate o clicca sulla mappa:</p>
+          <p>Clicca sulla mappa per inserire le coordinate:</p>
 
           <div class="result">
             <div>

@@ -1,20 +1,35 @@
 <template>
   <header>
     <div>
-      <nuxt-link to="/">Tommaso Bocchietti</nuxt-link>
+      <div style="display: flex">
+        <img src="/Lampadina_ingranaggi.svg" />
+        <nuxt-link to="/">Tommaso Bocchietti</nuxt-link>
+      </div>
       <input class="menu-btn" type="checkbox" id="menu-btn" />
       <label class="menu-icon" for="menu-btn" @click="Menu_click">
         <span class="navicon"></span>
       </label>
     </div>
     <ul :style="{ 'max-height': [showMenu ? '240px' : '0px'] }">
-      <li><nuxt-link to="/articolo/chi sono">Chi sono?</nuxt-link></li>
+      <!--<li><nuxt-link to="/articolo/chi sono">Chi sono?</nuxt-link></li>-->
       <li><nuxt-link to="/elenco/articolo">Articoli</nuxt-link></li>
-      <li>
+      <li><nuxt-link to="/elenco/portale">Portali</nuxt-link></li>
+      <!--<li>
         <a @click="SubMenu_click" :class="{ hover: showSubMenu }">App</a>
         <ul class="dropdown-content" v-show="showSubMenu">
           <li><nuxt-link to="/elenco/portale">Portali</nuxt-link></li>
           <li><nuxt-link to="#">Orienteering</nuxt-link></li>
+        </ul>
+      </li>-->
+      <li>
+        <a @click="SubMenu_click" :class="{ hover: showSubMenu }">Mix</a>
+        <ul class="dropdown-content" v-show="showSubMenu">
+          <li><nuxt-link to="/articolo/chi sono">Chi sono?</nuxt-link></li>
+          <li>
+            <nuxt-link to="/articolo/qual é lo scopo"
+              >Qual è lo scopo?</nuxt-link
+            >
+          </li>
         </ul>
       </li>
     </ul>
@@ -79,6 +94,13 @@ export default {
     > div {
       display: flex;
       justify-content: space-between;
+      > div {
+        display: flex;
+        align-items: center;
+        > img {
+          height: calc(2.5 * var(--header_font_size));
+        }
+      }
       > .menu-btn {
         display: none;
         &:checked ~ .menu-icon {
@@ -166,13 +188,8 @@ export default {
     --header_font_size: 19px;
   }
   .Default {
-    header {
-      a {
-        margin: 15px 0px;
-      }
-      > div > .menu-icon {
-        padding: 15px;
-      }
+    header > div > .menu-icon {
+      padding: 15px;
     }
   }
 }

@@ -39,24 +39,32 @@
 }
 
 input,
-button {
+button,
+.button {
     border: var(--app_border_setting);
     border-radius: var(--header_border_radius);
     font-family: var(--Base_font);
     font-size: var(--paragraph_size);
     margin-inline: auto;
+    margin-block: var(--app_row_column_gap);
 }
 
 input {
     width: 100%;
 }
 
-button {
+button, .button {
+    display: block;
     cursor: pointer;
     padding: 10px;
     background-color: var(--Nav_color);
     text-decoration: underline;
+    text-align: center;
     font-weight: bold;
+    width: fit-content;
+    &:hover {
+        color: rgb(0,0,0,0.7) !important;
+    }
 }
 
 @media (max-width: 1030px) {

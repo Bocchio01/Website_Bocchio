@@ -61,8 +61,7 @@ Per avere una comprensione più chiara e gloabale del problema e della sua soluz
 
 <cMedia type="frame" s="https://www.geogebra.org/3d/snm5rqfd?embed" a="File di GeoGebra"></cMedia>
 
-[Link al file online di GeoGebra](https://www.geogebra.org/3d/snm5rqfd)
-
+<a href="https://www.geogebra.org/3d/snm5rqfd" class="button">File online di GeoGebra</a>
 
 ## L'algoritmo
 
