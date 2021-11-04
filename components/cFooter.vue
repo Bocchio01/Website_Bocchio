@@ -2,9 +2,21 @@
   <footer>
     <p>Puoi trovarmi anche qui</p>
     <div>
-      <a href="https://github.com/Bocchio01"></a>
-      <a href="https://t.me/Bocchio01"></a>
-      <a href="https://www.instagram.com/bocchio_01/"></a>
+      <a
+        href="https://github.com/Bocchio01"
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+      ></a>
+      <a
+        href="https://t.me/Bocchio01"
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+      ></a>
+      <a
+        href="https://www.instagram.com/bocchio_01/"
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+      ></a>
     </div>
     <p>Tommaso Bocchietti © {{ year }}</p>
   </footer>
@@ -55,6 +67,9 @@ export default {
 
       &:hover {
         transform: scale(1.1);
+      }
+      &:focus {
+        border: 3px solid var(--main_color);
       }
       &:nth-child(1) {
         background: url('https://res.cloudinary.com/bocchio/image/upload/v1632947036/GitHub.png')

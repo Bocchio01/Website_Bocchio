@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Bocchio WebSite',
+    title: process.env.SITE_NAME || "Bocchio's WebSite",
     htmlAttrs: {
       lang: 'it'
     },
@@ -41,7 +41,8 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    'nuxt-font-loader'
+    'nuxt-font-loader',
+    '@nuxtjs/dotenv'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -69,7 +70,7 @@ export default {
 
   image: {
     cloudinary: {
-      baseURL: 'https://res.cloudinary.com/bocchio/image/upload/'
+      baseURL: process.env.CLOUDINARY_BASE_URL || 'https://res.cloudinary.com/bocchio/image/upload/'
     }
   },
 
@@ -79,7 +80,7 @@ export default {
     },
     manifest: {
       name: 'Sito personale di Tommaso Bocchietti',
-      short_name: "Bocchio's WebSite",
+      short_name: process.env.SITE_NAME || "Bocchio's WebSite",
       description: "Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione alla fisica fino all'orienteering.",
       background_color: "#000000",
       theme_color: "#000000",
@@ -109,7 +110,7 @@ export default {
   },
 
   sitemap: {
-    hostname: 'https://bocchionuxt.netlify.app',
+    hostname: process.env.HOST_URL || 'https://bocchionuxt.netlify.app',
     gzip: true,
     exclude: [],
 

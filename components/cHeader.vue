@@ -2,27 +2,39 @@
   <header>
     <div>
       <div style="display: flex">
-        <img src="/Lampadina_ingranaggi.svg" />
+        <router-link to="/" custom v-slot="{ navigate }">
+          <img
+            src="/Lampadina_ingranaggi.svg"
+            alt="Logo"
+            role="link"
+            @click="navigate"
+          />
+        </router-link>
         <nuxt-link to="/">Tommaso Bocchietti</nuxt-link>
       </div>
       <input class="menu-btn" type="checkbox" id="menu-btn" />
-      <label class="menu-icon" for="menu-btn" @click="Menu_click">
+      <label
+        class="menu-icon"
+        for="menu-btn"
+        @click="Menu_click"
+        @keyup.enter="Menu_click"
+        tabindex="0"
+      >
         <span class="navicon"></span>
       </label>
     </div>
     <ul :style="{ 'max-height': [showMenu ? '240px' : '0px'] }">
-      <!--<li><nuxt-link to="/articolo/chi sono">Chi sono?</nuxt-link></li>-->
       <li><nuxt-link to="/elenco/articolo">Articoli</nuxt-link></li>
       <li><nuxt-link to="/elenco/portale">Portali</nuxt-link></li>
-      <!--<li>
-        <a @click="SubMenu_click" :class="{ hover: showSubMenu }">App</a>
-        <ul class="dropdown-content" v-show="showSubMenu">
-          <li><nuxt-link to="/elenco/portale">Portali</nuxt-link></li>
-          <li><nuxt-link to="#">Orienteering</nuxt-link></li>
-        </ul>
-      </li>-->
       <li>
-        <a @click="SubMenu_click" :class="{ hover: showSubMenu }">Mix</a>
+        <a
+          @click="SubMenu_click"
+          @keyup.enter="SubMenu_click"
+          :class="{ hover: showSubMenu }"
+          tabindex="0"
+          style="cursor: pointer"
+          >Mix</a
+        >
         <ul class="dropdown-content" v-show="showSubMenu">
           <li><nuxt-link to="/articolo/chi sono">Chi sono?</nuxt-link></li>
           <li>
@@ -99,6 +111,10 @@ export default {
         align-items: center;
         > img {
           height: calc(2.5 * var(--header_font_size));
+          cursor: pointer;
+          &:hover ~ a {
+            color: var(--link_hover_color);
+          }
         }
       }
       > .menu-btn {

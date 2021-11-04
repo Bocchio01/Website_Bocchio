@@ -12,13 +12,13 @@ export default {
 </script>
 <style lang="scss">
 button#ToTop {
-  font-size: calc(1.5 * var(--paragraph_size));
-
-  margin: 0px;
   position: fixed;
   right: 15px;
   bottom: 15px;
+  margin-block: 0px;
+  margin-right: 0px;
   padding-inline: 20px;
+  font-size: calc(1.5 * var(--paragraph_size));
   > span {
     font-weight: bold;
   }
@@ -26,10 +26,13 @@ button#ToTop {
 
 @media (max-width: 750px) {
   button#ToTop {
-    font-size: var(--paragraph_size);
-    right: 5px;
+    position: sticky;
+    right: 0px;
     bottom: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
     padding-inline: 16px;
+    font-size: var(--paragraph_size);
   }
 }
 </style>

@@ -74,7 +74,7 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `https://bocchionuxt.netlify.app/portale/${this.$route.params.slag}`,
+          href: process.env.HOST_URL + `/portale/${this.$route.params.slag}`,
         },
       ],
     }

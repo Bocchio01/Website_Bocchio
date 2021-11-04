@@ -68,7 +68,7 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `https://bocchionuxt.netlify.app/elenco/${this.$route.params.slug}`,
+          href: process.env.HOST_URL + `/elenco/${this.$route.params.slug}`,
         },
       ],
     }

@@ -1,6 +1,6 @@
 ---
 title: Chi sono?
-description: About page del sito Bocchio WebSite. La mia presentazione, i miei interessi, i miei hobby e tutto quello che può servire per capire chi sono e conoscermi meglio. 
+description: About page del sito Bocchio's WebSite. La mia presentazione, i miei interessi, i miei hobby e tutto quello che può servire per capire chi sono e conoscermi meglio. 
 img: 
     src: /v1632947037/Chi_sono.svg
     alt: Chi sono?

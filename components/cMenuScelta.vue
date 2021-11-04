@@ -2,7 +2,9 @@
   <nav>
     <div>
       <p
+        tabindex="0"
         @click="addOrRemove(tag)"
+        @keyup.enter="addOrRemove(tag)"
         v-for="(tag, index) in tags"
         :key="index"
         v-bind:class="{ active: isActive[tag] }"
@@ -86,7 +88,8 @@ nav {
         border-radius: var(--header_border_radius);
         color: var(--text_color);
         background-color: var(--background_color);
-        &.active {
+        &.active,
+        &:hover {
           background-color: var(--link_hover_color);
         }
       }
@@ -110,9 +113,10 @@ nav {
       > p {
         text-decoration: underline;
         padding-inline: 10px;
-        &.active {
+        &.active,
+        &:hover{
           border-radius: var(--header_border_radius);
-          background-color: rgb(0,0,0,0.2);
+          background-color: rgb(0, 0, 0, 0.2);
         }
       }
     }

@@ -59,7 +59,7 @@ export default {
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `https://bocchionuxt.netlify.app/articolo/${this.$route.params.slug}`,
+          href: process.env.HOST_URL + `/articolo/${this.$route.params.slag}`,
         },
       ],
     }
