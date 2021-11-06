@@ -71,7 +71,7 @@ export default {
         title: this.article.title,
         description: this.article.description,
         url: `/articolo/${this.$route.params.slug}`,
-        mainImage: this.article.img.src,
+        mainImage: process.env.CLOUDINARY_BASE_URL + this.article.img.src,
       }
       return getSiteMeta(metaData)
     },

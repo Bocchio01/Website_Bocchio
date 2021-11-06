@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: process.env.SITE_NAME || "Bocchio's WebSite",
+    title: "Bocchio's WebSite",
     htmlAttrs: {
       lang: 'it'
     },
@@ -80,7 +80,7 @@ export default {
     },
     manifest: {
       name: 'Sito personale di Tommaso Bocchietti',
-      short_name: process.env.SITE_NAME || "Bocchio's WebSite",
+      short_name: "Bocchio's WebSite",
       description: "Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione alla fisica fino all'orienteering.",
       background_color: "#000000",
       theme_color: "#000000",

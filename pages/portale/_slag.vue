@@ -90,7 +90,7 @@ export default {
         title: this.article.title,
         description: this.article.description,
         url: `/portale/${this.$route.params.slag}`,
-        mainImage: this.article.img.src,
+        mainImage: process.env.CLOUDINARY_BASE_URL + this.article.img.src,
       }
       return getSiteMeta(metaData)
     },
