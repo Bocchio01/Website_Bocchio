@@ -1,14 +1,18 @@
 ---
 title: Qual é lo scopo?
-description: Le ragioni che hanno portato alla creazione del sito Bocchio's WebSite. Come è nato il tutto, come si è sviluppato e come si intende sfruttarlo in futuro.
+description: Le ragioni che hanno portato alla creazione del sito Bocchio's WebSite. Come è nato, come si è sviluppato e come ho intenzione di sfruttarlo in futuro.
 img: 
     src: /v1632947036/Scopo.svg
     alt: Qual é lo scopo?
+forum: false
+
+createdAt: 2021-10-20T00:00:00Z
+updatedAt: 2021-11-01T00:00:00Z
 ---
 
 # Qual é lo scopo?
 
-<cMedia s="/v1632947036/Scopo.svg" a="Qual é lo scopo?"></cMedia>
+<cMedia :s="img.src" :a="img.src"></cMedia>
 
 ## Questione di esigenze
 
@@ -47,3 +51,10 @@ Mi resi così conto dell'enorme potenzilità che tutto il progetto del sito avev
 ## In futuro
 
 Al momento non ho in mente di apportare modifiche sostanziali né alla struttura né ai contenuti del sito: sono completamente soddisfatto del lavoro fatto fin'ora e la mia unica speranza è venga in qualche modo apprezzato da chi ne vorrà usufruire.
+
+<div style="display: flex">
+    <a href="/elenco/articolo" class="button">Scopri gli articoli</a>
+    <a href="/elenco/portale" class="button">Scopri i portali</a>
+</div>
+
+Per il momento quindi non rimane altro che incominciare a girovagare per il sito: a tal proposito, usa i due tasti qui sopra. Chi lo sa, *magari tra uno dei miei progetti troverai ispirazione per il tuo progetto...* buona lettura!

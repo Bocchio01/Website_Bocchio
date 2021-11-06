@@ -98,13 +98,15 @@ export default {
       const { $content } = require('@nuxt/content')
       const Articoli = await $content('articolo', { deep: true }).only(['slug']).fetch()
       const Portali = await $content('portale', { deep: true }).only(['slug']).fetch()
+      const Mix = await $content('mix', { deep: true }).only(['slug']).fetch()
       const Generici = await $content().only(['slug']).fetch()
 
       var link_Articoli = Articoli.map(articolo => '/articolo/' + articolo.slug + '/')
-      var link_Generici = Generici.map(generico => '/articolo/' + generico.slug + '/')
       var link_Portali = Portali.map(portale => '/portale/' + portale.slug + '/')
+      var link_Mix = Mix.map(mix => '/articolo/' + mix.slug + '/')
+      var link_Generici = Generici.map(generico => '/articolo/' + generico.slug + '/')
 
-      return static_routes.concat(link_Articoli, link_Portali, link_Generici)
+      return static_routes.concat(link_Articoli, link_Portali, link_Mix, link_Generici)
     }
 
   },

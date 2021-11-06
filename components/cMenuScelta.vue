@@ -59,7 +59,7 @@ export default {
 nav {
   display: block;
   width: 100%;
-  font-size: var(--paragraph_size);
+  font-size: calc(1.2 * var(--paragraph_size));
 
   > div {
     padding-inline: 10px;
@@ -82,6 +82,8 @@ nav {
   nav {
     > div {
       justify-content: center;
+      max-width: 70%;
+      margin-inline: auto;
       > p {
         padding: 5px 10px;
         font-family: var(--Special_font);

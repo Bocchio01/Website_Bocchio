@@ -4,7 +4,7 @@
     v-show="useTag ? tags.some((r) => obj.tag.includes(r)) : true"
   >
     <nuxt-link :to="obj.path"
-      ><div>{{ msg }}</div></nuxt-link
+      ><div class="button">{{ msg }}</div></nuxt-link
     >
     <div>
       <h1>{{ obj.title }}</h1>
@@ -17,7 +17,7 @@
       :alt="obj.img.alt"
       height="300px"
     />
-    <img v-else :src="obj.img.src" :alt="obj.img.alt" height="300px"/>
+    <img v-else :src="obj.img.src" :alt="obj.img.alt" height="300px" />
   </div>
 </template>
 
@@ -26,23 +26,20 @@ export default {
   props: {
     obj: {
       type: Object,
+      required: true
     },
     useTag: {
       type: Boolean,
       default: false,
     },
     tags: {
-      type: Array,
+      type: Array
     },
     msg: {
       type: String,
       default: 'Scopri di più',
-    },
-    type: {
-      type: String,
-      default: 'nuxt-link',
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -75,17 +72,12 @@ export default {
     top: 0px;
     right: 0px;
     visibility: hidden;
-    color: var(--link_hover_color);
-    font-family: var(--Special_font);
-    font-size: var(--title_size);
-    text-decoration: unset;
-    > div {
-      background-color: #0a0a0a;
-      color: var(--link_hover_color);
-      border-radius: 10px;
-      align-self: center;
-      width: min-content;
-      padding-inline: 20px;
+    text-decoration: none;
+    color: var(--text_color);
+    > div.button {
+      font-size: calc(var(--paragraph_size) + 5px);
+      font-family: var(--Special_font);
+      text-decoration: none;
     }
   }
   > img {

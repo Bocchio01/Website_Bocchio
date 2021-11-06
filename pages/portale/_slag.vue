@@ -19,7 +19,8 @@
           height="40"
         />
       </div>
-      <h3 v-html="article.paragraph.join('<br>')"></h3>
+      <h3 v-if="article.articleurl">Per scoprire di più vai all'<NuxtLink :to="article.articleurl">articolo del progetto</NuxtLink></h3>
+
     </header>
 
     <nuxt-content :document="article" />
@@ -127,6 +128,12 @@ export default {
     }
     > h3 {
       font-size: var(--paragraph_size);
+      > a {
+        text-decoration: underline;
+        &:hover {
+          color: var(--link_hover_color);
+        }
+      }
     }
   }
 

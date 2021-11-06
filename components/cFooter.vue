@@ -17,6 +17,11 @@
         rel="nofollow noopener noreferrer"
         target="_blank"
       ></a>
+      <a
+        href="mailto:tommaso.bocchietti@gmail.com"
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+      ></a>
     </div>
     <p>Tommaso Bocchietti © {{ year }}</p>
   </footer>
@@ -64,6 +69,8 @@ export default {
       border-radius: 50%;
       border: var(--border_setting);
       margin: 10px;
+      background-color: white !important;
+      background-size: contain !important;
 
       &:hover {
         transform: scale(1.1);
@@ -74,17 +81,18 @@ export default {
       &:nth-child(1) {
         background: url('https://res.cloudinary.com/bocchio/image/upload/v1632947036/GitHub.png')
           no-repeat;
-        background-size: contain;
       }
       &:nth-child(2) {
         background: url('https://res.cloudinary.com/bocchio/image/upload/v1632947036/Telegram.png')
           no-repeat;
-        background-size: contain;
       }
       &:nth-child(3) {
         background: url('https://res.cloudinary.com/bocchio/image/upload/v1632947036/Instagram.png')
           no-repeat;
-        background-size: contain;
+      }
+      &:nth-child(4) {
+        background: url('https://res.cloudinary.com/bocchio/image/upload/v1636151722/Email.png')
+          no-repeat;
       }
     }
   }

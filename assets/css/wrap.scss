@@ -35,15 +35,8 @@
       color: var(--link_hover_color);
     }
   }
-  code {
-    overflow-wrap: anywhere;
-    display: inline-block;
-    background-color: #b3b3b38c;
-    border: 3px solid darkgray;
-    border-radius: 5px;
-    padding-inline: 5px;
-    font-weight: bold;
-    font-size: calc(0.7 * var(--paragraph_size));
+  pre {
+    border-radius: var(--header_border_radius)
   }
 }
 

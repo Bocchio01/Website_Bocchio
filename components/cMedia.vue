@@ -34,7 +34,7 @@
       <figcaption>{{ c }}</figcaption>
     </figure>
 
-    <figure v-if="type == 'frame'">
+    <figure v-if="type == 'iframe'">
       <iframe
         :src="s"
         v-bind:title="[a ? a : c]"

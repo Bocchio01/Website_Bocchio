@@ -1,13 +1,16 @@
 ---
 title: Around_the_globe
-description: Script per il calcolo di direzioni e distanze tra luoghi geografici del mondo.
-
+description: WebApp per il calcolo dell'azimut, delle distanze e molto altro, tra luoghi geografici del mondo. Le rotte attorno al globo possono essere molto sorprendenti talvolta. Accedi al portale e incomincia a scoprile anche tu!
 paragraph: [
-            Script per il calcolo di direzioni e distanze tra luoghi geografici del mondo.
-        ]
+    "WebApp per il calcolo dell'azimut, delle distanze e molto altro, tra luoghi geografici del mondo.<br>",
+    "Vuoi sapere in che direzione girarti per guardare verso Tokyo o NewYork?",
+    "Devi scavare un tunnel per l'altra parte del mondo ma non sai con che inclinazione scavare?",
+    "Tutte queste informazioni le puoi trovare grazie a questo script! Che aspetti allora? <b>Accedi al portale e inizia a scoprire nuove rotte soprendendi in giro per il globo :)</b>"
+]
 img: 
-    src: https://img.freepik.com/free-vector/globalization-concept-blue-lines-around-blue-globe_104327-79.jpg
+    src: /v1636152274/Articoli/Around%20the%20globe/Around_the_globe_icon.jpg
     alt: Around_the_globe
+articleurl: /articolo/aroud the globe
 ---
 
 <Portali-cAround-the-globe></Portali-cAround-the-globe>

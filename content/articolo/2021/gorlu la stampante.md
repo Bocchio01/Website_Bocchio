@@ -1,21 +1,26 @@
 ---
 title: Gorlu la stampante
-description: Un piccolo plotter CNC costruito con Arduino e programmato in Python. Come è nato il progetto, l'algoritmo che ne regola il movimento e analizza le immagini, e come fare per realizzarlo da sé
+description: Il progetto Gorlu la stampante, ovvero un piccolo e simpatico plotter CNC costruito con Arduino e programmato in Python. Come è nato il progetto, l'algoritmo che ne regola il movimento e analizza le immagini, i motori-stepper che muovo i carrelli, e documenti utili per realizzarlo da sé.
 paragraph: [
-            "Un piccolo e simpatico plotter per stampare immagini o testo.",
-            "Grazie all'utilizzo di Arduino, Python e qualche componente di un vecchio PC, potrai costruirlo anche tu!"
-        ]
+    "Un piccolo e simpatico plotter CNC per stampare immagini o testo.<br>",
+    "Realizzato con Arduino, qualche componente di un vecchio PC e un paio di tavole di legno, questo piccolo plotter <b>è stato in grado di sorprendere anche me della sua precisione nel disegno.</b>",
+    "Facile da realizzare, nell'articolo troverai tutto il codice sorgente (Python e C++) e molti altri documenti utili per realizzarlo da sé."
+]
 img: 
-    src: /v1635033169/Articoli/Gorlu%20la%20stampante/Step_1.jpg
+    src: /v1635033169/Articoli/Gorlu%20la%20stampante/Gorlu.jpg
     alt: Gorlu la stampante
 tag: [
     Programmazione
 ]
+forum: true
+
+createdAt: 2021-06-09T12:47:00Z
+updatedAt: _2021-11-05T21:54:00Z
 ---
 
 # Gorlu la stampante
 
-<cMedia type="img" s="/v1635033169/Articoli/Gorlu%20la%20stampante/Step_1.jpg" a="Gorlu la stampante"></cMedia>
+<cMedia :s="img.src" :a="img.src"></cMedia>
 
 ## L'idea iniziale
 
@@ -28,7 +33,7 @@ Una sera di Ottobre, vedendo la scatola di Arduino sulla mensola, mi è venuta v
 
 Per semplicità, ho deciso di basare l'intero progetto su **Python per quanto riguarda l'elaborazione delle immagini**, e sul **C++ per quanto riguarda il codice di Arduino**.
 
-<cMedia type="img" s="https://i0.wp.com/www.insidevcode.eu/wp-content/uploads/2015/05/python-logo.png?ssl=1" c="Logo di Python 3.9" provider=""></cMedia>
+<cMedia s="/v1636152488/Articoli/Gorlu%20la%20stampante/Python_logo.png" c="Logo di Python 3.9"></cMedia>
 
 Python presenta infatti una sintassi molto leggera rispetto ad altri linguaggi (Java per esempio), e le innumerevoli librerie già presenti online sapevo ma avrebbero aiutato e velocizzato nella scrittura del codice. In particolar modo, ho adoperato:
 
@@ -43,12 +48,12 @@ L'algoritmo principale, ovvero quello che si occupa della stampa di immagini dig
 
 Data un'immagine in input, il programma esegue una ricerca dei pixel che compongono i tratti principali dell'immagine utilizzando la **funzione [Canny()](https://docs.opencv.org/3.4/da/d22/tutorial_py_canny.html) presente in OpenCV**.
 
-<cMedia type="img" s="https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/51124/versions/1/screenshot.jpg" c="Un esempio di immagine elaborata con la funzione Canny()" provider=""></cMedia>
+<cMedia s="/v1636152499/Articoli/Gorlu%20la%20stampante/Canny%28%29.png" c="Un esempio di immagine elaborata con la funzione Canny()"></cMedia>
 
 Dopo aver mappato i dati all'interno di una matrice bidimensionale, ne viene eseguita la scansione con la logica di andare a stampare non singoli punti (rischiando così di avere problemi con l'inchiostro della penna), ma linee continue. **Preso un elemento A, l'algoritmo ne analizza i pixel in posizioni limitrofe in cerca di un elemento B da stampare. In caso di successo ne invia le coordinate ad Arduino, altrimenti allarga il campo di ricerca sempre centranto in A fino a che non viene identificato un elemento B**. Il programma poi cicla prendendo come punto di partenza le coordinate dell'elemento B appena individuato, e continua in maniera analoga fino a che tutta la matrice non è stata scansionata.
 
-<cMedia type="img" s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_1.png" c="Simulazione grafica dell'algoritmo di ricerca"></cMedia>
-<cMedia type="img" s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_2.png" c="Uno screen dell'algoritmo di ricerca"></cMedia>
+<cMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_1.png" c="Simulazione grafica dell'algoritmo di ricerca"></cMedia>
+<cMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_2.png" c="Uno screen dell'algoritmo di ricerca"></cMedia>
 
 Vista la semplicità dell'algoritmo e la sua bassa complessità computazionale, il programma risulta essere rapido e poco dispendioso di risorse. Inoltre, **lavorando sempre e solo all'interno della RAM**, non vi è mai la necessità di salvare dati sul disco fisso e questo permette di **lasciare il PC libero da superflui file di salvataggio**.
 
@@ -71,7 +76,7 @@ In questo modo visto che l'elastico genera sempre la stessa forza sulla mina, la
 ## Gorlu la stampante!
 
 Ecco qualche video del progetto finito.
-<cMedia type="frame" s="https://www.youtube.com/embed/qBS6WiSzQmI" c="Stampa di Pikachu"></cMedia>
+<cMedia type="iframe" s="https://www.youtube.com/embed/qBS6WiSzQmI" c="Stampa di Pikachu"></cMedia>
 P. S. Il nome "Gorlu" è nato nel pieno della sua costruzione. Non ha mai avuto un significato ben preciso, ma mi sembrava simpatico e quindi perché no? :).
 
 ## Breve guida per realizzarlo da sé
@@ -85,7 +90,7 @@ Partendo dalla lista dei materiali, serviranno:
 * Sottili cavi elettrici; 
 * Una tavola di legno; 
 * Viti e bulloni
-<cMedia type="img" s="/v1632851580/Articoli/Gorlu%20la%20stampante/Materiali.png" c="Componenti principali"></cMedia>
+<cMedia s="/v1632851580/Articoli/Gorlu%20la%20stampante/Materiali.png" c="Componenti principali"></cMedia>
 
 Lascio tra gli allegati in fondo alla pagina i link a cui poter comperare online le componenti elettroniche non facilmente reperibili nei negozi fisici.
 
@@ -99,15 +104,18 @@ Passando ora alla parte software, l'intero codice necessario per il corretto fun
 
 Per poterlo scaricare basterà **cliccare sul tasto verde "Code" e successivamente su "download ZIP"**. All'interno della cartella, troverete questi file:
 
-<cMedia type="img" s="/v1632851575/Articoli/Gorlu%20la%20stampante/Cartella_GitHub.png" c="Files presenti nella repository del progetto"></cMedia>
+<cMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Cartella_GitHub.png" c="Files presenti nella repository del progetto"></cMedia>
 
 Nella cartella "Arduino_code", potrete trovare lo sketch da caricare tramite l'IDE Arduino direttamente sulla scheda. Da notare che è necessario importare la libreria [AF_Motor.h](https://learn.adafruit.com/adafruit-motor-shield/library-install).
 
-Per quanto riguarda poi l'algoritmo principale, è necessario scaricare ed installare sul proprio PC l'interprete di Python e le librerie aggiuntive. Python è facilmente [scaricabile da questo link](https://www.python.org/downloads/), mentre le librerie necessarie occorre installarle da terminale:
+Per quanto riguarda poi l'algoritmo principale, è necessario scaricare ed installare sul proprio PC l'interprete di Python e le librerie aggiuntive. Python è facilmente [scaricabile da questo link](https://www.python.org/downloads/), mentre le librerie necessarie occorre installarle da terminale digitando:
 
-1. Aprire il terminale e navigare fino alla cartella "Scripts" contenuta nella directory di Python (con Windows digitare `cd C:\Users\*Nome_utente*\AppData\Local\Programs\Python\Python39\Scripts`);
-2. Digitare quindi `pip install opencv-python pillow numpy pyserial tk`, e premere Invio
-3. Una volta terminata l'installazione (in genere sono necessari pochi secondi), chiudere il terminale.
+~~~shell
+cd C:/Users/*Nome_utente*/AppData/Local/Programs/Python/Python39/Scripts\
+pip install opencv-python pillow numpy pyserial tk
+~~~
+
+Una volta terminata l'installazione (in genere sono necessari pochi secondi), chiudere il terminale.
 
 A questo punto è possibile aprire il file presente nella cartella scaricata denominato **main.py** e si è pronti ad utilizzare la propria stampante!
 
