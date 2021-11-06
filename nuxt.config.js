@@ -70,7 +70,7 @@ export default {
 
   image: {
     cloudinary: {
-      baseURL: process.env.CLOUDINARY_BASE_URL || 'https://res.cloudinary.com/bocchio/image/upload/'
+      baseURL: process.env.CLOUDINARY_BASE_URL
     }
   },
 
@@ -112,7 +112,7 @@ export default {
   },
 
   sitemap: {
-    hostname: process.env.HOST_URL || 'https://bocchionuxt.netlify.app',
+    hostname: process.env.HOST_URL,
     gzip: true,
     exclude: [],
 
@@ -125,5 +125,10 @@ export default {
     },
     prefetch: true,
     preconnect: true
-  }
+  },
+
+  env: {
+    HOST_URL: process.env.HOST_URL,
+    CLOUDINARY_BASE_URL: process.env.CLOUDINARY_BASE_URL
+  },
 }
