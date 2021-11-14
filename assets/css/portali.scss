@@ -49,8 +49,12 @@ button,
     margin-block: var(--app_row_column_gap);
 }
 
-input {
+input:not([type = number]) {
     width: 100%;
+}
+input:not([type = range]):hover, input:not([type = range]):focus {
+    border-color: var(--main_color);
+    outline: none;
 }
 
 button, .button {

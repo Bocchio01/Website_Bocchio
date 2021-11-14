@@ -23,7 +23,7 @@
         <span class="navicon"></span>
       </label>
     </div>
-    <ul :style="{ 'max-height': [showMenu ? '240px' : '0px'] }">
+    <ul :style="{ 'max-height': [showMenu ? '500px' : '0px'] }">
       <li><nuxt-link to="/elenco/articolo">Articoli</nuxt-link></li>
       <li><nuxt-link to="/elenco/portale">Portali</nuxt-link></li>
       <li>
@@ -41,6 +41,9 @@
             <nuxt-link to="/articolo/qual é lo scopo"
               >Qual è lo scopo?</nuxt-link
             >
+          </li>
+          <li>
+            <a href="#" @click="$emit('toParent', true); Menu_click()">Accedi al sito</a>
           </li>
         </ul>
       </li>
@@ -193,7 +196,8 @@ export default {
         }
       }
       .dropdown-content {
-        width: 100%;
+        position: relative;
+        margin: 15px 15px;
       }
     }
   }

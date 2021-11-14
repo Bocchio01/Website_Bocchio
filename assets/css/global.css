@@ -7,10 +7,12 @@
 
 :root {
 /* General */
+--main_color: orange;
+--add_size: 0px;
+
 --text_color: black;
 --background_color: white;
 --background_color_body: black;
---main_color: orange;
 --link_hover_color: var(--main_color);
 --Special_font: "Bungee Shade", cursive;
 --Base_font: "Roboto Condensed", sans-serif;
@@ -20,7 +22,7 @@
 --transition_setting: all 0.2s ease-in-out;
 --border_radius: 20px;
 --title_size: 40px;
---paragraph_size: 18px;
+--paragraph_size: calc(18px + var(--add_size));
 --padding_articles: 64px;
 
 /* Header - Footer*/

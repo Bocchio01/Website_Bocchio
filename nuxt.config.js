@@ -129,6 +129,11 @@ export default {
 
   env: {
     HOST_URL: process.env.HOST_URL,
-    CLOUDINARY_BASE_URL: process.env.CLOUDINARY_BASE_URL
+    CLOUDINARY_BASE_URL: process.env.CLOUDINARY_BASE_URL,
+    UTILS_SITE: process.env.UTILS_SITE
   },
+
+  router: {
+    middleware: 'stats'
+  }
 }

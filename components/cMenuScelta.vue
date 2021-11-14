@@ -31,6 +31,13 @@ export default {
         ]
       },
     },
+    multiple: {
+      type: Boolean,
+      default: true
+    },
+    start: {
+      type: Array,
+    },
   },
   data() {
     return {
@@ -38,17 +45,34 @@ export default {
       isActive: Object.assign(...this.tags.map((k) => ({ [k]: false }))),
     }
   },
+  mounted() {
+    if (this.start) {
+      this.start.forEach((el) => {
+        this.isActive[el] = true
+        this.tags_selected.push(el)
+      })
+      this.$emit('toParent', this.tags_selected)
+    }
+  },
   methods: {
     addOrRemove(tag_clicked) {
-      var index = this.tags_selected.indexOf(tag_clicked)
+      if (this.multiple) {
+        var index = this.tags_selected.indexOf(tag_clicked)
 
-      if (index === -1) {
-        this.tags_selected.push(tag_clicked)
-        this.isActive[tag_clicked] = true
+        if (index === -1) {
+          this.tags_selected.push(tag_clicked)
+          this.isActive[tag_clicked] = true
+        } else {
+          this.tags_selected.splice(index, 1)
+          this.isActive[tag_clicked] = false
+        }
       } else {
-        this.tags_selected.splice(index, 1)
-        this.isActive[tag_clicked] = false
+        this.isActive[this.tags_selected[0]] = false
+        this.isActive[tag_clicked] = true
+        this.tags_selected = []
+        this.tags_selected.push(tag_clicked)
       }
+
       this.$emit('toParent', this.tags_selected)
     },
   },
@@ -116,7 +140,7 @@ nav {
         text-decoration: underline;
         padding-inline: 10px;
         &.active,
-        &:hover{
+        &:hover {
           border-radius: var(--header_border_radius);
           background-color: rgb(0, 0, 0, 0.2);
         }
