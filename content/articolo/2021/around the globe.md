@@ -91,6 +91,6 @@ Il programmino è ovviamente online e di libero utilizzo.
 Contiene come detto nell'introduzione molte altre funzioni divertenti ed interessanti come il calcolo delle distanze o altro ancora.<br>
 Se vuoi dare uno sguardo al codice lo trovi su GitHub a questo <a href="#">link</a>, altrimenti se vuoi direttamente provare il programma naviga nella sezione:
 
-<a :href="portalurl" class="button">Portale > Around_the_globe</a>
+<nuxt-link :to="portalurl" class="button">Portale > Around_the_globe</nuxt-link>
 
 **Non ti sei mai chiesto con quale inclinazione scavare un tunnel fino a Tokyo?** E per quanto dovresti scavare? Il programma ha tutte le risposte alle tue domande! Buon utilizzo!

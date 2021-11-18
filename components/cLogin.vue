@@ -1,8 +1,11 @@
 <template>
   <div
-    class="bg login"
-    :style="{ visibility: [showLogin ? 'visible' : 'hidden'] }"
-    @click.self="$emit('toParent', false)"
+    class="msg_bg"
+    :class="[showLogin ? 'visible' : 'hidden']"
+    @click.self="
+      $emit('toParent', false)
+      agg_user()
+    "
   >
     <div class="wrap login">
       <h1>Accesso al sito</h1>
@@ -58,9 +61,7 @@
           </div>
 
           <div class="inline">
-            <label for="newsletter"
-              >Iscrizione alla Newsletter mensile (contenente gli articoli del
-              mese)</label
+            <label for="newsletter">Iscrizione alla Newsletter mensile</label
             >
             <input type="checkbox" name="newsletter" />
           </div>
@@ -77,7 +78,7 @@
           id="loginUser"
           method="post"
           onSubmit="return false;"
-          @submit="newUser"
+          @submit="loginUser"
         >
           <div>
             <label for="email">E-mail</label>
@@ -116,6 +117,9 @@
             @input="change_color"
             :showHistory="false"
           ></verte>
+          <button style="margin-left: auto" @click="color = 'rgb(255,165,0)'">
+            Rispristina default
+          </button>
         </div>
         <div class="inline">
           <label>Altezza Font</label>
@@ -127,10 +131,17 @@
             v-model.number="font"
             @change="change_font_size()"
           />
+          <button
+            style="margin-left: auto"
+            @click="
+              font = 0
+              change_font_size()
+            "
+          >
+            Rispristina default
+          </button>
         </div>
-        <div class="inline">
-          <button @click="reset()">Rispristina default</button>
-        </div>
+        <div class="inline"></div>
       </div>
     </div>
   </div>
@@ -149,6 +160,7 @@ export default {
       tags_array: ['Sign up', 'Login', 'Impostazioni'],
       color: this.init(),
       font: this.init2(),
+      return_obj: '',
     }
   },
   methods: {
@@ -190,19 +202,23 @@ export default {
       const xhttp = new XMLHttpRequest()
       const FD = new FormData(document.getElementById('newUser'))
 
-      xhttp.onerror = () =>
+      xhttp.onerror = function () {
         alert("C'è stato un errore nella chiamata al database..")
+      }
 
-      xhttp.onreadystatechange = () => {
+      xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          alert('Perfetto, creazione riuscita. Controlla la tua casella email')
+          const return_obj = JSON.parse(xhttp.responseText)
+          console.log(return_obj)
+          if (return_obj.Result.Status) {
+            alert(
+              'Perfetto, creazione riuscita. Controlla la tua casella email'
+            )
+          }
         }
       }
 
-      xhttp.open(
-        'POST',
-        'https://bocchioutils.altervista.org/php/nuovo_utente.php'
-      )
+      xhttp.open('POST', process.env.UTILS_SITE + '/php/nuovo_utente.php')
       xhttp.send(FD)
     },
 
@@ -210,82 +226,133 @@ export default {
       const xhttp = new XMLHttpRequest()
       const FD = new FormData(document.getElementById('loginUser'))
 
-      xhttp.onerror = () =>
-        alert("C'è stato un errore nella chiamata al database di login..")
+      xhttp.onerror = function () {
+        alert("C'è stato un errore nella chiamata al database..")
+      }
 
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          let data = JSON.parse(xhttp.responseText)
-          console.log(data)
-          reset(data.color, data.font_size)
+      xhttp.onreadystatechange = (x) => {
+        let result = x.target
+
+        if (result.readyState == 4 && result.status == 200) {
+          const return_obj = JSON.parse(xhttp.responseText)
+          if (return_obj.Result.Status) {
+            this.reset(
+              return_obj.Result.Color,
+              parseInt(return_obj.Result.Font)
+            )
+            localStorage.nickname = return_obj.Result.Nickname
+            alert('Bentornato ' + return_obj.Result.Nickname + '!')
+          }
         }
       }
+      xhttp.open('POST', process.env.UTILS_SITE + '/php/login_utente.php')
+      xhttp.send(FD)
+    },
+    agg_user() {
+      const xhttp = new XMLHttpRequest()
 
       xhttp.open(
         'POST',
-        'https://bocchioutils.altervista.org/php/login_utente.php'
+        process.env.UTILS_SITE + '/php/aggiornamento_utente.php'
       )
-      xhttp.send(FD)
+      xhttp.setRequestHeader(
+        'Content-type',
+        'application/x-www-form-urlencoded'
+      )
+
+      xhttp.send(
+        'color=' +
+          this.color +
+          '&font=' +
+          this.font +
+          '&nickname=' +
+          localStorage.nickname
+      )
     },
   },
 }
 </script>
 
 <style lang="scss">
-.bg.login {
+.msg_bg {
   top: 0px;
+  left: 0px;
   position: fixed;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  flex-direction: column;
   justify-content: center;
   background-color: #000000b0;
   height: 100%;
   width: 100%;
-  //transition: visibility 0.5s ease-out;
+
+  &.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 500ms, opacity 500ms;
+  }
+  &.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity 500ms;
+  }
 }
 
 .wrap.login {
-  margin-block: auto;
+  *:not(.verte *) {
+    margin: unset;
+    display: block;
+  }
   max-width: 700px;
   max-height: calc(100vh - 100px);
   overflow-y: overlay;
-  h2 {
-    margin-top: 0px;
-  }
-  nav > div {
-    row-gap: 5px;
-    max-width: unset;
-  }
   nav {
-    margin-block: 20px;
-    > div > p {
-      font-family: var(--Base_font) !important;
+    margin-block: 5px !important;
+    > div {
+      display: flex !important;
+      row-gap: 5px;
+      max-width: unset;
+      > p {
+        font-family: var(--Base_font);
+      }
+    }
+  }
+  > div {
+    > form {
+      > div {
+        margin-block: 10px !important;
+      }
+      > input[type='submit'] {
+        margin-top: 20px;
+      }
+    }
+  }
+  div.inline {
+    margin-block: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
+    *:not(.verte *) {
+      width: unset !important;
     }
   }
 
   label {
-    display: block;
-    ~ input {
-      margin-block: 0px;
-    }
+    font-size: var(--paragraph_size);
   }
-  form > div {
-    display: block;
-    margin-block: 10px;
+
+  input {
+    width: 100%;
+    transition: padding 0.2s linear;
   }
-  .inline {
-    margin-block: 10px;
-    display: flex;
-    align-items: center;
-    > label {
-      width: 25%;
-      min-width: max-content;
-      margin-right: 10px;
-    }
-    > input {
-      margin: 0px;
-      width: unset;
-    }
+
+  input:not([type='submit']):hover,
+  input:not([type='submit']):focus {
+    border-color: var(--main_color);
+    outline: none;
+    padding: 5px;
   }
 }
 </style>

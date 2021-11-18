@@ -25,7 +25,7 @@ export default {
           },
         },
         {
-          path: '/elenco/articolo/',
+          path: '/elenco/articolo',
           title: 'Contenuti del sito',
           paragraph: [
             'Il sito è strutturato su tre sezioni pricipali:',

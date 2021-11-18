@@ -54,6 +54,7 @@ export default {
     'nuxt-leaflet',
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
   ],
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
@@ -135,5 +136,11 @@ export default {
 
   router: {
     middleware: 'stats'
+  },
+
+  robots: {
+    UserAgent: '*',
+    Allow: '/',
+    Sitemap: process.env.HOST_URL + '/sitemap.xml'
   }
 }

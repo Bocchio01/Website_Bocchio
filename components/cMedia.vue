@@ -2,8 +2,8 @@
   <div class="media">
     <figure
       v-if="type == 'img'"
-      v-bind:class="[espansione ? 'embedded_img' : '']"
-      @click="expand"
+      :class="[espansione ? 'embedded_img msg_bg visible' : '']"
+      @click="expand()"
     >
       <!--
       xs: 320,
@@ -26,7 +26,7 @@
       <figcaption>{{ c }}</figcaption>
     </figure>
 
-    <figure v-if="type == 'vid'">
+    <figure v-if="type == 'video'">
       <video controls>
         <source :src="s" type="video/mp4" />
         Your browser does not support the video tag.
@@ -87,23 +87,13 @@ export default {
     }
     > figcaption {
       font-style: italic;
-      font-size: var(--paragraph_font_size);
+      font-size: calc(var(--paragraph_size) - 2px);
       font-family: var(--Base_font);
       text-align: center;
       padding-inline: 10px;
+      overflow-wrap: anywhere;
     }
     &.embedded_img {
-      position: fixed;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      top: 0px;
-      left: 0px;
-      z-index: 5;
-      width: 100%;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.9);
       color: white;
       overflow: auto;
       img {
@@ -112,7 +102,6 @@ export default {
         max-height: 90vh !important;
         width: unset;
         background-color: white;
-
       }
       > figcaption {
         font-size: calc(5px + var(--paragraph_size));

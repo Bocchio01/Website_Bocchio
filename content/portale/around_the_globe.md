@@ -10,7 +10,7 @@ paragraph: [
 img: 
     src: /v1636152274/Articoli/Around%20the%20globe/Around_the_globe_icon.jpg
     alt: Around_the_globe
-articleurl: /articolo/aroud the globe
+articleurl: /articolo/around the globe
 ---
 
 <Portali-cAround-the-globe></Portali-cAround-the-globe>
