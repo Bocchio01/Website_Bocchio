@@ -1,5 +1,5 @@
 <template>
-  <button @click="top" id="ToTop"><span>&#8686;</span></button>
+  <button @click="top" class="ToTop"><span>&#8686;</span></button>
 </template>
 <script>
 export default {
@@ -11,7 +11,7 @@ export default {
 }
 </script>
 <style lang="scss">
-button#ToTop {
+button.ToTop {
   position: fixed;
   right: 15px;
   bottom: 15px;
@@ -25,7 +25,7 @@ button#ToTop {
 }
 
 @media (max-width: 750px) {
-  button#ToTop {
+  button.ToTop {
     position: sticky;
     right: 0px;
     bottom: 5px;

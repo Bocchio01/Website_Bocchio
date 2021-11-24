@@ -1,7 +1,7 @@
 <template>
   <article>
     <nuxt-content class="wrap" :document="article" />
-    <cNavigation :prev="prev" :next="next" v-if="prev || next" />
+    <cNavigation :prev="prev" :next="next" :file="article.file"/>
     <cToTop />
   </article>
 </template>
@@ -19,7 +19,7 @@ export default {
       })
 
     const [prev, next] = await $content('articolo', { deep: true })
-      .only(['title', 'slug'])
+      // .only(['title', 'slug'])
       .sortBy('createdAt', 'asc')
       .surround(params.slug)
       .fetch()
@@ -66,6 +66,7 @@ export default {
   },
   computed: {
     meta() {
+      console.log(this.article.file)
       const metaData = {
         type: 'article',
         title: this.article.title,

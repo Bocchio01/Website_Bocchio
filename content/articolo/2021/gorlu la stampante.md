@@ -12,6 +12,7 @@ img:
 tag: [
     Programmazione
 ]
+file: https://mega.nz/folder/YI8DyApa#9nSAe8M8QQAq-vfoDO6H_w
 forum: true
 
 createdAt: 2021-06-09T12:47:00Z
@@ -32,7 +33,7 @@ Cercando poi online ho visto che era un progetto molto comunque e praticamente t
 
 ## Gli obbiettivi
 
-Deciso quindi a creare qualcosa di più di un semplice plotter CNC, ho pensato alle funzioni che avrei voluto integrare:
+Deciso quindi a creare qualcosa di più di un semplice [plotter CNC](https://it.wikipedia.org/wiki/Macchina_a_controllo_numerico), ho pensato alle funzioni che avrei voluto integrare:
 
 - **Stampa di immagini digitali (di qualsiasi formato)** semplificandole ovviamente prima e quindi analizzandole alla ricerca di quelle definibili come le *linee principali* dell'immagine;
 - La possibilità di stampare in tempo reale una qualsiasi linea disegnata a mano libera sul PC. **Utilizzare quindi il plotter come un vero e proprio braccio robotico sincronizzato con la propria mano**;
@@ -60,9 +61,9 @@ Tra le librerie più importanti che ho scelto di utilizzare ci sono sicuramente:
 
 **L'algoritmo principale**, ovvero quello che si occupa della stampa di immagini digitali, **è sostanzialmente un algoritmo di ricerca e ordinamento**.
 
-Data un'immagine in input la semplifica (sfruttando la funzione Canny() presente in OpenCV) estrandone le linee principali e salvando poi i pixel individuati in una matrice bidimensionale.
+Data un'immagine in input la semplifica (sfruttando la [funzione Canny()](https://it.wikipedia.org/wiki/Algoritmo_di_Canny) presente in OpenCV) estrandone le linee principali e salvando poi i pixel individuati in una matrice bidimensionale.
 
-<cMedia s="/v1637024651/Articoli/Gorlu%20la%20stampante/Canny.png" c="Un esempio di utilizzo dell'algoritmo Canny, source: https://it.wikipedia.org/wiki/Algoritmo_di_Canny"></cMedia>
+<cMedia s="/v1637024651/Articoli/Gorlu%20la%20stampante/Canny.png" c="Un esempio di utilizzo dell'algoritmo Canny"></cMedia>
 
 Ne viene allora eseguita la scansione con la logica di andare a stampare non singoli punti (rischiando così di avere problemi con l'inchiostro della penna), ma linee continue. **Preso un elemento A, l'algoritmo ne analizza i pixel in posizioni limitrofe in cerca di un elemento B da stampare. In caso di successo ne invia le coordinate ad Arduino, altrimenti allarga il campo di ricerca sempre centranto in A fino a che non viene identificato un elemento B.** Il programma poi cicla prendendo come punto di partenza le coordinate dell'elemento B appena individuato, e continua in maniera analoga fino a che tutta la matrice non è stata scansionata.
 
@@ -78,7 +79,7 @@ Per quanto riguarda invece la funzionalità legata alla stampa simultanea mano/A
 
 ## La struttura
 
-Ovviamente nulla funzionerebbe senza una buona struttura a sostegno. Meccanicamente dunque **la stampante si può dire essere composta da 2 parti principali:**
+Ovviamente nulla funzionerebbe senza una buona struttura a sostegno. **La stampante si può dire essere composta da 2 parti principali:**
 
 - Due carrelli con i relativi motorini;
 - Il sistema di controllo dell'altezza della penna.
@@ -99,7 +100,7 @@ In questo modo visto che l'elastico genera sempre la stessa forza sulla mina, la
 
 Dopo quindi qualche giorno davanti al PC e un paio di notti con gli attrezzi in mano, **la stampantina GORLU era ufficialmente nata :)**
 
-Il nome non ha mai avuto un significato preciso e ci ho pensato mentre la costruivo. Però mi è fin da subito piaciuto e poi del resto, why not?
+Il nome non ha mai avuto un significato preciso e mi è venuto in mente durante la sua costruzione. Però mi è fin da subito piaciuto e poi del resto, why not?
 
 Ecco qualche video del progetto finito.. Enjoy!
 

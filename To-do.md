@@ -7,12 +7,16 @@
   - I18n
   - A mano (solo italino e inglese)
 - Head tag and SEO: controllare le card di condivisione
-- Sistema di login
+- Sistema di login:
+  - Sistema dark/light
 
 ---
 
 ## Articoli
-
+- Maggior controllo dal Database:
+  - Forum: si/no
+  - Allegati
+  - Tag
 - Allegati:
   - Link
   - Files da MEGA

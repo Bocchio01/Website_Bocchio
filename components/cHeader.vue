@@ -43,7 +43,7 @@
             >
           </li>
           <li>
-            <a href="#" @click="$emit('toParent', true); Menu_click()">Accedi al sito</a>
+            <a href="#" @click="$emit('toParent', true); Menu_click()">Area personale</a>
           </li>
         </ul>
       </li>

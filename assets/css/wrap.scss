@@ -51,14 +51,18 @@
   }
 }
 
+.align {
+  width: 60%;
+}
+
 @media (max-width: 1200px) {
-  .wrap {
+  .wrap, .align {
     width: 70%;
   }
 }
 
 @media (max-width: 750px) {
-  .wrap {
+  .wrap, .align {
     width: 90%;
   }
 }
