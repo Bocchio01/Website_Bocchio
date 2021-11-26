@@ -84,6 +84,7 @@ export default {
       max-width: 100%;
       width: 700px;
       border-radius: 20px;
+      background-color: white;
     }
     > figcaption {
       font-style: italic;

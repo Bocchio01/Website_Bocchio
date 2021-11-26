@@ -2,6 +2,7 @@
   <article>
     <nuxt-content class="wrap" :document="article" />
     <cNavigation :prev="prev" :next="next" :file="article.file"/>
+    <cForum v-if="article.forum"/>
     <cToTop />
   </article>
 </template>

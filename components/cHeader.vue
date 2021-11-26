@@ -1,14 +1,9 @@
 <template>
   <header>
     <div>
-      <div style="display: flex">
+      <div>
         <router-link to="/" custom v-slot="{ navigate }">
-          <img
-            src="/Lampadina_ingranaggi.svg"
-            alt="Logo"
-            role="link"
-            @click="navigate"
-          />
+          <div class="logo" @click="navigate"></div>
         </router-link>
         <nuxt-link to="/">Tommaso Bocchietti</nuxt-link>
       </div>
@@ -43,7 +38,14 @@
             >
           </li>
           <li>
-            <a href="#" @click="$emit('toParent', true); Menu_click()">Area personale</a>
+            <a
+              href="#"
+              @click="
+                $emit('toParent', true)
+                Menu_click()
+              "
+              >Area personale</a
+            >
           </li>
         </ul>
       </li>
@@ -82,6 +84,7 @@ export default {
 .Default {
   header,
   .dropdown-content {
+      color: var(--text_color);
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -96,6 +99,8 @@ export default {
 
   header {
     a {
+      color: var(--text_color);
+
       display: block;
       margin: 15px 15px;
       font-weight: bold;
@@ -112,9 +117,14 @@ export default {
       > div {
         display: flex;
         align-items: center;
-        > img {
+        > .logo {
           height: calc(2.5 * var(--header_font_size));
+          width: calc(2.5 * var(--header_font_size));
           cursor: pointer;
+
+          background-color: var(--main_color);
+          -webkit-mask: url(/Lampadina_ingranaggi.svg) no-repeat center;
+          mask: url(/Lampadina_ingranaggi.svg) no-repeat center;
           &:hover ~ a {
             color: var(--link_hover_color);
           }

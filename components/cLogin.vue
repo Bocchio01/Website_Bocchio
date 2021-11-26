@@ -169,11 +169,7 @@
 </template>
 
 <script>
-import verte from 'verte'
-import 'verte/dist/verte.css'
-
 export default {
-  components: { verte },
   props: ['showLogin'],
   data() {
     return {
@@ -184,63 +180,26 @@ export default {
       avatar: '/icon.png',
       return_obj: '',
       show_avatar: false,
-      images_man: [
-        '3079771.png',
-        '3079776.png',
-        '3079783.png',
-        '3079788.png',
-        '3079793.png',
-        '3079798.png',
-        '3079804.png',
-        '3079814.png',
-        '3079819.png',
-        '3079825.png',
-        '3079828.png',
-        '3079835.png',
-        '3079843.png',
-        '3079861.png',
-        '3079866.png',
-        '3079873.png',
-        '3079876.png',
-        '3079882.png',
-        '3079886.png',
-        '3079889.png',
-        '3079893.png',
-        '3079897.png',
-        '3079900.png',
-        '3079906.png',
-        '3079908.png',
-        '3079911.png',
-      ],
-      images_woman: [
-        '13079852.png',
-        '13079856.png',
-        '3079645.png',
-        '3079658.png',
-        '3079663.png',
-        '3079672.png',
-        '3079684.png',
-        '3079690.png',
-        '3079697.png',
-        '3079702.png',
-        '3079708.png',
-        '3079718.png',
-        '3079724.png',
-        '3079730.png',
-        '3079734.png',
-        '3079740.png',
-        '3079746.png',
-        '3079751.png',
-        '3079758.png',
-        '3079765.png',
-        '3079903.png',
-      ],
+      images_man: [],
+      images_woman: [],
     }
   },
   created() {
+    const man_avatar = require.context('/static/Avatar/Man/', false, /\.png$/).keys();
+    this.images_man = man_avatar.map(s => s.slice(2))
+
+    const woman_avatar = require.context('/static/Avatar/Woman/', false, /\.png$/).keys()
+    this.images_woman = woman_avatar.map(s => s.slice(2))
+
     this.switch_menu()
     if (localStorage.email && localStorage.pwd && !sessionStorage.nickname) {
       this.Login()
+    } else {
+      this.set_value(
+        sessionStorage.main_color,
+        sessionStorage.add_size,
+        sessionStorage.avatar
+      )
     }
   },
   methods: {
@@ -254,9 +213,8 @@ export default {
     },
 
     logout() {
-      sessionStorage.removeItem('nickname')
-      localStorage.removeItem('pwd')
-      localStorage.removeItem('email')
+      sessionStorage.clear()
+      localStorage.clear()
       this.switch_menu()
       this.set_value()
     },
@@ -350,10 +308,15 @@ export default {
   },
   watch: {
     color: function (val) {
+      sessionStorage.main_color = val
       document.documentElement.style.setProperty('--main_color', val)
     },
     font: function (val) {
+      sessionStorage.add_size = val
       document.documentElement.style.setProperty('--add_size', val + 'px')
+    },
+    avatar: function (val) {
+      sessionStorage.avatar = val
     },
   },
 }

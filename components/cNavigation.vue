@@ -1,53 +1,48 @@
 <template>
-  <div class="align">
-    <div class="wrap navigation" v-if="file" style="flex: 1 1 300px">
+  <div class="wrap_width flex_container">
+    <div class="wrap navigation" v-if="file" style="flex: 1 1 250px">
       <h2>Allegati</h2>
-      <p>
-        Alcuni allegati utili per realizzare il progetto o semplicemente per
-        avere qualche specifica tecnica in più
-      </p>
-      <div >
-        <div
-          class="wrap document"
-        >
-          <p>folder</p>
-          <img
-            src='/Icons/png.png'
-            alt='Documento folder'
-          />
-          <a
-            :href="file"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          ><div class="button">GO!</div></a>
+      <p>La cartella del progetto.</p>
+      <div>
+
+        <div class="wrap document">
+          <p>Mega Cloud</p>
+          <cMedia s="/v1637895660/Mega_icon.png" a="Mega folder icon"></cMedia>
+          <a :href="file" target="_blank" rel="nofollow noopener noreferrer">
+            <div class="button">Scopri di più!</div>
+          </a>
         </div>
+        
       </div>
     </div>
-    <!-- <h2>Link utili</h2> -->
-    <div class="wrap navigation" style="flex: 10 1 300px">
+
+    <div class="wrap navigation" style="flex: 3 1 400px" v-if="prev || next">
       <h2>Naviga nel sito</h2>
       <p v-if="prev && next">
-        Di seguito l'articolo precedente e il successivo in ordine temporale
+        Di seguito l'articolo precedente e il successivo in ordine temporale.
       </p>
       <p v-else-if="next">
-        Di seguito l'articolo successivo in ordine temporale
+        Di seguito l'articolo successivo in ordine temporale.
       </p>
-      <p v-else>Di seguito l'articolo precedente in ordine temporale</p>
+      <p v-else>Di seguito l'articolo precedente in ordine temporale.</p>
       <div>
+
         <div class="wrap document" v-if="prev">
           <p>{{ prev.title }}</p>
           <cMedia :s="prev.img.src" :a="prev.img.src"></cMedia>
-          <NuxtLink :to="prev.slug"
-            ><div class="button ToTop"><span>&#8617;</span></div></NuxtLink
-          >
+          <NuxtLink :to="prev.slug">
+            <div class="button ToTop"><span>&#8617;</span></div>
+          </NuxtLink>
         </div>
+
         <div class="wrap document" v-if="next">
           <p>{{ next.title }}</p>
           <cMedia :s="next.img.src" :a="next.img.src"></cMedia>
-          <NuxtLink :to="next.slug"
-            ><div class="button ToTop"><span>&#8618;</span></div></NuxtLink
-          >
+          <NuxtLink :to="next.slug">
+            <div class="button ToTop"><span>&#8618;</span></div>
+          </NuxtLink>
         </div>
+
       </div>
     </div>
   </div>
@@ -68,46 +63,33 @@ export default {
       type: String,
       default: () => null,
     },
-  }
+  },
 }
 </script>
+
 <style lang="scss">
-.align {
+.flex_container {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  column-gap: 50px;
-  // row-gap: 50px;
-
+  align-items: stretch;
+  justify-content: center;
+  column-gap: 30px;
 }
 .wrap.navigation {
   padding: 15px;
-  // flex: 1 1 300px;
-  .inline {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    column-gap: 10px;
-    row-gap: 10px;
-    > img {
-      max-width: 50px !important;
-      max-height: 50px !important;
-    }
-  }
+  margin-top: 0px;
+
   > div {
     display: flex;
     justify-content: space-evenly;
-    // flex-wrap: wrap;
     row-gap: 20px;
     column-gap: 20px;
     > .document {
-      * {
-        margin-block: 5px;
-        margin-inline: auto;
-        text-align: center;
-      }
-      margin: 5px;
-      padding: 20px;
+      margin-inline: auto;
+      text-align: center;
+      margin: 10px;
+      padding: 15px;
       width: fit-content;
       > p {
         font-weight: bold;
@@ -127,6 +109,10 @@ export default {
         text-decoration: none;
         color: var(--text_color);
       }
+      .media {
+        margin-top: 10px;
+        margin-bottom: 0px;
+      }
       img {
         max-height: 150px;
         max-width: 150px;
@@ -143,15 +129,9 @@ export default {
 }
 
 @media (max-width: 750px) {
-  .wrap.navigation {
-    > div > .document img {
-      max-height: 75px;
-      max-width: 75px;
-    }
-    .inline > img {
-      max-height: 30px !important;
-      max-width: 30px !important;
-    }
+  .wrap.navigation > div > .document img {
+    max-height: 75px;
+    max-width: 75px;
   }
 }
 </style>
