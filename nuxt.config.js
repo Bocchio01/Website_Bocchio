@@ -30,6 +30,7 @@ export default {
     '@/assets/css/global.css',
     '@/assets/css/portali.scss',
     '@/assets/css/wrap.scss',
+    '@/assets/css/miscellaneous.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

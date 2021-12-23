@@ -7,7 +7,7 @@
       Agg_setting()
     "
   >
-    <div class="wrap login">
+    <div class="wrap popup" @click.self="show_avatar = false">
       <h1>Area personale</h1>
 
       <cMenuScelta
@@ -23,17 +23,12 @@
           Inserisci i dati richiesti e riceverai a breve un e-mail di conferma.
         </p>
 
-        <form
-          id="Sign_up"
-          method="post"
-          onSubmit="return false;"
-          @submit="Sign_up"
-        >
+        <form id="Signup_form" onSubmit="return false;" @submit="Sign_up">
           <div>
-            <label for="nickname">Nickname</label>
+            <label for="signup_nickname">Nickname</label>
             <input
               type="text"
-              id="nickname"
+              id="signup_nickname"
               name="nickname"
               required
               placeholder="Es: Bocchio01"
@@ -41,10 +36,10 @@
           </div>
 
           <div>
-            <label for="email_signup">E-mail</label>
+            <label for="signup_email">E-mail</label>
             <input
               type="email"
-              id="email_signup"
+              id="signup_email"
               name="email"
               required
               placeholder="Es: tommaso.bocchietti@gmail.com"
@@ -52,10 +47,10 @@
           </div>
 
           <div>
-            <label for="pwd_signup">Password (minimo 5 caratteri)</label>
+            <label for="signup_pwd">Password</label>
             <input
               type="password"
-              id="pwd_signup"
+              id="signup_pwd"
               name="pwd"
               minlength="5"
               required
@@ -63,17 +58,14 @@
             />
           </div>
 
-          <div class="inline">
-            <label for="newsletter">Iscrizione alla Newsletter mensile</label>
-            <input
-              style="width: unset"
-              type="checkbox"
-              name="newsletter"
-              id="newsletter"
-            />
-          </div>
+          <!-- <div class="inline">
+            <label for="signup_newsletter"
+              >Iscrizione alla Newsletter mensile</label
+            >
+            <input type="checkbox" id="signup_newsletter" name="newsletter" />
+          </div> -->
 
-          <button type="submit" name="submit">Sign up</button>
+          <button type="submit">Sign up</button>
         </form>
       </div>
 
@@ -81,12 +73,12 @@
         <h2>Login</h2>
         <p>Inserisci i dati di login</p>
 
-        <form id="Login" method="post" onSubmit="return false;" @submit="Login">
+        <form id="Login_form" onSubmit="return false;" @submit="Login">
           <div>
-            <label for="email_login">E-mail</label>
+            <label for="login_email">E-mail</label>
             <input
               type="email"
-              id="email_login"
+              id="login_email"
               name="email"
               required
               placeholder="Es: tommaso.bocchietti@gmail.com"
@@ -94,10 +86,10 @@
           </div>
 
           <div>
-            <label for="pwd_login">Password</label>
+            <label for="login_pwd">Password</label>
             <input
               type="password"
-              id="pwd_login"
+              id="login_pwd"
               name="pwd"
               minlength="5"
               required
@@ -105,7 +97,7 @@
             />
           </div>
 
-          <button type="submit" name="submit">Login</button>
+          <button type="submit">Login</button>
         </form>
       </div>
 
@@ -137,32 +129,32 @@
 
           <button @click="avatar = '/icon.png'">Ripristina</button>
         </div>
+
+        <div
+          id="avatar_container"
+          v-show="show_avatar"
+          @click="show_avatar = false"
+        >
+          <h2>Avatar femminili</h2>
+          <div>
+            <img
+              v-for="(img, index) in images_woman"
+              :key="index"
+              :src="'/Avatar/Woman/' + img"
+              @click="avatar = '/Avatar/Woman/' + img"
+            />
+          </div>
+          <h2>Avatar maschili</h2>
+          <div>
+            <img
+              v-for="(img, index) in images_man"
+              :key="index"
+              :src="'/Avatar/Man/' + img"
+              @click="avatar = '/Avatar/Man/' + img"
+            />
+          </div>
+        </div>
         <button type="submit" name="submit" @click="logout()">Logout</button>
-      </div>
-      <div
-        id="avatar_container"
-        class="wrap login"
-        v-show="show_avatar"
-        @click="show_avatar = false"
-      >
-        <h2>Avatar femminili</h2>
-        <div>
-          <img
-            v-for="(img, index) in images_woman"
-            :key="index"
-            :src="'/Avatar/Woman/' + img"
-            @click="avatar = '/Avatar/Woman/' + img"
-          />
-        </div>
-        <h2>Avatar maschili</h2>
-        <div>
-          <img
-            v-for="(img, index) in images_man"
-            :key="index"
-            :src="'/Avatar/Man/' + img"
-            @click="avatar = '/Avatar/Man/' + img"
-          />
-        </div>
       </div>
     </div>
   </div>
@@ -178,29 +170,43 @@ export default {
       color: '#ffa500',
       font: 0,
       avatar: '/icon.png',
-      return_obj: '',
       show_avatar: false,
       images_man: [],
       images_woman: [],
     }
   },
   created() {
-    const man_avatar = require.context('/static/Avatar/Man/', false, /\.png$/).keys();
-    this.images_man = man_avatar.map(s => s.slice(2))
+    const man_avatar = require
+      .context('/static/Avatar/Man/', false, /\.png$/)
+      .keys()
+    this.images_man = man_avatar.map((s) => s.slice(2))
 
-    const woman_avatar = require.context('/static/Avatar/Woman/', false, /\.png$/).keys()
-    this.images_woman = woman_avatar.map(s => s.slice(2))
+    const woman_avatar = require
+      .context('/static/Avatar/Woman/', false, /\.png$/)
+      .keys()
+    this.images_woman = woman_avatar.map((s) => s.slice(2))
 
-    this.switch_menu()
-    if (localStorage.email && localStorage.pwd && !sessionStorage.nickname) {
-      this.Login()
-    } else {
-      this.set_value(
-        sessionStorage.main_color,
-        sessionStorage.add_size,
-        sessionStorage.avatar
-      )
-    }
+    new Promise((resolve, reject) => {
+      if (localStorage.email && localStorage.pwd && !sessionStorage.nickname) {
+        resolve(true)
+      } else {
+        reject(false)
+      }
+    })
+      .then(() => {
+        document.getElementById('Login_form').email.value = localStorage.email
+        document.getElementById('Login_form').pwd.value = localStorage.pwd
+        this.Login()
+        this.switch_menu()
+      })
+      .catch(() => {
+        this.set_value(
+          sessionStorage.main_color,
+          sessionStorage.add_size,
+          sessionStorage.avatar
+        )
+        this.switch_menu()
+      })
   },
   methods: {
     switch_menu() {
@@ -230,82 +236,68 @@ export default {
     },
 
     Sign_up() {
-      const xhttp = new XMLHttpRequest()
-      const FD = new FormData(document.getElementById('Sign_up'))
-
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          const return_obj = JSON.parse(xhttp.responseText)
-          if (return_obj.Result.Status) {
-            alert(
-              'Perfetto, creazione riuscita. Controlla la tua casella email'
-            )
-          }
+      this.sendRequest({
+        action: 'Sign_up',
+        form: document.getElementById('Signup_form'),
+      }).then((res) => {
+        if (res.Result.Status == 0) {
+          alert('Perfetto, creazione riuscita. Controlla la tua casella email')
+        } else {
+          alert(res.Error)
         }
-      }
-      xhttp.open('POST', process.env.UTILS_SITE + '/php/nuovo_utente.php')
-      xhttp.send(FD)
+      })
     },
 
-    Login(e) {
-      const xhttp = new XMLHttpRequest()
-      const FD = e
-        ? new FormData(document.getElementById('Login'))
-        : '&email=' + localStorage.email + '&pwd=' + localStorage.pwd
-      xhttp.onreadystatechange = (x) => {
-        let result = x.target
-
-        if (result.readyState == 4 && result.status == 200) {
-          const return_obj = JSON.parse(xhttp.responseText)
-          if (return_obj.Result.Status) {
-            this.set_value(
-              return_obj.Result.Color,
-              return_obj.Result.Font,
-              return_obj.Result.Avatar
-            )
-
-            sessionStorage.nickname = return_obj.Result.Nickname
-            localStorage.pwd = return_obj.Result.Password
-            localStorage.email = return_obj.Result.Email
-            alert('Bentornato ' + return_obj.Result.Nickname + '!')
-            this.switch_menu()
-          }
+    Login() {
+      this.sendRequest({
+        action: 'Login',
+        form: document.getElementById('Login_form'),
+      }).then((res) => {
+        if (res.Result.Status == 0) {
+          this.set_value(res.Result.Color, res.Result.Font, res.Result.Avatar)
+          sessionStorage.nickname = res.Result.Nickname
+          localStorage.pwd = res.Result.Password
+          localStorage.email = res.Result.Email
+          alert('Bentornato ' + res.Result.Nickname + '!')
+          this.switch_menu()
+        } else {
+          alert(res.Error)
         }
-      }
-      xhttp.open('POST', process.env.UTILS_SITE + '/php/login_utente.php')
-      if (!e) {
-        xhttp.setRequestHeader(
-          'Content-type',
-          'application/x-www-form-urlencoded'
-        )
-      }
-      xhttp.send(FD)
+      })
     },
 
     Agg_setting() {
+      this.sendRequest({
+        action: 'Agg_setting',
+        color: this.color,
+        font: this.font,
+        avatar: this.avatar,
+        nickname: sessionStorage.nickname,
+      }).then()
+    },
+
+    sendRequest(args) {
       const xhttp = new XMLHttpRequest()
+      const FD = new FormData(args.form)
+      for (const [key, value] of Object.entries(args)) {
+        if (key != 'form') FD.append(key, value)
+      }
 
-      xhttp.open(
-        'POST',
-        process.env.UTILS_SITE + '/php/aggiornamento_utente.php'
-      )
-      xhttp.setRequestHeader(
-        'Content-type',
-        'application/x-www-form-urlencoded'
-      )
+      return new Promise((resolve, reject) => {
+        xhttp.onreadystatechange = (e) => {
+          if (xhttp.readyState != 4 && xhttp.status == 200) {
+            resolve(JSON.parse(xhttp.responseText))
+          } else {
+            // reject(console.warn('request_error'))
+          }
+        }
+        xhttp.open('POST', process.env.UTILS_SITE + '/PWS/main.php')
 
-      xhttp.send(
-        'color=' +
-          this.color +
-          '&font=' +
-          this.font +
-          '&nickname=' +
-          sessionStorage.nickname +
-          '&avatar=' +
-          this.avatar
-      )
+        xhttp.send(FD)
+      })
     },
   },
+
   watch: {
     color: function (val) {
       sessionStorage.main_color = val
@@ -323,112 +315,66 @@ export default {
 </script>
 
 <style lang="scss">
-.msg_bg {
-  top: 0px;
-  left: 0px;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #000000b0;
-  height: 100%;
-  width: 100%;
-
-  &.hidden {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s linear 500ms, opacity 500ms;
-  }
-  &.visible {
-    visibility: visible;
-    opacity: 1;
-    transition: visibility 0s linear 0s, opacity 500ms;
-  }
-}
-
-.wrap.login {
-  button,
-  input {
-    margin: 0;
-  }
+.wrap.popup {
   margin: auto;
   max-width: 700px;
   max-height: calc(100vh - 100px);
   overflow-y: overlay;
-  nav {
-    margin-top: 5px;
-    > div {
-      display: flex;
-      row-gap: 5px;
-      max-width: unset;
-      > p {
-        font-family: var(--Base_font);
-      }
-    }
+
+  * {
+    margin-block: 0;
   }
+
+  > nav > div > p {
+    font-family: var(--Base_font) !important;
+  }
+
   label {
     display: block;
   }
-  > div {
-    > form {
-      > div {
-        margin-block: 10px;
-      }
-    }
+
+  div {
+    margin-block: 10px;
   }
+
   button[type='submit'] {
     margin-top: 20px;
     width: 100%;
-    margin-inline: auto;
   }
-
-  button[type='submit']:hover,
-  button[type='submit']:focus {
+  &:hover,
+  &:focus {
     width: 95%;
   }
 
   div.inline {
-    margin-block: 10px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     column-gap: 10px;
     row-gap: 10px;
-    > label,
-    > input {
-      width: 25%;
-      min-width: fit-content;
-      font-size: var(--paragraph_size);
-    }
-    > button {
-      margin-left: auto;
+    justify-content: space-between;
+    * {
+      margin: 0px;
+      width: revert;
     }
   }
 
-  input {
+  input,
+  select {
     width: 100%;
     transition: padding 0.2s linear;
   }
 
   input:hover,
   input:focus,
-  img:hover,
-  img:focus {
+  select:hover,
+  select:focus {
     border-color: var(--main_color);
     outline: none;
     padding: 5px;
   }
 
   #avatar_container {
-    height: fit-content;
-    overflow-y: auto;
-    display: block;
-    position: fixed;
-    margin: auto;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
     > div {
       display: flex;
       flex-wrap: wrap;
@@ -441,14 +387,19 @@ export default {
     border: 2px solid transparent;
     border-radius: 10px;
     cursor: pointer;
-  }
-  img:hover {
-    opacity: 0.8;
+
+    &:hover,
+    &:focus {
+      opacity: 0.8;
+      border-color: var(--main_color);
+      outline: none;
+      padding: 5px;
+    }
   }
 }
 
 @media (max-width: 720px) {
-  .wrap.login img {
+  .wrap.popup img {
     width: 50px;
     height: 50px;
   }

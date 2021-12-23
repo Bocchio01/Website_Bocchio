@@ -33,7 +33,7 @@ export default {
     },
     multiple: {
       type: Boolean,
-      default: true
+      default: true,
     },
     start: {
       type: Array,
@@ -93,6 +93,7 @@ nav {
     row-gap: var(--app_row_column_gap);
     flex: auto;
     > p {
+      font-family: var(--Base_font);
       cursor: pointer;
       font-weight: bold;
     }
@@ -104,13 +105,16 @@ nav {
 
 .Default {
   nav {
+    font-size: calc(0.5 * var(--title_size));
+
     > div {
       justify-content: center;
       max-width: 70%;
       margin-inline: auto;
       > p {
-        padding: 5px 10px;
         font-family: var(--Special_font);
+
+        padding: 5px 10px;
         border-radius: var(--header_border_radius);
         color: var(--text_color);
         background-color: var(--background_color);
@@ -122,7 +126,6 @@ nav {
     }
     > p {
       color: var(--background_color);
-      font-family: var(--text_font);
       padding: var(--padding_articles);
     }
   }

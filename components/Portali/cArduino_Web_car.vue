@@ -10,7 +10,11 @@
         <div class="box" v-show="tags_to_view.includes(tags_array[1])">
           <h2>Joystick</h2>
 
-          <cJoyStick style="margin:auto" @change="handleChange"/>
+          <cJoyStick
+            style="margin: auto"
+            @change="handleChange"
+            :color="main_color"
+          />
 
           <div id="frequency_box">
             <span>Minima frequenza</span>
@@ -52,7 +56,9 @@
         >
           <h3 :class="checkStatus(console.status)">{{ index }}</h3>
           <p v-html="console.sended_data.join('<br>')"></p>
-          <button @click="ripulisci_console(index)" v-if="index != 'Server'">Ripulisci la console</button>
+          <button @click="ripulisci_console(index)" v-if="index != 'Server'">
+            Ripulisci la console
+          </button>
           <button @click="disconnect(index)" v-if="index != 'Server'">
             Forza disconnessione dal Server
           </button>
@@ -85,6 +91,9 @@ export default {
       tags_to_view: ['Joystick'],
       console_to_view: [],
 
+      main_color: getComputedStyle(document.documentElement).getPropertyValue(
+        '--main_color'
+      ),
       x: 0,
       y: 0,
       speed: 0,
@@ -98,7 +107,7 @@ export default {
       this.y = y
       this.speed = speed
       this.angle = angle
-      Web_car.senda({speed, angle})
+      Web_car.senda({ speed, angle })
     },
     handler(value) {
       this.tags_to_view = value
@@ -123,8 +132,8 @@ export default {
       Web_car.disconnect(target)
     },
     ripulisci_console(target) {
-      this.consoles[target].sended_data = ["Console ripulita..."]
-    }
+      this.consoles[target].sended_data = ['Console ripulita...']
+    },
   },
 }
 </script>
