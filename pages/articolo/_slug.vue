@@ -1,8 +1,11 @@
 <template>
   <article>
     <nuxt-content class="wrap" :document="article" />
-    <cNavigation :prev="prev" :next="next" :file="article.file"/>
-    <cForum v-if="article.forum"/>
+    <cNavigation
+      :navdata="{ prev: prev, next: next }"
+      :portal="{ urlPortal: article.portalurl, img: article.img }"
+    />
+    <cForum />
     <cToTop />
   </article>
 </template>
@@ -15,12 +18,12 @@ export default {
     const [article] = await $content({ deep: true })
       .where({ slug: params.slug })
       .fetch()
-      .catch((err) => {
+      .catch(() => {
         error({ statusCode: 404, message: 'Page not found' })
       })
 
     const [prev, next] = await $content('articolo', { deep: true })
-      // .only(['title', 'slug'])
+      .only(['title', 'slug', 'img'])
       .sortBy('createdAt', 'asc')
       .surround(params.slug)
       .fetch()
@@ -31,6 +34,7 @@ export default {
       next,
     }
   },
+
   head() {
     return {
       title: 'Bocchio | Articolo: ' + this.article.title,
@@ -67,7 +71,6 @@ export default {
   },
   computed: {
     meta() {
-      console.log(this.article.file)
       const metaData = {
         type: 'article',
         title: this.article.title,

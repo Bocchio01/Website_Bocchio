@@ -1,48 +1,70 @@
 <template>
   <div class="wrap_width flex_container">
-    <div class="wrap navigation" v-if="file" style="flex: 1 1 250px">
+    <div
+      class="wrap navigation"
+      v-if="files[this.urlArticle]"
+      style="flex: 1 1 270px"
+    >
       <h2>Allegati</h2>
-      <p>La cartella del progetto.</p>
+      <p v-if="files[this.urlArticle].length == 1">
+        Di seguito la cartella del progetto.
+      </p>
+      <p v-else>Di seguito le cartelle del progetto.</p>
       <div>
-
-        <div class="wrap document">
-          <p>Mega Cloud</p>
-          <cMedia s="/v1637895660/Mega_icon.png" a="Mega folder icon"></cMedia>
-          <a :href="file" target="_blank" rel="nofollow noopener noreferrer">
+        <div
+          class="wrap document"
+          v-for="(file, index) in files[this.urlArticle]"
+          :key="index"
+        >
+          <p>{{ file.host }}</p>
+          <img
+            :src="'/AttachmentIcon/' + file.host + '.png'"
+            :alt="file.host + ' icon'"
+          />
+          <a
+            :href="file.url"
+            class="link_hidden"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
             <div class="button">Scopri di più!</div>
           </a>
         </div>
-        
       </div>
     </div>
 
-    <div class="wrap navigation" style="flex: 3 1 400px" v-if="prev || next">
+    <div
+      class="wrap navigation"
+      style="flex: 2 1 270px"
+      v-if="navdata.prev || navdata.next"
+    >
       <h2>Naviga nel sito</h2>
-      <p v-if="prev && next">
-        Di seguito l'articolo precedente e il successivo in ordine temporale.
-      </p>
-      <p v-else-if="next">
-        Di seguito l'articolo successivo in ordine temporale.
-      </p>
-      <p v-else>Di seguito l'articolo precedente in ordine temporale.</p>
-      <div>
+      <p>{{ pharse }}</p>
 
-        <div class="wrap document" v-if="prev">
-          <p>{{ prev.title }}</p>
-          <cMedia :s="prev.img.src" :a="prev.img.src"></cMedia>
-          <NuxtLink :to="prev.slug">
+      <div>
+        <div class="wrap document" v-if="navdata.prev">
+          <p>{{ navdata.prev.title }}</p>
+          <cMedia :s="navdata.prev.img.src" :a="navdata.prev.img.src"></cMedia>
+          <NuxtLink :to="navdata.prev.slug" class="link_hidden">
             <div class="button ToTop"><span>&#8617;</span></div>
           </NuxtLink>
         </div>
 
-        <div class="wrap document" v-if="next">
-          <p>{{ next.title }}</p>
-          <cMedia :s="next.img.src" :a="next.img.src"></cMedia>
-          <NuxtLink :to="next.slug">
-            <div class="button ToTop"><span>&#8618;</span></div>
+        <div class="wrap document" v-if="portal.urlPortal">
+          <p>Portale del progetto</p>
+          <cMedia :s="portal.img.src" :a="portal.img.src"></cMedia>
+          <NuxtLink :to="portal.urlPortal" class="link_hidden">
+            <div class="button ToTop"><span>&#8605;</span></div>
           </NuxtLink>
         </div>
 
+        <div class="wrap document" v-if="navdata.next">
+          <p>{{ navdata.next.title }}</p>
+          <cMedia :s="navdata.next.img.src" :a="navdata.next.img.src"></cMedia>
+          <NuxtLink :to="navdata.next.slug" class="link_hidden">
+            <div class="button ToTop"><span>&#8618;</span></div>
+          </NuxtLink>
+        </div>
       </div>
     </div>
   </div>
@@ -51,87 +73,49 @@
 <script>
 export default {
   props: {
-    prev: {
+    navdata: {
       type: Object,
       default: () => null,
     },
-    next: {
+    portal: {
       type: Object,
-      default: () => null,
-    },
-    file: {
-      type: String,
       default: () => null,
     },
   },
+  data() {
+    return {
+      urlArticle: this.$route.fullPath,
+      pharse: '',
+    }
+  },
+  computed: {
+    files: {
+      get() {
+        return this.$store.state.files
+      },
+    },
+  },
+  created() {
+    var p = !!this.navdata.prev,
+        n = !!this.navdata.next,
+        u = !!this.portal.urlPortal,
+        a = '',
+        b = '',
+        c = ''
+
+    if (p) a = "l'articolo precedente"
+    if (n) b = "l'articolo successivo"
+    if (p && n) {
+      a = "l'articolo precedente, successivo"
+      b = ''
+    }
+    if (u)
+      c =
+        p || n
+          ? ' e il portale associato al progetto.'
+          : ' il portale associato al progetto.'
+
+    this.pharse = 'Di seguito ' + a + b + c + (!u ? '.' : '')
+  },
 }
 </script>
-
-<style lang="scss">
-.flex_container {
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  align-items: stretch;
-  justify-content: center;
-  column-gap: 30px;
-}
-.wrap.navigation {
-  padding: 15px;
-  margin-top: 0px;
-
-  > div {
-    display: flex;
-    justify-content: space-evenly;
-    row-gap: 20px;
-    column-gap: 20px;
-    > .document {
-      margin-inline: auto;
-      text-align: center;
-      margin: 10px;
-      padding: 15px;
-      width: fit-content;
-      > p {
-        font-weight: bold;
-      }
-      > a {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        z-index: 1;
-        height: 100%;
-        width: 100%;
-        top: 0px;
-        right: 0px;
-        visibility: hidden;
-        text-decoration: none;
-        color: var(--text_color);
-      }
-      .media {
-        margin-top: 10px;
-        margin-bottom: 0px;
-      }
-      img {
-        max-height: 150px;
-        max-width: 150px;
-      }
-      &:hover {
-        transform: scale(1.05);
-        background-color: gray;
-        > a {
-          visibility: visible;
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 750px) {
-  .wrap.navigation > div > .document img {
-    max-height: 75px;
-    max-width: 75px;
-  }
-}
-</style>

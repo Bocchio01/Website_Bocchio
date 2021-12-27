@@ -1,42 +1,163 @@
-.msg_bg {
-    z-index: 10;
-    top: 0px;
-    left: 0px;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #000000b0;
-    height: 100%;
-    width: 100%;
+.flex_container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  align-items: stretch;
+  justify-content: center;
+  column-gap: 25px;
+  row-gap: 25px;
+  margin-block: 25px;
+}
 
-    &.hidden {
-        visibility: hidden;
-        opacity: 0;
-        transition: visibility 0s linear 500ms, opacity 500ms;
+.tooltip {
+  position: relative;
+}
+
+.tooltip .tooltiptext {
+  cursor: not-allowed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  z-index: 1;
+  padding: var(--padding_articles);
+  transition: all 0.5s ease-out;
+  > mark {
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white;
+    text-align: center;
+    font-size: var(--paragraph_size);
+    border: var(--border_setting);
+    border-radius: var(--border_radius);
+  }
+}
+
+.tooltip:hover .tooltiptext {
+  opacity: 1;
+}
+
+.logo {
+  height: calc(2.5 * var(--header_font_size));
+  width: calc(2.5 * var(--header_font_size));
+  cursor: pointer;
+
+  background-color: var(--main_color);
+  -webkit-mask: url(/Lampadina_ingranaggi.svg) no-repeat center;
+  mask: url(/Lampadina_ingranaggi.svg) no-repeat center;
+  &:hover ~ a {
+    color: var(--link_hover_color);
+  }
+}
+
+.navigation {
+  padding: 15px;
+  margin-block: 0px;
+
+  > div {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    // row-gap: 20px;
+    // column-gap: 20px;
+    > .document {
+      margin-inline: auto;
+      text-align: center;
+      margin: 10px;
+      padding: 15px;
+      width: fit-content;
+      > p {
+        font-weight: bold;
+      }
+      .media {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      img {
+        border-radius: 20px;
+        background-color: white;
+        margin-top: 10px;
+        max-height: 150px;
+        max-width: 150px;
+      }
+      &:hover {
+        transform: scale(1.05);
+        background-color: gray;
+        > .link_hidden {
+          visibility: visible;
+        }
+      }
     }
-    &.visible {
-        visibility: visible;
-        opacity: 1;
-        transition: visibility 0s linear 0s, opacity 500ms;
-    }
+  }
+}
+
+.link_hidden {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  right: 0px;
+  visibility: hidden;
+  text-decoration: none !important;
+  color: var(--text_color) !important;
+}
+
+@media (max-width: 750px) {
+  .wrap.navigation > div > .document img {
+    max-height: 75px;
+    max-width: 75px;
+  }
+}
+
+.msg_bg {
+  z-index: 10;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #000000b0;
+  height: 100%;
+  width: 100%;
+
+  &.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 500ms, opacity 500ms;
+  }
+  &.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity 500ms;
+  }
 }
 
 table {
-    font-size: var(--paragraph_size);
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  th, td {
-    text-align: left;
-    padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #f2f2f2
-  }
-  
-  th {
-    background-color: var(--main_color);
-  }
+  font-size: var(--paragraph_size);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th {
+  background-color: var(--main_color);
+}

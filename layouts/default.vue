@@ -1,26 +1,28 @@
 <template>
   <div class="Default">
-    <cHeader @toParent="handler" />
+    <cHeader />
     <cSlogan />
-    <Nuxt />
+    <Nuxt keep-alive/>
     <cFooter />
 
     <lazy-cBackground />
-    <lazy-cLogin :showLogin="toggle_login" @toParent="handler" />
+    <lazy-cLogin />
+    <cLoading v-if="$store.getters.show.loading"/>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      toggle_login: false,
+  export default {
+    created() {
+
+      window.addEventListener('beforeunload', (event) => {
+        // Cancel the event as stated by the standard.
+        // event.preventDefault();
+        // Chrome requires returnValue to be set.
+        // event.returnValue = '';
+        this.$store.dispatch('InteractionsUpdate')
+      });
+
     }
-  },
-  methods: {
-    handler(value) {
-      this.toggle_login = value
-    },
-  },
-}
+  }
 </script>

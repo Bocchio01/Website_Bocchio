@@ -13,9 +13,7 @@ tag: [
     Programmazione,
     Matematica
 ]
-file: https://mega.nz/folder/YI8DyApa#9nSAe8M8QQAq-vfoDO6H_w
 
-forum: true
 portalurl: /portale/around_the_globe
 
 createdAt: 2021-08-21T15:55:00Z

@@ -273,11 +273,14 @@ export default {
 
       return new Promise((resolve, reject) => {
         xhttp.onreadystatechange = (e) => {
-          if (xhttp.readyState != 4 && xhttp.status == 200) {
-            // console.log(JSON.parse(xhttp.responseText))
-            resolve(JSON.parse(xhttp.responseText).Result.Data)
-          } else {
-            // console.warn('request_error')
+          if (xhttp.readyState === 4) {
+            if (xhttp.status === 200) {
+              resolve(JSON.parse(xhttp.responseText).Result.Data)
+            } else {
+              reject(
+                console.warn('Errore nella richiesta: Status ->' + xhttp.status)
+              )
+            }
           }
         }
         xhttp.open(

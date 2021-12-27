@@ -12,8 +12,6 @@ img:
 tag: [
     Programmazione
 ]
-file: https://mega.nz/folder/YI8DyApa#9nSAe8M8QQAq-vfoDO6H_w
-forum: true
 
 createdAt: 2021-06-09T12:47:00Z
 updatedAt: 2021-11-05T21:54:00Z

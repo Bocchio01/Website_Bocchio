@@ -68,7 +68,7 @@ export default {
     //analyze: true,
   },
   ssr: false,
-  loadingIndicator: '~/components/loading.html',
+  // loadingIndicator: '~/components/loading.html',
 
   image: {
     cloudinary: {

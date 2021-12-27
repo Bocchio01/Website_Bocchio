@@ -13,27 +13,23 @@
 ---
 
 ## Articoli
-- Maggior controllo dal Database:
-  - Forum: si/no
-  - Allegati
-  - Tag
 - Allegati:
   - Link
-  - Files da MEGA
 - Condivisione social:
   - Facebook
   - What's App
   - Twitter
   - Instagram (?)
 - Navigazione nel sito:
-  - Portale associato
-  - Articoli (precedente + successivo) => sistemare il CSS
-  - Elenco Articoli / Portali
-- Forum
+  - Link che rimanda ad Elenco Articoli / Portali da cNavigation
 
 ---
 
 ## Portali
-
 - Header and footer => sistemare il CSS
 - Ottimizzare i file (.md + .js)
+
+---
+
+## Server
+- Sistemare lato server il Data di ritorno al login

@@ -18,7 +18,7 @@
         <span class="navicon"></span>
       </label>
     </div>
-    <ul :style="{ 'max-height': [showMenu ? '500px' : '0px'] }">
+    <ul :style="!showMenu ? 'max-height: 0px' : 'max-height: 500px'">
       <li><nuxt-link to="/elenco/articolo">Articoli</nuxt-link></li>
       <li><nuxt-link to="/elenco/portale">Portali</nuxt-link></li>
       <li>
@@ -30,7 +30,7 @@
           style="cursor: pointer"
           >Mix</a
         >
-        <ul class="dropdown-content" v-show="showSubMenu">
+        <ul class="dropdown-content" :class="!showSubMenu ? 'hide' : ''">
           <li><nuxt-link to="/articolo/chi sono">Chi sono?</nuxt-link></li>
           <li>
             <nuxt-link to="/articolo/qual é lo scopo"
@@ -38,12 +38,7 @@
             >
           </li>
           <li>
-            <a
-              href="#"
-              @click="
-                $emit('toParent', true)
-                Menu_click()
-              "
+            <a href="#" @click="$store.commit('toggle_show', 'login')"
               >Area personale</a
             >
           </li>
@@ -55,11 +50,23 @@
 
 <script>
 export default {
-  data() {
-    return {
-      showMenu: false,
-      showSubMenu: false,
-    }
+  computed: {
+    showMenu: {
+      get() {
+        return this.$store.state.show.mainmenu
+      },
+      set(value) {
+        this.$store.commit('set_show', ['mainmenu', value])
+      },
+    },
+    showSubMenu: {
+      get() {
+        return this.$store.state.show.submenu
+      },
+      set(value) {
+        this.$store.commit('set_show', ['submenu', value])
+      },
+    },
   },
   methods: {
     Menu_click() {
@@ -84,7 +91,8 @@ export default {
 .Default {
   header,
   .dropdown-content {
-      color: var(--text_color);
+    transition: all 0.1s ease-in;
+    color: var(--text_color);
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -95,6 +103,12 @@ export default {
     border-radius: var(--header_border_radius);
     -webkit-border-radius: var(--header_border_radius);
     -moz-border-radius: var(--header_border_radius);
+  }
+
+  .hide {
+    max-height: 0px !important;
+    opacity: 0;
+    visibility: hidden;
   }
 
   header {
@@ -117,32 +131,23 @@ export default {
       > div {
         display: flex;
         align-items: center;
-        > .logo {
-          height: calc(2.5 * var(--header_font_size));
-          width: calc(2.5 * var(--header_font_size));
-          cursor: pointer;
-
-          background-color: var(--main_color);
-          -webkit-mask: url(/Lampadina_ingranaggi.svg) no-repeat center;
-          mask: url(/Lampadina_ingranaggi.svg) no-repeat center;
-          &:hover ~ a {
-            color: var(--link_hover_color);
-          }
-        }
       }
       > .menu-btn {
         display: none;
         &:checked ~ .menu-icon {
-          background: transparent;
-          &::after,
-          &::before {
-            top: 0;
-          }
-          &::before {
-            transform: rotate(-45deg);
-          }
-          &::after {
-            transform: rotate(45deg);
+          > .navicon {
+            background: transparent;
+
+            &::after,
+            &::before {
+              top: 0;
+            }
+            &::before {
+              transform: rotate(-45deg);
+            }
+            &::after {
+              transform: rotate(45deg);
+            }
           }
         }
       }
@@ -175,12 +180,15 @@ export default {
         }
       }
     }
+
     ul {
+      transition: all 0.2s ease-in;
       display: flex;
       list-style-type: none;
       padding: 0px;
     }
     .dropdown-content {
+      max-height: 220px;
       display: block;
       position: absolute;
       right: 0px;
@@ -200,7 +208,7 @@ export default {
       ul {
         display: block;
         overflow: hidden;
-        transition: max-height 0.3s ease-out;
+        // transition: max-height 0.3s ease-out;
         > li {
           text-align: center;
         }

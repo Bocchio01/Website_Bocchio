@@ -7,6 +7,13 @@
 <script>
 export default {
   name: 'cBackground',
+  mounted() {
+    window.onscroll = () => {
+      this.$store.commit('set_show', ['submenu', false])
+      this.$store.commit('set_show', ['mainmenu', false])
+      document.getElementById('menu-btn').checked = false
+    }
+  },
 }
 </script>
 

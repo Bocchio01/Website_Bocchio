@@ -1,6 +1,4 @@
 * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0px;
 }
@@ -22,7 +20,7 @@
 --transition_setting: all 0.2s ease-in-out;
 --border_radius: 20px;
 --title_size: 40px;
---paragraph_size: calc(18px + var(--add_size));
+--paragraph_size: calc(15px + var(--add_size));
 --padding_articles: 64px;
 
 /* Header - Footer*/

@@ -3,7 +3,7 @@
     class="wrap card"
     v-show="useTag ? tags.some((r) => obj.tag.includes(r)) : true"
   >
-    <nuxt-link :to="obj.path"
+    <nuxt-link :to="obj.path" class="link_hidden"
       ><div class="button">{{ msg }}</div></nuxt-link
     >
     <div>
@@ -26,20 +26,20 @@ export default {
   props: {
     obj: {
       type: Object,
-      required: true
+      required: true,
     },
     useTag: {
       type: Boolean,
       default: false,
     },
     tags: {
-      type: Array
+      type: Array,
     },
     msg: {
       type: String,
       default: 'Scopri di più',
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -60,25 +60,10 @@ export default {
       max-width: fit-content;
     }
   }
-  > a {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    z-index: 1;
-    height: 100%;
-    width: 100%;
-    top: 0px;
-    right: 0px;
-    visibility: hidden;
+  > .link_hidden > div.button {
+    font-size: calc(var(--paragraph_size) + 5px);
+    font-family: var(--Special_font);
     text-decoration: none;
-    color: var(--text_color);
-    > div.button {
-      font-size: calc(var(--paragraph_size) + 5px);
-      font-family: var(--Special_font);
-      text-decoration: none;
-    }
   }
   > img {
     margin: auto;
@@ -89,7 +74,7 @@ export default {
   &:hover {
     transform: scale(1.05);
     background-color: gray;
-    > a {
+    > .link_hidden {
       visibility: visible;
     }
     > img {
