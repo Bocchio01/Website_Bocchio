@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  created() {
+  mounted() {
     window.addEventListener('beforeunload', () => {
       this.$store.dispatch('InteractionsUpdate')
     })

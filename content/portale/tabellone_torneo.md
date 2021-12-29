@@ -11,5 +11,5 @@ img:
     alt: Tabellone_Torneo
 articleurl:
 ---
-
-<Portali-cTabellone-torneo></Portali-cTabellone-torneo>
+# In costruzione...
+<!-- <Portali-cTabellone-torneo></Portali-cTabellone-torneo> -->

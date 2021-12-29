@@ -3,7 +3,7 @@ import sendRequest from '@/assets/js/sendRequest.js'
 export const state = () => ({
     status: '',
     user: {
-        token: localStorage.getItem('token') || null,
+        token: null,
         nickname: null,
         email: null,
         password: null,
@@ -82,6 +82,10 @@ export const mutations = {
     setfiles(state, files) {
         state.files = files
     },
+
+    set_token(state) {
+        state.user.token = localStorage.getItem('token') || null
+    }
 }
 
 export const actions = {

@@ -1,3 +1,5 @@
 export default function ({ store, route }) {
-    store.commit('CounterVisite', route.fullPath)
+    if (!process.server) {
+        store.commit('CounterVisite', route.fullPath)
+    }
 }

@@ -12,6 +12,7 @@
 ---
 
 ## Articoli
+- Barra di ricerca
 
 - Possibili:
   - Lettura con player audio integrato

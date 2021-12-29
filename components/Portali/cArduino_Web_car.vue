@@ -91,14 +91,21 @@ export default {
       tags_to_view: ['Joystick'],
       console_to_view: [],
 
-      main_color: getComputedStyle(document.documentElement).getPropertyValue(
-        '--main_color'
-      ),
       x: 0,
       y: 0,
       speed: 0,
       angle: 0,
     }
+  },
+
+  computed: {
+    main_color: {
+      get() {
+        return getComputedStyle(document.documentElement).getPropertyValue(
+          '--main_color'
+        )
+      },
+    },
   },
 
   methods: {

@@ -8,6 +8,7 @@
 <script>
 export default {
   mounted() {
+    this.$store.commit('set_token')
     this.$store.dispatch('UserLogin')
     this.$store.dispatch('InteractionsUpdate')
     this.$store.dispatch('GetAllFile')

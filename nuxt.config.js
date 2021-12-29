@@ -67,7 +67,7 @@ export default {
   build: {
     //analyze: true,
   },
-  ssr: false,
+  ssr: true,
   // loadingIndicator: '~/components/loading.html',
 
   image: {
