@@ -4,7 +4,6 @@
   </div>
 </template>
 
-
 <script>
 export default {
   data() {
@@ -20,7 +19,7 @@ export default {
             'Infine credo fortemente nel contatto con la natura quale fonte di ispirazione, ed è probabilmente per questo che pratico Orienteering...',
           ],
           img: {
-            src: '/v1632947037/Chi_sono.svg',
+            src: '#Chi_sono',
             alt: 'Chi sono?',
           },
         },
@@ -34,7 +33,7 @@ export default {
             '<b>La diffusione dei contenuti, delle idee o dei concetti che è possibile trovare tra queste pagine è assolutamente un atto positivo e da promuovere.</b>',
           ],
           img: {
-            src: '/v1632947035/Contenuti.svg',
+            src: '#Contenuti',
             alt: 'I contenuti del sito',
           },
         },
@@ -47,7 +46,7 @@ export default {
             '<b>Lo scopo è quindi sempre stato quello di creare uno spazio web che fosse al 100% personale</b> e da gestire in completa autonomia. Durante il suo sviluppo mi sono però reso conto del suo <b>enorme potenziale</b>, che andava ben oltre la semplice vetrina di articoli e post...',
           ],
           img: {
-            src: '/v1632947036/Scopo.svg',
+            src: '#Scopo',
             alt: 'Lo scopo del sito',
           },
         },

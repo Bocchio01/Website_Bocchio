@@ -83,11 +83,11 @@ export default {
     manifest: {
       name: 'Sito personale di Tommaso Bocchietti',
       short_name: "Bocchio's WebSite",
-      description: "Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione alla fisica fino all'orienteering.",
+      description: "Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione alla fisica.",
       background_color: "#000000",
       theme_color: "#000000",
       lang: 'it',
-      useWebmanifestExtension: false
+      useWebmanifestExtension: true
     }
 
   },

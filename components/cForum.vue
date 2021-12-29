@@ -54,7 +54,7 @@
     </div>
 
     <div class="wrap write tooltip">
-      <span class="tooltiptext" v-show="!$store.state.user.token"
+      <span class="tooltiptext" v-show="!$store.state.user.token" @click="$store.commit('toggle_show', 'login')"
         ><mark
           >Effettua il Login per poter partecipare alla discussione</mark
         ></span
@@ -142,7 +142,8 @@ import sendRequest from '@/assets/js/sendRequest.js'
 export default {
   data() {
     return {
-      posts: {},
+      // posts: {},
+      posts: null,
       forum: true,
       foo: {
         status: false,

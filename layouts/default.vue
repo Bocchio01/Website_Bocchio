@@ -1,28 +1,22 @@
 <template>
   <div class="Default">
+    <cLoading v-if="$store.getters.show.loading" />
     <cHeader />
     <cSlogan />
-    <Nuxt keep-alive/>
-    <cFooter />
+    <Nuxt keep-alive />
+    <lazy-cFooter />
 
     <lazy-cBackground />
     <lazy-cLogin />
-    <cLoading v-if="$store.getters.show.loading"/>
   </div>
 </template>
 
 <script>
-  export default {
-    created() {
-
-      window.addEventListener('beforeunload', (event) => {
-        // Cancel the event as stated by the standard.
-        // event.preventDefault();
-        // Chrome requires returnValue to be set.
-        // event.returnValue = '';
-        this.$store.dispatch('InteractionsUpdate')
-      });
-
-    }
-  }
+export default {
+  created() {
+    window.addEventListener('beforeunload', () => {
+      this.$store.dispatch('InteractionsUpdate')
+    })
+  },
+}
 </script>

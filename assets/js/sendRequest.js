@@ -17,9 +17,8 @@ export default (args) => {
                         reject(json)
                     }
                 } else {
-                    reject(
-                        console.warn('Errore nella richiesta: Status -> ' + xhttp.status)
-                    )
+                    console.warn('Errore nella richiesta: Status -> ' + xhttp.status)
+                    reject({ Log: ['Il server sembrerebbe non rispondere'] })
                 }
             }
         }

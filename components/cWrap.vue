@@ -10,14 +10,34 @@
       <h1>{{ obj.title }}</h1>
       <p v-html="obj.paragraph.join('<br>')"></p>
     </div>
-    <nuxt-img
-      v-if="obj.img.src.indexOf('http') == -1"
-      provider="cloudinary"
-      :src="obj.img.src"
-      :alt="obj.img.alt"
-      height="300px"
-    />
-    <img v-else :src="obj.img.src" :alt="obj.img.alt" height="300px" />
+
+    <figure>
+      <!--
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+      '2xl': 1536
+      -->
+
+      <svg v-if="obj.img.src.indexOf('#') == 0">
+        <use
+          :xlink:href="'/svg/svg_list.svg' + obj.img.src"
+          :alt="obj.img.alt"
+        ></use>
+      </svg>
+
+      <nuxt-picture
+        v-else-if="obj.img.src.indexOf('http') == -1"
+        provider="cloudinary"
+        :src="obj.img.src"
+        v-bind:alt="obj.img.alt"
+        format="webp"
+      />
+      <img v-else :src="obj.img.src" :alt="obj.img.alt" />
+    </figure>
   </div>
 </template>
 
@@ -46,6 +66,8 @@ export default {
 <style lang="scss">
 .wrap.card {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   row-gap: 15px;
   column-gap: 64px;
@@ -65,11 +87,19 @@ export default {
     font-family: var(--Special_font);
     text-decoration: none;
   }
-  > img {
+  img,
+  svg {
+    height: 300px;
     margin: auto;
     border-radius: 20px;
-    max-height: 300px;
     transition: all 0.2s ease-in-out;
+    max-width: 100%;
+    border-radius: 20px;
+    background-color: white;
+  }
+  svg {
+    padding: 15px;
+    aspect-ratio: 1;
   }
   &:hover {
     transform: scale(1.05);
@@ -77,15 +107,18 @@ export default {
     > .link_hidden {
       visibility: visible;
     }
-    > img {
+    img, svg {
       transform: scale(1.1);
     }
   }
 }
 @media (max-width: 1030px) {
-  .wrap.card > img {
-    max-height: 200px;
-    max-width: 100%;
+  .wrap.card {
+     img,
+     svg {
+      max-height: 200px;
+      max-width: 100%;
+    }
   }
 }
 </style>

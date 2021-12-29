@@ -11,7 +11,9 @@ export default {
     window.onscroll = () => {
       this.$store.commit('set_show', ['submenu', false])
       this.$store.commit('set_show', ['mainmenu', false])
-      document.getElementById('menu-btn').checked = false
+      try {
+        document.getElementById('menu-btn').checked = false
+      } catch (error) {}
     }
   },
 }

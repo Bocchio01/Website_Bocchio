@@ -7,10 +7,12 @@
 /* General */
 --main_color: orange;
 --add_size: 0px;
+--black: black;
+--white: white;
 
---text_color: black;
---background_color: white;
---background_color_body: black;
+--text_color: var(--black);
+--background_color: var(--white);
+--background_color_body: var(--black);
 --link_hover_color: var(--main_color);
 --Special_font: "Bungee Shade", cursive;
 --Base_font: "Roboto Condensed", sans-serif;
@@ -20,7 +22,7 @@
 --transition_setting: all 0.2s ease-in-out;
 --border_radius: 20px;
 --title_size: 40px;
---paragraph_size: calc(15px + var(--add_size));
+--paragraph_size: calc(17px + var(--add_size));
 --padding_articles: 64px;
 
 /* Header - Footer*/
@@ -35,7 +37,7 @@
 /* Portali */
 --Nav_color: var(--main_color);
 --App_font: "monospace";
---app_border_setting: 2px solid black;
+--app_border_setting: 2px solid var(--black);
 --app_border_setting_evidence: 3px solid var(--main_color);
 --app_row_column_gap: 20px;
 

@@ -6,8 +6,6 @@
 .result {
     padding: 10px;
     border-radius: var(--border_radius);
-    -webkit-border-radius: var(--border_radius);
-    -moz-border-radius: var(--border_radius);
     align-content: center;
     align-items: center;
     justify-content: center;
@@ -50,6 +48,9 @@ button,
 }
 
 button, .button {
+    // color: var(--text_color);
+    color: black;
+
     display: block;
     cursor: pointer;
     padding: 10px;

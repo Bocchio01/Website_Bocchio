@@ -45,8 +45,6 @@ export default {
     width: 100%;
     border: var(--border_setting);
     background-color: var(--background_color);
-    -webkit-border-radius: var(--header_border_radius);
-    -moz-border-radius: var(--header_border_radius);
     border-radius: var(--header_border_radius);
     z-index: 2;
     padding-block: 20px;
@@ -59,7 +57,7 @@ export default {
       &:nth-last-child(1) {
         color: #a2a2a2;
         border-top: var(--border_setting);
-        border-top-color: black;
+        border-top-color: var(--text_color);
       }
     }
     > div > a {

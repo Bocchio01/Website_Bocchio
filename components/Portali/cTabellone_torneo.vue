@@ -445,26 +445,26 @@ export default {
   min-width: fit-content;
 }
 
-div.inline {
-  margin-block: 10px;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  column-gap: 10px;
-  row-gap: 10px;
-  > label {
-    width: 50%;
-    min-width: fit-content;
-    font-size: var(--paragraph_size);
-  }
-  > button,
-  input {
-    margin-left: 0;
-    margin-block: 0px;
-  }
-}
+// div.inline {
+//   margin-block: 10px;
+//   display: flex;
+//   align-items: center;
+//   flex-wrap: wrap;
+//   column-gap: 10px;
+//   row-gap: 10px;
+//   > label {
+//     width: 50%;
+//     min-width: fit-content;
+//     font-size: var(--paragraph_size);
+//   }
+//   > button,
+//   input {
+//     margin-left: 0;
+//     margin-block: 0px;
+//   }
+// }
 
-.mb {
-  margin-bottom: var(--app_row_column_gap);
-}
+// .mb {
+//   margin-bottom: var(--app_row_column_gap);
+// }
 </style>

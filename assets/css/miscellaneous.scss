@@ -9,6 +9,30 @@
   margin-block: 25px;
 }
 
+
+input[type='radio'] {
+  display: none;
+}
+
+input[type='radio']+label span {
+  display: inline-block;
+  width: 20px !important;
+  height: 20px !important;
+  margin: -2px 10px 0 0 !important;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 50%;
+  border: var(--app_border_setting);
+}
+
+input[type='radio']:checked+label {
+  font-weight: bold;
+}
+
+input[type='radio']:checked+label span {
+  background-color: var(--main_color);
+}
+
 .tooltip {
   position: relative;
 }
@@ -42,56 +66,14 @@
 }
 
 .logo {
-  height: calc(2.5 * var(--header_font_size));
-  width: calc(2.5 * var(--header_font_size));
+  height: calc(2 * var(--header_font_size));
+  width: calc(2 * var(--header_font_size));
   cursor: pointer;
 
   background-color: var(--main_color);
-  -webkit-mask: url(/Lampadina_ingranaggi.svg) no-repeat center;
-  mask: url(/Lampadina_ingranaggi.svg) no-repeat center;
+  mask: url("/svg/Lampadina_ingranaggi.svg") no-repeat center;
   &:hover ~ a {
     color: var(--link_hover_color);
-  }
-}
-
-.navigation {
-  padding: 15px;
-  margin-block: 0px;
-
-  > div {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    // row-gap: 20px;
-    // column-gap: 20px;
-    > .document {
-      margin-inline: auto;
-      text-align: center;
-      margin: 10px;
-      padding: 15px;
-      width: fit-content;
-      > p {
-        font-weight: bold;
-      }
-      .media {
-        margin-top: 0px;
-        margin-bottom: 0px;
-      }
-      img {
-        border-radius: 20px;
-        background-color: white;
-        margin-top: 10px;
-        max-height: 150px;
-        max-width: 150px;
-      }
-      &:hover {
-        transform: scale(1.05);
-        background-color: gray;
-        > .link_hidden {
-          visibility: visible;
-        }
-      }
-    }
   }
 }
 
@@ -109,13 +91,6 @@
   visibility: hidden;
   text-decoration: none !important;
   color: var(--text_color) !important;
-}
-
-@media (max-width: 750px) {
-  .wrap.navigation > div > .document img {
-    max-height: 75px;
-    max-width: 75px;
-  }
 }
 
 .msg_bg {

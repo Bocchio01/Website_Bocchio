@@ -1,21 +1,16 @@
 <template>
   <div class="Portale">
+    <cLoading v-if="$store.getters.show.loading" />
     <Nuxt />
-    <!-- <lazy-cLogin :showLogin="toggle_login" @toParent="handler"/> -->
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      toggle_login: false,
-    }
-  },
-  methods: {
-    handler(value) {
-      this.toggle_login = value
-    },
+  created() {
+    window.addEventListener('beforeunload', () => {
+      this.$store.dispatch('InteractionsUpdate')
+    })
   },
 }
 </script>

@@ -1,27 +1,29 @@
 # To-do list
 
----
-
 ## Generale
-- Traduzione di lingua, possibilità:
-  - I18n
-  - A mano (solo italino e inglese)
 - Head tag and SEO: controllare le card di condivisione
-- Sistema di login:
-  - Sistema dark/light
+- Privacy and user information (laws)
+
+- Possibili:
+  - Traduzione di lingua, possibilità:
+    - I18n
+    - A mano (solo italino e inglese)
 
 ---
 
 ## Articoli
-- Allegati:
-  - Link
-- Condivisione social:
-  - Facebook
-  - What's App
-  - Twitter
-  - Instagram (?)
-- Navigazione nel sito:
-  - Link che rimanda ad Elenco Articoli / Portali da cNavigation
+
+- Possibili:
+  - Lettura con player audio integrato
+  - Allegati:
+    - Link
+  - Condivisione social:
+    - Facebook
+    - What's App
+    - Twitter
+    - Instagram (?)
+  - Navigazione nel sito:
+    - Link che rimanda ad Elenco Articoli / Portali da cNavigation
 
 ---
 
@@ -32,4 +34,4 @@
 ---
 
 ## Server
-- Sistemare lato server il Data di ritorno al login
+- Best practice (database, variable, function type definition)

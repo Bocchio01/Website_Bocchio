@@ -101,8 +101,6 @@ export default {
     background-color: var(--background_color);
     border: var(--border_setting);
     border-radius: var(--header_border_radius);
-    -webkit-border-radius: var(--header_border_radius);
-    -moz-border-radius: var(--header_border_radius);
   }
 
   .hide {
@@ -157,14 +155,14 @@ export default {
         padding: 30px;
         > .navicon {
           align-self: center;
-          background: #333;
+          background: var(--text_color);
           height: 2px;
           position: relative;
           transition: all 0.2s ease-out;
           width: 18px;
           &::after,
           &::before {
-            background: #333;
+            background: var(--text_color);
             content: '';
             height: 100%;
             position: absolute;

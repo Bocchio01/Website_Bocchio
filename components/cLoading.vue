@@ -23,6 +23,7 @@ export default {
 
 <style lang="scss">
 div.loading {
+  z-index: 10;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -40,16 +41,18 @@ div.loading {
   transition: all 1000ms ease-in;
   > .logo {
     transition: all 1s 0.5s ease-in;
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
     cursor: unset;
+    margin-bottom: 10px;
   }
 }
 
-// @media (max-width: 550px) {
-//   div.loading.logo {
-//     width: 300px;
-//     height: 300px;
-//   }
-// }
+@media (max-width: 550px) {
+  div.loading > .logo {
+    width: 300px;
+    height: 300px;
+    max-width: 80vw;
+  }
+}
 </style>

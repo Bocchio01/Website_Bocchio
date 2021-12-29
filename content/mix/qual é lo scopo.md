@@ -4,7 +4,6 @@ description: Le ragioni che hanno portato alla creazione del sito Bocchio's WebS
 img: 
     src: /v1632947036/Scopo.svg
     alt: Qual é lo scopo?
-forum: false
 
 createdAt: 2021-10-20T00:00:00Z
 updatedAt: 2021-11-01T00:00:00Z
@@ -12,7 +11,7 @@ updatedAt: 2021-11-01T00:00:00Z
 
 # Qual é lo scopo?
 
-<cMedia :s="img.src" :a="img.src"></cMedia>
+<cMedia s="#Scopo" :a="img.src" type="svg"></cMedia>
 
 ## Questione di esigenze
 

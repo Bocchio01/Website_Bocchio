@@ -4,7 +4,6 @@ description: About page del sito Bocchio's WebSite. La mia presentazione, i miei
 img: 
     src: /v1632947037/Chi_sono.svg
     alt: Chi sono?
-forum: false
 
 createdAt: 2021-06-20T00:16:00Z
 updatedAt: 2021-11-01T00:00:00Z
@@ -12,7 +11,7 @@ updatedAt: 2021-11-01T00:00:00Z
 
 # Chi sono?
 
-<cMedia :s="img.src" :a="img.src"></cMedia>
+<cMedia s="#Chi_sono" :a="img.src" type="svg"></cMedia>
 
 ## Ciao!
 

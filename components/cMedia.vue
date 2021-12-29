@@ -1,7 +1,7 @@
 <template>
   <div class="media">
     <figure
-      v-if="type == 'img'"
+      v-if="type == 'img' || type == 'svg'"
       :class="[espansione ? 'embedded_img msg_bg visible' : '']"
       @click="expand()"
     >
@@ -14,8 +14,13 @@
       xxl: 1536,
       '2xl': 1536
       -->
+
+      <svg v-if="s.indexOf('#') == 0">
+        <use :xlink:href="'/svg/svg_list.svg' + s" :alt="a"></use>
+      </svg>
+
       <nuxt-picture
-        v-if="provider == 'Cloudinary'"
+        v-else-if="provider == 'Cloudinary'"
         provider="cloudinary"
         :src="s"
         sizes="xs:320px sm:400px md:460px lg:700px"
@@ -73,11 +78,17 @@ export default {
 .media {
   margin-block: 30px;
   text-align: center;
-  &:first-of-type img {
+  &:first-of-type img,
+  &:first-of-type svg {
     max-height: 450px;
     width: unset;
   }
   > figure {
+    svg {
+      padding: 20px;
+      aspect-ratio: 1;
+    }
+    svg,
     img,
     > video,
     > iframe {
@@ -97,6 +108,7 @@ export default {
     &.embedded_img {
       color: white;
       overflow: auto;
+
       img {
         z-index: 7;
         max-width: 90vw;

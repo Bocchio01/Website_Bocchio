@@ -46,7 +46,7 @@
           <p>{{ navdata.prev.title }}</p>
           <cMedia :s="navdata.prev.img.src" :a="navdata.prev.img.src"></cMedia>
           <NuxtLink :to="navdata.prev.slug" class="link_hidden">
-            <div class="button ToTop"><span>&#8617;</span></div>
+            <div class="button"><span>&#8617;</span></div>
           </NuxtLink>
         </div>
 
@@ -54,7 +54,7 @@
           <p>Portale del progetto</p>
           <cMedia :s="portal.img.src" :a="portal.img.src"></cMedia>
           <NuxtLink :to="portal.urlPortal" class="link_hidden">
-            <div class="button ToTop"><span>&#8605;</span></div>
+            <div class="button"><span>&#8605;</span></div>
           </NuxtLink>
         </div>
 
@@ -62,7 +62,7 @@
           <p>{{ navdata.next.title }}</p>
           <cMedia :s="navdata.next.img.src" :a="navdata.next.img.src"></cMedia>
           <NuxtLink :to="navdata.next.slug" class="link_hidden">
-            <div class="button ToTop"><span>&#8618;</span></div>
+            <div class="button"><span>&#8618;</span></div>
           </NuxtLink>
         </div>
       </div>
@@ -97,11 +97,11 @@ export default {
   },
   created() {
     var p = !!this.navdata.prev,
-        n = !!this.navdata.next,
-        u = !!this.portal.urlPortal,
-        a = '',
-        b = '',
-        c = ''
+      n = !!this.navdata.next,
+      u = !!this.portal.urlPortal,
+      a = '',
+      b = '',
+      c = ''
 
     if (p) a = "l'articolo precedente"
     if (n) b = "l'articolo successivo"
@@ -112,10 +112,58 @@ export default {
     if (u)
       c =
         p || n
-          ? ' e il portale associato al progetto.'
-          : ' il portale associato al progetto.'
+          ? ' e il portale associato al progetto'
+          : ' il portale associato al progetto'
 
-    this.pharse = 'Di seguito ' + a + b + c + (!u ? '.' : '')
+    this.pharse = 'Di seguito ' + a + b + c + '.'
   },
 }
 </script>
+
+<style lang="scss">
+.wrap.navigation {
+  padding: 15px;
+  margin-block: 0px;
+
+  > div {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    > .document {
+      margin-inline: auto;
+      text-align: center;
+      margin: 10px;
+      padding: 15px;
+      width: fit-content;
+      > p {
+        font-weight: bold;
+      }
+      .media {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      img {
+        border-radius: 20px;
+        background-color: white;
+        margin-top: 10px;
+        max-height: 150px;
+        max-width: 150px;
+      }
+      &:hover {
+        transform: scale(1.05);
+        background-color: gray;
+        > .link_hidden {
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .wrap.navigation > div > .document img {
+    max-height: 75px;
+    max-width: 75px;
+  }
+}
+</style>
