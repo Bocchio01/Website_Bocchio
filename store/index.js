@@ -101,7 +101,7 @@ export const actions = {
     UserSignup({ commit, state }) {
         commit('auth_request')
         return sendRequest({ action: 'UserSignup', data: JSON.stringify(state.user) })
-            .then(res => commit('auth_error', res.Log.pop()))
+            .then(res => (res.Log.pop(), commit('auth_error', res.Log)))
             .catch(res => commit('auth_error', res.Log))
     },
 

@@ -3,7 +3,7 @@ import getSiteMeta from './assets/js/getSiteMeta.js';
 const meta = getSiteMeta();
 
 export default {
-  target: 'static',
+  target: "static",
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -94,25 +94,6 @@ export default {
 
   generate: {
     fallback: true,
-
-    async routes() {
-      // const static_routes = ['/elenco/articolo', '/elenco/portale']
-      const static_routes = []
-      const { $content } = require('@nuxt/content')
-      const Articoli = await $content('articolo', { deep: true }).only(['slug']).fetch()
-      // const Portali = await $content('portale', { deep: true }).only(['slug']).fetch()
-      const Mix = await $content('mix', { deep: true }).only(['slug']).fetch()
-      // const Generici = await $content().only(['slug']).fetch()
-
-      var link_Articoli = Articoli.map(articolo => '/articolo/' + articolo.slug + '/')
-      // var link_Portali = Portali.map(portale => '/portale/' + portale.slug + '/')
-      var link_Mix = Mix.map(mix => '/articolo/' + mix.slug + '/')
-      // var link_Generici = Generici.map(generico => '/articolo/' + generico.slug + '/')
-
-      // return static_routes.concat(link_Articoli, link_Portali, link_Mix, link_Generici)
-      return static_routes.concat(link_Articoli, link_Mix)
-    }
-
   },
 
   sitemap: {

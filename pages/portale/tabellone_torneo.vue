@@ -215,6 +215,8 @@
 </template>
 
 <script>
+import sendRequest from '@/assets/js/sendRequest.js'
+
 export default {
   data() {
     return {
@@ -265,38 +267,12 @@ export default {
   },
 
   methods: {
-    sendRequest(args) {
-      const xhttp = new XMLHttpRequest()
-      const FD = new FormData()
-      for (const [key, value] of Object.entries(args)) {
-        FD.append(key, value)
-      }
 
-      return new Promise((resolve, reject) => {
-        xhttp.onreadystatechange = (e) => {
-          if (xhttp.readyState === 4) {
-            if (xhttp.status === 200) {
-              resolve(JSON.parse(xhttp.responseText).Result.Data)
-            } else {
-              reject(
-                console.warn('Errore nella richiesta: Status ->' + xhttp.status)
-              )
-            }
-          }
-        }
-        xhttp.open(
-          'POST',
-          process.env.UTILS_SITE + '/Tabellone_Torneo/Main.php'
-        )
-
-        xhttp.send(FD)
-      })
-    },
     request_tornei() {
-      this.sendRequest({
+      sendRequest({
         action: 'request_data',
         table: 'CalcioBalilla_Tornei',
-        nickname: sessionStorage.nickname,
+        nickname: this.$store.state.user.nickname,
       }).then((res) => (this.tornei = res))
     },
 
@@ -306,7 +282,7 @@ export default {
       }
     },
     agg() {
-      this.sendRequest({
+      sendRequest({
         action: 'set_result',
         winner: document.getElementById('winner_sq').value,
         punteggio: document.getElementById('result').value,
@@ -315,14 +291,14 @@ export default {
       }).then((res) => (console.log(res), this.TorneoSelezionato()))
     },
     setuptabellone() {
-      this.sendRequest({
+      sendRequest({
         action: 'create_tabellone',
         id_torneo: this.torneo.id,
       }).then((res) => (console.log(res), this.TorneoSelezionato()))
     },
 
     show_setup() {
-      return sessionStorage.nickname == this.torneo.creator
+      return this.$store.state.user.nickname == this.torneo.creator
     },
     handler(value) {
       this.tags_to_view = value
@@ -335,18 +311,18 @@ export default {
     },
 
     create() {
-      this.sendRequest({
+      sendRequest({
         action: 'create_torneo',
         nome_torneo: document.getElementById('nome_torneo_scelto').value,
-        nickname: sessionStorage.nickname,
+        nickname: this.$store.state.user.nickname,
       }).then((res) => (console.log(res), this.request_tornei()))
     },
 
     uploadData() {
-      this.sendRequest({
+      sendRequest({
         action: 'upload_data',
         id_torneo: this.torneo.id,
-        nickname: sessionStorage.nickname,
+        nickname: this.$store.state.user.nickname,
         file: document.getElementById('csv_id').files[0],
       }).then((res) => (console.log(res), this.TorneoSelezionato()))
     },
@@ -360,13 +336,13 @@ export default {
       this.torneo.creator = result.Creatore
       this.torneo.name = result.nome_torneo
 
-      this.sendRequest({
+      sendRequest({
         action: 'request_data',
         table: 'CalcioBalilla_Squadre',
         id: this.torneo.id,
       }).then((res) => (this.torneo.squadre = res))
 
-      this.sendRequest({
+      sendRequest({
         action: 'request_data',
         table: 'CalcioBalilla_Tabellone',
         id: this.torneo.id,

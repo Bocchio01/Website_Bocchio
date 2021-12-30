@@ -17,7 +17,7 @@
 import getSiteMeta from '@/assets/js/getSiteMeta.js'
 
 export default {
-  async asyncData({ $content, params }) {
+  async asyncData({ $content }) {
     var tags_array = []
     const articles = await $content('articolo', { deep: true })
       .only(['title', 'slug', 'paragraph', 'img', 'tag'])

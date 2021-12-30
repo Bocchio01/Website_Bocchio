@@ -73,7 +73,7 @@
             <div class="compass-bg">
               <img
                 class="compass-pointer"
-                src="http://vasilis-tsirimokos.com/codepen/compass-pointer.png"
+                src="https://vasilis-tsirimokos.com/codepen/compass-pointer.png"
                 :style="
                   'transform: rotate(' +
                   (parseInt(risultati.azimut) + 45) +
