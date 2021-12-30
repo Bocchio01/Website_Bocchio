@@ -133,8 +133,8 @@
                 :key="marker.id"
                 draggable
                 :visible="marker.visible"
-                :icon="createIcon(marker.IconUrl)"
                 :lat-lng.sync="marker.position"
+                :icon="marker.IconObj"
                 @dblclick="clean(index)"
               >
                 <l-popup
@@ -152,17 +152,14 @@
 
 <script>
 import { Around_the_globe } from '@/assets/js/Around_the_globe.js'
-import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch'
-import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol'
 
 export default {
-  components: {
-    'v-locatecontrol': Vue2LeafletLocatecontrol,
-  },
   data() {
     return {
       tags_array: ['Guida', 'Dati', 'Mappa'],
       tags_to_view: ['Mappa'],
+
+      ready: false,
 
       risultati: Around_the_globe.result,
       initialLocation: [0, 0],
@@ -175,6 +172,7 @@ export default {
           visible: false,
           IconUrl:
             'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+          IconObj: {}
         },
         {
           id: 'Arrivo',
@@ -182,6 +180,7 @@ export default {
           visible: false,
           IconUrl:
             'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+          IconObj: {}
         },
       ],
       tileProviders: [
@@ -202,6 +201,11 @@ export default {
       ],
     }
   },
+  mounted() {
+    this.markers[0].IconObj = this.createIcon(this.markers[0].IconUrl)
+    this.markers[1].IconObj = this.createIcon(this.markers[1].IconUrl)
+  },
+
   head() {
     return {
       link: [
@@ -235,11 +239,13 @@ export default {
       ],
     }
   },
+
   methods: {
     onReady(mapObject) {
-      const provider = new OpenStreetMapProvider()
+      this.ready = true
+      const provider = new this.OpenStreetMapProvider()
 
-      const searchControl = new GeoSearchControl({
+      const searchControl = new this.GeoSearchControl({
         notFoundMessage:
           'Sembra non esista alcuna località associata a questo indirizzo...',
         provider: provider,
@@ -252,10 +258,9 @@ export default {
 
       this.tags_to_view = []
       mapObject.locate()
-
       setTimeout(() => {
         try {
-          this.geodesic = new this.$L.Geodesic().addTo(mapObject)
+          this.geodesic = new L.Geodesic().addTo(mapObject)
         } catch (error) {
           console.log('Errore')
         }
@@ -283,15 +288,15 @@ export default {
       console.log('Marker gia segnati')
     },
     createIcon(url) {
-      return new L.Icon({
-        iconUrl: url,
-        shadowUrl:
-          'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41],
-      })
+        return new L.Icon({
+          iconUrl: url,
+          shadowUrl:
+            'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+          iconSize: [25, 41],
+          iconAnchor: [12, 41],
+          popupAnchor: [1, -34],
+          shadowSize: [41, 41],
+        })
     },
     clean(id) {
       this.geodesic.setLatLngs([])
@@ -327,7 +332,7 @@ export default {
 </script>
 
 <style defer>
-@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+/* @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'; */
 
 .Around_the_globe .arrow {
   padding-inline: 10px;

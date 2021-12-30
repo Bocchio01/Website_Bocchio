@@ -45,7 +45,7 @@
         <div class="wrap document" v-if="navdata.prev">
           <p>{{ navdata.prev.title }}</p>
           <cMedia :s="navdata.prev.img.src" :a="navdata.prev.img.src"></cMedia>
-          <NuxtLink :to="navdata.prev.slug" class="link_hidden">
+          <NuxtLink :to="'/articolo/' + navdata.prev.slug + '/'" class="link_hidden">
             <div class="button"><span>&#8617;</span></div>
           </NuxtLink>
         </div>
@@ -53,7 +53,7 @@
         <div class="wrap document" v-if="portal.urlPortal">
           <p>Portale del progetto</p>
           <cMedia :s="portal.img.src" :a="portal.img.src"></cMedia>
-          <NuxtLink :to="portal.urlPortal" class="link_hidden">
+          <NuxtLink :to="'/portale/' + portal.urlPortal + '/'" class="link_hidden">
             <div class="button"><span>&#8605;</span></div>
           </NuxtLink>
         </div>
@@ -61,7 +61,7 @@
         <div class="wrap document" v-if="navdata.next">
           <p>{{ navdata.next.title }}</p>
           <cMedia :s="navdata.next.img.src" :a="navdata.next.img.src"></cMedia>
-          <NuxtLink :to="navdata.next.slug" class="link_hidden">
+          <NuxtLink :to="'/articolo/' + navdata.next.slug + '/'" class="link_hidden">
             <div class="button"><span>&#8618;</span></div>
           </NuxtLink>
         </div>

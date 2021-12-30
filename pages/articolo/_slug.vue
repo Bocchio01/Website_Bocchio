@@ -2,6 +2,7 @@
   <article>
     <nuxt-content class="wrap" :document="article" />
     <cNavigation
+      v-if="article"
       :navdata="{ prev: prev, next: next }"
       :portal="{ urlPortal: article.portalurl, img: article.img }"
     />
@@ -27,6 +28,7 @@ export default {
       .sortBy('createdAt', 'asc')
       .surround(params.slug)
       .fetch()
+      .catch()
 
     return {
       article,
@@ -34,42 +36,41 @@ export default {
       next,
     }
   },
-
-  head() {
-    return {
-      title: 'Bocchio | Articolo: ' + this.article.title,
-      meta: [
-        ...this.meta,
-        {
-          property: 'article:published_time',
-          content: this.article.createdAt,
-        },
-        {
-          property: 'article:modified_time',
-          content: this.article.updatedAt,
-        },
-        {
-          property: 'article:tag',
-          content: this.article.tag ? this.article.tag.toString() : '',
-        },
-        { name: 'twitter:label1', content: 'Written by' },
-        { name: 'twitter:data1', content: 'Tommaso Bocchietti' },
-        { name: 'twitter:label2', content: 'Filed under' },
-        {
-          name: 'twitter:data2',
-          content: this.article.tag ? this.article.tag.toString() : '',
-        },
-      ],
-      link: [
-        {
-          hid: 'canonical',
-          rel: 'canonical',
-          href: process.env.HOST_URL + `/articolo/${this.$route.params.slag}`,
-        },
-      ],
-    }
-  },
   computed: {
+    head() {
+      return {
+        title: 'Bocchio | Articolo: ' + this.article.title,
+        meta: [
+          ...this.meta,
+          {
+            property: 'article:published_time',
+            content: this.article.createdAt,
+          },
+          {
+            property: 'article:modified_time',
+            content: this.article.updatedAt,
+          },
+          {
+            property: 'article:tag',
+            content: this.article.tag ? this.article.tag.toString() : '',
+          },
+          { name: 'twitter:label1', content: 'Written by' },
+          { name: 'twitter:data1', content: 'Tommaso Bocchietti' },
+          { name: 'twitter:label2', content: 'Filed under' },
+          {
+            name: 'twitter:data2',
+            content: this.article.tag ? this.article.tag.toString() : '',
+          },
+        ],
+        link: [
+          {
+            hid: 'canonical',
+            rel: 'canonical',
+            href: process.env.HOST_URL + `/articolo/${this.$route.params.slag}`,
+          },
+        ],
+      }
+    },
     meta() {
       const metaData = {
         type: 'article',

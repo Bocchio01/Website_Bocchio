@@ -3,12 +3,12 @@
     class="wrap card"
     v-show="useTag ? tags.some((r) => obj.tag.includes(r)) : true"
   >
-    <nuxt-link :to="obj.path" class="link_hidden"
-      ><div class="button">{{ msg }}</div></nuxt-link
-    >
+    <nuxt-link :to="obj.path" class="link_hidden">
+      <div class="button">{{ msg }}</div>
+    </nuxt-link>
     <div>
       <h1>{{ obj.title }}</h1>
-      <p v-html="obj.paragraph.join('<br>')"></p>
+      <div v-html="obj.paragraph.join('<br>')"></div>
     </div>
 
     <figure>
@@ -107,15 +107,16 @@ export default {
     > .link_hidden {
       visibility: visible;
     }
-    img, svg {
+    img,
+    svg {
       transform: scale(1.1);
     }
   }
 }
 @media (max-width: 1030px) {
   .wrap.card {
-     img,
-     svg {
+    img,
+    svg {
       max-height: 200px;
       max-width: 100%;
     }

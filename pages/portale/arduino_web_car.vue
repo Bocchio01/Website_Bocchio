@@ -74,6 +74,7 @@ import { toRef } from '@nuxtjs/composition-api'
 import { Web_car } from '@/assets/js/Web_car.js'
 
 export default {
+  // layout: 'portale',
   setup() {
     const consoles = toRef(Web_car._, 'console')
     const name_of_client = toRef(Web_car, 'name_of_client')
@@ -82,6 +83,22 @@ export default {
       consoles,
       name_of_client,
       stage,
+    }
+  },
+  mounted() {
+    console.log(this.$metaInfo)
+  },
+
+  head() {
+    return {
+      title: 'Bocchio | Elenco',
+      description:
+        'Una vera e propria WebApp per poter configurare e controllare con facilità la propria macchinina "Arduino_Web_Car".',
+      paragraph: [
+        'Portale di accesso al Socket di controllo per il progetto Arduino_web_car.<br>',
+        'Collegati al Server, accendi la tua macchinina e sarai pronto a guidare da oltre oceano!',
+      ],
+      img: '/v1636156852/Articoli/Arduino%20Web%20Car/70kmh-rc-car.jpg',
     }
   },
 
@@ -98,15 +115,15 @@ export default {
     }
   },
 
-  computed: {
-    main_color: {
-      get() {
-        return getComputedStyle(document.documentElement).getPropertyValue(
-          '--main_color'
-        )
-      },
-    },
-  },
+  // computed: {
+  //   main_color: {
+  //     get() {
+  //       return getComputedStyle(document.documentElement).getPropertyValue(
+  //         '--main_color'
+  //       )
+  //     },
+  //   },
+  // },
 
   methods: {
     handleChange({ x, y, speed, angle }) {

@@ -8,16 +8,18 @@
 <script>
 export default {
   mounted() {
-    this.$store.commit('set_token')
-    this.$store.dispatch('UserLogin')
-    this.$store.dispatch('InteractionsUpdate')
-    this.$store.dispatch('GetAllFile')
-    setTimeout(() => {
-      const el = document.getElementsByClassName('loading')[0]
-      el.style.opacity = 0
-      el.style.top = '-100vh'
-    }, 2500)
-    setTimeout(() => this.$store.commit('toggle_show', 'loading'), 5000)
+    if (process.client) {
+      this.$store.commit('set_token')
+      this.$store.dispatch('UserLogin')
+      this.$store.dispatch('InteractionsUpdate')
+      this.$store.dispatch('GetAllFile')
+      setTimeout(() => {
+        const el = document.getElementsByClassName('loading')[0]
+        el.style.opacity = 0
+        el.style.top = '-100vh'
+      }, 2500)
+      setTimeout(() => this.$store.commit('toggle_show', 'loading'), 5000)
+    }
   },
 }
 </script>

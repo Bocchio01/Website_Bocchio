@@ -12,5 +12,4 @@ img:
     alt: Around_the_globe
 articleurl: /articolo/around the globe
 ---
-# In costruzione...
-<!-- <Portali-cAround-the-globe></Portali-cAround-the-globe> -->
+<Portali-cAround-the-globe></Portali-cAround-the-globe>

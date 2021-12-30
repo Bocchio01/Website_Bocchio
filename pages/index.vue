@@ -10,7 +10,7 @@ export default {
     return {
       datas: [
         {
-          path: '/articolo/chi sono',
+          path: '/articolo/chi sono/',
           title: 'Chi sono?',
           paragraph: [
             'Ciao! Mi chiamo Tommaso e sono uno studente di ingegneria meccanica al Politecnico di Milano.',
@@ -24,11 +24,11 @@ export default {
           },
         },
         {
-          path: '/elenco/articolo',
+          path: '/articolo/',
           title: 'Contenuti del sito',
           paragraph: [
             'Il sito è strutturato su tre sezioni pricipali:',
-            '<ul><li>Articoli: <b>tutti i progetti realizzati descritti in maniera approfondita</b></li><li>Portali: <b>WebApp programmate per soddisfare esigenze specifiche di alcuni progetti</b></li><li>Forum (in costruzione..): pensato <b>per favorire la discussione e lo scambio di idee.</b> Sarà presto integrato a fondo di ogni articolo</li></ul>',
+            '<ul><li>Articoli: <b>tutti i progetti realizzati descritti in maniera approfondita</b></li><li>Portali (in costruzione..): <b>WebApp programmate per soddisfare esigenze specifiche di alcuni progetti</b></li><li>Forum: pensato <b>per favorire la discussione e lo scambio di idee.</b> Sarà presto integrato a fondo di ogni articolo</li></ul>',
             'In generale tutti gli articoli, i portali e il sito in sé sono da considerarsi di assoluto libero utilizzo.',
             '<b>La diffusione dei contenuti, delle idee o dei concetti che è possibile trovare tra queste pagine è assolutamente un atto positivo e da promuovere.</b>',
           ],
@@ -38,7 +38,7 @@ export default {
           },
         },
         {
-          path: '/articolo/qual é lo scopo',
+          path: '/articolo/qual é lo scopo/',
           title: 'Qual é lo scopo?',
           paragraph: [
             "Questo sito nasce dall'esigenza di avere uno spazio completamente mio dove poter condividere con altri le mie idee e i miei progetti.",

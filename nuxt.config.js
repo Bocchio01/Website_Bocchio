@@ -35,6 +35,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/leaflet.client.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -52,7 +53,6 @@ export default {
     '@nuxt/content',
     '@nuxt/image',
     '@nuxtjs/composition-api/module',
-    'nuxt-leaflet',
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
@@ -65,7 +65,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    //analyze: true,
+    analyze: false,
   },
   ssr: true,
   // loadingIndicator: '~/components/loading.html',
@@ -96,19 +96,21 @@ export default {
     fallback: true,
 
     async routes() {
-      const static_routes = ['/elenco/articolo', '/elenco/portale']
+      // const static_routes = ['/elenco/articolo', '/elenco/portale']
+      const static_routes = []
       const { $content } = require('@nuxt/content')
       const Articoli = await $content('articolo', { deep: true }).only(['slug']).fetch()
-      const Portali = await $content('portale', { deep: true }).only(['slug']).fetch()
+      // const Portali = await $content('portale', { deep: true }).only(['slug']).fetch()
       const Mix = await $content('mix', { deep: true }).only(['slug']).fetch()
-      const Generici = await $content().only(['slug']).fetch()
+      // const Generici = await $content().only(['slug']).fetch()
 
       var link_Articoli = Articoli.map(articolo => '/articolo/' + articolo.slug + '/')
-      var link_Portali = Portali.map(portale => '/portale/' + portale.slug + '/')
+      // var link_Portali = Portali.map(portale => '/portale/' + portale.slug + '/')
       var link_Mix = Mix.map(mix => '/articolo/' + mix.slug + '/')
-      var link_Generici = Generici.map(generico => '/articolo/' + generico.slug + '/')
+      // var link_Generici = Generici.map(generico => '/articolo/' + generico.slug + '/')
 
-      return static_routes.concat(link_Articoli, link_Portali, link_Mix, link_Generici)
+      // return static_routes.concat(link_Articoli, link_Portali, link_Mix, link_Generici)
+      return static_routes.concat(link_Articoli, link_Mix)
     }
 
   },

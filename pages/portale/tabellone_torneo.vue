@@ -3,6 +3,7 @@
     <lazy-cLogin :showLogin="toggle_login" @toParent="handler_login" />
 
     <div class="wrap portal Tabellone_torneo">
+    <h1>Tabellone_torneo</h1>
       <h2>
         Torneo selezionato:
         <select @change="TorneoSelezionato()" id="NomeTorneo">

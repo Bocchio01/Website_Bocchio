@@ -84,12 +84,14 @@ export const mutations = {
     },
 
     set_token(state) {
+        console.info('Set Token')
         state.user.token = localStorage.getItem('token') || null
     }
 }
 
 export const actions = {
     UserLogin({ commit, state }) {
+        console.info('UserLogin')
         commit('auth_request')
         return sendRequest({ action: 'UserLogin', data: JSON.stringify(state.user) })
             .then(res => commit('auth_success', res.Data))
@@ -109,12 +111,15 @@ export const actions = {
     },
 
     InteractionsUpdate({ commit }) {
+        console.info('InteractionsUpdate')
+
         return sendRequest({ action: 'InteractionsUpdate', data: JSON.stringify(JSON.parse(localStorage.getItem('visite'))) })
             .then(res => commit('cleanvisite'))
             .catch(res => commit('auth_error', res.Log))
     },
 
     GetAllFile({ commit }) {
+        console.info('GetAllFile')
         return sendRequest({ action: 'GetAllFile' })
             .then(res => commit('setfiles', res.Data))
             .catch(res => commit('auth_error', res.Log))

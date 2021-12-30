@@ -19,8 +19,8 @@
       </label>
     </div>
     <ul :style="!showMenu ? 'max-height: 0px' : 'max-height: 500px'">
-      <li><nuxt-link to="/elenco/articolo">Articoli</nuxt-link></li>
-      <li><nuxt-link to="/elenco/portale">Portali</nuxt-link></li>
+      <li><nuxt-link to="/articolo/">Articoli</nuxt-link></li>
+      <li><nuxt-link to="/portale/">Portali</nuxt-link></li>
       <li>
         <a
           @click="SubMenu_click"
@@ -31,9 +31,9 @@
           >Mix</a
         >
         <ul class="dropdown-content" :class="!showSubMenu ? 'hide' : ''">
-          <li><nuxt-link to="/articolo/chi sono">Chi sono?</nuxt-link></li>
+          <li><nuxt-link to="/articolo/chi sono/">Chi sono?</nuxt-link></li>
           <li>
-            <nuxt-link to="/articolo/qual é lo scopo"
+            <nuxt-link to="/articolo/qual é lo scopo/"
               >Qual è lo scopo?</nuxt-link
             >
           </li>
