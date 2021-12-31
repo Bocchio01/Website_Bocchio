@@ -9,7 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxt/content": "^1.15.1",
+    "@nuxt/content": "1.13.1",
     "@nuxtjs/composition-api": "^0.31.0",
     "@nuxtjs/robots": "^2.5.0",
     "@nuxtjs/sitemap": "^2.4.0",
@@ -17,8 +17,8 @@
     "json-pointer": "^0.6.1",
     "leaflet-geosearch": "^3.6.0",
     "leaflet.geodesic": "^2.5.5-0",
-    "nuxt": "^2.15.7",
-    "nuxt-leaflet": "0.0.27",
+    "nuxt": "^2.15.8",
+    "vue2-leaflet": "^2.7.1",
     "vue2-leaflet-geosearch": "^1.0.6",
     "vue2-leaflet-locatecontrol": "^1.0.2",
     "vuex": "^3.6.2"

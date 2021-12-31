@@ -8,16 +8,15 @@ export const state = () => ({
         email: null,
         password: null,
         preferences: {
-            dark: false,
-            color: '#ffa500',
-            font: 0,
-            avatar: '/icon.png',
-            autologin: true
+            dark: null,
+            color: null,
+            font: null,
+            avatar: null
         }
     },
     files: {},
     show: {
-        loading: true,
+        loading: false,
         login: false,
         mainmenu: false,
         submenu: false
@@ -30,7 +29,11 @@ export const mutations = {
     },
     auth_success(state, Data) {
         state.user = Data
-        if (state.user.preferences.autologin) localStorage.setItem('token', Data.token)
+        if (state.user.preferences.autologin) {
+            localStorage.setItem('token', Data.token)
+        } else {
+            localStorage.removeItem('token')
+        }
         state.status = 'Utente attuale: ' + state.user.nickname
     },
     auth_error(state, Log) {
@@ -49,12 +52,18 @@ export const mutations = {
 
     UserLogout(state) {
         localStorage.removeItem('token')
-        Object.keys(state.user).forEach((i) => state.user[i] = null);
-        state.user.preferences = {
-            dark: false,
-            color: '#ffa500',
-            font: 0,
-            avatar: '/icon.png'
+        state.user = {
+            token: null,
+            nickname: null,
+            email: null,
+            password: null,
+            preferences: {
+                dark: false,
+                color: '#ffa500',
+                font: 0,
+                avatar: '/icon.png',
+                autologin: true
+            }
         }
         state.status = null
     },

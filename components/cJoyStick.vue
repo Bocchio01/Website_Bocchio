@@ -6,7 +6,7 @@
   width: 256px;
   border-radius: 50%;
   position: relative;
-  border: solid 4px var(--color);
+  border: solid 4px var(--main_color);
 }
 /*.vue-joystick::after,*/
 .vue-joystick::before {
@@ -17,7 +17,7 @@
   left: 0;
   right: 0;
   margin: -32px;
-  background: var(--color);
+  background: var(--main_color);
   height: 64px;
   width: 64px;
   border-radius: 50%;
@@ -28,7 +28,7 @@
   bottom: 128px;
   border-radius: 10px;
   width: 4px;
-  background: var(--color);
+  background: var(--main_color);
   transform: rotate(var(--angle));
   transform-origin: bottom center;
   height: var(--speed);
@@ -48,12 +48,7 @@
 </template>
 <script>
 export default {
-  props: {
-    color: {
-      type: String,
-      default: 'orange',
-    },
-  },
+
   data() {
     return {
       x: 0,
@@ -70,7 +65,6 @@ export default {
         '--y': `${this.y + 128}px`,
         '--speed': `${this.speed}px`,
         '--angle': `${this.angle}deg`,
-        '--color': `${this.color}`,
       }
     },
   },

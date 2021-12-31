@@ -2,7 +2,7 @@ const type = "website";
 const url = process.env.HOST_URL;
 const title = "Bocchio's WebSite - Sito personale di Tommaso Bocchietti";
 const description = "Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione alla fisica.";
-const mainImage = process.env.HOST_URL + "/icon.png";
+const mainImage = process.env.VERCEL_BASE_URL + '/';
 
 export default (meta) => {
   return [
@@ -34,7 +34,7 @@ export default (meta) => {
     {
       hid: "og:image",
       property: "og:image",
-      content: (meta && meta.mainImage) || mainImage,
+      content: (meta && mainImage + meta.title) || mainImage + "/Bocchio's WebSite",
     },
     {
       hid: "twitter:url",
@@ -54,7 +54,7 @@ export default (meta) => {
     {
       hid: "twitter:image",
       name: "twitter:image",
-      content: (meta && meta.mainImage) || mainImage,
+      content: (meta && mainImage + meta.title) || mainImage + "/Bocchio's WebSite",
     },
   ];
 };

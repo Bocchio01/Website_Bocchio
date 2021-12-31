@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap portal Around_the_globe">
+  <div class="wrap Portale Around_the_globe">
     <CMenuScelta @toParent="handler" :tags="tags_array" />
     <div class="affianca">
       <div
@@ -60,7 +60,7 @@
                   type="text"
                   disabled
                 />
-                <span @click="clean(index)">🗑️</span>
+                <span @click="clean(index)">&#x1F5D1;&#xFE0F;</span>
               </div>
             </div>
             <span class="arrow" @click="inverti()">&#8597;</span>
@@ -172,7 +172,7 @@ export default {
           visible: false,
           IconUrl:
             'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-          IconObj: {}
+          IconObj: {},
         },
         {
           id: 'Arrivo',
@@ -180,7 +180,7 @@ export default {
           visible: false,
           IconUrl:
             'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-          IconObj: {}
+          IconObj: {},
         },
       ],
       tileProviders: [
@@ -288,15 +288,15 @@ export default {
       console.log('Marker gia segnati')
     },
     createIcon(url) {
-        return new L.Icon({
-          iconUrl: url,
-          shadowUrl:
-            'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-          iconSize: [25, 41],
-          iconAnchor: [12, 41],
-          popupAnchor: [1, -34],
-          shadowSize: [41, 41],
-        })
+      return new L.Icon({
+        iconUrl: url,
+        shadowUrl:
+          'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41],
+      })
     },
     clean(id) {
       this.geodesic.setLatLngs([])

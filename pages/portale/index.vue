@@ -1,11 +1,22 @@
 <template>
   <div>
-    <!-- <cMenuScelta @toParent="handler" :tags="tags_array" /> -->
+    <div class="searchBar wrap">
+      <div style="flex: 1 1 200px">
+        <label>Ricerca per titolo</label>
+        <input
+          type="search"
+          v-model="title_to_view"
+          placeholder="Titolo.."
+          autocomplete="new-password"
+        />
+      </div>
+    </div>
     <cWrap
-      v-for="(article, index) in articles"
-      :obj="article"
+      v-for="(portale, index) in portali"
+      :obj="portale"
       :key="index"
       :useTag="false"
+      :title="title_to_view"
       msg="Vai al portale"
     />
   </div>
@@ -17,25 +28,20 @@ import getSiteMeta from '@/assets/js/getSiteMeta.js'
 
 export default {
   async asyncData({ $content }) {
-    var tags_array = []
-    const articles = await $content('portale', { deep: true })
-      .only(['title', 'slug', 'paragraph', 'img', 'tag'])
+    const portali = await $content('portale')
       .sortBy('createdAt', 'desc')
       .fetch()
       .catch((err) => {
         error({ statusCode: 404, message: 'Page not found' })
       })
-    articles.forEach(function (element) {
-      element.path = '/portale/' + element.slug + '/'
-    })
-    tags_array = tags_array.filter(function (item, pos) {
-      return tags_array.indexOf(item) == pos
-    })
-    return { articles, tags_array }
+
+    return { portali }
   },
+
   data() {
     return {
       tags_to_view: [],
+      title_to_view: '',
     }
   },
   methods: {
@@ -46,15 +52,13 @@ export default {
 
   head() {
     return {
-      title: 'Bocchio | Elenco Portali',
-      meta: [
-        ...this.meta,
-      ],
+      title: 'Elenco Portali',
+      meta: [...this.meta],
       link: [
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: process.env.HOST_URL + '/articolo',
+          href: process.env.HOST_URL + '/portale/',
         },
       ],
     }
@@ -62,13 +66,13 @@ export default {
   computed: {
     meta() {
       const metaData = {
-        type: 'site',
-        title: 'Bocchio | Elenco Portali',
+        type: 'website',
+        title: 'Elenco Portali',
         description: "Pagina di elenco dei portali del sito Bocchio's WebSite",
-        url: '/articolo',
+        url: '/portale/',
       }
       return getSiteMeta(metaData)
     },
-  }
+  },
 }
 </script>

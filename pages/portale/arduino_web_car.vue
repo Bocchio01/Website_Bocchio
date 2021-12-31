@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="wrap portal Arduino_Web_Car">
+    <div class="wrap Portale Arduino_Web_Car">
       <cMenuScelta @toParent="handler" :tags="tags_array" />
       <div class="affianca">
         <div class="box" v-show="tags_to_view.includes(tags_array[0])">
@@ -10,11 +10,7 @@
         <div class="box" v-show="tags_to_view.includes(tags_array[1])">
           <h2>Joystick</h2>
 
-          <cJoyStick
-            style="margin: auto"
-            @change="handleChange"
-            :color="main_color"
-          />
+          <cJoyStick style="margin: auto" @change="handleChange" />
 
           <div id="frequency_box">
             <span>Minima frequenza</span>
@@ -28,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="wrap portal Arduino_Web_Car">
+    <div class="wrap Portale Arduino_Web_Car">
       <div
         class="console_upper_control"
         v-if="consoles.hasOwnProperty('Server')"
@@ -68,13 +64,14 @@
   </div>
 </template>
 
-<script >
+<script>
+// import { setHead } from "@/assets/js/setHead.js";
+
 import { toRef } from '@nuxtjs/composition-api'
 
 import { Web_car } from '@/assets/js/Web_car.js'
 
 export default {
-  // layout: 'portale',
   setup() {
     const consoles = toRef(Web_car._, 'console')
     const name_of_client = toRef(Web_car, 'name_of_client')
@@ -85,22 +82,10 @@ export default {
       stage,
     }
   },
-  mounted() {
-    console.log(this.$metaInfo)
-  },
 
-  head() {
-    return {
-      title: 'Bocchio | Elenco',
-      description:
-        'Una vera e propria WebApp per poter configurare e controllare con facilità la propria macchinina "Arduino_Web_Car".',
-      paragraph: [
-        'Portale di accesso al Socket di controllo per il progetto Arduino_web_car.<br>',
-        'Collegati al Server, accendi la tua macchinina e sarai pronto a guidare da oltre oceano!',
-      ],
-      img: '/v1636156852/Articoli/Arduino%20Web%20Car/70kmh-rc-car.jpg',
-    }
-  },
+  // head() {
+  //   return setHead(this.$route.path)
+  // },
 
   data() {
     return {
@@ -114,16 +99,6 @@ export default {
       angle: 0,
     }
   },
-
-  // computed: {
-  //   main_color: {
-  //     get() {
-  //       return getComputedStyle(document.documentElement).getPropertyValue(
-  //         '--main_color'
-  //       )
-  //     },
-  //   },
-  // },
 
   methods: {
     handleChange({ x, y, speed, angle }) {

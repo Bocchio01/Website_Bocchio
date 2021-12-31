@@ -3,11 +3,13 @@ import getSiteMeta from './assets/js/getSiteMeta.js';
 const meta = getSiteMeta();
 
 export default {
+  ssr: true,
   target: "static",
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "Bocchio's WebSite",
+    titleTemplate: 'Bocchio - %s',
+    title: "Home",
     htmlAttrs: {
       lang: 'it'
     },
@@ -67,7 +69,6 @@ export default {
   build: {
     analyze: false,
   },
-  ssr: true,
   // loadingIndicator: '~/components/loading.html',
 
   image: {
@@ -105,8 +106,8 @@ export default {
 
   fontLoader: {
     url: {
-      local: 'https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap',
-      google: 'https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Permanent+Marker&display=swap'
+      google: 'https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap',
+      local: 'https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap'
     },
     prefetch: true,
     preconnect: true

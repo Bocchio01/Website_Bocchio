@@ -93,7 +93,6 @@ nav {
     row-gap: var(--app_row_column_gap);
     flex: auto;
     > p {
-      font-family: var(--Base_font);
       cursor: pointer;
       font-weight: bold;
     }
@@ -112,9 +111,11 @@ nav {
       max-width: 70%;
       margin-inline: auto;
       > p {
-        font-family: var(--Special_font);
+        // font-family: var(--Special_font);
+      font-family: var(--Base_font);
 
         padding: 5px 10px;
+        border: 2px solid var(--main_color);
         border-radius: var(--header_border_radius);
         color: var(--text_color);
         background-color: var(--background_color);
@@ -127,6 +128,7 @@ nav {
     > p {
       color: var(--background_color);
       padding: var(--padding_articles);
+      display: none;
     }
   }
 }
@@ -140,6 +142,8 @@ nav {
     > div {
       justify-content: space-evenly;
       > p {
+      font-family: var(--Base_font);
+
         text-decoration: underline;
         padding-inline: 10px;
         &.active,
@@ -148,6 +152,9 @@ nav {
           background-color: rgb(0, 0, 0, 0.2);
         }
       }
+    }
+    > p {
+      display: none;
     }
   }
 }

@@ -1,7 +1,10 @@
 # To-do list
 
+**Fondamentale: correggere l'errore di "TypeError: Cannot read properties of undefined (reading 'dbHash')"**
+
 ## Generale
 - Head tag and SEO: controllare le card di condivisione
+- Fare le social card immagini
 - Privacy and user information (laws)
 
 - Possibili:
@@ -12,7 +15,6 @@
 ---
 
 ## Articoli
-- Barra di ricerca
 
 - Possibili:
   - Lettura con player audio integrato

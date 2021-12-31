@@ -1,12 +1,28 @@
 <template>
   <div>
-    <cMenuScelta @toParent="handler" :tags="tags_array" />
+    <div class="searchBar wrap">
+      <div style="flex: 1 1 200px">
+        <label>Ricerca per titolo</label>
+        <input
+          type="search"
+          v-model="title_to_view"
+          placeholder="Titolo.."
+          autocomplete="new-password"
+        />
+      </div>
+      <hr>
+      <div style="flex: 4 1 400px">
+        <label>Ricerca per tag (#)</label>
+        <cMenuScelta @toParent="handler" :tags="tags_array" />
+      </div>
+    </div>
     <cWrap
       v-for="(article, index) in articles"
       :obj="article"
       :key="index"
       :useTag="true"
       :tags="tags_to_view"
+      :title="title_to_view"
       msg="Vai all'articolo"
     />
   </div>
@@ -38,6 +54,7 @@ export default {
   data() {
     return {
       tags_to_view: [],
+      title_to_view: '',
     }
   },
   methods: {
@@ -48,15 +65,13 @@ export default {
 
   head() {
     return {
-      title: 'Bocchio | Elenco Articoli',
-      meta: [
-        ...this.meta,
-      ],
+      title: 'Elenco Articoli',
+      meta: [...this.meta],
       link: [
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: process.env.HOST_URL + '/articolo',
+          href: process.env.HOST_URL + '/articolo/',
         },
       ],
     }
@@ -64,13 +79,14 @@ export default {
   computed: {
     meta() {
       const metaData = {
-        type: 'site',
-        title: 'Bocchio | Elenco Articoli',
-        description: "Pagina di elenco degli articoli del sito Bocchio's WebSite",
-        url: '/articolo',
+        type: 'website',
+        title: 'Elenco Articoli',
+        description:
+          "Pagina di elenco degli articoli del sito Bocchio's WebSite",
+        url: '/articolo/',
       }
       return getSiteMeta(metaData)
     },
-  }
+  },
 }
 </script>
