@@ -31,9 +31,9 @@
           >Mix</a
         >
         <ul class="dropdown-content" :class="!showSubMenu ? 'hide' : ''">
-          <li><nuxt-link to="/articolo/chi sono/">Chi sono?</nuxt-link></li>
+          <li><nuxt-link to="/mix/chi sono/">Chi sono?</nuxt-link></li>
           <li>
-            <nuxt-link to="/articolo/qual é lo scopo/"
+            <nuxt-link to="/mix/qual é lo scopo/"
               >Qual è lo scopo?</nuxt-link
             >
           </li>

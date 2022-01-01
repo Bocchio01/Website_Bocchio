@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="wrap Portale Tabellone_torneo">
+    <cHeadPortale />
     <h1>Tabellone_torneo</h1>
       <h2>
         Torneo selezionato:
@@ -253,7 +254,7 @@ export default {
       // }
     }
   },
-  created() {
+  mounted() {
     this.request_tornei()
     this.interval = setInterval(() => {
       this.TorneoSelezionato()

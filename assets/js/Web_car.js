@@ -11,8 +11,8 @@ var Web_car = {
 
     checher: null,
     ws: null,
-    url_server: 'ws://127.0.0.1:5000',
-    //url_server: 'wss://scientific-proximal-basement.glitch.me/',
+    // url_server: 'ws://127.0.0.1:5000',
+    url_server: 'wss://scientific-proximal-basement.glitch.me/',
 
     init: function () {
         var ws = new WebSocket(this.url_server);

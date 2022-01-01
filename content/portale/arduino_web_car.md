@@ -8,7 +8,4 @@ paragraph: [
 img:
     src: /v1636156852/Articoli/Arduino%20Web%20Car/70kmh-rc-car.jpg
     alt: Arduino_Web_Car
-articleurl:
 ---
-# In costruzione...
-<!-- <Portali-cArduino-Web-car></Portali-cArduino-Web-car> -->

@@ -9,7 +9,4 @@ paragraph: [
 img:
     src: /v1638194833/Portali/Torneo1.png
     alt: Tabellone_Torneo
-articleurl:
 ---
-# In costruzione...
-<!-- <Portali-cTabellone-torneo></Portali-cTabellone-torneo> -->

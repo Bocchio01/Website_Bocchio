@@ -1,5 +1,6 @@
 <template>
   <div>
+    <cHeadPortale />
     <div class="wrap Portale Arduino_Web_Car">
       <cMenuScelta @toParent="handler" :tags="tags_array" />
       <div class="affianca">
@@ -65,8 +66,6 @@
 </template>
 
 <script>
-// import { setHead } from "@/assets/js/setHead.js";
-
 import { toRef } from '@nuxtjs/composition-api'
 
 import { Web_car } from '@/assets/js/Web_car.js'
@@ -82,10 +81,6 @@ export default {
       stage,
     }
   },
-
-  // head() {
-  //   return setHead(this.$route.path)
-  // },
 
   data() {
     return {
@@ -182,7 +177,7 @@ export default {
     text-align: left;
     font-family: 'Lucida Console', 'Courier New', monospace;
     font-size: var(--paragraph_size);
-    color: white;
+    color: var(--background_color);
     background-color: var(--background_color_body);
     height: 200px;
     white-space: nowrap;

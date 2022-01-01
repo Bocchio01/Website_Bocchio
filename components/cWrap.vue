@@ -1,7 +1,13 @@
 <template>
   <div
     class="wrap card"
-    v-show="useTag ? (tags.some((r) => obj.tag.includes(r)) || (title!='' && obj.title.toLowerCase().indexOf(title.toLowerCase()) != -1)) : (title!='' ? obj.title.toLowerCase().indexOf(title.toLowerCase()) != -1 : true)"
+    v-show="
+      title
+        ? obj.title.toLowerCase().indexOf(title.toLowerCase()) != -1
+        : tags.length != 0
+        ? tags.some((r) => obj.tag.includes(r))
+        : true
+    "
   >
     <nuxt-link :to="obj.path" class="link_hidden">
       <div class="button">{{ msg }}</div>
@@ -48,16 +54,15 @@ export default {
       type: Object,
       required: true,
     },
-    useTag: {
-      type: Boolean,
-      default: false,
-    },
     tags: {
       type: Array,
+      default: () => {
+        return []
+      },
     },
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     msg: {
       type: String,

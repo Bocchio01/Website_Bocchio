@@ -1,5 +1,10 @@
 <template>
   <div>
+    <cHeadBase
+      title="Elenco Portali"
+      description="Pagina di elenco dei portali del sito Bocchio's WebSite"
+    />
+
     <div class="searchBar wrap">
       <div style="flex: 1 1 200px">
         <label>Ricerca per titolo</label>
@@ -24,16 +29,18 @@
 
 
 <script>
-import getSiteMeta from '@/assets/js/getSiteMeta.js'
-
 export default {
   async asyncData({ $content }) {
     const portali = await $content('portale')
       .sortBy('createdAt', 'desc')
       .fetch()
-      .catch((err) => {
-        error({ statusCode: 404, message: 'Page not found' })
+      .catch(() => {
+        throw { statusCode: 404 }
       })
+
+    portali.forEach(function (element) {
+      element.path = '/portale/' + element.slug + '/'
+    })
 
     return { portali }
   },
@@ -44,34 +51,10 @@ export default {
       title_to_view: '',
     }
   },
+
   methods: {
     handler(value) {
       this.tags_to_view = value
-    },
-  },
-
-  head() {
-    return {
-      title: 'Elenco Portali',
-      meta: [...this.meta],
-      link: [
-        {
-          hid: 'canonical',
-          rel: 'canonical',
-          href: process.env.HOST_URL + '/portale/',
-        },
-      ],
-    }
-  },
-  computed: {
-    meta() {
-      const metaData = {
-        type: 'website',
-        title: 'Elenco Portali',
-        description: "Pagina di elenco dei portali del sito Bocchio's WebSite",
-        url: '/portale/',
-      }
-      return getSiteMeta(metaData)
     },
   },
 }

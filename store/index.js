@@ -8,15 +8,16 @@ export const state = () => ({
         email: null,
         password: null,
         preferences: {
-            dark: null,
-            color: null,
-            font: null,
-            avatar: null
+            dark: false,
+            color: '#ffa500',
+            font: 0,
+            avatar: '/icon.png',
+            autologin: null
         }
     },
     files: {},
     show: {
-        loading: false,
+        loading: true,
         login: false,
         mainmenu: false,
         submenu: false

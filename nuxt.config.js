@@ -14,7 +14,6 @@ export default {
       lang: 'it'
     },
     meta: [
-      ...meta,
       { charset: 'utf-8' },
       { name: 'author', content: 'Tommaso Bocchietti' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -24,7 +23,8 @@ export default {
     link: [
       { hid: 'canonical', rel: 'canonical', href: 'https://bocchionuxt.netlify.app/' },
       { rel: 'dns-prefetch', href: 'https://res.cloudinary.com' },
-    ]
+    ],
+    ...meta,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

@@ -1,5 +1,6 @@
 <template>
   <div class="wrap Portale Around_the_globe">
+    <cHeadPortale />
     <CMenuScelta @toParent="handler" :tags="tags_array" />
     <div class="affianca">
       <div
@@ -55,6 +56,7 @@
                   @click="initialLocation = marker.position"
                 />
                 <input
+                  style="color:var(--text_color)"
                   v-model="marker.position"
                   placeholder="Nessun punto selezionato"
                   type="text"
@@ -331,29 +333,35 @@ export default {
 //sistemare il rilascio automatico del drag se si va troppo pianno con il cursone
 </script>
 
-<style defer>
+<style lang="scss">
 /* @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'; */
 
-.Around_the_globe .arrow {
-  padding-inline: 10px;
-}
-.Around_the_globe span {
-  cursor: pointer;
-}
-.compass-bg {
-  width: 150px;
-  height: 150px;
-  background-size: 150px;
-  background-image: url('https://vasilis-tsirimokos.com/codepen/compass-bg.png');
-  margin-inline: auto;
-}
+.Around_the_globe {
+  .arrow {
+    padding-inline: 10px;
+  }
+  span {
+    cursor: pointer;
+  }
+  .compass-bg {
+    width: 150px;
+    height: 150px;
+    background-size: 150px;
+    background-image: url('https://vasilis-tsirimokos.com/codepen/compass-bg.png');
+    margin-inline: auto;
+  }
 
-.compass-pointer {
-  transform: rotate(45deg);
-  width: 150px;
+  .compass-pointer {
+    transform: rotate(45deg);
+    width: 150px;
+  }
 }
-
-input.glass {
-  height: 30px !important;
+.vue2leaflet-map {
+  input.glass {
+    height: 30px !important;
+  }
+  div.results {
+    color: black;
+  }
 }
 </style>

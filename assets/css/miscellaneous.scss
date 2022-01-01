@@ -133,7 +133,7 @@ input[type="radio"]:checked + label span {
 }
 
 .msg_bg {
-  z-index: 10;
+  z-index: 1000;
   top: 0px;
   left: 0px;
   position: fixed;
