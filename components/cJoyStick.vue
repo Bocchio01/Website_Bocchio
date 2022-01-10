@@ -48,14 +48,13 @@
 </template>
 <script>
 export default {
-
   data() {
     return {
       x: 0,
       y: 0,
       angle: 0,
       speed: 0,
-      isMouseDown: false,
+      isMouseDown: false
     }
   },
   computed: {
@@ -64,9 +63,9 @@ export default {
         '--x': `${this.x + 128}px`,
         '--y': `${this.y + 128}px`,
         '--speed': `${this.speed}px`,
-        '--angle': `${this.angle}deg`,
+        '--angle': `${this.angle}deg`
       }
-    },
+    }
   },
   methods: {
     handleStart() {
@@ -92,7 +91,6 @@ export default {
       this.speed = 0
       this.angle = 0
       this.emitAll()
-
     },
 
     emitAll(name = 'change') {
@@ -100,13 +98,18 @@ export default {
         x: this.x,
         y: this.y,
         speed: this.speed,
-        angle: this.angle,
+        angle: this.angle
       })
     },
     getValues(x, y) {
-      const rect = document.getElementById('joystick_id').getBoundingClientRect()
+      const rect = document
+        .getElementById('joystick_id')
+        .getBoundingClientRect()
 
-      const parameters = [Math.round(x - rect.left), 256 - Math.round(y - rect.top)]
+      const parameters = [
+        Math.round(x - rect.left),
+        256 - Math.round(y - rect.top)
+      ]
       this.x = Math.min(128, Math.round(x - rect.left) - 128)
       this.y = Math.round(y - rect.top) - 128
       const min = [-90, -50]
@@ -119,10 +122,10 @@ export default {
       this.speed = fin_value[1]
       this.angle = fin_value[0]
       this.emitAll()
-    },
+    }
   },
   mounted() {
     this.emitAll()
-  },
+  }
 }
 </script>

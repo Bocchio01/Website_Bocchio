@@ -3,7 +3,7 @@
     <cLoading v-if="$store.getters.show.loading" />
     <cHeader />
     <cSlogan />
-    <Nuxt keep-alive/>
+    <Nuxt keep-alive />
     <lazy-cFooter />
 
     <lazy-cBackground />
@@ -17,6 +17,6 @@ export default {
     window.addEventListener('beforeunload', () => {
       this.$store.dispatch('InteractionsUpdate')
     })
-  },
+  }
 }
 </script>

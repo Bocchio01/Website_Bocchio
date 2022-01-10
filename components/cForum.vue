@@ -24,7 +24,7 @@
       <div class="info">
         <div class="user">
           <p>{{ post.nickname }}</p>
-          <img :src="post.avatar" alt="User avatar" />
+          <img :src="require('@/assets/img/Avatar'+ post.avatar)" alt="User avatar" />
         </div>
         <p>{{ post.creation_date }}</p>
         <p v-if="post.modified_date">{{ post.modified_date }}</p>
@@ -54,7 +54,10 @@
     </div>
 
     <div class="wrap write tooltip">
-      <span class="tooltiptext" v-show="!$store.state.user.token" @click="$store.commit('toggle_show', 'login')"
+      <span
+        class="tooltiptext"
+        v-show="!$store.state.user.token"
+        @click="$store.commit('toggle_show', 'login')"
         ><mark
           >Effettua il Login per poter partecipare alla discussione</mark
         ></span
@@ -147,23 +150,23 @@ export default {
       forum: true,
       foo: {
         status: false,
-        action: 'ForumGetPost',
+        action: 'ForumGetPost'
       },
       selected_post: {},
-      new_post: '',
+      new_post: ''
     }
   },
   computed: {
     currentNickname: {
       get() {
         return this.$store.state.user.nickname
-      },
+      }
     },
     currentUrl: {
       get() {
         return this.$route.fullPath
-      },
-    },
+      }
+    }
   },
 
   mounted() {
@@ -189,17 +192,17 @@ export default {
           selected_post: this.selected_post,
           url: this.currentUrl,
           nickname: this.currentNickname,
-          new_post: this.new_post,
-        }),
+          new_post: this.new_post
+        })
       })
-        .then((res) => {
+        .then(res => {
           this.forum = res.Data.isForum
           this.posts = res.Data.Posts
           this.new_post = ''
         })
-        .catch((res) => this.$store.commit('auth_error', res.Log))
-    },
-  },
+        .catch(res => this.$store.commit('auth_error', res.Log))
+    }
+  }
 }
 </script>
 

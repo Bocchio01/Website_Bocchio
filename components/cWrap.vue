@@ -5,7 +5,7 @@
       title
         ? obj.title.toLowerCase().indexOf(title.toLowerCase()) != -1
         : tags.length != 0
-        ? tags.some((r) => obj.tag.includes(r))
+        ? tags.some(r => obj.tag.includes(r))
         : true
     "
   >
@@ -52,23 +52,23 @@ export default {
   props: {
     obj: {
       type: Object,
-      required: true,
+      required: true
     },
     tags: {
       type: Array,
       default: () => {
         return []
-      },
+      }
     },
     title: {
       type: String,
-      default: '',
+      default: ''
     },
     msg: {
       type: String,
-      default: 'Scopri di più',
-    },
-  },
+      default: 'Scopri di più'
+    }
+  }
 }
 </script>
 

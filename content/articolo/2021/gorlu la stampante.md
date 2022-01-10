@@ -1,17 +1,16 @@
 ---
 title: Gorlu la stampante
 description: Il progetto Gorlu la stampante, ovvero un piccolo e simpatico plotter CNC costruito con Arduino e programmato in Python. Come è nato il progetto, l'algoritmo che ne regola il movimento e analizza le immagini, i motori-stepper che muovo i carrelli, e documenti utili per realizzarlo da sé.
-paragraph: [
-    "Un piccolo e simpatico plotter CNC per stampare immagini o testo.<br>",
-    "Realizzato con Arduino, qualche componente di un vecchio PC e un paio di tavole di legno, questo piccolo plotter <b>è stato in grado di sorprendere anche me della sua precisione nel disegno.</b>",
+paragraph:
+  [
+    'Un piccolo e simpatico plotter CNC per stampare immagini o testo.<br>',
+    'Realizzato con Arduino, qualche componente di un vecchio PC e un paio di tavole di legno, questo piccolo plotter <b>è stato in grado di sorprendere anche me della sua precisione nel disegno.</b>',
     "Facile da realizzare, nell'articolo troverai tutto il codice sorgente (Python e C++) e molti altri documenti utili per realizzarlo da sé."
-]
-img: 
-    src: /v1635033169/Articoli/Gorlu%20la%20stampante/Gorlu.jpg
-    alt: Gorlu la stampante
-tag: [
-    Programmazione
-]
+  ]
+img:
+  src: /v1635033169/Articoli/Gorlu%20la%20stampante/Gorlu.jpg
+  alt: Gorlu la stampante
+tag: [Programmazione]
 
 createdAt: 2021-06-09T12:47:00Z
 updatedAt: 2021-11-05T21:54:00Z
@@ -33,7 +32,7 @@ Cercando poi online ho visto che era un progetto molto comunque e praticamente t
 
 Deciso quindi a creare qualcosa di più di un semplice [plotter CNC](https://it.wikipedia.org/wiki/Macchina_a_controllo_numerico), ho pensato alle funzioni che avrei voluto integrare:
 
-- **Stampa di immagini digitali (di qualsiasi formato)** semplificandole ovviamente prima e quindi analizzandole alla ricerca di quelle definibili come le *linee principali* dell'immagine;
+- **Stampa di immagini digitali (di qualsiasi formato)** semplificandole ovviamente prima e quindi analizzandole alla ricerca di quelle definibili come le _linee principali_ dell'immagine;
 - La possibilità di stampare in tempo reale una qualsiasi linea disegnata a mano libera sul PC. **Utilizzare quindi il plotter come un vero e proprio braccio robotico sincronizzato con la propria mano**;
 - E infine, anche se aggiunta "a lavori in corso", la funzionalità di **stampa di un vero e proprio testo** con la possibilità di scegliere font, dimensioni, allineamento ecc..
 
@@ -49,9 +48,9 @@ Visto che fino a quel momento se non per qualche linguaggio web conoscevo solame
 
 Tra le librerie più importanti che ho scelto di utilizzare ci sono sicuramente:
 
-- [OpenCV + PIL](https://opencv.org/) per l'elaborazione e l'estrapolazione dei dati dalle immagini; 
-- [NumPy](https://numpy.org/) per la manipolazione di array e matrici (utile essendo i file di tipo immagine salvati in memoria RAM sotto formato di matrice); 
-- [pySerial](https://pythonhosted.org/pyserial/) per la comunicazione tramite porta USB con Arduino; 
+- [OpenCV + PIL](https://opencv.org/) per l'elaborazione e l'estrapolazione dei dati dalle immagini;
+- [NumPy](https://numpy.org/) per la manipolazione di array e matrici (utile essendo i file di tipo immagine salvati in memoria RAM sotto formato di matrice);
+- [pySerial](https://pythonhosted.org/pyserial/) per la comunicazione tramite porta USB con Arduino;
 - [Tkinter](https://tkdocs.com/) per la creazione dell'interfaccia grafica (GUI);
 - [AF_Motor.h](https://learn.adafruit.com/adafruit-motor-shield/library-install) per il controllo dei segnali elettrici verso i motorini della stampante.
 
@@ -104,17 +103,16 @@ Ecco qualche video del progetto finito.. Enjoy!
 
 <cMedia s="https://www.youtube.com/embed/qBS6WiSzQmI" c="Stampa di Pikachu" type="iframe"></cMedia>
 
-
 ## Realizzarlo da sé
 
 Nel caso si volesse provare a realizzare per conto proprio, a fondo pagina nella sezione degli allegati è possibile trovare alcuni file utili allo scopo. Inoltre, per quanto riguarda il codice, é possibile trovarlo a [questa repository GitHub](https://github.com/Bocchio01/Arduino_CNC_plotter).
 
 Una volta scaricato occorrerà, se ancora non presente sul PC, installare [Python](https://www.python.org/downloads/) e le librerie aggiuntive.
 
-~~~shell
+```shell
 //Windows
 cd C:/Users/ *Nome_utente* /AppData/Local/Programs/Python/Python39/Scripts\
 pip install opencv-python pillow numpy pyserial tk
-~~~
+```
 
-Installata la libreria [AF_Motor.h](https://learn.adafruit.com/adafruit-motor-shield/library-install) e caricato lo sketck di Arduino sulla scheda, si è pronti ad avviare il file *main.py* e a giocare con il proprio nuovo plotter CNC!
+Installata la libreria [AF_Motor.h](https://learn.adafruit.com/adafruit-motor-shield/library-install) e caricato lo sketck di Arduino sulla scheda, si è pronti ad avviare il file _main.py_ e a giocare con il proprio nuovo plotter CNC!

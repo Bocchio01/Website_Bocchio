@@ -20,7 +20,7 @@ export default {
       }, 2500)
       setTimeout(() => this.$store.commit('toggle_show', 'loading'), 5000)
     }
-  },
+  }
 }
 </script>
 

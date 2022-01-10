@@ -23,7 +23,9 @@
         target="_blank"
       ></a>
     </div>
-    <p>Tommaso Bocchietti © {{ year }}</p>
+    <div class="copyright">
+      <p>Tommaso Bocchietti © {{ year }}</p>
+    </div>
   </footer>
 </template>
 
@@ -48,18 +50,13 @@ export default {
     border-radius: var(--header_border_radius);
     z-index: 2;
     padding-block: 20px;
+    font-weight: bold;
+    font-family: var(--Special_font);
+    font-size: var(--footer_font_size);
     > p {
       color: var(--text_color);
-      font-weight: bold;
-      font-family: var(--Special_font);
-      font-size: var(--footer_font_size);
-      width: fit-content;
-      &:nth-last-child(1) {
-        color: #a2a2a2;
-        border-top: var(--border_setting);
-        border-top-color: var(--text_color);
-      }
     }
+
     > div > a {
       width: 50px;
       height: 50px;
@@ -92,6 +89,11 @@ export default {
         background: url('https://res.cloudinary.com/bocchio/image/upload/v1636151722/Email.png')
           no-repeat;
       }
+    }
+    > div.copyright {
+      color: #a2a2a2;
+      border-top: var(--border_setting);
+      border-top-color: var(--text_color);
     }
   }
 }

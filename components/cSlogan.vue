@@ -13,8 +13,8 @@ export default {
   props: {
     sloganMsg: {
       type: String,
-      default: "What's Next?",
-    },
+      default: "What's Next?"
+    }
   },
 
   computed: {
@@ -23,8 +23,8 @@ export default {
         return true
       }
       return false
-    },
-  },
+    }
+  }
 }
 </script>
 

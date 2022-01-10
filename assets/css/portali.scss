@@ -47,7 +47,8 @@ button,
     margin-block: var(--app_row_column_gap);
 }
 
-button, .button {
+button,
+.button {
     // color: var(--text_color);
     color: black;
 
@@ -60,7 +61,7 @@ button, .button {
     font-weight: bold;
     width: fit-content;
     &:hover {
-        color: rgb(0,0,0,0.7) !important;
+        color: rgb(0, 0, 0, 0.7) !important;
     }
 }
 

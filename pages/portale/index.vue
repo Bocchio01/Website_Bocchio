@@ -48,14 +48,14 @@ export default {
   data() {
     return {
       tags_to_view: [],
-      title_to_view: '',
+      title_to_view: ''
     }
   },
 
   methods: {
     handler(value) {
       this.tags_to_view = value
-    },
-  },
+    }
+  }
 }
 </script>

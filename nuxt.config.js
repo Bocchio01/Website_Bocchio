@@ -1,15 +1,15 @@
-import getSiteMeta from './assets/js/getSiteMeta.js';
+import getSiteMeta from './assets/js/getSiteMeta.js'
 
-const meta = getSiteMeta();
+const meta = getSiteMeta()
 
 export default {
+  target: 'static',
   ssr: true,
-  target: "static",
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: 'Bocchio - %s',
-    title: "Home",
+    title: 'Home',
     htmlAttrs: {
       lang: 'it'
     },
@@ -18,13 +18,17 @@ export default {
       { name: 'author', content: 'Tommaso Bocchietti' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'msapplication-TileColor', content: '#da532c' },
-      { name: 'theme-color', content: '#ffffff' },
+      { name: 'theme-color', content: '#ffffff' }
     ],
     link: [
-      { hid: 'canonical', rel: 'canonical', href: 'https://bocchionuxt.netlify.app/' },
-      { rel: 'dns-prefetch', href: 'https://res.cloudinary.com' },
+      {
+        hid: 'canonical',
+        rel: 'canonical',
+        href: 'https://bocchionuxt.netlify.app/'
+      },
+      { rel: 'dns-prefetch', href: 'https://res.cloudinary.com' }
     ],
-    ...meta,
+    ...meta
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -32,32 +36,27 @@ export default {
     '@/assets/css/global.css',
     '@/assets/css/portali.scss',
     '@/assets/css/wrap.scss',
-    '@/assets/css/miscellaneous.scss',
+    '@/assets/css/miscellaneous.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '~/plugins/leaflet.client.js',
-  ],
+  plugins: ['~/plugins/leaflet.client.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    'nuxt-font-loader',
-    '@nuxtjs/dotenv'
-  ],
+  buildModules: ['nuxt-font-loader', '@nuxtjs/dotenv'],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/content
-    '@nuxt/content',
-    '@nuxt/image',
-    '@nuxtjs/composition-api/module',
     '@nuxtjs/pwa',
+    '@nuxt/content',
+    '@nuxtjs/composition-api/module',
+    '@nuxt/image',
     '@nuxtjs/sitemap',
-    '@nuxtjs/robots',
+    '@nuxtjs/robots'
   ],
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
@@ -67,7 +66,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    analyze: false,
+    analyze: false
   },
   // loadingIndicator: '~/components/loading.html',
 
@@ -79,35 +78,36 @@ export default {
 
   pwa: {
     icon: {
-      purpose: 'any',
+      purpose: 'any'
     },
     manifest: {
       name: 'Sito personale di Tommaso Bocchietti',
       short_name: "Bocchio's WebSite",
-      description: "Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione alla fisica.",
-      background_color: "#000000",
-      theme_color: "#000000",
+      description:
+        'Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione alla fisica.',
+      background_color: '#000000',
+      theme_color: '#000000',
       lang: 'it',
       useWebmanifestExtension: true
     }
-
   },
 
   generate: {
-    fallback: true,
+    fallback: true
   },
 
   sitemap: {
     hostname: process.env.HOST_URL,
     gzip: true,
-    exclude: [],
-
+    exclude: []
   },
 
   fontLoader: {
     url: {
-      google: 'https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap',
-      local: 'https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap'
+      google:
+        'https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap',
+      local:
+        'https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap'
     },
     prefetch: true,
     preconnect: true

@@ -72,29 +72,77 @@
           />
         </div>
 
-        <div
-          v-show="tags_to_view.includes('Login')"
-          class="inline"
-          style="justify-content: flex-start"
-        >
-          <input
-            id="autologin"
-            type="checkbox"
-            :checked="user.preferences.autologin"
-            @input="updateVal(!user.preferences.autologin, 'preferences.autologin')"
-          />
-          <label for="autologin" style="width: unset"
-            >Ricordami su questo dispositivo
-          </label>
+        <!--
+        <div v-show="tags_to_view.includes('Login')">
+          <p>Password dimenticata? <a href="">Clicca qua!</a></p>
         </div>
+        -->
 
         <div v-show="tags_to_view.includes('Impostazioni')" class="tooltip">
-          <span class="tooltiptext" v-show="!$store.state.user.token"
-            ><mark
-              >Effettua il Login per avere accesso alle funzionalità del
-              sito</mark
-            ></span
+          <span class="tooltiptext" v-show="!$store.state.user.token">
+            <mark>
+              Effettua il Login per avere accesso alle funzionalità del sito
+            </mark>
+          </span>
+
+          <h2>Impostazioni utente</h2>
+          <p>
+            Modifica il tuo Nickname o scegli il tuo Avatar tra quelli
+            disponibili.
+          </p>
+
+          <div class="inline">
+            <label for="mod_nickname">Nickname</label>
+            <input
+              id="mod_nickname"
+              type="text"
+              :value="user.nickname"
+              @input="updateVal($event, 'nickname')"
+              placeholder="Es: Bocchio01"
+            />
+            <span style="width: 87px"></span>
+          </div>
+
+          <div class="inline">
+            <label for="avatar">Avatar</label>
+            <img
+              id="avatar"
+              :src="require('@/assets/img/Avatar' + user.preferences.avatar)"
+              alt="AvatarSelected"
+              @click="show_avatar = !show_avatar"
+            />
+
+            <button @click="updateVal('/icon.png', 'preferences.avatar')">
+              Ripristina
+            </button>
+          </div>
+
+          <div
+            id="avatar_container"
+            v-show="show_avatar"
+            @click="show_avatar = false"
           >
+            <h2>Avatar femminili</h2>
+            <div>
+              <img
+                v-for="(img, index) in images_woman"
+                :key="index"
+                :src="require('@/assets/img/Avatar/Woman/' + img)"
+                alt="AvatarWoman"
+                @click="updateVal('/Woman/' + img, 'preferences.avatar')"
+              />
+            </div>
+            <h2>Avatar maschili</h2>
+            <div>
+              <img
+                v-for="(img, index) in images_man"
+                :key="index"
+                :src="require('@/assets/img/Avatar/Man/' + img)"
+                alt="AvatarMan"
+                @click="updateVal('/Man/' + img, 'preferences.avatar')"
+              />
+            </div>
+          </div>
 
           <h2>Impostazioni sito</h2>
           <p>Setta i seguenti parametri del sito come preferisci.</p>
@@ -130,7 +178,7 @@
           <div class="inline">
             <label for="color">Colore</label>
             <input
-            id="color"
+              id="color"
               type="color"
               :value="user.preferences.color"
               @input="updateVal($event, 'preferences.color')"
@@ -155,46 +203,6 @@
             </button>
           </div>
 
-          <div class="inline">
-            <label for="avatar">Avatar</label>
-            <img
-              id="avatar"
-              :src="user.preferences.avatar"
-              alt="AvatarSelected"
-              @click="show_avatar = !show_avatar"
-            />
-
-            <button @click="updateVal('/icon.png', 'preferences.avatar')">
-              Ripristina
-            </button>
-          </div>
-
-          <div
-            id="avatar_container"
-            v-show="show_avatar"
-            @click="show_avatar = false"
-          >
-            <h2>Avatar femminili</h2>
-            <div>
-              <img
-                v-for="(img, index) in images_woman"
-                :key="index"
-                :src="'/Avatar/Woman/' + img"
-                alt="AvatarWoman"
-                @click="updateVal('/Avatar/Woman/' + img, 'preferences.avatar')"
-              />
-            </div>
-            <h2>Avatar maschili</h2>
-            <div>
-              <img
-                v-for="(img, index) in images_man"
-                :key="index"
-                :src="'/Avatar/Man/' + img"
-                alt="AvatarMan"
-                @click="updateVal('/Avatar/Man/' + img, 'preferences.avatar')"
-              />
-            </div>
-          </div>
           <button type="submit" @click="$store.commit('UserLogout')">
             Logout
           </button>
@@ -206,9 +214,7 @@
           </button>
         </div>
         <div v-show="tags_to_view.includes('Login')">
-          <button type="submit" @click="$store.dispatch('UserLogin')">
-            Login
-          </button>
+          <button type="submit" @click="UserLogin()">Login</button>
         </div>
       </div>
     </div>
@@ -234,15 +240,15 @@ export default {
     },
   },
   created() {
-    const man_avatar = require
-      .context('/static/Avatar/Man/', false, /\.png$/)
+    this.images_man = require
+      .context('@/assets/img/Avatar/Man/', false, /\.png$/)
       .keys()
-    this.images_man = man_avatar.map((s) => s.slice(2))
+      .map((s) => s.slice(2))
 
-    const woman_avatar = require
-      .context('/static/Avatar/Woman/', false, /\.png$/)
+    this.images_woman = require
+      .context('@/assets/img/Avatar/Woman/', false, /\.png$/)
       .keys()
-    this.images_woman = woman_avatar.map((s) => s.slice(2))
+      .map((s) => s.slice(2))
   },
 
   methods: {
@@ -257,7 +263,16 @@ export default {
     CloseLogin() {
       this.$store.commit('toggle_show', 'login')
       this.$store.dispatch('UserUpdate')
-      if(this.user.preferences.autologin == false) localStorage.removeItem('token')
+      if (this.user.preferences.autologin == false)
+        localStorage.removeItem('token')
+    },
+
+    UserLogin() {
+      localStorage.setItem(
+        'autologin',
+        confirm('Loggarsi automaticamente ai prossimi accessi?')
+      ),
+        this.$store.dispatch('UserLogin')
     },
   },
 

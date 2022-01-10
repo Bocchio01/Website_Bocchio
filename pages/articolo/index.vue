@@ -35,7 +35,6 @@
 
 <script>
 export default {
-
   async asyncData({ $content }) {
     var tags_array = []
     const articles = await $content('articolo', { deep: true })
@@ -55,19 +54,18 @@ export default {
     })
     return { articles, tags_array }
   },
-  
+
   data() {
     return {
       tags_to_view: [],
-      title_to_view: '',
+      title_to_view: ''
     }
   },
 
   methods: {
     handler(value) {
       this.tags_to_view = value
-    },
+    }
   }
 }
-
 </script>

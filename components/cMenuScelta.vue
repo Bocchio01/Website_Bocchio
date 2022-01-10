@@ -27,27 +27,27 @@ export default {
           'Meccanica',
           'Fisica',
           'Matematica',
-          'Orienteering',
+          'Orienteering'
         ]
-      },
+      }
     },
     multiple: {
       type: Boolean,
-      default: true,
+      default: true
     },
     start: {
-      type: Array,
-    },
+      type: Array
+    }
   },
   data() {
     return {
       tags_selected: [],
-      isActive: Object.assign(...this.tags.map((k) => ({ [k]: false }))),
+      isActive: Object.assign(...this.tags.map(k => ({ [k]: false })))
     }
   },
   mounted() {
     if (this.start) {
-      this.start.forEach((el) => {
+      this.start.forEach(el => {
         this.isActive[el] = true
         this.tags_selected.push(el)
       })
@@ -74,8 +74,8 @@ export default {
       }
 
       this.$emit('toParent', this.tags_selected)
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -112,7 +112,7 @@ nav {
       margin-inline: auto;
       > p {
         // font-family: var(--Special_font);
-      font-family: var(--Base_font);
+        font-family: var(--Base_font);
 
         padding: 5px 10px;
         border: 2px solid var(--main_color);
@@ -142,7 +142,7 @@ nav {
     > div {
       justify-content: space-evenly;
       > p {
-      font-family: var(--Base_font);
+        font-family: var(--Base_font);
 
         text-decoration: underline;
         padding-inline: 10px;

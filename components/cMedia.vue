@@ -60,18 +60,18 @@ export default {
     a: { type: String },
     c: { type: String },
     type: { type: String, default: 'img' },
-    provider: { type: String, default: 'Cloudinary' },
+    provider: { type: String, default: 'Cloudinary' }
   },
   data() {
     return {
-      espansione: false,
+      espansione: false
     }
   },
   methods: {
     expand() {
       if (this.type == 'img') this.espansione = !this.espansione
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss">

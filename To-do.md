@@ -1,15 +1,17 @@
 # To-do list
 
 ## BUG
+
 - [ ] **Correggere l'errore di "TypeError: Cannot read properties of undefined (reading 'dbHash')"**
 - [ ] Sistemare il css della 'x' di pulizia nelle barre di ricerca (ora è blu ma deve essere o nero o bianco)
 - [ ] L'auto compilazione dei campi di login continua ad avere interferenze con quelle di search
-- [ ] Cambiare il link di riferimento per il portale di arduino_web_car e puntarlo a Glitch
 - [ ] Da mobile le finestre di risultato del portale around_the_globe escono dai margini
 - [ ] Al portale around_the_globe manca il css di alcune icone (da link esterno)
 - [ ] Da mobile l'icona di login in entrata è buggata di colore
-- [ ] Mettere il font delle social card grassetto 
 - [ ] Controllare se un utente può o meno eliminare l'account
+- [ ] Controllare la sitemap.xml (sembrerebbero mancare dei link..)
+- [x] Mettere il font delle social card grassetto
+- [x] Cambiare il link di riferimento per il portale di arduino_web_car e puntarlo a Glitch
 - [x] Link delle card di condivisione dei portali errati (manca il '/' in fondo)
 - [x] Colore delle scritte nelle console solo bianco (non diventa nero al cambio del tema)
 - [x] All'inserimento dei dati di login viene chiamato la proprieta di watch e 'add_font' viene settato a 'nullpx' (deve andare a 0)
@@ -20,8 +22,8 @@
 - [x] Al portale around_the_globe se si va in modalita dark, il font della barra di ricerca diventa bianco mentre delle barre di input non si leggono più
 - [x] Controllare l'alert di successo invio dell'email al sign_up
 
-
 ## Generale
+
 - Head tag and SEO: controllare le card di condivisione
 - Privacy and user information (laws)
 
@@ -50,12 +52,13 @@
 ---
 
 ## Portali
+
 - Header and footer => sistemare il CSS
 - Ottimizzare i file (.md + .js)
 
 ---
 
 ## Server
-- Salvare le password criptate
+
 - Fare una pagina di recupero credenziali (recupero con riconoscimento via email)
 - Best practice (database, variable, function type definition)

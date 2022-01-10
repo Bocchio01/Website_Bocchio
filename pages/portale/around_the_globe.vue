@@ -56,7 +56,7 @@
                   @click="initialLocation = marker.position"
                 />
                 <input
-                  style="color:var(--text_color)"
+                  style="color: var(--text_color)"
                   v-model="marker.position"
                   placeholder="Nessun punto selezionato"
                   type="text"
@@ -174,7 +174,7 @@ export default {
           visible: false,
           IconUrl:
             'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-          IconObj: {},
+          IconObj: {}
         },
         {
           id: 'Arrivo',
@@ -182,8 +182,8 @@ export default {
           visible: false,
           IconUrl:
             'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-          IconObj: {},
-        },
+          IconObj: {}
+        }
       ],
       tileProviders: [
         {
@@ -191,16 +191,16 @@ export default {
           visible: true,
           attribution:
             '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-          url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+          url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         },
         {
           name: 'OpenTopoMap',
           visible: false,
           url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
           attribution:
-            'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
-        },
-      ],
+            'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+        }
+      ]
     }
   },
   mounted() {
@@ -214,31 +214,31 @@ export default {
         {
           rel: 'stylesheet',
           href: 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
-          defer: true,
+          defer: true
         },
         {
           rel: 'stylesheet',
           href: 'https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css',
-          defer: true,
+          defer: true
         },
         {
           rel: 'stylesheet',
           href: 'https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css',
-          defer: true,
-        },
+          defer: true
+        }
       ],
       script: [
         {
           hid: 'stripe',
           src: 'https://unpkg.com/mathjs@9.4.4/lib/browser/math.js',
-          defer: true,
+          defer: true
         },
         {
           hid: 'stripe',
           src: 'https://cdn.jsdelivr.net/npm/leaflet.geodesic',
-          defer: true,
-        },
-      ],
+          defer: true
+        }
+      ]
     }
   },
 
@@ -253,7 +253,7 @@ export default {
         provider: provider,
         autoCompleteDelay: 100,
         autoClose: true,
-        keepResult: true,
+        keepResult: true
       })
 
       mapObject.addControl(searchControl)
@@ -297,21 +297,21 @@ export default {
         iconSize: [25, 41],
         iconAnchor: [12, 41],
         popupAnchor: [1, -34],
-        shadowSize: [41, 41],
+        shadowSize: [41, 41]
       })
     },
     clean(id) {
       this.geodesic.setLatLngs([])
       this.markers[id].position = { lat: 0, lng: 0 }
       this.markers[id].visible = false
-    },
+    }
   },
   watch: {
     markers: {
       handler(val) {
         var points = []
         if (this.markers[0].visible && this.markers[1].visible) {
-          val.forEach((element) => {
+          val.forEach(element => {
             points.push(element.position)
           })
           this.geodesic.setLatLngs(points)
@@ -326,9 +326,9 @@ export default {
           this.risultati.lunghezza = 'NaN'
         }
       },
-      deep: true,
-    },
-  },
+      deep: true
+    }
+  }
 }
 //sistemare il rilascio automatico del drag se si va troppo pianno con il cursone
 </script>

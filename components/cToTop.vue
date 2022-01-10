@@ -6,8 +6,8 @@ export default {
   methods: {
     top() {
       window.scrollTo({ top: 0, behavior: 'smooth' })
-    },
-  },
+    }
+  }
 }
 </script>
 <style lang="scss">

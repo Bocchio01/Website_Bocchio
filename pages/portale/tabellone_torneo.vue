@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="wrap Portale Tabellone_torneo">
-    <cHeadPortale />
-    <h1>Tabellone_torneo</h1>
+      <cHeadPortale />
+      <h1>Tabellone_torneo</h1>
       <h2>
         Torneo selezionato:
         <select @change="TorneoSelezionato()" id="NomeTorneo">
@@ -123,7 +123,9 @@
                   <div>
                     <label for="winner_sq">Squadra vincitrice</label>
                     <select name="winner" id="winner_sq" required>
-                      <option value="" disabled selected hidden>Seleziona una squadra</option>
+                      <option value="" disabled selected hidden
+                        >Seleziona una squadra</option
+                      >
                       <option :value="incontro_selezionato.id_squadra_1">
                         {{ incontro_selezionato.nome_squadra_1 }}
                       </option>
@@ -134,12 +136,7 @@
                   </div>
                   <div>
                     <label for="result">Inserisci il risultato</label>
-                    <input
-                      type="text"
-                      name="risultato"
-                      id="result"
-                      required
-                    />
+                    <input type="text" name="risultato" id="result" required />
                   </div>
 
                   <button type="submit" @click="agg()">
@@ -231,7 +228,7 @@ export default {
         creator: 'Bocchio01',
         name: undefined,
         squadre: [],
-        tabellone: [],
+        tabellone: []
       },
       incontro_selezionato: {
         state: false,
@@ -243,8 +240,8 @@ export default {
           this.nome_squadra_1 = partita.nome_Squadra_1
           this.nome_squadra_2 = partita.nome_Squadra_2
           this.state = true
-        },
-      },
+        }
+      }
       // squadra_selezionata: {
       //   state: false,
       //   fill_obj: function (params) {
@@ -266,13 +263,12 @@ export default {
   },
 
   methods: {
-
     request_tornei() {
       sendRequest({
         action: 'request_data',
         table: 'CalcioBalilla_Tornei',
-        nickname: this.$store.state.user.nickname,
-      }).then((res) => (this.tornei = res))
+        nickname: this.$store.state.user.nickname
+      }).then(res => (this.tornei = res))
     },
 
     modifiy_result(sq1, sq2, num_partita) {
@@ -286,14 +282,14 @@ export default {
         winner: document.getElementById('winner_sq').value,
         punteggio: document.getElementById('result').value,
         id_partita: this.incontro_selezionato.id_partita,
-        num_partita: this.incontro_selezionato.num_partita,
-      }).then((res) => (console.log(res), this.TorneoSelezionato()))
+        num_partita: this.incontro_selezionato.num_partita
+      }).then(res => (console.log(res), this.TorneoSelezionato()))
     },
     setuptabellone() {
       sendRequest({
         action: 'create_tabellone',
-        id_torneo: this.torneo.id,
-      }).then((res) => (console.log(res), this.TorneoSelezionato()))
+        id_torneo: this.torneo.id
+      }).then(res => (console.log(res), this.TorneoSelezionato()))
     },
 
     show_setup() {
@@ -313,8 +309,8 @@ export default {
       sendRequest({
         action: 'create_torneo',
         nome_torneo: document.getElementById('nome_torneo_scelto').value,
-        nickname: this.$store.state.user.nickname,
-      }).then((res) => (console.log(res), this.request_tornei()))
+        nickname: this.$store.state.user.nickname
+      }).then(res => (console.log(res), this.request_tornei()))
     },
 
     uploadData() {
@@ -322,12 +318,12 @@ export default {
         action: 'upload_data',
         id_torneo: this.torneo.id,
         nickname: this.$store.state.user.nickname,
-        file: document.getElementById('csv_id').files[0],
-      }).then((res) => (console.log(res), this.TorneoSelezionato()))
+        file: document.getElementById('csv_id').files[0]
+      }).then(res => (console.log(res), this.TorneoSelezionato()))
     },
 
     TorneoSelezionato() {
-      var result = this.tornei.find((obj) => {
+      var result = this.tornei.find(obj => {
         return obj.id_torneo == document.getElementById('NomeTorneo').value
       })
 
@@ -338,23 +334,23 @@ export default {
       sendRequest({
         action: 'request_data',
         table: 'CalcioBalilla_Squadre',
-        id: this.torneo.id,
-      }).then((res) => (this.torneo.squadre = res))
+        id: this.torneo.id
+      }).then(res => (this.torneo.squadre = res))
 
       sendRequest({
         action: 'request_data',
         table: 'CalcioBalilla_Tabellone',
-        id: this.torneo.id,
+        id: this.torneo.id
       }).then(
-        (res) =>
+        res =>
           (this.torneo.tabellone = res.reduce(function (r, a) {
             r[a.Fase] = r[a.Fase] || []
             r[a.Fase].push(a)
             return r
           }, Object.create(null)))
       )
-    },
-  },
+    }
+  }
 }
 </script>
 

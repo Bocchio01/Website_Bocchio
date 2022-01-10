@@ -45,7 +45,10 @@
         <div class="wrap document" v-if="navdata.prev">
           <p>{{ navdata.prev.title }}</p>
           <cMedia :s="navdata.prev.img.src" :a="navdata.prev.img.src"></cMedia>
-          <NuxtLink :to="'/articolo/' + navdata.prev.slug + '/'" class="link_hidden">
+          <NuxtLink
+            :to="'/articolo/' + navdata.prev.slug + '/'"
+            class="link_hidden"
+          >
             <div class="button"><span>&#8617;</span></div>
           </NuxtLink>
         </div>
@@ -61,7 +64,10 @@
         <div class="wrap document" v-if="navdata.next">
           <p>{{ navdata.next.title }}</p>
           <cMedia :s="navdata.next.img.src" :a="navdata.next.img.src"></cMedia>
-          <NuxtLink :to="'/articolo/' + navdata.next.slug + '/'" class="link_hidden">
+          <NuxtLink
+            :to="'/articolo/' + navdata.next.slug + '/'"
+            class="link_hidden"
+          >
             <div class="button"><span>&#8618;</span></div>
           </NuxtLink>
         </div>
@@ -75,25 +81,25 @@ export default {
   props: {
     navdata: {
       type: Object,
-      default: () => null,
+      default: () => null
     },
     portal: {
       type: Object,
-      default: () => null,
-    },
+      default: () => null
+    }
   },
   data() {
     return {
       urlArticle: this.$route.fullPath,
-      pharse: '',
+      pharse: ''
     }
   },
   computed: {
     files: {
       get() {
         return this.$store.state.files
-      },
-    },
+      }
+    }
   },
   created() {
     var p = !!this.navdata.prev,
@@ -116,7 +122,7 @@ export default {
           : ' il portale associato al progetto'
 
     this.pharse = 'Di seguito ' + a + b + c + '.'
-  },
+  }
 }
 </script>
 

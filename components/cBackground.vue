@@ -15,7 +15,7 @@ export default {
         document.getElementById('menu-btn').checked = false
       } catch (error) {}
     }
-  },
+  }
 }
 </script>
 

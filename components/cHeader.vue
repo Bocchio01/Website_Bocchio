@@ -33,9 +33,7 @@
         <ul class="dropdown-content" :class="!showSubMenu ? 'hide' : ''">
           <li><nuxt-link to="/mix/chi sono/">Chi sono?</nuxt-link></li>
           <li>
-            <nuxt-link to="/mix/qual é lo scopo/"
-              >Qual è lo scopo?</nuxt-link
-            >
+            <nuxt-link to="/mix/qual é lo scopo/">Qual è lo scopo?</nuxt-link>
           </li>
           <li>
             <a href="#" @click="$store.commit('toggle_show', 'login')"
@@ -57,7 +55,7 @@ export default {
       },
       set(value) {
         this.$store.commit('set_show', ['mainmenu', value])
-      },
+      }
     },
     showSubMenu: {
       get() {
@@ -65,8 +63,8 @@ export default {
       },
       set(value) {
         this.$store.commit('set_show', ['submenu', value])
-      },
-    },
+      }
+    }
   },
   methods: {
     Menu_click() {
@@ -75,15 +73,15 @@ export default {
     },
     SubMenu_click() {
       this.showSubMenu = !this.showSubMenu
-    },
+    }
   },
   watch: {
     $route() {
       document.getElementById('menu-btn').checked = false
       this.showMenu = false
       this.showSubMenu = false
-    },
-  },
+    }
+  }
 }
 </script>
 

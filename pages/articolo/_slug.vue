@@ -38,8 +38,8 @@ export default {
     return {
       article,
       prev,
-      next,
+      next
     }
-  },
+  }
 }
 </script>

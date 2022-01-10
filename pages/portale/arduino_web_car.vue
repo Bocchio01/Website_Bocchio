@@ -78,7 +78,7 @@ export default {
     return {
       consoles,
       name_of_client,
-      stage,
+      stage
     }
   },
 
@@ -91,7 +91,7 @@ export default {
       x: 0,
       y: 0,
       speed: 0,
-      angle: 0,
+      angle: 0
     }
   },
 
@@ -118,7 +118,7 @@ export default {
         0: 'pending',
         1: 'open',
         2: 'pending',
-        3: 'close',
+        3: 'close'
       }
       return stateObj[status]
     },
@@ -127,8 +127,8 @@ export default {
     },
     ripulisci_console(target) {
       this.consoles[target].sended_data = ['Console ripulita...']
-    },
-  },
+    }
+  }
 }
 </script>
 

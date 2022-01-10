@@ -1,20 +1,20 @@
 {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "eslint.validate": ["javascript"],
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "stylelint.enable": true,
-    "css.validate": false,
-    "scss.validate": false,
-    "vetur.validation.style": false,
-    "vetur.format.defaultFormatter.css": "none",
-    "vetur.format.defaultFormatter.postcss": "none",
-    "vetur.format.defaultFormatter.scss": "none",
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.sideBar.location": "left",
-    "editor.minimap.enabled": false,
-    "breadcrumbs.enabled": false,
-    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace"
-  }
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "stylelint.enable": true,
+  "css.validate": false,
+  "scss.validate": false,
+  "vetur.validation.style": false,
+  "vetur.format.defaultFormatter.css": "none",
+  "vetur.format.defaultFormatter.postcss": "none",
+  "vetur.format.defaultFormatter.scss": "none",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.sideBar.location": "left",
+  "editor.minimap.enabled": false,
+  "breadcrumbs.enabled": false,
+  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace"
+}

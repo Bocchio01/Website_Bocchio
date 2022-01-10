@@ -1,9 +1,9 @@
 ---
 title: Chi sono?
-description: About page del sito Bocchio's WebSite. La mia presentazione, i miei interessi, i miei hobby e tutto quello che può servire per capire chi sono e conoscermi meglio. 
-img: 
-    src: /v1632947037/Chi_sono.svg
-    alt: Chi sono?
+description: About page del sito Bocchio's WebSite. La mia presentazione, i miei interessi, i miei hobby e tutto quello che può servire per capire chi sono e conoscermi meglio.
+img:
+  src: /v1632947037/Chi_sono.svg
+  alt: Chi sono?
 
 createdAt: 2021-06-20T00:16:00Z
 updatedAt: 2021-11-01T00:00:00Z
@@ -23,8 +23,7 @@ Molti mi conoscono come chi è sempre pronto a guidare il gruppo quando c'è da 
 
 <cMedia s="/v1635370023/Chi%20sono/Al_mare.jpg" c="Al mare si scherza.."></cMedia>
 
-
-Creo probabilmente uno strano effetto nelle persone che mi circordano: parecchie non mi capiscono e con molte altre mi sembra di non riuscire ad essere capito. Altre preferisco guardarle da lontano come se non avessi il diritto di interferire con la loro retta via, mentre alcune neanche le conosco e già so che le vorrei conoscere.  **Cerco sempre la logica in ogni cosa e praticamente sempre la trovo,** ma dentro di me chi lo sà se c'è un minimo di logica. Non lo so e non lo voglio sapere, altrimenti che gusto ci sarebbere nel saperlo?
+Creo probabilmente uno strano effetto nelle persone che mi circordano: parecchie non mi capiscono e con molte altre mi sembra di non riuscire ad essere capito. Altre preferisco guardarle da lontano come se non avessi il diritto di interferire con la loro retta via, mentre alcune neanche le conosco e già so che le vorrei conoscere. **Cerco sempre la logica in ogni cosa e praticamente sempre la trovo,** ma dentro di me chi lo sà se c'è un minimo di logica. Non lo so e non lo voglio sapere, altrimenti che gusto ci sarebbere nel saperlo?
 
 **Questo senso di opposto e di controtendenza è quello che maggiormente mi guida nelle mie scelte.** La curiosità nel provare qualcosa che nessuno ha mai provato (o almeno dei miei conoscenti), la soddisfazione nel dire ci sono riuscito, la voglia di continuare ad imparare per migliorarsi e migliorare.
 
@@ -38,13 +37,13 @@ Trovavo e trovo tutt'ora estremamente interessanti le macchine pesanti da cantie
 
 <cMedia s="/v1635371803/Chi%20sono/Escavatore.png" c="L'ho detto che gli escavatori mi attirano?"></cMedia>
 
-Per tutta questa serie di motivazioni, attualmente studio *Ingegneria Meccanica* presso il Politecnico di Milano e spero in futuro di poter contribuire attivamente con le mie conoscenze e la mia passione allo sviluppo tecnologico nei settori della meccanica pesante.
+Per tutta questa serie di motivazioni, attualmente studio _Ingegneria Meccanica_ presso il Politecnico di Milano e spero in futuro di poter contribuire attivamente con le mie conoscenze e la mia passione allo sviluppo tecnologico nei settori della meccanica pesante.
 
 ## La programmazione
 
-Ovviamente meccanica non è la mia unica passione, anzi. Grazie al liceo che ho frequentato (il mitico Paolo Giovio di Como) ho potuto assaggiare, anche se in maniera molto superficiale, le basi della programmazione. In particolare del buon e vecchio *C*. Anche durante gli studi, quando ancora sapevo poco se non pochissimo, provavo divertimento nel programmare semplici giochini o simili (vedesi il programmino di Forza4 con il C).
+Ovviamente meccanica non è la mia unica passione, anzi. Grazie al liceo che ho frequentato (il mitico Paolo Giovio di Como) ho potuto assaggiare, anche se in maniera molto superficiale, le basi della programmazione. In particolare del buon e vecchio _C_. Anche durante gli studi, quando ancora sapevo poco se non pochissimo, provavo divertimento nel programmare semplici giochini o simili (vedesi il programmino di Forza4 con il C).
 
-L'ampio utilizzo della logica nell'arte della programmazione è proprio l'aspetto che più mi appassiona: ogni volta che scrivo del codice mi sembra sempre di cercare di risolvere un rebus o un sudoku. Il mio obbiettivo inoltre è sempre quello di risolvere il 'livello del gioco' con la migliore strategia, ottimizzando e velocizzando dove possibile. **Limitarmi ad un codice che fà quello per cui è stato pensato non mi da soddisfazioni: ogni singola riga deve essere *pulita, ordinata e logicamente lineare.***
+L'ampio utilizzo della logica nell'arte della programmazione è proprio l'aspetto che più mi appassiona: ogni volta che scrivo del codice mi sembra sempre di cercare di risolvere un rebus o un sudoku. Il mio obbiettivo inoltre è sempre quello di risolvere il 'livello del gioco' con la migliore strategia, ottimizzando e velocizzando dove possibile. **Limitarmi ad un codice che fà quello per cui è stato pensato non mi da soddisfazioni: ogni singola riga deve essere _pulita, ordinata e logicamente lineare._**
 
 ## E quindi la robotica
 
@@ -56,14 +55,13 @@ Queste semplici (fino a un certo punto semplici..) schede offrono infatti la **p
 
 ## Un osservatore per indole
 
-Mi ricordo come se fosse ieri che un giorno un mio maestro di tennis vedendomi quasi sempre in disparte rispetto agli altri si avvicinò e mi chiese: *Tommy, ti senti più un ragazzo attivo o un osservatore?*, e io risposi senza pensarci sù: ***Un osservatore, mi piace analizzare gli altri e le cose.*** Anche se forse crescendo questa mia attitudine sia leggermente calata, ancora adesso credo sia una delle mie caratteristiche principali.
+Mi ricordo come se fosse ieri che un giorno un mio maestro di tennis vedendomi quasi sempre in disparte rispetto agli altri si avvicinò e mi chiese: _Tommy, ti senti più un ragazzo attivo o un osservatore?_, e io risposi senza pensarci sù: **_Un osservatore, mi piace analizzare gli altri e le cose._** Anche se forse crescendo questa mia attitudine sia leggermente calata, ancora adesso credo sia una delle mie caratteristiche principali.
 
-Un aspetto importante che per me non deve mai mancare è inoltre il contatto con la natura. **Credo infatti fortemente nel contatto con la natura quale fonte di ispirazione per i miei progetti e non solo.** Molte volte mi ritrovo a guardare fuori dalla finestra completamente perso nei miei pensieri alla ricerca di risposte a mille domande che mi saltano in mente. L'osservazione e l'analisi della natura e di ciò che mi circonda provoca in me un senso di calma e mi aiuta a ragionare meglio e più in fretta. Si dice che la notte porti consiglio, ma per me probabilmente sarebbe più corretto dire che *la natura porta consiglio.*
-
+Un aspetto importante che per me non deve mai mancare è inoltre il contatto con la natura. **Credo infatti fortemente nel contatto con la natura quale fonte di ispirazione per i miei progetti e non solo.** Molte volte mi ritrovo a guardare fuori dalla finestra completamente perso nei miei pensieri alla ricerca di risposte a mille domande che mi saltano in mente. L'osservazione e l'analisi della natura e di ciò che mi circonda provoca in me un senso di calma e mi aiuta a ragionare meglio e più in fretta. Si dice che la notte porti consiglio, ma per me probabilmente sarebbe più corretto dire che _la natura porta consiglio._
 
 ## Lo sport
 
-Questa mia caratteristica si è poi riversata anche sulla scelta dello sport. Nonostante sia iniziato tutto un pò per caso, da ormai 5 anni **pratico [*Orienteering* o *Corsa d’orientamento*](https://www.fisolombardia.it/wp/che-cose-lorienteering/).**
+Questa mia caratteristica si è poi riversata anche sulla scelta dello sport. Nonostante sia iniziato tutto un pò per caso, da ormai 5 anni **pratico [_Orienteering_ o _Corsa d’orientamento_](https://www.fisolombardia.it/wp/che-cose-lorienteering/).**
 
 <cMedia s="/v1632886357/Chi%20sono/Orienteering.jpg" c="Io impegnato durante una gara"></cMedia>
 
