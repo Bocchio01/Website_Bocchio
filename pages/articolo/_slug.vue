@@ -20,7 +20,7 @@
 <script>
 export default {
   async asyncData({ $content, params }) {
-    const [article] = await $content('articolo', { deep: true })
+    const [article] = await $content('articolo')
       .where({ slug: params.slug })
       .fetch()
       .catch(() => {
@@ -29,7 +29,7 @@ export default {
 
     if (!article) throw { statusCode: 404 }
 
-    const [prev, next] = await $content('articolo', { deep: true })
+    const [prev, next] = await $content('articolo')
       .only(['title', 'slug', 'img'])
       .sortBy('createdAt', 'asc')
       .surround(params.slug)
