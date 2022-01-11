@@ -20,14 +20,19 @@
 <script>
 export default {
   async asyncData({ $content, params }) {
+    console.log($content, params)
+
     const slug = params.slug || 'chi sono'
+    console.log(slug)
     const article = await $content('mix', slug)
-      .fetch()
+      .fetch(console.log('Fetched'))
       .catch(() => {
+        console.log('Catched')
         throw { statusCode: 404 }
       })
+    console.log(article)
 
     return { article }
-  }
+  },
 }
 </script>

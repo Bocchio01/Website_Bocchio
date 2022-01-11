@@ -19,13 +19,17 @@
 
 <script>
 export default {
-  async asyncData({ $content, params }) {
+  async asyncData({ $content, params }) {    
+    console.log($content, params)
+
     const [article] = await $content('articolo')
       .where({ slug: params.slug })
-      .fetch()
+      .fetch(console.log('Fetched'))
       .catch(() => {
+        console.log('Catched')
         throw { statusCode: 404 }
       })
+        console.log(article)
 
     if (!article) throw { statusCode: 404 }
 
