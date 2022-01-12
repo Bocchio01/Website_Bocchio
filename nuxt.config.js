@@ -4,7 +4,7 @@ const meta = getSiteMeta()
 
 export default {
   target: 'static',
-  ssr: true,
+  ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -81,7 +81,7 @@ export default {
       purpose: 'any'
     },
     manifest: {
-      name: 'Sito personale di Tommaso Bocchietti',
+      name: "Bocchio's WebSite",
       short_name: "Bocchio's WebSite",
       description:
         'Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione alla fisica.',
