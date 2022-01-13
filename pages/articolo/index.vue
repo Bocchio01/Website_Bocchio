@@ -37,7 +37,7 @@
 export default {
   async asyncData({ $content }) {
     var tags_array = []
-    const articles = await $content('articolo')
+    const articles = await $content('articolo', { deep: true })
       .only(['title', 'slug', 'paragraph', 'img', 'tag'])
       .sortBy('createdAt', 'desc')
       .fetch()
