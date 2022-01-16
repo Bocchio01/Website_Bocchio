@@ -38,8 +38,8 @@ div.loading {
   align-items: center;
   background-color: black;
   color: white;
-  font-family: var(--Special_font);
-  font-size: var(--title_size);
+  font-family: var(--Font_Special);
+  font-size: var(--Size_Title);
   text-align: center;
   transition: all 1000ms ease-in;
   > .logo {

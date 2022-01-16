@@ -36,19 +36,19 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--link_hover_color);
+    color: var(--Color_Hover);
     z-index: 1;
-    font-family: var(--Special_font);
+    font-family: var(--Font_Special);
 
     &.sloganNotHome {
       margin: 27px auto;
-      font-size: var(--slogan_font_size);
+      font-size: var(--Size_Text_Slogan);
     }
 
     &.sloganHome {
       padding: 20px;
       font-size: 130px;
-      min-height: calc(100vh - var(--slogan_font_size));
+      min-height: calc(100vh - var(--Size_Text_Slogan));
       padding-bottom: 50px;
     }
   }
@@ -56,7 +56,7 @@ export default {
 
 @media (max-width: 1200px) {
   :root {
-    --slogan_font_size: 60px;
+    --Size_Text_Slogan: 60px;
   }
   .Default div.sloganBase.sloganHome {
     font-size: 90px;
@@ -65,7 +65,7 @@ export default {
 
 @media (max-width: 570px) {
   :root {
-    --slogan_font_size: 35px;
+    --Size_Text_Slogan: 35px;
   }
   .Default div.sloganBase.sloganHome {
     font-size: 60px;

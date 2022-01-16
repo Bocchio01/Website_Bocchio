@@ -107,34 +107,3 @@ var Around_the_globe = {
 }
 
 export { Around_the_globe }
-
-/*
-  map: null,
-    geodesic: null,
-  
-  //function
-  loadMap: function () {
-  
-    var map = L.map('map').locate({ watch: true, setView: true })
-  
-    map.on('locationfound', function (e) {
-      map.stopLocate()
-    })
-  
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map)
-  
-    L.Control.geocoder({ defaultMarkGeocode: false })
-      .on('markgeocode', function (e) {
-        map.setView(e.geocode.center, 10)
-      })
-      .addTo(map)
-    const geodesic = new L.Geodesic().addTo(map)
-  
-    map.on('click', (e) => this.mapClicked(e.latlng))
-  
-    return this.map = map, this.geodesic = geodesic
-  },
-  */

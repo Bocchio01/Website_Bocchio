@@ -56,7 +56,7 @@
                   @click="initialLocation = marker.position"
                 />
                 <input
-                  style="color: var(--text_color)"
+                  style="color: var(--Color_Text)"
                   v-model="marker.position"
                   placeholder="Nessun punto selezionato"
                   type="text"

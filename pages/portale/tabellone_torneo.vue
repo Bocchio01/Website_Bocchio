@@ -123,9 +123,9 @@
                   <div>
                     <label for="winner_sq">Squadra vincitrice</label>
                     <select name="winner" id="winner_sq" required>
-                      <option value="" disabled selected hidden
-                        >Seleziona una squadra</option
-                      >
+                      <option value="" disabled selected hidden>
+                        Seleziona una squadra
+                      </option>
                       <option :value="incontro_selezionato.id_squadra_1">
                         {{ incontro_selezionato.nome_squadra_1 }}
                       </option>
@@ -228,7 +228,7 @@ export default {
         creator: 'Bocchio01',
         name: undefined,
         squadre: [],
-        tabellone: []
+        tabellone: [],
       },
       incontro_selezionato: {
         state: false,
@@ -240,8 +240,8 @@ export default {
           this.nome_squadra_1 = partita.nome_Squadra_1
           this.nome_squadra_2 = partita.nome_Squadra_2
           this.state = true
-        }
-      }
+        },
+      },
       // squadra_selezionata: {
       //   state: false,
       //   fill_obj: function (params) {
@@ -264,11 +264,14 @@ export default {
 
   methods: {
     request_tornei() {
-      sendRequest({
-        action: 'request_data',
-        table: 'CalcioBalilla_Tornei',
-        nickname: this.$store.state.user.nickname
-      }).then(res => (this.tornei = res))
+      sendRequest(
+        {
+          action: 'request_data',
+          table: 'CalcioBalilla_Tornei',
+          nickname: this.$store.state.user.nickname,
+        },
+        '/Tabellone_torneo/Main.php'
+      ).then((res) => (this.tornei = res))
     },
 
     modifiy_result(sq1, sq2, num_partita) {
@@ -277,19 +280,25 @@ export default {
       }
     },
     agg() {
-      sendRequest({
-        action: 'set_result',
-        winner: document.getElementById('winner_sq').value,
-        punteggio: document.getElementById('result').value,
-        id_partita: this.incontro_selezionato.id_partita,
-        num_partita: this.incontro_selezionato.num_partita
-      }).then(res => (console.log(res), this.TorneoSelezionato()))
+      sendRequest(
+        {
+          action: 'set_result',
+          winner: document.getElementById('winner_sq').value,
+          punteggio: document.getElementById('result').value,
+          id_partita: this.incontro_selezionato.id_partita,
+          num_partita: this.incontro_selezionato.num_partita,
+        },
+        '/Tabellone_torneo/Main.php'
+      ).then((res) => (console.log(res), this.TorneoSelezionato()))
     },
     setuptabellone() {
-      sendRequest({
-        action: 'create_tabellone',
-        id_torneo: this.torneo.id
-      }).then(res => (console.log(res), this.TorneoSelezionato()))
+      sendRequest(
+        {
+          action: 'create_tabellone',
+          id_torneo: this.torneo.id,
+        },
+        '/Tabellone_torneo/Main.php'
+      ).then((res) => (console.log(res), this.TorneoSelezionato()))
     },
 
     show_setup() {
@@ -306,24 +315,30 @@ export default {
     },
 
     create() {
-      sendRequest({
-        action: 'create_torneo',
-        nome_torneo: document.getElementById('nome_torneo_scelto').value,
-        nickname: this.$store.state.user.nickname
-      }).then(res => (console.log(res), this.request_tornei()))
+      sendRequest(
+        {
+          action: 'create_torneo',
+          nome_torneo: document.getElementById('nome_torneo_scelto').value,
+          nickname: this.$store.state.user.nickname,
+        },
+        '/Tabellone_torneo/Main.php'
+      ).then((res) => (console.log(res), this.request_tornei()))
     },
 
     uploadData() {
-      sendRequest({
-        action: 'upload_data',
-        id_torneo: this.torneo.id,
-        nickname: this.$store.state.user.nickname,
-        file: document.getElementById('csv_id').files[0]
-      }).then(res => (console.log(res), this.TorneoSelezionato()))
+      sendRequest(
+        {
+          action: 'upload_data',
+          id_torneo: this.torneo.id,
+          nickname: this.$store.state.user.nickname,
+          file: document.getElementById('csv_id').files[0],
+        },
+        '/Tabellone_torneo/Main.php'
+      ).then((res) => (console.log(res), this.TorneoSelezionato()))
     },
 
     TorneoSelezionato() {
-      var result = this.tornei.find(obj => {
+      var result = this.tornei.find((obj) => {
         return obj.id_torneo == document.getElementById('NomeTorneo').value
       })
 
@@ -331,26 +346,32 @@ export default {
       this.torneo.creator = result.Creatore
       this.torneo.name = result.nome_torneo
 
-      sendRequest({
-        action: 'request_data',
-        table: 'CalcioBalilla_Squadre',
-        id: this.torneo.id
-      }).then(res => (this.torneo.squadre = res))
+      sendRequest(
+        {
+          action: 'request_data',
+          table: 'CalcioBalilla_Squadre',
+          id: this.torneo.id,
+        },
+        '/Tabellone_torneo/Main.php'
+      ).then((res) => (this.torneo.squadre = res))
 
-      sendRequest({
-        action: 'request_data',
-        table: 'CalcioBalilla_Tabellone',
-        id: this.torneo.id
-      }).then(
-        res =>
+      sendRequest(
+        {
+          action: 'request_data',
+          table: 'CalcioBalilla_Tabellone',
+          id: this.torneo.id,
+        },
+        '/Tabellone_torneo/Main.php'
+      ).then(
+        (res) =>
           (this.torneo.tabellone = res.reduce(function (r, a) {
             r[a.Fase] = r[a.Fase] || []
             r[a.Fase].push(a)
             return r
           }, Object.create(null)))
       )
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -401,7 +422,7 @@ export default {
   border-radius: 5px;
   font-weight: bold;
   // background-color: #15ff009c;
-  background-color: var(--main_color);
+  background-color: var(--Color_Main);
 }
 
 .container {
@@ -427,7 +448,7 @@ export default {
 //   > label {
 //     width: 50%;
 //     min-width: fit-content;
-//     font-size: var(--paragraph_size);
+//     font-size: var(--Size_Text_Wrap);
 //   }
 //   > button,
 //   input {

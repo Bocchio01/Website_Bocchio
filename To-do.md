@@ -2,14 +2,14 @@
 
 ## BUG
 
-- [ ] **Correggere l'errore di "TypeError: Cannot read properties of undefined (reading 'dbHash')"**
 - [ ] Sistemare il css della 'x' di pulizia nelle barre di ricerca (ora è blu ma deve essere o nero o bianco)
 - [ ] L'auto compilazione dei campi di login continua ad avere interferenze con quelle di search
 - [ ] Da mobile le finestre di risultato del portale around_the_globe escono dai margini
 - [ ] Al portale around_the_globe manca il css di alcune icone (da link esterno)
-- [ ] Da mobile l'icona di login in entrata è buggata di colore
 - [ ] Controllare se un utente può o meno eliminare l'account
 - [ ] Controllare la sitemap.xml (sembrerebbero mancare dei link..)
+- [x] **Correggere l'errore di "TypeError: Cannot read properties of undefined (reading 'dbHash')"**
+- [x] Da mobile l'icona di login in entrata è buggata di colore
 - [x] Mettere il font delle social card grassetto
 - [x] Cambiare il link di riferimento per il portale di arduino_web_car e puntarlo a Glitch
 - [x] Link delle card di condivisione dei portali errati (manca il '/' in fondo)
@@ -24,7 +24,6 @@
 
 ## Generale
 
-- Head tag and SEO: controllare le card di condivisione
 - Privacy and user information (laws)
 
 - Possibili:

@@ -89,16 +89,16 @@ export default {
 .Default {
   header,
   .dropdown-content {
-    transition: all 0.1s ease-in;
-    color: var(--text_color);
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding-inline: 15px;
     z-index: 2;
-    background-color: var(--background_color);
-    border: var(--border_setting);
-    border-radius: var(--header_border_radius);
+    padding-inline: 15px;
+    border: var(--Border_Settings);
+    border-radius: var(--Border_Radius_Header);
+    color: var(--Color_Text);
+    background-color: var(--Color_Text_BG);
+    transition: all 0.1s ease-in;
   }
 
   .hide {
@@ -109,16 +109,16 @@ export default {
 
   header {
     a {
-      color: var(--text_color);
+      color: var(--Color_Text);
 
       display: block;
       margin: 15px 15px;
       font-weight: bold;
-      font-family: var(--Special_font);
-      font-size: var(--header_font_size);
+      font-family: var(--Font_Special);
+      font-size: var(--Size_Text_Header);
       &:hover,
       &.hover {
-        color: var(--link_hover_color);
+        color: var(--Color_Hover);
       }
     }
     > div {
@@ -153,14 +153,14 @@ export default {
         padding: 30px;
         > .navicon {
           align-self: center;
-          background: var(--text_color);
+          background: var(--Color_Text);
           height: 2px;
           position: relative;
           transition: all 0.2s ease-out;
           width: 18px;
           &::after,
           &::before {
-            background: var(--text_color);
+            background: var(--Color_Text);
             content: '';
             height: 100%;
             position: absolute;
@@ -219,7 +219,7 @@ export default {
 
 @media (max-width: 570px) {
   :root {
-    --header_font_size: 19px;
+    --Size_Text_Header: 19px;
   }
   .Default {
     header > div > .menu-icon {

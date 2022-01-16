@@ -146,7 +146,7 @@ export default {
     width: 100%;
   }
   > h3 {
-    font-size: var(--paragraph_size);
+    font-size: var(--Size_Text_Wrap);
     &::after {
       margin-left: 20px;
       margin-top: auto;
@@ -176,9 +176,9 @@ export default {
     overflow: auto;
     text-align: left;
     font-family: 'Lucida Console', 'Courier New', monospace;
-    font-size: var(--paragraph_size);
-    color: var(--background_color);
-    background-color: var(--background_color_body);
+    font-size: var(--Size_Text_Wrap);
+    color: var(--Color_Text_BG);
+    background-color: var(--Color_Body_BG);
     height: 200px;
     white-space: nowrap;
     padding-inline: 5px;

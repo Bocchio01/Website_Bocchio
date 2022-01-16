@@ -78,6 +78,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  padding: var(--Padding_Wrap);
   row-gap: 15px;
   column-gap: 64px;
   &:nth-child(2n) {
@@ -92,8 +93,8 @@ export default {
     }
   }
   > .link_hidden > div.button {
-    font-size: calc(var(--paragraph_size) + 5px);
-    font-family: var(--Special_font);
+    font-size: calc(var(--Size_Text_Wrap) + 5px);
+    font-family: var(--Font_Special);
     text-decoration: none;
   }
   img,

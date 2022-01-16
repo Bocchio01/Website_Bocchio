@@ -1,4 +1,4 @@
-export default args => {
+export default (args, target_url = '/PWS/main.php') => {
   const xhttp = new XMLHttpRequest()
   const FD = new FormData(args.form)
   for (const [key, value] of Object.entries(args)) {
@@ -22,7 +22,7 @@ export default args => {
         }
       }
     }
-    xhttp.open('POST', process.env.UTILS_SITE + '/PWS/main.php')
+    xhttp.open('POST', process.env.UTILS_SITE + target_url)
 
     xhttp.send(FD)
   })

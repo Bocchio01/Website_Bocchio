@@ -5,7 +5,7 @@
 .box,
 .result {
     padding: 10px;
-    border-radius: var(--border_radius);
+    border-radius: var(--Border_Radius_Wrap);
     align-content: center;
     align-items: center;
     justify-content: center;
@@ -16,16 +16,17 @@
 
 .result {
     display: flex;
+    flex-wrap: wrap;
     width: fit-content;
     margin: 20px auto;
-    border: var(--app_border_setting_evidence);
+    border: var(--app_Border_Settings_evidence);
     * {
         margin: 5px;
     }
 }
 .box {
     align-self: flex-start;
-    border: var(--border_setting);
+    border: var(--Border_Settings);
 }
 
 .affianca {
@@ -39,17 +40,17 @@
 input,
 button,
 .button {
-    border: var(--app_border_setting);
-    border-radius: var(--header_border_radius);
-    font-family: var(--Base_font);
-    font-size: var(--paragraph_size);
+    border: var(--app_Border_Settings);
+    border-radius: var(--Border_Radius_Header);
+    font-family: var(--Font_Base);
+    font-size: var(--Size_Text_Wrap);
     margin-inline: auto;
     margin-block: var(--app_row_column_gap);
 }
 
 button,
 .button {
-    // color: var(--text_color);
+    // color: var(--Color_Text);
     color: black;
 
     display: block;
@@ -67,6 +68,6 @@ button,
 
 @media (max-width: 1030px) {
     .wrap.Portale {
-        padding: 25px;
+        padding: 10px;
     }
 }

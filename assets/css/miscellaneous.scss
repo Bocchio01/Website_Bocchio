@@ -1,14 +1,3 @@
-.flex_container {
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  align-items: stretch;
-  justify-content: center;
-  column-gap: 25px;
-  row-gap: 25px;
-  margin-block: 25px;
-}
-
 .searchBar {
   display: flex;
   padding: 15px;
@@ -21,8 +10,8 @@
       font-weight: bold;
       display: block;
       width: 100%;
-      color: var(--text_color);
-      font-size: calc(1.2 * var(--paragraph_size));
+      color: var(--Color_Text);
+      font-size: calc(1.2 * var(--Size_Text_Wrap));
     }
     input,
     nav {
@@ -30,14 +19,14 @@
       margin-block: 10px;
     }
     input {
-      font-family: var(--Base_font);
+      font-family: var(--Font_Base);
       padding: 5px 10px;
-      border: 2px solid var(--main_color);
-      border-radius: var(--header_border_radius);
-      color: var(--text_color);
-      background-color: var(--background_color);
+      border: 2px solid var(--Color_Main);
+      border-radius: var(--Border_Radius_Header);
+      color: var(--Color_Text);
+      background-color: var(--Color_Text_BG);
       outline: none;
-      font-size: calc(1.22 * var(--paragraph_size));
+      font-size: calc(1.22 * var(--Size_Text_Wrap));
     }
   }
 }
@@ -60,7 +49,7 @@ input[type="radio"] + label span {
   vertical-align: middle;
   cursor: pointer;
   border-radius: 50%;
-  border: var(--app_border_setting);
+  border: var(--app_Border_Settings);
 }
 
 input[type="radio"]:checked + label {
@@ -68,7 +57,7 @@ input[type="radio"]:checked + label {
 }
 
 input[type="radio"]:checked + label span {
-  background-color: var(--main_color);
+  background-color: var(--Color_Main);
 }
 
 .tooltip {
@@ -86,16 +75,16 @@ input[type="radio"]:checked + label span {
   background-color: rgba(255, 255, 255, 0.8);
   position: absolute;
   z-index: 1;
-  padding: var(--padding_articles);
+  padding: var(--Padding_Wrap);
   transition: all 0.5s ease-out;
   > mark {
     padding: 15px;
     background-color: rgba(0, 0, 0, 0.95);
     color: white;
     text-align: center;
-    font-size: var(--paragraph_size);
-    border: var(--border_setting);
-    border-radius: var(--border_radius);
+    font-size: var(--Size_Text_Wrap);
+    border: var(--Border_Settings);
+    border-radius: var(--Border_Radius_Wrap);
   }
 }
 
@@ -104,14 +93,14 @@ input[type="radio"]:checked + label span {
 }
 
 .logo {
-  height: calc(1.7 * var(--header_font_size));
-  width: calc(2.1 * var(--header_font_size));
+  height: calc(1.7 * var(--Size_Text_Header));
+  width: calc(2.1 * var(--Size_Text_Header));
   cursor: pointer;
 
-  background-color: var(--main_color);
+  background-color: var(--Color_Main);
   mask: url("/svg/Lampadina_ingranaggi.svg") no-repeat center;
   &:hover ~ a {
-    color: var(--link_hover_color);
+    color: var(--Color_Hover);
   }
 }
 
@@ -128,7 +117,7 @@ input[type="radio"]:checked + label span {
   right: 0px;
   visibility: hidden;
   text-decoration: none !important;
-  color: var(--text_color) !important;
+  color: var(--Color_Text) !important;
 }
 
 .msg_bg {
@@ -156,7 +145,7 @@ input[type="radio"]:checked + label span {
 }
 
 table {
-  font-size: var(--paragraph_size);
+  font-size: var(--Size_Text_Wrap);
   border-collapse: collapse;
   width: 100%;
 }
@@ -172,5 +161,5 @@ tr:nth-child(even) {
 }
 
 th {
-  background-color: var(--main_color);
+  background-color: var(--Color_Main);
 }

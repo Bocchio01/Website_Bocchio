@@ -99,8 +99,8 @@ export default {
     }
     > figcaption {
       font-style: italic;
-      font-size: calc(var(--paragraph_size) - 2px);
-      font-family: var(--Base_font);
+      font-size: calc(var(--Size_Text_Wrap) - 2px);
+      font-family: var(--Font_Base);
       text-align: center;
       padding-inline: 10px;
       overflow-wrap: anywhere;
@@ -117,7 +117,7 @@ export default {
         background-color: white;
       }
       > figcaption {
-        font-size: calc(5px + var(--paragraph_size));
+        font-size: calc(5px + var(--Size_Text_Wrap));
       }
     }
   }

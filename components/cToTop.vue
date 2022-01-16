@@ -18,7 +18,7 @@ button.ToTop {
   margin-block: 0px;
   margin-right: 0px;
   padding-inline: 20px;
-  font-size: calc(1.5 * var(--paragraph_size));
+  font-size: calc(1.5 * var(--Size_Text_Wrap));
   > span {
     font-weight: bold;
   }
@@ -32,7 +32,7 @@ button.ToTop {
     margin-right: 5px;
     margin-bottom: 5px;
     padding-inline: 16px;
-    font-size: var(--paragraph_size);
+    font-size: var(--Size_Text_Wrap);
   }
 }
 </style>

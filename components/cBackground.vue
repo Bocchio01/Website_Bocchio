@@ -6,7 +6,6 @@
 
 <script>
 export default {
-  name: 'cBackground',
   mounted() {
     window.onscroll = () => {
       this.$store.commit('set_show', ['submenu', false])
@@ -22,17 +21,18 @@ export default {
 <style lang="scss">
 #particle-container {
   position: fixed;
-  top: 0px;
   z-index: -1;
+  top: 0px;
   width: 100%;
   height: 100vh;
-  background-color: var(--background_color_body);
+  background-color: var(--Color_Body_BG);
 
   > div {
     position: absolute;
     border-radius: 50%;
-    background: var(--background_color);
+    background: var(--Color_Text_BG);
   }
+  
 }
 
 @for $i from 1 through 100 {

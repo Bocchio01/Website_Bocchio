@@ -6,7 +6,7 @@
   width: 256px;
   border-radius: 50%;
   position: relative;
-  border: solid 4px var(--main_color);
+  border: solid 4px var(--Color_Main);
 }
 /*.vue-joystick::after,*/
 .vue-joystick::before {
@@ -17,7 +17,7 @@
   left: 0;
   right: 0;
   margin: -32px;
-  background: var(--main_color);
+  background: var(--Color_Main);
   height: 64px;
   width: 64px;
   border-radius: 50%;
@@ -28,7 +28,7 @@
   bottom: 128px;
   border-radius: 10px;
   width: 4px;
-  background: var(--main_color);
+  background: var(--Color_Main);
   transform: rotate(var(--angle));
   transform-origin: bottom center;
   height: var(--speed);

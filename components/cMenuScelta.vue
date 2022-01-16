@@ -83,7 +83,7 @@ export default {
 nav {
   display: block;
   width: 100%;
-  font-size: calc(1.2 * var(--paragraph_size));
+  font-size: calc(1.2 * var(--Size_Text_Wrap));
 
   > div {
     padding-inline: 10px;
@@ -104,30 +104,30 @@ nav {
 
 .Default {
   nav {
-    font-size: calc(0.5 * var(--title_size));
+    font-size: calc(0.5 * var(--Size_Title));
 
     > div {
       justify-content: center;
       max-width: 70%;
       margin-inline: auto;
       > p {
-        // font-family: var(--Special_font);
-        font-family: var(--Base_font);
+        // font-family: var(--Font_Special);
+        font-family: var(--Font_Base);
 
         padding: 5px 10px;
-        border: 2px solid var(--main_color);
-        border-radius: var(--header_border_radius);
-        color: var(--text_color);
-        background-color: var(--background_color);
+        border: 2px solid var(--Color_Main);
+        border-radius: var(--Border_Radius_Header);
+        color: var(--Color_Text);
+        background-color: var(--Color_Text_BG);
         &.active,
         &:hover {
-          background-color: var(--link_hover_color);
+          background-color: var(--Color_Hover);
         }
       }
     }
     > p {
-      color: var(--background_color);
-      padding: var(--padding_articles);
+      color: var(--Color_Text_BG);
+      padding: var(--Padding_Wrap);
       display: none;
     }
   }
@@ -135,20 +135,20 @@ nav {
 
 .Portale {
   nav {
-    border-radius: var(--header_border_radius);
-    border: var(--app_border_setting);
+    border-radius: var(--Border_Radius_Header);
+    border: var(--app_Border_Settings);
     background-color: var(--Nav_color);
     margin-bottom: var(--app_row_column_gap);
     > div {
       justify-content: space-evenly;
       > p {
-        font-family: var(--Base_font);
+        font-family: var(--Font_Base);
 
         text-decoration: underline;
         padding-inline: 10px;
         &.active,
         &:hover {
-          border-radius: var(--header_border_radius);
+          border-radius: var(--Border_Radius_Header);
           background-color: rgb(0, 0, 0, 0.2);
         }
       }

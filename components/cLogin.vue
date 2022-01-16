@@ -280,11 +280,11 @@ export default {
     user: {
       handler(val) {
         document.documentElement.style.setProperty(
-          '--add_size',
+          '--Size_Variable',
           val.preferences.font + 'px'
         )
         document.documentElement.style.setProperty(
-          '--main_color',
+          '--Color_Main',
           val.preferences.color
         )
         if (val.preferences.dark == true) {
@@ -313,7 +313,7 @@ export default {
   }
 
   > nav > div > p {
-    font-family: var(--Base_font) !important;
+    font-family: var(--Font_Base) !important;
   }
 
   label {
@@ -359,14 +359,14 @@ export default {
   input:focus,
   select:hover,
   select:focus {
-    border-color: var(--main_color);
+    border-color: var(--Color_Main);
     outline: none;
     padding: 5px;
   }
 
   #avatar_container {
-    border: var(--border_setting);
-    border-radius: var(--border_radius);
+    border: var(--Border_Settings);
+    border-radius: var(--Border_Radius_Wrap);
     padding: 5px;
     > div {
       display: flex;
@@ -385,7 +385,7 @@ export default {
     &:hover,
     &:focus {
       opacity: 0.8;
-      border-color: var(--main_color);
+      border-color: var(--Color_Main);
       outline: none;
       padding: 5px;
     }

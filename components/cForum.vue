@@ -227,7 +227,7 @@ export default {
     .tooltiptext {
       margin-left: -15px;
       margin-top: -15px;
-      border-radius: var(--border_radius);
+      border-radius: var(--Border_Radius_Wrap);
     }
   }
 
@@ -254,7 +254,7 @@ export default {
         justify-content: center;
         align-items: center;
         > p {
-          font-size: calc(1.2 * var(--paragraph_size));
+          font-size: calc(1.2 * var(--Size_Text_Wrap));
 
           font-weight: bold;
         }
@@ -264,7 +264,7 @@ export default {
         }
       }
       > p {
-        font-size: calc(0.8 * var(--paragraph_size));
+        font-size: calc(0.8 * var(--Size_Text_Wrap));
       }
     }
     > .text {
@@ -290,7 +290,7 @@ export default {
     }
   }
   .divisore {
-    border-right: var(--border_setting);
+    border-right: var(--Border_Settings);
   }
 
   @media (max-width: 750px) {

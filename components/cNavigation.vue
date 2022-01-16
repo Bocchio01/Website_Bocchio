@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap_width flex_container">
+  <div class="wrap nav_container">
     <div
       class="wrap navigation"
       v-if="files[this.urlArticle]"
@@ -16,6 +16,9 @@
           v-for="(file, index) in files[this.urlArticle]"
           :key="index"
         >
+          <!-- [
+        { host: "Dropbox/Mega",
+        url: "http:// ... "}] -->
           <p>{{ file.host }}</p>
           <img
             :src="'/AttachmentIcon/' + file.host + '.png'"
@@ -81,25 +84,25 @@ export default {
   props: {
     navdata: {
       type: Object,
-      default: () => null
+      default: () => null,
     },
     portal: {
       type: Object,
-      default: () => null
-    }
+      default: () => null,
+    },
   },
   data() {
     return {
       urlArticle: this.$route.fullPath,
-      pharse: ''
+      pharse: '',
     }
   },
   computed: {
     files: {
       get() {
         return this.$store.state.files
-      }
-    }
+      },
+    },
   },
   created() {
     var p = !!this.navdata.prev,
@@ -122,11 +125,24 @@ export default {
           : ' il portale associato al progetto'
 
     this.pharse = 'Di seguito ' + a + b + c + '.'
-  }
+  },
 }
 </script>
 
 <style lang="scss">
+.wrap.nav_container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0px;
+  background: none;
+  border: none;
+  column-gap: 25px;
+  row-gap: 25px;
+  margin-block: 25px;
+}
 .wrap.navigation {
   padding: 15px;
   margin-block: 0px;

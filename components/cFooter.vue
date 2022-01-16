@@ -41,37 +41,38 @@ export default {
 .Default {
   footer {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-top: auto;
-    width: 100%;
-    border: var(--border_setting);
-    background-color: var(--background_color);
-    border-radius: var(--header_border_radius);
+    flex-direction: column;
     z-index: 2;
+    width: 100%;
+    margin: auto;
     padding-block: 20px;
+    font-family: var(--Font_Special);
+    font-size: var(--Size_Text_Footer);
     font-weight: bold;
-    font-family: var(--Special_font);
-    font-size: var(--footer_font_size);
+    border: var(--Border_Settings);
+    border-radius: var(--Border_Radius_Header);
+    background-color: var(--Color_Text_BG);
     > p {
-      color: var(--text_color);
+      color: var(--Color_Text);
     }
 
     > div > a {
+      display: inline-block;
       width: 50px;
       height: 50px;
-      display: inline-block;
-      border-radius: 50%;
-      border: var(--border_setting);
       margin: 10px;
-      background-color: white !important;
+      border: var(--Border_Settings);
+      border-radius: 50%;
       background-size: contain !important;
+      background-color: white !important;
 
       &:hover {
         transform: scale(1.1);
       }
       &:focus {
-        border: 3px solid var(--main_color);
+        border: 3px solid var(--Color_Main);
       }
       &:nth-child(1) {
         background: url('https://res.cloudinary.com/bocchio/image/upload/v1632947036/GitHub.png')
@@ -91,16 +92,16 @@ export default {
       }
     }
     > div.copyright {
+      border-top: var(--Border_Settings);
       color: #a2a2a2;
-      border-top: var(--border_setting);
-      border-top-color: var(--text_color);
+      border-top-color: var(--Color_Text);
     }
   }
 }
 
 @media (max-width: 570px) {
   :root {
-    --footer_font_size: 18px;
+    --Size_Text_Footer: 18px;
   }
   .Default footer > div > a {
     width: 40px;
