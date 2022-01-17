@@ -11,33 +11,22 @@ export default {
     titleTemplate: 'Bocchio - %s',
     title: 'Home',
     htmlAttrs: {
-      lang: 'it'
+      lang: 'it',
     },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'author', content: 'Tommaso Bocchietti' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'msapplication-TileColor', content: '#da532c' },
-      { name: 'theme-color', content: '#ffffff' }
-    ],
+    meta: [{ charset: 'utf-8' }, { name: 'author', content: 'Tommaso Bocchietti' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { name: 'msapplication-TileColor', content: '#da532c' }, { name: 'theme-color', content: '#ffffff' }],
     link: [
       {
         hid: 'canonical',
         rel: 'canonical',
-        href: 'https://bocchionuxt.netlify.app/'
+        href: 'https://bocchionuxt.netlify.app/',
       },
-      { rel: 'dns-prefetch', href: 'https://res.cloudinary.com' }
+      { rel: 'dns-prefetch', href: 'https://res.cloudinary.com' },
     ],
-    ...meta
+    ...meta,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '@/assets/css/global.css',
-    '@/assets/css/portali.scss',
-    '@/assets/css/wrap.scss',
-    '@/assets/css/miscellaneous.scss'
-  ],
+  css: ['@/assets/css/global.css', '@/assets/css/portali.scss', '@/assets/css/wrap.scss', '@/assets/css/miscellaneous.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['~/plugins/leaflet.client.js'],
@@ -56,76 +45,73 @@ export default {
     '@nuxtjs/composition-api/module',
     '@nuxt/image',
     '@nuxtjs/sitemap',
-    '@nuxtjs/robots'
+    '@nuxtjs/robots',
   ],
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
-    liveEdit: false
+    liveEdit: false,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    analyze: false
+    analyze: false,
   },
   // loadingIndicator: '~/components/loading.html',
 
   image: {
     cloudinary: {
-      baseURL: process.env.CLOUDINARY_BASE_URL
-    }
+      baseURL: process.env.CLOUDINARY_BASE_URL,
+    },
   },
 
   pwa: {
     icon: {
-      purpose: 'any'
+      purpose: 'any',
     },
     manifest: {
       name: "Bocchio's WebSite",
       short_name: "Bocchio's WebSite",
-      description:
-        'Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione alla fisica.',
+      description: 'Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione alla fisica.',
       Color_Text_BG: '#000000',
       theme_color: '#000000',
       lang: 'it',
-      useWebmanifestExtension: true
-    }
+      useWebmanifestExtension: true,
+    },
   },
 
   generate: {
-    fallback: true
+    fallback: true,
   },
 
   sitemap: {
     hostname: process.env.HOST_URL,
     gzip: true,
-    exclude: []
+    exclude: [],
   },
 
   fontLoader: {
     url: {
-      google:
-        'https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap',
-      local:
-        'https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap'
+      google: 'https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap',
+      local: 'https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap',
     },
     prefetch: true,
-    preconnect: true
+    preconnect: true,
   },
 
   env: {
     HOST_URL: process.env.HOST_URL,
     CLOUDINARY_BASE_URL: process.env.CLOUDINARY_BASE_URL,
-    UTILS_SITE: process.env.UTILS_SITE
+    UTILS_SITE: process.env.UTILS_SITE,
   },
 
   router: {
-    middleware: 'stats'
+    middleware: 'stats',
   },
 
   robots: {
     UserAgent: '*',
     Allow: '/',
-    Sitemap: process.env.HOST_URL + '/sitemap.xml'
-  }
+    Sitemap: process.env.HOST_URL + '/sitemap.xml',
+  },
 }

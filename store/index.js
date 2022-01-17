@@ -3,6 +3,7 @@ import sendRequest from '@/assets/js/sendRequest.js'
 export const state = () => ({
   status: '',
   user: {
+    id: null,
     token: null,
     nickname: null,
     email: null,
@@ -16,7 +17,7 @@ export const state = () => ({
   },
   files: {},
   show: {
-    loading: true,
+    loading: false,
     login: false,
     mainmenu: false,
     submenu: false,
@@ -37,7 +38,7 @@ export const mutations = {
     state.status = 'Utente attuale: ' + state.user.nickname
   },
   auth_error(state, Log) {
-    if (!state.show.loading) {
+    if (!state.show.loading && state.user.id) {
       alert(Log[Log.length - 1])
     }
     state.status = null
@@ -54,6 +55,7 @@ export const mutations = {
     localStorage.removeItem('token')
     localStorage.removeItem('autologin')
     state.user = {
+      id: null,
       token: null,
       nickname: null,
       email: null,

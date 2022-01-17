@@ -8,13 +8,7 @@
         <nuxt-link to="/">Tommaso Bocchietti</nuxt-link>
       </div>
       <input class="menu-btn" type="checkbox" id="menu-btn" />
-      <label
-        class="menu-icon"
-        for="menu-btn"
-        @click="Menu_click"
-        @keyup.enter="Menu_click"
-        tabindex="0"
-      >
+      <label class="menu-icon" for="menu-btn" @click="Menu_click" @keyup.enter="Menu_click" tabindex="0">
         <span class="navicon"></span>
       </label>
     </div>
@@ -22,23 +16,14 @@
       <li><nuxt-link to="/articolo/">Articoli</nuxt-link></li>
       <li><nuxt-link to="/portale/">Portali</nuxt-link></li>
       <li>
-        <a
-          @click="SubMenu_click"
-          @keyup.enter="SubMenu_click"
-          :class="{ hover: showSubMenu }"
-          tabindex="0"
-          style="cursor: pointer"
-          >Mix</a
-        >
+        <a @click="SubMenu_click" @keyup.enter="SubMenu_click" :class="{ hover: showSubMenu }" tabindex="0" style="cursor: pointer">Mix</a>
         <ul class="dropdown-content" :class="!showSubMenu ? 'hide' : ''">
           <li><nuxt-link to="/mix/chi sono/">Chi sono?</nuxt-link></li>
           <li>
             <nuxt-link to="/mix/qual é lo scopo/">Qual è lo scopo?</nuxt-link>
           </li>
           <li>
-            <a href="#" @click="$store.commit('toggle_show', 'login')"
-              >Area personale</a
-            >
+            <a href="#" @click="$store.commit('toggle_show', 'login')">Area personale</a>
           </li>
         </ul>
       </li>
@@ -55,7 +40,7 @@ export default {
       },
       set(value) {
         this.$store.commit('set_show', ['mainmenu', value])
-      }
+      },
     },
     showSubMenu: {
       get() {
@@ -63,8 +48,8 @@ export default {
       },
       set(value) {
         this.$store.commit('set_show', ['submenu', value])
-      }
-    }
+      },
+    },
   },
   methods: {
     Menu_click() {
@@ -73,15 +58,15 @@ export default {
     },
     SubMenu_click() {
       this.showSubMenu = !this.showSubMenu
-    }
+    },
   },
   watch: {
     $route() {
       document.getElementById('menu-btn').checked = false
       this.showMenu = false
       this.showSubMenu = false
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -94,7 +79,7 @@ export default {
     width: 100%;
     z-index: 2;
     padding-inline: 15px;
-    border: var(--Border_Settings);
+    border: var(--Border_Settings_Wrap);
     border-radius: var(--Border_Radius_Header);
     color: var(--Color_Text);
     background-color: var(--Color_Text_BG);

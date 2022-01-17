@@ -1,8 +1,8 @@
 <template>
   <div>
-    <cHeadPortale />
+    <CHeadPortale />
     <div class="wrap Portale Arduino_Web_Car">
-      <cMenuScelta @toParent="handler" :tags="tags_array" />
+      <CMenuScelta @toParent="handler" :tags="tags_array" />
       <div class="affianca">
         <div class="box" v-show="tags_to_view.includes(tags_array[0])">
           <h2>Location map</h2>
@@ -26,39 +26,22 @@
       </div>
     </div>
     <div class="wrap Portale Arduino_Web_Car">
-      <div
-        class="console_upper_control"
-        v-if="consoles.hasOwnProperty('Server')"
-      >
+      <div class="console_upper_control" v-if="consoles.hasOwnProperty('Server')">
         <p>Chiave di identificazione al Server: {{ name_of_client }}</p>
-        <button @click="disconnect(name_of_client)">
-          Scollegati dal server
-        </button>
-        <cMenuScelta @toParent="handler2" :tags="Object.keys(this.consoles)" />
+        <button @click="disconnect(name_of_client)">Scollegati dal server</button>
+        <CMenuScelta @toParent="handler2" :tags="Object.keys(this.consoles)" />
       </div>
       <div class="console_upper_control" v-else>
-        <button
-          @click="startServer"
-          v-bind:disable="this.stage == 'Connessione in corso...'"
-        >
+        <button @click="startServer" v-bind:disable="this.stage == 'Connessione in corso...'">
           {{ this.stage }}
         </button>
       </div>
       <div class="affianca">
-        <div
-          class="box console"
-          v-for="(console, index) in consoles"
-          :key="index"
-          v-show="console_to_view.includes(index)"
-        >
+        <div class="box console" v-for="(console, index) in consoles" :key="index" v-show="console_to_view.includes(index)">
           <h3 :class="checkStatus(console.status)">{{ index }}</h3>
           <p v-html="console.sended_data.join('<br>')"></p>
-          <button @click="ripulisci_console(index)" v-if="index != 'Server'">
-            Ripulisci la console
-          </button>
-          <button @click="disconnect(index)" v-if="index != 'Server'">
-            Forza disconnessione dal Server
-          </button>
+          <button @click="ripulisci_console(index)" v-if="index != 'Server'">Ripulisci la console</button>
+          <button @click="disconnect(index)" v-if="index != 'Server'">Forza disconnessione dal Server</button>
         </div>
       </div>
     </div>
@@ -78,7 +61,7 @@ export default {
     return {
       consoles,
       name_of_client,
-      stage
+      stage,
     }
   },
 
@@ -91,7 +74,7 @@ export default {
       x: 0,
       y: 0,
       speed: 0,
-      angle: 0
+      angle: 0,
     }
   },
 
@@ -118,7 +101,7 @@ export default {
         0: 'pending',
         1: 'open',
         2: 'pending',
-        3: 'close'
+        3: 'close',
       }
       return stateObj[status]
     },
@@ -127,8 +110,8 @@ export default {
     },
     ripulisci_console(target) {
       this.consoles[target].sended_data = ['Console ripulita...']
-    }
-  }
+    },
+  },
 }
 </script>
 

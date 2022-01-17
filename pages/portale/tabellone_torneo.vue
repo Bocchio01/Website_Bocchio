@@ -1,45 +1,32 @@
 <template>
   <div>
     <div class="wrap Portale Tabellone_torneo">
-      <cHeadPortale />
-      <h1>Tabellone_torneo</h1>
+      <CHeadPortale />
+      <!-- <h1>Tabellone_torneo</h1> -->
       <h2>
         Torneo selezionato:
         <select @change="TorneoSelezionato()" id="NomeTorneo">
           <option value="" disabled selected hidden>Seleziona un torneo</option>
-          <option
-            v-for="(torneo, index) in tornei"
-            :key="index"
-            :value="torneo.id_torneo"
-          >
+          <option v-for="(torneo, index) in tornei" :key="index" :value="torneo.id_torneo">
             {{ torneo.nome_torneo }}
           </option>
         </select>
       </h2>
-      <cMenuScelta @toParent="handler" :tags="tags_array" />
+      <CMenuScelta @toParent="handler" :tags="tags_array" />
       <div class="">
-        <div class="box mb" v-show="tags_to_view.includes(tags_array[0])">
-          <h2>Creare un torneo:</h2>
-          <ul>
-            <li>
-              <div class="inline">
-                <label> Loggarsi nel sistema tramite apposita schermata </label
-                ><button @click="toggle_login = true">Area personale</button>
-              </div>
-            </li>
-            <li>
-              <div class="inline">
-                <label> Inserire il nome del nuovo Torneo </label
-                ><input type="text" id="nome_torneo_scelto" />
-              </div>
-            </li>
-            <li>
-              <div class="inline">
-                <label> Creare il Torneo</label>
-                <button @click="create()">Crea il torneo</button>
-              </div>
-            </li>
-          </ul>
+        <div class="box" v-show="tags_to_view.includes(tags_array[0])">
+          <h2>Creare un torneo</h2>
+          <div>
+            <label> Loggarsi nel sistema tramite <a href="#" @click="$store.commit('toggle_show', 'login')">apposita schermata</a> </label>
+          </div>
+
+          <div>
+            <label for="nome_torneo_scelto">Inserire il nome del nuovo Torneo</label>
+            <input id="nome_torneo_scelto" type="text" />
+          </div>
+
+          <button @click="create()">Crea il torneo</button>
+
           <!-- <p>
             Si è allora pronti a gestire il proprio torneo.
             <br>Non sarà possibile modificare il tabellone manualmente.
@@ -59,40 +46,16 @@
           </div>
 
           <div class="row" v-if="torneo.squadre != []">
-            <div
-              v-for="(fase, index_fase) in torneo.tabellone"
-              :key="index_fase"
-            >
+            <div v-for="(fase, index_fase) in torneo.tabellone" :key="index_fase">
               <h3>{{ index_fase }}</h3>
               <div class="column">
-                <div
-                  v-for="(partita, index_partita) in fase"
-                  :key="index_partita"
-                  class="container"
-                >
-                  <div
-                    class="incontro"
-                    @click="incontro_selezionato.fill_obj(partita)"
-                  >
-                    <p
-                      :class="
-                        (partita.Squadra_1 || 'Non definito') ==
-                        partita.Squadra_Vincitrice
-                          ? 'winner'
-                          : ''
-                      "
-                    >
+                <div v-for="(partita, index_partita) in fase" :key="index_partita" class="container">
+                  <div class="incontro" @click="incontro_selezionato.fill_obj(partita)">
+                    <p :class="(partita.Squadra_1 || 'Non definito') == partita.Squadra_Vincitrice ? 'winner' : ''">
                       {{ partita.nome_Squadra_1 || 'Non definito' }}
                     </p>
                     <hr />
-                    <p
-                      :class="
-                        (partita.Squadra_2 || 'Non definito') ==
-                        partita.Squadra_Vincitrice
-                          ? 'winner'
-                          : ''
-                      "
-                    >
+                    <p :class="(partita.Squadra_2 || 'Non definito') == partita.Squadra_Vincitrice ? 'winner' : ''">
                       {{ partita.nome_Squadra_2 || 'Non definito' }}
                     </p>
                   </div>
@@ -103,29 +66,18 @@
               </div>
             </div>
 
-            <div
-              v-show="incontro_selezionato.state && show_setup()"
-              class="msg_bg"
-              @click.self="incontro_selezionato.state = false"
-            >
+            <div v-show="incontro_selezionato.state && show_setup()" class="msg_bg" @click.self="incontro_selezionato.state = false">
               <div class="wrap popup">
                 <h2>Modifica lo stato dell'incontro</h2>
                 <p>
                   Solo il creatore del torneo ha accesso a questa schermata.<br />
-                  Aggiorna lo stato della partita selezionata inserendo i dati
-                  richiesti e clicca su invia
+                  Aggiorna lo stato della partita selezionata inserendo i dati richiesti e clicca su invia
                 </p>
-                <form
-                  id="result_incontro"
-                  onSubmit="return false;"
-                  @submit="agg()"
-                >
+                <form id="result_incontro" onSubmit="return false;" @submit="agg()">
                   <div>
                     <label for="winner_sq">Squadra vincitrice</label>
                     <select name="winner" id="winner_sq" required>
-                      <option value="" disabled selected hidden>
-                        Seleziona una squadra
-                      </option>
+                      <option value="" disabled selected hidden>Seleziona una squadra</option>
                       <option :value="incontro_selezionato.id_squadra_1">
                         {{ incontro_selezionato.nome_squadra_1 }}
                       </option>
@@ -139,31 +91,20 @@
                     <input type="text" name="risultato" id="result" required />
                   </div>
 
-                  <button type="submit" @click="agg()">
-                    Aggiorna la partita
-                  </button>
+                  <button type="submit" @click="agg()">Aggiorna la partita</button>
                 </form>
               </div>
             </div>
           </div>
         </div>
 
-        <div
-          class="box"
-          v-show="tags_to_view.includes(tags_array[2])"
-          style="flex: 1 1 300px"
-        >
+        <div class="box" v-show="tags_to_view.includes(tags_array[2])" style="flex: 1 1 300px">
           <h2>Squadre</h2>
           <div v-if="show_setup()">
-            <p>
-              Controlla qui i dati relativi alle squadre del tuo torneo
-              attraverso una delle seguenti modalità:
-            </p>
+            <p>Controlla qui i dati relativi alle squadre del tuo torneo attraverso una delle seguenti modalità:</p>
             <ul>
               <li>Carica un file formato .CSV;</li>
-              <li>
-                Aggiungi altre squadre al tuo torneo inserendole manualmente;
-              </li>
+              <li>Aggiungi altre squadre al tuo torneo inserendole manualmente;</li>
               <li>Oppure modifica i dati di una squadra già esistente.</li>
             </ul>
             <!-- <form
@@ -171,10 +112,7 @@
               @submit="uploadData()"
               enctype="multipart/form-data"
             > -->
-            <label for="file">
-              File ".CSV", ogni riga deve contenere:
-              Nome_Squadra,Nome_Capitano,Nome_Compagno
-            </label>
+            <label for="file"> File ".CSV", ogni riga deve contenere: Nome_Squadra,Nome_Capitano,Nome_Compagno </label>
             <input type="file" name="file" id="csv_id" />
             <button type="submit" @click="uploadData()">Importa i dati</button>
             <!-- <input type="submit" value="IMPORT" /> -->
@@ -218,7 +156,6 @@ export default {
     return {
       tags_array: ['Crea Torneo', 'Tabellone', 'Squadre'],
       tags_to_view: [],
-      toggle_login: false,
 
       interval: null,
 
@@ -266,12 +203,10 @@ export default {
     request_tornei() {
       sendRequest(
         {
-          action: 'request_data',
-          table: 'CalcioBalilla_Tornei',
-          nickname: this.$store.state.user.nickname,
+          action: 'RequestTornei',
         },
         '/Tabellone_torneo/Main.php'
-      ).then((res) => (this.tornei = res))
+      ).then((res) => (this.tornei = res.Data))
     },
 
     modifiy_result(sq1, sq2, num_partita) {
@@ -310,31 +245,35 @@ export default {
     handler2(value) {
       this.console_to_view = value
     },
-    handler_login() {
-      this.toggle_login = false
-    },
 
     create() {
       sendRequest(
         {
-          action: 'create_torneo',
-          nome_torneo: document.getElementById('nome_torneo_scelto').value,
-          nickname: this.$store.state.user.nickname,
+          action: 'CreateTorneo',
+          data: JSON.stringify({
+            nome_torneo: document.getElementById('nome_torneo_scelto').value,
+            id_user: this.$store.state.user.id,
+          }),
         },
         '/Tabellone_torneo/Main.php'
-      ).then((res) => (console.log(res), this.request_tornei()))
+      )
+        .then((res) => this.request_tornei())
+        .catch((res) => this.$store.commit('auth_error', res.Log))
     },
 
     uploadData() {
       sendRequest(
         {
-          action: 'upload_data',
-          id_torneo: this.torneo.id,
-          nickname: this.$store.state.user.nickname,
-          file: document.getElementById('csv_id').files[0],
+          action: 'UploadData',
+          data: JSON.stringify({
+            id_torneo: this.torneo.id,
+            file: document.getElementById('csv_id').files[0],
+          }),
         },
         '/Tabellone_torneo/Main.php'
-      ).then((res) => (console.log(res), this.TorneoSelezionato()))
+      )
+        .then((res) => this.TorneoSelezionato())
+        .catch((res) => this.$store.commit('auth_error', res.Log))
     },
 
     TorneoSelezionato() {
@@ -348,28 +287,34 @@ export default {
 
       sendRequest(
         {
-          action: 'request_data',
-          table: 'CalcioBalilla_Squadre',
-          id: this.torneo.id,
+          action: 'RequestSquadre',
+          data: JSON.stringify({
+            id_torneo: this.torneo.id,
+          }),
         },
         '/Tabellone_torneo/Main.php'
-      ).then((res) => (this.torneo.squadre = res))
+      )
+        .then((res) => (this.torneo.squadre = res.Data))
+        .catch((res) => this.$store.commit('auth_error', res.Log))
 
       sendRequest(
         {
-          action: 'request_data',
-          table: 'CalcioBalilla_Tabellone',
-          id: this.torneo.id,
+          action: 'RequestTabellone',
+          data: JSON.stringify({
+            id_torneo: this.torneo.id,
+          }),
         },
         '/Tabellone_torneo/Main.php'
-      ).then(
-        (res) =>
-          (this.torneo.tabellone = res.reduce(function (r, a) {
-            r[a.Fase] = r[a.Fase] || []
-            r[a.Fase].push(a)
-            return r
-          }, Object.create(null)))
       )
+        .then(
+          (res) =>
+            (this.torneo.tabellone = res.reduce(function (r, a) {
+              r[a.Fase] = r[a.Fase] || []
+              r[a.Fase].push(a)
+              return r
+            }, Object.create(null)))
+        )
+        .catch((res) => this.$store.commit('auth_error', res.Log))
     },
   },
 }
@@ -458,6 +403,6 @@ export default {
 // }
 
 // .mb {
-//   margin-bottom: var(--app_row_column_gap);
+//   margin-bottom: var(--Margin_Gap);
 // }
 </style>

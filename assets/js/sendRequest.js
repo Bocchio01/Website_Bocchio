@@ -6,7 +6,7 @@ export default (args, target_url = '/PWS/main.php') => {
   }
 
   return new Promise((resolve, reject) => {
-    xhttp.onreadystatechange = e => {
+    xhttp.onreadystatechange = (e) => {
       if (xhttp.readyState === 4) {
         if (xhttp.status === 200) {
           const json = JSON.parse(xhttp.responseText)

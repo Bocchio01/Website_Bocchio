@@ -19,33 +19,33 @@
     flex-wrap: wrap;
     width: fit-content;
     margin: 20px auto;
-    border: var(--app_Border_Settings_evidence);
+    border: var(--Border_Settings_Button);
+    border-color: var(--Color_Main);
     * {
         margin: 5px;
     }
 }
 .box {
     align-self: flex-start;
-    border: var(--Border_Settings);
+    border: var(--Border_Settings_Wrap);
+    margin: calc(0.5 * var(--Margin_Gap));
 }
 
 .affianca {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    column-gap: var(--app_row_column_gap);
-    row-gap: var(--app_row_column_gap);
 }
 
 input,
 button,
 .button {
-    border: var(--app_Border_Settings);
+    border: var(--Border_Settings_Button);
     border-radius: var(--Border_Radius_Header);
     font-family: var(--Font_Base);
     font-size: var(--Size_Text_Wrap);
     margin-inline: auto;
-    margin-block: var(--app_row_column_gap);
+    margin-block: var(--Margin_Gap);
 }
 
 button,
@@ -56,7 +56,7 @@ button,
     display: block;
     cursor: pointer;
     padding: 10px;
-    background-color: var(--Nav_color);
+    background-color: var(--Color_Main);
     text-decoration: underline;
     text-align: center;
     font-weight: bold;

@@ -1,46 +1,24 @@
 <template>
   <div class="wrap nav_container">
-    <div
-      class="wrap navigation"
-      v-if="files[this.urlArticle]"
-      style="flex: 1 1 270px"
-    >
+    <div class="wrap navigation" v-if="files[this.urlArticle]" style="flex: 1 1 250px">
       <h2>Allegati</h2>
-      <p v-if="files[this.urlArticle].length == 1">
-        Di seguito la cartella del progetto.
-      </p>
+      <p v-if="files[this.urlArticle].length == 1">Di seguito la cartella del progetto.</p>
       <p v-else>Di seguito le cartelle del progetto.</p>
       <div>
-        <div
-          class="wrap document"
-          v-for="(file, index) in files[this.urlArticle]"
-          :key="index"
-        >
+        <div class="wrap document" v-for="(file, index) in files[this.urlArticle]" :key="index">
           <!-- [
         { host: "Dropbox/Mega",
         url: "http:// ... "}] -->
           <p>{{ file.host }}</p>
-          <img
-            :src="'/AttachmentIcon/' + file.host + '.png'"
-            :alt="file.host + ' icon'"
-          />
-          <a
-            :href="file.url"
-            class="link_hidden"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          >
+          <img :src="'/AttachmentIcon/' + file.host + '.png'" :alt="file.host + ' icon'" />
+          <a :href="file.url" class="link_hidden" target="_blank" rel="nofollow noopener noreferrer">
             <div class="button">Scopri di più!</div>
           </a>
         </div>
       </div>
     </div>
 
-    <div
-      class="wrap navigation"
-      style="flex: 2 1 270px"
-      v-if="navdata.prev || navdata.next"
-    >
+    <div class="wrap navigation" style="flex: 5 1 300px" v-if="navdata.prev || navdata.next">
       <h2>Naviga nel sito</h2>
       <p>{{ pharse }}</p>
 
@@ -48,10 +26,7 @@
         <div class="wrap document" v-if="navdata.prev">
           <p>{{ navdata.prev.title }}</p>
           <cMedia :s="navdata.prev.img.src" :a="navdata.prev.img.src"></cMedia>
-          <NuxtLink
-            :to="'/articolo/' + navdata.prev.slug + '/'"
-            class="link_hidden"
-          >
+          <NuxtLink :to="'/articolo/' + navdata.prev.slug + '/'" class="link_hidden">
             <div class="button"><span>&#8617;</span></div>
           </NuxtLink>
         </div>
@@ -67,10 +42,7 @@
         <div class="wrap document" v-if="navdata.next">
           <p>{{ navdata.next.title }}</p>
           <cMedia :s="navdata.next.img.src" :a="navdata.next.img.src"></cMedia>
-          <NuxtLink
-            :to="'/articolo/' + navdata.next.slug + '/'"
-            class="link_hidden"
-          >
+          <NuxtLink :to="'/articolo/' + navdata.next.slug + '/'" class="link_hidden">
             <div class="button"><span>&#8618;</span></div>
           </NuxtLink>
         </div>
@@ -118,11 +90,7 @@ export default {
       a = "l'articolo precedente, successivo"
       b = ''
     }
-    if (u)
-      c =
-        p || n
-          ? ' e il portale associato al progetto'
-          : ' il portale associato al progetto'
+    if (u) c = p || n ? ' e il portale associato al progetto' : ' il portale associato al progetto'
 
     this.pharse = 'Di seguito ' + a + b + c + '.'
   },
@@ -144,7 +112,7 @@ export default {
   margin-block: 25px;
 }
 .wrap.navigation {
-  padding: 15px;
+  padding: var(--Padding_Wrap_Min);
   margin-block: 0px;
 
   > div {
@@ -155,7 +123,7 @@ export default {
       margin-inline: auto;
       text-align: center;
       margin: 10px;
-      padding: 15px;
+      padding: var(--Padding_Wrap_Min);
       width: fit-content;
       > p {
         font-weight: bold;

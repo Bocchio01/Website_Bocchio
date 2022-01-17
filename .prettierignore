@@ -5,3 +5,4 @@
 /.nuxt/**
 docs/.vuepress/dist/
 /modules/*
+*.png

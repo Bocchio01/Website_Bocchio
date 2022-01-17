@@ -1,12 +1,7 @@
 ---
 title: Gorlu la stampante
 description: Il progetto Gorlu la stampante, ovvero un piccolo e simpatico plotter CNC costruito con Arduino e programmato in Python. Come è nato il progetto, l'algoritmo che ne regola il movimento e analizza le immagini, i motori-stepper che muovo i carrelli, e documenti utili per realizzarlo da sé.
-paragraph:
-  [
-    'Un piccolo e simpatico plotter CNC per stampare immagini o testo.<br>',
-    'Realizzato con Arduino, qualche componente di un vecchio PC e un paio di tavole di legno, questo piccolo plotter <b>è stato in grado di sorprendere anche me della sua precisione nel disegno.</b>',
-    "Facile da realizzare, nell'articolo troverai tutto il codice sorgente (Python e C++) e molti altri documenti utili per realizzarlo da sé."
-  ]
+paragraph: ['Un piccolo e simpatico plotter CNC per stampare immagini o testo.<br>', 'Realizzato con Arduino, qualche componente di un vecchio PC e un paio di tavole di legno, questo piccolo plotter <b>è stato in grado di sorprendere anche me della sua precisione nel disegno.</b>', "Facile da realizzare, nell'articolo troverai tutto il codice sorgente (Python e C++) e molti altri documenti utili per realizzarlo da sé."]
 img:
   src: /v1635033169/Articoli/Gorlu%20la%20stampante/Gorlu.jpg
   alt: Gorlu la stampante

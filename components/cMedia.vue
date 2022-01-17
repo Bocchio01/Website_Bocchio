@@ -1,10 +1,6 @@
 <template>
   <div class="media">
-    <figure
-      v-if="type == 'img' || type == 'svg'"
-      :class="[espansione ? 'embedded_img msg_bg visible' : '']"
-      @click="expand()"
-    >
+    <figure v-if="type == 'img' || type == 'svg'" :class="[espansione ? 'embedded_img msg_bg visible' : '']" @click="expand()">
       <!--
       xs: 320,
       sm: 640,
@@ -19,14 +15,7 @@
         <use :xlink:href="'/svg/svg_list.svg' + s" :alt="a"></use>
       </svg>
 
-      <nuxt-picture
-        v-else-if="provider == 'Cloudinary'"
-        provider="cloudinary"
-        :src="s"
-        sizes="xs:320px sm:400px md:460px lg:700px"
-        v-bind:alt="a ? a : c"
-        format="webp"
-      />
+      <nuxt-picture v-else-if="provider == 'Cloudinary'" provider="cloudinary" :src="s" sizes="xs:320px sm:400px md:460px lg:700px" v-bind:alt="a ? a : c" format="webp" />
       <img v-else :src="s" v-bind:alt="a ? a : c" />
       <figcaption>{{ c }}</figcaption>
     </figure>
@@ -40,13 +29,7 @@
     </figure>
 
     <figure v-if="type == 'iframe'">
-      <iframe
-        :src="s"
-        v-bind:title="[a ? a : c]"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+      <iframe :src="s" v-bind:title="[a ? a : c]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
       <figcaption>{{ c }}</figcaption>
     </figure>
@@ -60,18 +43,20 @@ export default {
     a: { type: String },
     c: { type: String },
     type: { type: String, default: 'img' },
-    provider: { type: String, default: 'Cloudinary' }
+    provider: { type: String, default: 'Cloudinary' },
   },
+
   data() {
     return {
-      espansione: false
+      espansione: false,
     }
   },
+
   methods: {
     expand() {
       if (this.type == 'img') this.espansione = !this.espansione
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss">

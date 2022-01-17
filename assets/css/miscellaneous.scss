@@ -49,7 +49,7 @@ input[type="radio"] + label span {
   vertical-align: middle;
   cursor: pointer;
   border-radius: 50%;
-  border: var(--app_Border_Settings);
+  border: var(--Border_Settings_Button);
 }
 
 input[type="radio"]:checked + label {
@@ -83,7 +83,7 @@ input[type="radio"]:checked + label span {
     color: white;
     text-align: center;
     font-size: var(--Size_Text_Wrap);
-    border: var(--Border_Settings);
+    border: var(--Border_Settings_Wrap);
     border-radius: var(--Border_Radius_Wrap);
   }
 }

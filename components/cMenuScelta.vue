@@ -1,16 +1,7 @@
 <template>
   <nav>
     <div>
-      <p
-        tabindex="0"
-        @click="addOrRemove(tag)"
-        @keyup.enter="addOrRemove(tag)"
-        v-for="(tag, index) in tags"
-        :key="index"
-        v-bind:class="{ active: isActive[tag] }"
-      >
-        {{ tag }}
-      </p>
+      <p tabindex="0" @click="addOrRemove(tag)" @keyup.enter="addOrRemove(tag)" v-for="(tag, index) in tags" :key="index" v-bind:class="{ active: isActive[tag] }">{{ tag }}</p>
     </div>
     <p v-show="!tags_selected.length">Seleziona un argomento.</p>
   </nav>
@@ -21,39 +12,34 @@ export default {
   props: {
     tags: {
       type: Array,
-      default() {
-        return [
-          'Programmazione',
-          'Meccanica',
-          'Fisica',
-          'Matematica',
-          'Orienteering'
-        ]
-      }
+      require: true,
     },
     multiple: {
       type: Boolean,
-      default: true
+      default: true,
     },
     start: {
-      type: Array
-    }
+      type: Array,
+    },
   },
+
   data() {
     return {
       tags_selected: [],
-      isActive: Object.assign(...this.tags.map(k => ({ [k]: false })))
+      isActive: Object.assign(...this.tags.map((k) => ({ [k]: false }))),
     }
   },
+
   mounted() {
     if (this.start) {
-      this.start.forEach(el => {
+      this.start.forEach((el) => {
         this.isActive[el] = true
         this.tags_selected.push(el)
       })
       this.$emit('toParent', this.tags_selected)
     }
   },
+
   methods: {
     addOrRemove(tag_clicked) {
       if (this.multiple) {
@@ -74,8 +60,8 @@ export default {
       }
 
       this.$emit('toParent', this.tags_selected)
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -89,8 +75,8 @@ nav {
     padding-inline: 10px;
     display: flex;
     flex-wrap: wrap;
-    column-gap: var(--app_row_column_gap);
-    row-gap: var(--app_row_column_gap);
+    column-gap: var(--Margin_Gap);
+    row-gap: calc(0.5 * var(--Margin_Gap));
     flex: auto;
     > p {
       cursor: pointer;
@@ -136,9 +122,9 @@ nav {
 .Portale {
   nav {
     border-radius: var(--Border_Radius_Header);
-    border: var(--app_Border_Settings);
-    background-color: var(--Nav_color);
-    margin-bottom: var(--app_row_column_gap);
+    border: var(--Border_Settings_Button);
+    background-color: var(--Color_Main);
+    margin-bottom: var(--Margin_Gap);
     > div {
       justify-content: space-evenly;
       > p {

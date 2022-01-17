@@ -1,14 +1,6 @@
 // src/plugins/vue-leaflet.js
 import Vue from 'vue'
-import {
-  LMap,
-  LTileLayer,
-  LMarker,
-  LControlAttribution,
-  LControlLayers,
-  LControlScale,
-  LPopup
-} from 'vue2-leaflet'
+import { LMap, LTileLayer, LMarker, LControlAttribution, LControlLayers, LControlScale, LPopup } from 'vue2-leaflet'
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch'
 import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol'
 import { Geodesic } from 'leaflet.geodesic'
@@ -19,7 +11,7 @@ L.Icon.Default.imagePath = ''
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 })
 
 const VueLeaflet = {
@@ -37,7 +29,7 @@ const VueLeaflet = {
 
     Vue.prototype.GeoSearchControl = GeoSearchControl
     Vue.prototype.OpenStreetMapProvider = OpenStreetMapProvider
-  }
+  },
 }
 Vue.use(VueLeaflet)
 export default VueLeaflet

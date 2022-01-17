@@ -1,11 +1,6 @@
 <template>
   <article>
-    <cHeadBase
-      v-if="article"
-      :title="article.title"
-      :description="article.description"
-      type="article"
-    />
+    <cHeadBase v-if="article" :title="article.title" :description="article.description" type="article" />
     <nuxt-content class="wrap" :document="article" />
     <!-- <cNavigation
       v-if="article"
@@ -28,6 +23,6 @@ export default {
       })
 
     return { article }
-  }
+  },
 }
 </script>

@@ -14,7 +14,7 @@ export default {
         document.getElementById('menu-btn').checked = false
       } catch (error) {}
     }
-  }
+  },
 }
 </script>
 
@@ -32,17 +32,12 @@ export default {
     border-radius: 50%;
     background: var(--Color_Text_BG);
   }
-  
 }
 
 @for $i from 1 through 100 {
   @keyframes particle-animation-#{$i} {
     100% {
-      transform: translate3d(
-        (random(100) * 1vw),
-        (random(100) * 1vh),
-        (random(100) * 1px)
-      );
+      transform: translate3d((random(100) * 1vw), (random(100) * 1vh), (random(100) * 1px));
     }
   }
 
@@ -53,11 +48,7 @@ export default {
     height: $size;
     width: $size;
     animation-delay: -$i * 0.2s;
-    transform: translate3d(
-      (random(100) * 1vw),
-      (random(100) * 1vh),
-      (random(100) * 1px)
-    );
+    transform: translate3d((random(100) * 1vw), (random(100) * 1vh), (random(100) * 1px));
   }
 }
 </style>

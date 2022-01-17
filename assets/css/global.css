@@ -17,7 +17,7 @@
   --Color_Hover: var(--Color_Main);
   --Font_Special: 'Bungee Shade', cursive;
   --Font_Base: 'Roboto Condensed', sans-serif;
-  --Border_Settings: 1px solid #a2a2a2;
+  --Border_Settings_Wrap: 1px solid #a2a2a2;
 
   /* Wrap */
   --Transition_Setting: all 0.2s ease-in-out;
@@ -25,6 +25,7 @@
   --Size_Title: 40px;
   --Size_Text_Wrap: calc(17px + var(--Size_Variable));
   --Padding_Wrap: 64px;
+  --Padding_Wrap_Min: 15px;
 
   /* Header - Footer*/
   --Size_Text_Header: 30px;
@@ -36,11 +37,8 @@
   --Size_Text_Slogan: 80px;
 
   /* Portali */
-  --Nav_color: var(--Color_Main);
-  --App_font: 'monospace';
-  --app_Border_Settings: 2px solid var(--black);
-  --app_Border_Settings_evidence: 3px solid var(--Color_Main);
-  --app_row_column_gap: 20px;
+  --Border_Settings_Button: 2px solid var(--black);
+  --Margin_Gap: 25px;
 }
 
 body,

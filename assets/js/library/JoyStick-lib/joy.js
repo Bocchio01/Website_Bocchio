@@ -55,34 +55,15 @@
  */
 var JoyStick = function (container, parameters) {
   parameters = parameters || {}
-  var title =
-      typeof parameters.title === 'undefined' ? 'joystick' : parameters.title,
+  var title = typeof parameters.title === 'undefined' ? 'joystick' : parameters.title,
     width = typeof parameters.width === 'undefined' ? 0 : parameters.width,
     height = typeof parameters.height === 'undefined' ? 0 : parameters.height,
-    internalFillColor =
-      typeof parameters.internalFillColor === 'undefined'
-        ? '#00AA00'
-        : parameters.internalFillColor,
-    internalLineWidth =
-      typeof parameters.internalLineWidth === 'undefined'
-        ? 2
-        : parameters.internalLineWidth,
-    internalStrokeColor =
-      typeof parameters.internalStrokeColor === 'undefined'
-        ? '#003300'
-        : parameters.internalStrokeColor,
-    externalLineWidth =
-      typeof parameters.externalLineWidth === 'undefined'
-        ? 2
-        : parameters.externalLineWidth,
-    externalStrokeColor =
-      typeof parameters.externalStrokeColor === 'undefined'
-        ? '#008000'
-        : parameters.externalStrokeColor,
-    autoReturnToCenter =
-      typeof parameters.autoReturnToCenter === 'undefined'
-        ? true
-        : parameters.autoReturnToCenter
+    internalFillColor = typeof parameters.internalFillColor === 'undefined' ? '#00AA00' : parameters.internalFillColor,
+    internalLineWidth = typeof parameters.internalLineWidth === 'undefined' ? 2 : parameters.internalLineWidth,
+    internalStrokeColor = typeof parameters.internalStrokeColor === 'undefined' ? '#003300' : parameters.internalStrokeColor,
+    externalLineWidth = typeof parameters.externalLineWidth === 'undefined' ? 2 : parameters.externalLineWidth,
+    externalStrokeColor = typeof parameters.externalStrokeColor === 'undefined' ? '#008000' : parameters.externalStrokeColor,
+    autoReturnToCenter = typeof parameters.autoReturnToCenter === 'undefined' ? true : parameters.autoReturnToCenter
 
   // Create Canvas element and add it in the Container object
   var objContainer = document.getElementById(container)
@@ -162,14 +143,7 @@ var JoyStick = function (container, parameters) {
     }
     context.arc(movedX, movedY, internalRadius, 0, circumference, false)
     // create radial gradient
-    var grd = context.createRadialGradient(
-      centerX,
-      centerY,
-      5,
-      centerX,
-      centerY,
-      200
-    )
+    var grd = context.createRadialGradient(centerX, centerY, 5, centerX, centerY, 200)
     // Light color
     grd.addColorStop(0, internalFillColor)
     // Dark color
@@ -328,10 +302,7 @@ var JoyStick = function (container, parameters) {
     var orizontal = movedX - centerX
     var vertical = movedY - centerY
 
-    if (
-      vertical >= directionVerticalLimitNeg &&
-      vertical <= directionVerticalLimitPos
-    ) {
+    if (vertical >= directionVerticalLimitNeg && vertical <= directionVerticalLimitPos) {
       result = 'C'
     }
     if (vertical < directionVerticalLimitNeg) {

@@ -6,7 +6,7 @@ var Web_car = {
   name_of_client: reactive({ undefined: undefined }),
   type_of_client: 'Client',
   _: reactive({
-    console: {}
+    console: {},
   }),
 
   checher: null,
@@ -33,7 +33,7 @@ var Web_car = {
       this.cleanAll()
     }
 
-    ws.onmessage = event => {
+    ws.onmessage = (event) => {
       if (this.isJson(event.data)) {
         var message_obj = JSON.parse(event.data)
         //console.log(message_obj)
@@ -93,7 +93,7 @@ var Web_car = {
     try {
       this.ws.send(JSON.stringify({ value: data }))
     } catch (error) {}
-  }
+  },
 }
 
 export { Web_car }

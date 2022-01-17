@@ -1,24 +1,24 @@
 ---
-title: Around the globe
-description: Il progetto Around the Globe, ovvero uno script per il calcolo dell'azimut, delle distanze e molto altro tra due punti della superficie terrestre. Perché è nato, le sue funzionalità e la matematica che lo governa spiegata nel dettaglio.
+title: Attorno al globo
+description: Il progetto Attorno al globo, ovvero uno script per il calcolo dell'azimut, delle distanze e molto altro tra due punti della superficie terrestre. Perché è nato, le sue funzionalità e la matematica che lo governa spiegata nel dettaglio.
 paragraph:
   [
     "Uno script per il calcolo dell'azimut, delle distanze e molto altro, tra due punti della superfice terrestre.<br>",
     "Quando si dice che la matematica e l'informatica non sono poi così lontane...",
-    "L'uso delle geometrie di Matlab assieme all'interattività messa a disposizione da GeoGebra ti aiuterà a comprendere con facilità l'algoritmo e la matematica usata."
+    "L'uso delle geometrie di Matlab assieme all'interattività messa a disposizione da GeoGebra ti aiuterà a comprendere con facilità l'algoritmo e la matematica usata.",
   ]
 img:
   src: /v1636152274/Articoli/Around%20the%20globe/Around_the_globe_icon.jpg
-  alt: Around the globe
+  alt: Attorno al globo
 tag: [Programmazione, Matematica]
 
-portalurl: /portale/around_the_globe/
+portalurl: /portale/attorno_al_globo/
 
 createdAt: 2021-08-21T15:55:00Z
 updatedAt: 2021-08-25T21:59:00Z
 ---
 
-# Around the globe
+# Attorno al globo
 
 <cMedia :s="img.src" :a="img.src"></cMedia>
 

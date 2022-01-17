@@ -2,26 +2,10 @@
   <footer>
     <p>Puoi trovarmi anche qui</p>
     <div>
-      <a
-        href="https://github.com/Bocchio01"
-        rel="nofollow noopener noreferrer"
-        target="_blank"
-      ></a>
-      <a
-        href="https://t.me/Bocchio01"
-        rel="nofollow noopener noreferrer"
-        target="_blank"
-      ></a>
-      <a
-        href="https://www.instagram.com/bocchio_01/"
-        rel="nofollow noopener noreferrer"
-        target="_blank"
-      ></a>
-      <a
-        href="mailto:tommaso.bocchietti@gmail.com"
-        rel="nofollow noopener noreferrer"
-        target="_blank"
-      ></a>
+      <a href="https://github.com/Bocchio01" rel="nofollow noopener noreferrer" target="_blank"></a>
+      <a href="https://t.me/Bocchio01" rel="nofollow noopener noreferrer" target="_blank"></a>
+      <a href="https://www.instagram.com/bocchio_01/" rel="nofollow noopener noreferrer" target="_blank"></a>
+      <a href="mailto:tommaso.bocchietti@gmail.com" rel="nofollow noopener noreferrer" target="_blank"></a>
     </div>
     <div class="copyright">
       <p>Tommaso Bocchietti © {{ year }}</p>
@@ -51,7 +35,7 @@ export default {
     font-family: var(--Font_Special);
     font-size: var(--Size_Text_Footer);
     font-weight: bold;
-    border: var(--Border_Settings);
+    border: var(--Border_Settings_Wrap);
     border-radius: var(--Border_Radius_Header);
     background-color: var(--Color_Text_BG);
     > p {
@@ -63,7 +47,7 @@ export default {
       width: 50px;
       height: 50px;
       margin: 10px;
-      border: var(--Border_Settings);
+      border: var(--Border_Settings_Wrap);
       border-radius: 50%;
       background-size: contain !important;
       background-color: white !important;
@@ -75,24 +59,20 @@ export default {
         border: 3px solid var(--Color_Main);
       }
       &:nth-child(1) {
-        background: url('https://res.cloudinary.com/bocchio/image/upload/v1632947036/GitHub.png')
-          no-repeat;
+        background: url('https://res.cloudinary.com/bocchio/image/upload/v1632947036/GitHub.png') no-repeat;
       }
       &:nth-child(2) {
-        background: url('https://res.cloudinary.com/bocchio/image/upload/v1632947036/Telegram.png')
-          no-repeat;
+        background: url('https://res.cloudinary.com/bocchio/image/upload/v1632947036/Telegram.png') no-repeat;
       }
       &:nth-child(3) {
-        background: url('https://res.cloudinary.com/bocchio/image/upload/v1632947036/Instagram.png')
-          no-repeat;
+        background: url('https://res.cloudinary.com/bocchio/image/upload/v1632947036/Instagram.png') no-repeat;
       }
       &:nth-child(4) {
-        background: url('https://res.cloudinary.com/bocchio/image/upload/v1636151722/Email.png')
-          no-repeat;
+        background: url('https://res.cloudinary.com/bocchio/image/upload/v1636151722/Email.png') no-repeat;
       }
     }
     > div.copyright {
-      border-top: var(--Border_Settings);
+      border-top: var(--Border_Settings_Wrap);
       color: #a2a2a2;
       border-top-color: var(--Color_Text);
     }

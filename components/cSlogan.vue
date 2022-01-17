@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="sloganBase"
-    v-bind:class="[isHome ? 'sloganHome' : 'sloganNotHome']"
-  >
+  <div class="sloganBase" v-bind:class="[isHome ? 'sloganHome' : 'sloganNotHome']">
     {{ sloganMsg }}
   </div>
 </template>
@@ -13,8 +10,8 @@ export default {
   props: {
     sloganMsg: {
       type: String,
-      default: "What's Next?"
-    }
+      default: "What's Next?",
+    },
   },
 
   computed: {
@@ -23,8 +20,8 @@ export default {
         return true
       }
       return false
-    }
-  }
+    },
+  },
 }
 </script>
 

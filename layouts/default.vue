@@ -17,6 +17,6 @@ export default {
     window.addEventListener('beforeunload', () => {
       this.$store.dispatch('InteractionsUpdate')
     })
-  }
+  },
 }
 </script>
