@@ -10,15 +10,19 @@
           <br />
           <p><strong>Comandi disponibili:</strong></p>
           <ul>
+            <li>Seleziona -> Click sulla mappa</li>
+            <li>Modifica -> Trascina il marker sulla mappa</li>
+            <li>Elimina -> Icona del cestino dal box di input dati o doppio click del marker sulla mappa</li>
             <li>Ricerca -> Lente di ingrandimento sulla mappa</li>
-            <li>Selezione -> Click sulla mappa</li>
-            <li>Modifica -> Trascinamento del punto sulla mappa</li>
-            <li>Eliminazione -> Icona del cestino dal box di input dati</li>
-            <li>Geolocalizzazione -> Icona apposita sulla mappa</li>
+            <li>Focus -> Click del marker dal box di input dati</li>
           </ul>
           <br />
-          <p>Con il tasto <span class="arrow">&#8597;</span> è possibile invertire le coordinate di partenza con quelle di arrivo.</p>
-          <p>Il punto di partenza è segnato in verde, mentre quello di arrivo in rosso.</p>
+          <p>Con il tasto <span>&#8597;</span> è possibile invertire le coordinate di partenza con quelle di arrivo.</p>
+
+          <p>
+            Il punto di partenza è segnato in verde <span><img style="height: 25px" :src="markers[0].IconUrl" /></span>, mentre quello di arrivo in rosso
+            <span><img style="height: 25px" :src="markers[1].IconUrl" /></span>.
+          </p>
         </div>
       </div>
 
@@ -31,10 +35,10 @@
             <div v-for="(marker, index) in markers" :key="marker.id" style="display: flex">
               <img style="height: 25px" :src="marker.IconUrl" @click="initialLocation = marker.position" />
               <input style="color: var(--Color_Text)" v-model="marker.position" placeholder="Nessun punto selezionato" type="text" disabled />
-              <span @click="clean(index)">&#x1F5D1;&#xFE0F;</span>
+              <span style="cursor: pointer" @click="clean(index)">&#x1F5D1;&#xFE0F;</span>
             </div>
           </div>
-          <span class="arrow" @click="inverti()">&#8597;</span>
+          <span style="cursor: pointer" @click="inverti()">&#8597;</span>
         </div>
         <hr />
         <h2>Dati in output</h2>
@@ -49,13 +53,13 @@
           </div>
           <div>
             <p>
-              Azimut tra i due punti: <b> {{ risultati.azimut }} °</b>
+              Azimut tra i due punti: <b> {{ risultati.azimut }}°</b>
             </p>
             <p>
               Distanza sulla superficie: <b> {{ risultati.distanza }} km</b>
             </p>
             <p>
-              Inclinazione del tunnel: <b> {{ risultati.inclinazione }} °</b>
+              Inclinazione del tunnel: <b> {{ risultati.inclinazione }}°</b>
             </p>
             <p>
               Lunghezza del tunnel: <b> {{ risultati.lunghezza }} km</b>
@@ -68,7 +72,7 @@
         <h2>Mappa</h2>
         <div style="height: 90vh">
           <client-only>
-            <l-map ref="myMap" :zoom="zoom" @ready="onReady" @locationfound="onLocationFound" :center="initialLocation" :options="{ attributionControl: false }" @click="addMarker">
+            <l-map ref="myMap" :zoom="13" @ready="onReady" @locationfound="onLocationFound" :center="initialLocation" :options="{ attributionControl: false }" @click="addMarker">
               <l-control-scale position="bottomleft" :imperial="true" :metric="true"></l-control-scale>
               <l-control-layers position="topright"></l-control-layers>
               <l-control-attribution
@@ -84,7 +88,7 @@
                 :attribution="tileProvider.attribution"
                 layer-type="base"
               />
-              <v-locatecontrol />
+              <!-- <v-locatecontrol /> -->
               <l-marker
                 v-for="(marker, index) in markers"
                 :key="marker.id"
@@ -113,11 +117,8 @@ export default {
       tags_array: ['Guida', 'Dati', 'Mappa'],
       tags_to_view: ['Mappa'],
 
-      ready: false,
-
       risultati: Around_the_globe.result,
       initialLocation: [0, 0],
-      zoom: 13,
 
       markers: [
         {
@@ -157,43 +158,8 @@ export default {
     this.markers[1].IconObj = this.createIcon(this.markers[1].IconUrl)
   },
 
-  head() {
-    return {
-      link: [
-        {
-          rel: 'stylesheet',
-          href: 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
-          defer: true,
-        },
-        {
-          rel: 'stylesheet',
-          href: 'https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css',
-          defer: true,
-        },
-        {
-          rel: 'stylesheet',
-          href: 'https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css',
-          defer: true,
-        },
-      ],
-      script: [
-        {
-          hid: 'stripe',
-          src: 'https://unpkg.com/mathjs@9.4.4/lib/browser/math.js',
-          defer: true,
-        },
-        {
-          hid: 'stripe',
-          src: 'https://cdn.jsdelivr.net/npm/leaflet.geodesic',
-          defer: true,
-        },
-      ],
-    }
-  },
-
   methods: {
     onReady(mapObject) {
-      this.ready = true
       const provider = new this.OpenStreetMapProvider()
 
       const searchControl = new this.GeoSearchControl({
@@ -205,16 +171,10 @@ export default {
       })
 
       mapObject.addControl(searchControl)
+      mapObject.locate()
 
       this.tags_to_view = []
-      mapObject.locate()
-      setTimeout(() => {
-        try {
-          this.geodesic = new L.Geodesic().addTo(mapObject)
-        } catch (error) {
-          console.log('Errore')
-        }
-      }, 2000)
+      this.geodesic = new L.Geodesic().addTo(mapObject)
     },
     onLocationFound(location) {
       this.initialLocation = location.latlng
@@ -275,21 +235,12 @@ export default {
     },
   },
 }
-//sistemare il rilascio automatico del drag se si va troppo pianno con il cursone
 </script>
 
 <style lang="scss">
-/* @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'; */
-
 .Around_the_globe {
   hr {
     margin-block: var(--Margin_Gap);
-  }
-  .arrow {
-    padding-inline: 10px;
-  }
-  span {
-    cursor: pointer;
   }
   .compass-bg {
     width: 150px;

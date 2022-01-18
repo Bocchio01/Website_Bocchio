@@ -20,7 +20,12 @@ export default {
 
     if (!article) throw { statusCode: 404 }
 
-    const [prev, next] = await $content('articolo', { deep: true }).only(['title', 'slug', 'img']).sortBy('createdAt', 'asc').surround(params.slug).fetch()
+    const [prev, next] = await $content('articolo', { deep: true })
+      .where({ published: { $ne: process.env.SEE_UNPUBLISHED || false } })
+      .only(['title', 'slug', 'img'])
+      .sortBy('createdAt', 'asc')
+      .surround(params.slug)
+      .fetch()
 
     return {
       article,

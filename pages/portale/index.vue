@@ -16,7 +16,7 @@
 export default {
   async asyncData({ $content }) {
     const portali = await $content('portale')
-      .where({ published: { $ne: false } })
+      .where({ published: { $ne: process.env.SEE_UNPUBLISHED || false } })
       .sortBy('createdAt', 'desc')
       .fetch()
       .catch(() => {

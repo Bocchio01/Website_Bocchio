@@ -5,6 +5,9 @@ import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch'
 import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol'
 import { Geodesic } from 'leaflet.geodesic'
 
+import 'leaflet/dist/leaflet.css'
+import 'leaflet-geosearch/dist/geosearch.css'
+
 // Build icon assets.
 delete L.Icon.Default.prototype._getIconUrl
 L.Icon.Default.imagePath = ''

@@ -1,11 +1,11 @@
 <template>
   <div class="wrap nav_container">
-    <div class="wrap navigation" v-if="files[this.urlArticle]" style="flex: 1 1 250px">
+    <div class="wrap navigation" v-if="files" style="flex: 1 1 250px">
       <h2>Allegati</h2>
-      <p v-if="files[this.urlArticle].length == 1">Di seguito la cartella del progetto.</p>
+      <p v-if="files.length == 1">Di seguito la cartella del progetto.</p>
       <p v-else>Di seguito le cartelle del progetto.</p>
       <div>
-        <div class="wrap document" v-for="(file, index) in files[this.urlArticle]" :key="index">
+        <div class="wrap document" v-for="(file, index) in files" :key="index">
           <!-- [
         { host: "Dropbox/Mega",
         url: "http:// ... "}] -->
@@ -52,6 +52,8 @@
 </template>
 
 <script>
+import sendRequest from '@/assets/js/sendRequest.js'
+
 export default {
   props: {
     navdata: {
@@ -67,15 +69,21 @@ export default {
     return {
       urlArticle: this.$route.fullPath,
       pharse: '',
+      files: [],
     }
   },
-  computed: {
-    files: {
-      get() {
-        return this.$store.state.files
-      },
-    },
+
+  mounted() {
+    sendRequest({
+      action: 'NavigationGetFiles',
+      data: JSON.stringify({
+        url: this.urlArticle,
+      }),
+    })
+      .then((res) => (this.files = res.Data))
+      .catch((res) => this.$store.commit('auth_error', res.Log))
   },
+
   created() {
     var p = !!this.navdata.prev,
       n = !!this.navdata.next,

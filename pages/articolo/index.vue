@@ -22,7 +22,7 @@ export default {
   async asyncData({ $content }) {
     var tags_array = []
     const articles = await $content('articolo', { deep: true })
-      .where({ published: { $ne: false } })
+      .where({ published: { $ne: process.env.SEE_UNPUBLISHED || false } })
       .only(['title', 'slug', 'paragraph', 'img', 'tag'])
       .sortBy('createdAt', 'desc')
       .fetch()

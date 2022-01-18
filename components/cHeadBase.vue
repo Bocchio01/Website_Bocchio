@@ -10,18 +10,9 @@ import getSiteMeta from '@/assets/js/getSiteMeta.js'
 
 export default {
   props: {
-    title: {
-      type: String,
-      default: "Bocchio's WebSite - Sito personale di Tommaso Bocchietti",
-    },
-    description: {
-      type: String,
-      default: 'Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione alla fisica.',
-    },
-    type: {
-      type: String,
-      default: 'website',
-    },
+    title: { type: String },
+    description: { type: String },
+    type: { type: String },
   },
 
   head() {

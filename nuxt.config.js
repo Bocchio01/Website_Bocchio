@@ -13,14 +13,13 @@ export default {
     htmlAttrs: {
       lang: 'it',
     },
-    meta: [{ charset: 'utf-8' }, { name: 'author', content: 'Tommaso Bocchietti' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { name: 'msapplication-TileColor', content: '#da532c' }, { name: 'theme-color', content: '#ffffff' }],
+    meta: [{ charset: 'utf-8' }, { name: 'author', content: 'Tommaso Bocchietti' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     link: [
       {
         hid: 'canonical',
         rel: 'canonical',
-        href: 'https://bocchionuxt.netlify.app/',
+        href: process.env.HOST_URL,
       },
-      { rel: 'dns-prefetch', href: 'https://res.cloudinary.com' },
     ],
     ...meta,
   },
@@ -61,7 +60,7 @@ export default {
 
   image: {
     cloudinary: {
-      baseURL: process.env.CLOUDINARY_BASE_URL,
+      baseURL: 'https://res.cloudinary.com/bocchio/image/upload',
     },
   },
 
@@ -72,8 +71,9 @@ export default {
     manifest: {
       name: "Bocchio's WebSite",
       short_name: "Bocchio's WebSite",
-      description: 'Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione alla fisica.',
-      Color_Text_BG: '#000000',
+      description:
+        "Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione all'ingegneria.",
+      background_color: '#ffffff',
       theme_color: '#000000',
       lang: 'it',
       useWebmanifestExtension: true,
@@ -87,7 +87,17 @@ export default {
   sitemap: {
     hostname: process.env.HOST_URL,
     gzip: true,
-    exclude: [],
+    routes: async () => {
+      const { $content } = require('@nuxt/content')
+      const Articoli = await $content('articolo', { deep: true }).only(['slug']).fetch()
+      const Portali = await $content('portale').only(['slug']).fetch()
+      const Mix = await $content('mix').only(['slug']).fetch()
+
+      var link_Articoli = Articoli.map((articolo) => '/articolo/' + articolo.slug)
+      var link_Portali = Portali.map((portale) => '/portale/' + portale.slug)
+      var link_Mix = Mix.map((mix) => '/mix/' + mix.slug)
+      return [].concat(link_Articoli, link_Portali, link_Mix)
+    },
   },
 
   fontLoader: {
@@ -101,8 +111,8 @@ export default {
 
   env: {
     HOST_URL: process.env.HOST_URL,
-    CLOUDINARY_BASE_URL: process.env.CLOUDINARY_BASE_URL,
     UTILS_SITE: process.env.UTILS_SITE,
+    SEE_UNPUBLISHED: process.env.SEE_UNPUBLISHED,
   },
 
   router: {

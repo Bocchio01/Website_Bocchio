@@ -17,6 +17,7 @@
     "json-pointer": "^0.6.1",
     "leaflet-geosearch": "^3.6.0",
     "leaflet.geodesic": "^2.6.1",
+    "mathjs": "^10.1.0",
     "nuxt": "^2.15.8",
     "vue2-leaflet": "^2.7.1",
     "vue2-leaflet-geosearch": "^1.0.6",

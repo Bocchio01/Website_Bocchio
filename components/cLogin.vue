@@ -148,7 +148,8 @@ export default {
       },
     },
   },
-  created() {
+  mounted() {
+    document.getElementById('autologin').checked = JSON.parse(localStorage.getItem('autologin'))
     this.images_man = require
       .context('@/assets/img/Avatar/Man/', false, /\.png$/)
       .keys()

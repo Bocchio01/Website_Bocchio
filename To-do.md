@@ -4,9 +4,9 @@
 
 - [ ] Sistemare il css della 'x' di pulizia nelle barre di ricerca (ora è blu ma deve essere o nero o bianco)
 - [ ] L'auto compilazione dei campi di login continua ad avere interferenze con quelle di search
-- [ ] Al portale around_the_globe manca il css di alcune icone (da link esterno)
 - [ ] Controllare se un utente può o meno eliminare l'account
-- [ ] Controllare la sitemap.xml (sembrerebbero mancare dei link..)
+- [x] Al portale around_the_globe manca il css di alcune icone (da link esterno)
+- [x] Controllare la sitemap.xml (sembrerebbero mancare dei link..)
 - [x] Da mobile le finestre di risultato del portale around_the_globe escono dai margini
 - [x] **Correggere l'errore di "TypeError: Cannot read properties of undefined (reading 'dbHash')"**
 - [x] Da mobile l'icona di login in entrata è buggata di colore

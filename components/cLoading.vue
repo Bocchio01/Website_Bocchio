@@ -1,7 +1,7 @@
 <template>
   <div class="loading">
     <div class="logo"></div>
-    <p>{{ $store.state.status }}</p>
+    <p>{{ $store.state.status || 'Caricamento...' }}</p>
   </div>
 </template>
 
@@ -12,7 +12,6 @@ export default {
       this.$store.commit('set_token')
       this.$store.dispatch('UserLogin')
       this.$store.dispatch('InteractionsUpdate')
-      this.$store.dispatch('GetAllFile')
       setTimeout(() => {
         const el = document.getElementsByClassName('loading')[0]
         el.style.opacity = 0

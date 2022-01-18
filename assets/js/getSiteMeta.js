@@ -2,8 +2,10 @@ const host_url = process.env.HOST_URL
 const vercel_url = 'https://bocchio-og-image.vercel.app/'
 
 export default (args) => {
-  const title = (args && args.title) || 'Home'
-  const description = (args && args.description) || 'Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione alla fisica.'
+  const title = (args && args.title) || "Bocchio's WebSite - Sito personale di Tommaso Bocchietti"
+  const description =
+    (args && args.description) ||
+    "Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione all'ingegneria."
   const type = (args && args.type) || 'website'
   const url = (args && host_url + args.url) || host_url + '/'
   const theme = '?theme=' + (url.indexOf(host_url + '/portale/') == 0 ? 'dark' : 'light')
