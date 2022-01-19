@@ -2,6 +2,7 @@
 
 ## BUG
 
+- [ ] **Controllare Navigation e Forum (mounted e chiamate al server!)**
 - [ ] Sistemare il css della 'x' di pulizia nelle barre di ricerca (ora è blu ma deve essere o nero o bianco)
 - [ ] L'auto compilazione dei campi di login continua ad avere interferenze con quelle di search
 - [ ] Controllare se un utente può o meno eliminare l'account

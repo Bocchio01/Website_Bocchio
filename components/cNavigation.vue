@@ -18,31 +18,31 @@
       </div>
     </div>
 
-    <div class="wrap navigation" style="flex: 5 1 300px" v-if="navdata.prev || navdata.next">
+    <div class="wrap navigation" style="flex: 5 1 300px" v-if="data">
       <h2>Naviga nel sito</h2>
       <p>{{ pharse }}</p>
 
       <div>
-        <div class="wrap document" v-if="navdata.prev">
-          <p>{{ navdata.prev.title }}</p>
-          <cMedia :s="navdata.prev.img.src" :a="navdata.prev.img.src"></cMedia>
-          <NuxtLink :to="'/articolo/' + navdata.prev.slug + '/'" class="link_hidden">
+        <div class="wrap document" v-if="data.prev">
+          <p>{{ data.prev.title }}</p>
+          <cMedia :s="data.prev.img.src" :a="data.prev.img.src"></cMedia>
+          <NuxtLink :to="'/articolo/' + data.prev.slug + '/'" class="link_hidden">
             <div class="button"><span>&#8617;</span></div>
           </NuxtLink>
         </div>
 
-        <div class="wrap document" v-if="portal.urlPortal">
+        <div class="wrap document" v-if="data.portal.urlPortal">
           <p>Portale del progetto</p>
-          <cMedia :s="portal.img.src" :a="portal.img.src"></cMedia>
-          <NuxtLink :to="portal.urlPortal" class="link_hidden">
+          <cMedia :s="data.portal.img.src" :a="data.portal.img.src"></cMedia>
+          <NuxtLink :to="data.portal.urlPortal" class="link_hidden">
             <div class="button"><span>&#8605;</span></div>
           </NuxtLink>
         </div>
 
-        <div class="wrap document" v-if="navdata.next">
-          <p>{{ navdata.next.title }}</p>
-          <cMedia :s="navdata.next.img.src" :a="navdata.next.img.src"></cMedia>
-          <NuxtLink :to="'/articolo/' + navdata.next.slug + '/'" class="link_hidden">
+        <div class="wrap document" v-if="data.next">
+          <p>{{ data.next.title }}</p>
+          <cMedia :s="data.next.img.src" :a="data.next.img.src"></cMedia>
+          <NuxtLink :to="'/articolo/' + data.next.slug + '/'" class="link_hidden">
             <div class="button"><span>&#8618;</span></div>
           </NuxtLink>
         </div>
@@ -56,20 +56,12 @@ import sendRequest from '@/assets/js/sendRequest.js'
 
 export default {
   props: {
-    navdata: {
-      type: Object,
-      default: () => null,
-    },
-    portal: {
-      type: Object,
-      default: () => null,
-    },
+    data: { type: Object },
   },
   data() {
     return {
-      urlArticle: this.$route.fullPath,
       pharse: '',
-      files: [],
+      files: null,
     }
   },
 
@@ -77,17 +69,15 @@ export default {
     sendRequest({
       action: 'NavigationGetFiles',
       data: JSON.stringify({
-        url: this.urlArticle,
+        url: this.$route.fullPath,
       }),
     })
       .then((res) => (this.files = res.Data))
       .catch((res) => this.$store.commit('auth_error', res.Log))
-  },
 
-  created() {
-    var p = !!this.navdata.prev,
-      n = !!this.navdata.next,
-      u = !!this.portal.urlPortal,
+    var p = !!this.data.prev,
+      n = !!this.data.next,
+      u = !!this.data.portal.urlPortal,
       a = '',
       b = '',
       c = ''

@@ -1,11 +1,11 @@
 <template>
-  <article>
+  <main>
     <cHeadBase v-if="article" :title="article.title" :description="article.description" type="article" />
     <nuxt-content class="wrap" :document="article" />
-    <cNavigation v-if="article" :navdata="{ prev: prev, next: next }" :portal="{ urlPortal: article.portalurl, img: article.img }" />
+    <cNavigation v-if="navdata" :data="navdata" />
     <cForum />
     <cToTop />
-  </article>
+  </main>
 </template>
 
 <script>
@@ -20,17 +20,17 @@ export default {
 
     if (!article) throw { statusCode: 404 }
 
-    const [prev, next] = await $content('articolo', { deep: true })
+    const [prev1, next1] = await $content('articolo', { deep: true })
       .where({ published: { $ne: process.env.SEE_UNPUBLISHED || false } })
       .only(['title', 'slug', 'img'])
       .sortBy('createdAt', 'asc')
       .surround(params.slug)
       .fetch()
+    const navdata = { prev: prev1, next: next1, portal: { urlPortal: article.portalurl, img: article.img } }
 
     return {
       article,
-      prev,
-      next,
+      navdata,
     }
   },
 }
