@@ -52,8 +52,8 @@ Mi resi così conto dell'enorme potenzilità che tutto il progetto del sito avev
 Al momento non ho in mente di apportare modifiche sostanziali né alla struttura né ai contenuti del sito: sono completamente soddisfatto del lavoro fatto fin'ora e la mia unica speranza è venga in qualche modo apprezzato da chi ne vorrà usufruire.
 
 <div style="display: flex">
-  <nuxt-link :to="/articolo" class="button">Scopri gli articoli</nuxt-link>
-  <nuxt-link :to="/portale" class="button">Scopri i portali</nuxt-link>
+  <nuxt-link :to="/articolo/" class="button">Scopri gli articoli</nuxt-link>
+  <nuxt-link :to="/portale/" class="button">Scopri i portali</nuxt-link>
 </div>
 
 Per il momento quindi non rimane altro che incominciare a girovagare per il sito: a tal proposito, usa i due tasti qui sopra. Chi lo sa, _magari tra uno dei miei progetti troverai ispirazione per il tuo progetto..._ buona lettura!
