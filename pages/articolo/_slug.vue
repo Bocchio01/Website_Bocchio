@@ -20,13 +20,13 @@ export default {
 
     if (!article) throw { statusCode: 404 }
 
-    const [prev1, next1] = await $content('articolo', { deep: true })
+    const [prev, next] = await $content('articolo', { deep: true })
       .where({ published: { $ne: process.env.SEE_UNPUBLISHED || false } })
       .only(['title', 'slug', 'img'])
       .sortBy('createdAt', 'asc')
       .surround(params.slug)
       .fetch()
-    const navdata = { prev: prev1, next: next1, portal: { urlPortal: article.portalurl, img: article.img } }
+    const navdata = { prev: prev, next: next, portal: { urlPortal: article.portalurl, img: article.img } }
 
     return {
       article,

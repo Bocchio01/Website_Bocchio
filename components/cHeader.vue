@@ -18,9 +18,9 @@
       <li>
         <a @click="SubMenu_click" @keyup.enter="SubMenu_click" :class="{ hover: showSubMenu }" tabindex="0" style="cursor: pointer">Mix</a>
         <ul class="dropdown-content" :class="!showSubMenu ? 'hide' : ''">
-          <li><nuxt-link to="/mix/chi sono/">Chi sono?</nuxt-link></li>
+          <li><nuxt-link to="/mix/chi-sono/">Chi sono?</nuxt-link></li>
           <li>
-            <nuxt-link to="/mix/qual é lo scopo/">Qual è lo scopo?</nuxt-link>
+            <nuxt-link to="/mix/qual-é-lo-scopo/">Qual è lo scopo?</nuxt-link>
           </li>
           <li>
             <a href="#" @click="$store.commit('toggle_show', 'login')">Area personale</a>

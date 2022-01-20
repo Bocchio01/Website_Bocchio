@@ -37,7 +37,7 @@ export const mutations = {
     state.status = 'Utente attuale: ' + state.user.nickname
   },
   auth_error(state, Log) {
-    if (!state.show.loading && state.user.id) {
+    if (!state.show.loading) {
       alert(Log[Log.length - 1])
     }
     state.status = null

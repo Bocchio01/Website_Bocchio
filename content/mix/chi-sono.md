@@ -19,7 +19,7 @@ Mi chiamo Tommaso, ho 20 anni e abito a Como, in Italia.
 
 Se dovessi descrivermi con pochi e semplici aggettivi **probabilmente direi che sono testardo, tendenzialmente solitario, e forse anche un pelo controverso**. Ma d'altronde chi non lo è a questa età?
 
-Molti mi conoscono come chi è sempre pronto a guidare il gruppo quando c'è da lavorare o prendere decisioni e poi il primo (o forse il secondo dai) pronto a scherzare quando c'è da scherzare. Probabilemte è anche per questa strana combo che i miei amici non mi hanno ancora mandato a quel paese. Loro sono tra quelli che mi dicono di essere unico, mentre altri mi dicono di essere semplicemente incoerente. Ma a me poco interessa.
+Molti mi conoscono come chi è sempre pronto a guidare il gruppo quando c'è da lavorare o prendere decisioni e poi il primo (o forse il secondo dai) pronto a scherzare quando c'è da scherzare. Probabilmente è anche per questa strana combo che i miei amici non mi hanno ancora mandato a quel paese. Loro sono tra quelli che mi dicono di essere unico, mentre altri mi dicono di essere semplicemente incoerente. Ma a me poco interessa.
 
 <cMedia s="/v1635370023/Chi%20sono/Al_mare.jpg" c="Al mare si scherza.."></cMedia>
 

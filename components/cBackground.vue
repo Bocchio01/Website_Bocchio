@@ -5,17 +5,17 @@
 </template>
 
 <script>
-// export default {
-//   mounted() {
-//     window.onscroll = () => {
-//       this.$store.commit('set_show', ['submenu', false])
-//       this.$store.commit('set_show', ['mainmenu', false])
-//       try {
-//         document.getElementById('menu-btn').checked = false
-//       } catch (error) {}
-//     }
-//   },
-// }
+export default {
+  mounted() {
+    window.onscroll = () => {
+      this.$store.commit('set_show', ['submenu', false])
+      this.$store.commit('set_show', ['mainmenu', false])
+      try {
+        document.getElementById('menu-btn').checked = false
+      } catch (error) {}
+    }
+  },
+}
 </script>
 
 <style lang="scss">
@@ -30,7 +30,7 @@
   > div {
     position: absolute;
     border-radius: 50%;
-    background: var(--Color_Text_BG);
+    background: var(--Color_Body_Star);
   }
 }
 

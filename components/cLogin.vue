@@ -25,21 +25,19 @@
           <input id="email" type="email" :value="user.email" @input="updateVal($event, 'email')" required placeholder="Es: tommaso.bocchietti@gmail.com" />
         </div>
 
-        <div v-show="tags_to_view.includes('Sign up') || tags_to_view.includes('Login')">
+        <div style="margin-bottom: 0" v-show="tags_to_view.includes('Sign up') || tags_to_view.includes('Login')">
           <label for="password">Password</label>
           <input id="password" type="password" :value="user.password" @input="updateVal($event, 'password')" minlength="5" required placeholder="Es: *password segreta*" />
         </div>
 
-        <div class="inline" style="justify-content: flex-start" v-show="tags_to_view.includes('Login')">
-          <input type="checkbox" id="autologin" @click="UserLogin()" style="width: unset" />
-          <label for="autologin" style="width: unset">Ricordami su questo dispositivo</label>
+        <div style="margin-top: 0; color: #a2a2a2; display: inline-flex" v-show="tags_to_view.includes('Login')">
+          <p>Password dimenticata? Inserisci l'email nel campo sopra e <u @click="ForgotPassword()" style="cursor: pointer">clicca qua!</u></p>
         </div>
 
-        <!--
-        <div v-show="tags_to_view.includes('Login')">
-          <p>Password dimenticata? <a href="">Clicca qua!</a></p>
+        <div style="justify-content: flex-start; align-items: center; display: flex !important" v-show="tags_to_view.includes('Login')">
+          <input type="checkbox" id="autologin" @click="UserLogin()" style="width: unset; margin: 0px 5px" />
+          <label for="autologin" style="width: unset; margin: 0px">Ricordami su questo dispositivo</label>
         </div>
-        -->
 
         <div v-show="tags_to_view.includes('Impostazioni')" class="tooltip">
           <span class="tooltiptext" v-show="!$store.state.user.token">
@@ -52,7 +50,7 @@
           <div class="inline">
             <label for="mod_nickname">Nickname</label>
             <input id="mod_nickname" type="text" :value="user.nickname" @input="updateVal($event, 'nickname')" placeholder="Es: Bocchio01" />
-            <span style="width: 87px"></span>
+            <span></span>
           </div>
 
           <div class="inline">
@@ -131,6 +129,8 @@
 </template>
 
 <script>
+import sendRequest from '~/assets/js/sendRequest'
+
 export default {
   data() {
     return {
@@ -179,6 +179,15 @@ export default {
     UserLogin() {
       localStorage.setItem('autologin', document.getElementById('autologin').checked)
     },
+
+    ForgotPassword() {
+      sendRequest({
+        action: 'ForgotPassword',
+        data: JSON.stringify({ email: this.$store.state.user.email }),
+      })
+        .then((res) => alert(res.Data))
+        .catch((res) => alert(res.Log.pop()))
+    },
   },
 
   watch: {
@@ -210,6 +219,7 @@ export default {
 
   * {
     margin-block: 0;
+    margin-inline: auto;
   }
 
   > nav > div > p {
@@ -224,13 +234,17 @@ export default {
     margin-block: 10px;
   }
 
-  button[type='submit'] {
-    margin-top: 20px;
-    width: 100%;
-  }
-  &:hover,
-  &:focus {
-    width: 95%;
+  button {
+    padding: 7px;
+    &[type='submit'] {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      &:hover,
+      &:focus {
+        width: 95%;
+      }
+    }
   }
 
   div.inline {
@@ -244,24 +258,28 @@ export default {
       margin: 0px;
       width: revert;
     }
-    > label {
-      width: 130px;
+    > :nth-child(1) {
+      width: 100px;
+    }
+    > :nth-child(2):not(img) {
+      width: 100%;
+      max-width: 250px;
     }
   }
 
-  input,
-  select {
+  input {
     width: 100%;
     transition: padding 0.2s linear;
-  }
-
-  input:hover,
-  input:focus,
-  select:hover,
-  select:focus {
-    border-color: var(--Color_Main);
-    outline: none;
-    padding: 5px;
+    &[type='text'],
+    &[type='email'],
+    &[type='password'] {
+      &:hover,
+      &:focus {
+        border-color: var(--Color_Main);
+        outline: none;
+        padding: 5px;
+      }
+    }
   }
 
   #avatar_container {
@@ -274,6 +292,7 @@ export default {
       justify-content: center;
     }
   }
+
   img {
     width: 75px;
     height: 75px;
@@ -292,15 +311,13 @@ export default {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 600px) {
   .wrap.popup {
     div.inline {
-      margin-inline: auto;
       flex-direction: column;
-      justify-content: center;
-      width: 80%;
-      *:not(img) {
-        width: 100%;
+      > *:not(img) {
+        width: 100% !important;
+        max-width: unset !important;
       }
     }
   }

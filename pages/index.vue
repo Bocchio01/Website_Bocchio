@@ -10,7 +10,7 @@ export default {
     return {
       datas: [
         {
-          path: '/mix/chi sono/',
+          path: '/mix/chi-sono/',
           title: 'Chi sono?',
           paragraph: [
             'Ciao! Mi chiamo Tommaso e sono uno studente di ingegneria meccanica al Politecnico di Milano.',
@@ -38,7 +38,7 @@ export default {
           },
         },
         {
-          path: '/mix/qual é lo scopo/',
+          path: '/mix/qual-é-lo-scopo/',
           title: 'Qual é lo scopo?',
           paragraph: [
             "Questo sito nasce dall'esigenza di avere uno spazio completamente mio dove poter condividere con altri le mie idee e i miei progetti.",

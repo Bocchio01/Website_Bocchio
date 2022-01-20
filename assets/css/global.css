@@ -14,10 +14,12 @@
   --Color_Text: var(--black);
   --Color_Text_BG: var(--white);
   --Color_Body_BG: var(--black);
+  --Color_Body_Star: var(--white);
   --Color_Hover: var(--Color_Main);
   --Font_Special: 'Bungee Shade', cursive;
   --Font_Base: 'Roboto Condensed', sans-serif;
   --Border_Settings_Wrap: 1px solid #a2a2a2;
+  /* --Shadow_Setting: 0px 0px 15px 3px #a2a2a2; */
 
   /* Wrap */
   --Transition_Setting: all 0.2s ease-in-out;
@@ -49,4 +51,21 @@ html {
 a {
   color: var(--Color_Text);
   text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--Color_Body_BG);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(50, 50, 50, 0.8);
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--Color_Main);
 }

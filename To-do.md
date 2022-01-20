@@ -2,10 +2,10 @@
 
 ## BUG
 
-- [ ] **Controllare Navigation e Forum (mounted e chiamate al server!)**
-- [ ] Sistemare il css della 'x' di pulizia nelle barre di ricerca (ora è blu ma deve essere o nero o bianco)
-- [ ] L'auto compilazione dei campi di login continua ad avere interferenze con quelle di search
 - [ ] Controllare se un utente può o meno eliminare l'account
+- [ ] L'auto compilazione dei campi di login continua ad avere interferenze con quelle di search
+- [ ] Sistemare il css della 'x' di pulizia nelle barre di ricerca (ora è blu ma deve essere o nero o bianco)
+- [x] **Controllare Navigation e Forum (mounted e chiamate al server!)**
 - [x] Al portale around_the_globe manca il css di alcune icone (da link esterno)
 - [x] Controllare la sitemap.xml (sembrerebbero mancare dei link..)
 - [x] Da mobile le finestre di risultato del portale around_the_globe escono dai margini
@@ -24,8 +24,6 @@
 - [x] Controllare l'alert di successo invio dell'email al sign_up
 
 ## Generale
-
-- Privacy and user information (laws)
 
 - Possibili:
   - Traduzione di lingua, possibilità:
@@ -60,5 +58,4 @@
 
 ## Server
 
-- Fare una pagina di recupero credenziali (recupero con riconoscimento via email)
 - Best practice (database, variable, function type definition)
