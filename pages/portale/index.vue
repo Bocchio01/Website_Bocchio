@@ -1,14 +1,9 @@
 <template>
   <div>
-    <cHeadBase title="Elenco Portali" description="Pagina di elenco dei portali del sito Bocchio's WebSite" />
+    <CHeadBase title="Sezione portali" description="Pagina di elenco dei portali del sito Bocchio's WebSite" />
 
-    <div class="searchBar wrap">
-      <div style="flex: 1 1 200px">
-        <label>Ricerca per titolo</label>
-        <input type="search" v-model="title_to_view" placeholder="Titolo.." autocomplete="new-password" />
-      </div>
-    </div>
-    <cWrap v-for="(portale, index) in portali" :obj="portale" :key="index" :useTag="false" :title="title_to_view" msg="Vai al portale" />
+    <CSearch @toParent="handler" />
+    <CWrap v-for="(portale, index) in portali" :key="index" :obj="portale" :search_title="title_to_view" msg="Vai al portale" />
   </div>
 </template>
 
@@ -16,16 +11,12 @@
 export default {
   async asyncData({ $content }) {
     const portali = await $content('portale')
-      .where({ published: { $ne: process.env.SEE_UNPUBLISHED || false } })
+      .where({ published: { $ne: process.env.IS_DEV || false } })
       .sortBy('createdAt', 'desc')
       .fetch()
       .catch(() => {
         throw { statusCode: 404 }
       })
-
-    portali.forEach(function (element) {
-      element.path = '/portale/' + element.slug + '/'
-    })
 
     return { portali }
   },
@@ -39,7 +30,7 @@ export default {
 
   methods: {
     handler(value) {
-      this.tags_to_view = value
+      this.title_to_view = value.title
     },
   },
 }

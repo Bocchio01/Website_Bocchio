@@ -1,6 +1,6 @@
 <template>
   <div>
-    <cWrap :obj="val" :msg="'Torna alla home'" />
+    <CWrap :obj="val" :msg="'Torna alla home'" />
   </div>
 </template>
 

@@ -3,8 +3,8 @@
 ## BUG
 
 - [ ] Controllare se un utente può o meno eliminare l'account
-- [ ] L'auto compilazione dei campi di login continua ad avere interferenze con quelle di search
 - [ ] Sistemare il css della 'x' di pulizia nelle barre di ricerca (ora è blu ma deve essere o nero o bianco)
+- [ ] L'auto compilazione dei campi di login continua ad avere interferenze con quelle di search
 - [x] **Controllare Navigation e Forum (mounted e chiamate al server!)**
 - [x] Al portale around_the_globe manca il css di alcune icone (da link esterno)
 - [x] Controllare la sitemap.xml (sembrerebbero mancare dei link..)
@@ -45,7 +45,7 @@
     - Twitter
     - Instagram (?)
   - Navigazione nel sito:
-    - Link che rimanda ad Elenco Articoli / Portali da cNavigation
+    - Link che rimanda ad Elenco Articoli / Portali da CNavigation
 
 ---
 

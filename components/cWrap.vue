@@ -1,5 +1,8 @@
 <template>
-  <div class="wrap card" v-show="title ? obj.title.toLowerCase().indexOf(title.toLowerCase()) != -1 : tags.length != 0 ? tags.some((r) => obj.tag.includes(r)) : true">
+  <div
+    class="wrap card"
+    v-show="search_title ? obj.title.toLowerCase().indexOf(search_title.toLowerCase()) != -1 : tags.length != 0 ? tags.some((r) => obj.tag.includes(r)) : true"
+  >
     <nuxt-link :to="obj.path" class="link_hidden">
       <div class="button">{{ msg }}</div>
     </nuxt-link>
@@ -20,7 +23,8 @@
       -->
 
       <svg v-if="obj.img.src.indexOf('#') == 0">
-        <use :xlink:href="'/svg/svg_list.svg' + obj.img.src" :alt="obj.img.alt"></use>
+        <!-- :src="require('@/assets/png/Avatar/Man/' + img)" -->
+        <use :xlink:href="require('~/assets/svg/svg_list.svg') + obj.img.src" :alt="obj.img.alt"></use>
       </svg>
 
       <nuxt-picture v-else-if="obj.img.src.indexOf('http') == -1" provider="cloudinary" :src="obj.img.src" v-bind:alt="obj.img.alt" format="webp" />
@@ -42,7 +46,7 @@ export default {
         return []
       },
     },
-    title: {
+    search_title: {
       type: String,
       default: '',
     },
@@ -111,6 +115,16 @@ export default {
     svg {
       max-height: 200px;
       max-width: 100%;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .wrap.card:hover {
+    transform: unset;
+    img,
+    svg {
+      transform: unset;
     }
   }
 }

@@ -1,7 +1,12 @@
 ---
 title: Gorlu la stampante
 description: Il progetto Gorlu la stampante, ovvero un piccolo e simpatico plotter CNC costruito con Arduino e programmato in Python. Come è nato il progetto, l'algoritmo che ne regola il movimento e analizza le immagini, i motori-stepper che muovo i carrelli, e documenti utili per realizzarlo da sé.
-paragraph: ['Un piccolo e simpatico plotter CNC per stampare immagini o testo.<br>', 'Realizzato con Arduino, qualche componente di un vecchio PC e un paio di tavole di legno, questo piccolo plotter <b>è stato in grado di sorprendere anche me della sua precisione nel disegno.</b>', "Facile da realizzare, nell'articolo troverai tutto il codice sorgente (Python e C++) e molti altri documenti utili per realizzarlo da sé."]
+paragraph:
+  [
+    'Un piccolo e simpatico plotter CNC per stampare immagini o testo.<br>',
+    'Realizzato con Arduino, qualche componente di un vecchio PC e un paio di tavole di legno, questo piccolo plotter <b>è stato in grado di sorprendere anche me della sua precisione nel disegno.</b>',
+    "Facile da realizzare, nell'articolo troverai tutto il codice sorgente (Python e C++) e molti altri documenti utili per realizzarlo da sé.",
+  ]
 img:
   src: /v1635033169/Articoli/Gorlu%20la%20stampante/Gorlu.jpg
   alt: Gorlu la stampante
@@ -13,7 +18,7 @@ updatedAt: 2021-11-05T21:54:00Z
 
 # Gorlu la stampante
 
-<cMedia :s="img.src" :a="img.src"></cMedia>
+<CMedia :s="img.src" :a="img.src"></CMedia>
 
 ## L'idea iniziale
 
@@ -39,7 +44,7 @@ Visto che fino a quel momento se non per qualche linguaggio web conoscevo solame
 
 **Il codice si basa quindi su Python per quanto riguarda la parte di analisi ed elaborazione nonché l'interfaccia grafica, e sul C++ per quanto riguarda il programma che governa Arduino.**
 
-<cMedia s="/v1637023033/Articoli/Gorlu%20la%20stampante/Logo_py_c.png" c="Loghi di Python e C++"></cMedia>
+<CMedia s="/v1637023033/Articoli/Gorlu%20la%20stampante/Logo_py_c.png" c="Loghi di Python e C++"></CMedia>
 
 Tra le librerie più importanti che ho scelto di utilizzare ci sono sicuramente:
 
@@ -55,13 +60,13 @@ Tra le librerie più importanti che ho scelto di utilizzare ci sono sicuramente:
 
 Data un'immagine in input la semplifica (sfruttando la [funzione Canny()](https://it.wikipedia.org/wiki/Algoritmo_di_Canny) presente in OpenCV) estrandone le linee principali e salvando poi i pixel individuati in una matrice bidimensionale.
 
-<cMedia s="/v1637024651/Articoli/Gorlu%20la%20stampante/Canny.png" c="Un esempio di utilizzo dell'algoritmo Canny"></cMedia>
+<CMedia s="/v1637024651/Articoli/Gorlu%20la%20stampante/Canny.png" c="Un esempio di utilizzo dell'algoritmo Canny"></CMedia>
 
 Ne viene allora eseguita la scansione con la logica di andare a stampare non singoli punti (rischiando così di avere problemi con l'inchiostro della penna), ma linee continue. **Preso un elemento A, l'algoritmo ne analizza i pixel in posizioni limitrofe in cerca di un elemento B da stampare. In caso di successo ne invia le coordinate ad Arduino, altrimenti allarga il campo di ricerca sempre centranto in A fino a che non viene identificato un elemento B.** Il programma poi cicla prendendo come punto di partenza le coordinate dell'elemento B appena individuato, e continua in maniera analoga fino a che tutta la matrice non è stata scansionata.
 
-<cMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_1.png" c="Simulazione grafica dell'algoritmo di ricerca"></cMedia>
+<CMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_1.png" c="Simulazione grafica dell'algoritmo di ricerca"></CMedia>
 
-<cMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_2.png" c="Uno screen dell'algoritmo di ricerca"></cMedia>
+<CMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_2.png" c="Uno screen dell'algoritmo di ricerca"></CMedia>
 
 Vista la sua semplicità e la sua bassa complessità computazionale, l'algoritmo risulta essere rapido e poco dispendioso di risorse. Inoltre, lavorando sempre e solo all'interno della RAM, non vi è mai la necessità di salvare dati sul disco fisso e questo permette di lasciare il PC libero da superflui file di salvataggio.
 
@@ -80,11 +85,11 @@ In particolare, **i due carrelli servono a muovere il foglio lungo le due direzi
 
 Questa tipologia di motore viene infatti definita stepper-motor e non ragionano per angoli di rotazione, ma secondo un numero di step rotazionali da compiere (solitamente un giro completo è suddiviso in ~500 step). **Conoscendo la rotazione associata a ciascuno step e quindi il conseguente spostamento del carrello, è facile convertire il delta tra due coordinate di pixel in un determinato numero di step da fare per raggiungere lo spostamento della penna necessario.**
 
-<cMedia s="https://res.cloudinary.com/bocchio/video/upload/v1632851317/Articoli/Gorlu%20la%20stampante/Movimento_carrelli.mp4" c="Scorrimento dei due carrelli" type="video"></cMedia>
+<CMedia s="https://res.cloudinary.com/bocchio/video/upload/v1632851317/Articoli/Gorlu%20la%20stampante/Movimento_carrelli.mp4" c="Scorrimento dei due carrelli" type="video"></CMedia>
 
 Il meccanismo legato invece al movimento della penna **lungo l'asse Z** è invece leggermente più fine e delicato: è composto infatti da **un servo-motore legato con un filo inestensibile alla mina della penna.** Quando la penna deve essere alzata, il servo compie una rotazione di qualche grado, mandando in tensione il filo e tirando così verso l'alto la mina. Per ritornare con la mina sul foglio, il servo rilascia la tensione lungo il filo, e un elastico spinge verso il basso la mina.
 
-<cMedia s="https://res.cloudinary.com/bocchio/video/upload/v1632851576/Articoli/Gorlu%20la%20stampante/Movimento_penna.mp4" c="Il meccanismo per alzare e abbasare la penna" type="video"></cMedia>
+<CMedia s="https://res.cloudinary.com/bocchio/video/upload/v1632851576/Articoli/Gorlu%20la%20stampante/Movimento_penna.mp4" c="Il meccanismo per alzare e abbasare la penna" type="video"></CMedia>
 
 In questo modo visto che l'elastico genera sempre la stessa forza sulla mina, la stampa avrà una distribuzione di inchiostro omogenea (ottimo no?).
 
@@ -96,7 +101,7 @@ Il nome non ha mai avuto un significato preciso e mi è venuto in mente durante 
 
 Ecco qualche video del progetto finito.. Enjoy!
 
-<cMedia s="https://www.youtube.com/embed/qBS6WiSzQmI" c="Stampa di Pikachu" type="iframe"></cMedia>
+<CMedia s="https://www.youtube.com/embed/qBS6WiSzQmI" c="Stampa di Pikachu" type="iframe"></CMedia>
 
 ## Realizzarlo da sé
 

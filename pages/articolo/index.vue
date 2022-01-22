@@ -1,19 +1,8 @@
 <template>
   <div>
-    <cHeadBase title="Elenco Articoli" description="Pagina di elenco degli articoli del sito Bocchio's WebSite" />
-
-    <div class="searchBar wrap">
-      <div style="flex: 1 1 200px">
-        <label>Ricerca per titolo</label>
-        <input type="search" v-model="title_to_view" placeholder="Titolo.." autocomplete="new-password" />
-      </div>
-      <hr />
-      <div style="flex: 4 1 400px">
-        <label>Ricerca per tag (#)</label>
-        <CMenuScelta @toParent="handler" :tags="tags_array" />
-      </div>
-    </div>
-    <cWrap v-for="(article, index) in articles" :key="index" :obj="article" :tags="tags_to_view" :title="title_to_view" msg="Vai all'articolo" />
+    <CHeadBase title="Sezione articoli" description="Pagina di elenco degli articoli del sito Bocchio's WebSite" />
+    <CSearch @toParent="handler" :tags="tags_array" />
+    <CWrap v-for="(article, index) in articles" :key="index" :obj="article" :tags="tags_to_view" :search_title="title_to_view" msg="Vai all'articolo" />
   </div>
 </template>
 
@@ -22,7 +11,7 @@ export default {
   async asyncData({ $content }) {
     var tags_array = []
     const articles = await $content('articolo', { deep: true })
-      .where({ published: { $ne: process.env.SEE_UNPUBLISHED || false } })
+      .where({ published: { $ne: process.env.IS_DEV || false } })
       .only(['title', 'slug', 'paragraph', 'img', 'tag'])
       .sortBy('createdAt', 'desc')
       .fetch()
@@ -30,11 +19,11 @@ export default {
         throw { statusCode: 404 }
       })
 
-    articles.forEach(function (element) {
+    articles.forEach((element) => {
       element.path = '/articolo/' + element.slug + '/'
       if (element.tag) tags_array = tags_array.concat(element.tag)
     })
-    tags_array = tags_array.filter(function (item, pos) {
+    tags_array = tags_array.filter((item, pos) => {
       return tags_array.indexOf(item) == pos
     })
     return { articles, tags_array }
@@ -49,7 +38,8 @@ export default {
 
   methods: {
     handler(value) {
-      this.tags_to_view = value
+      this.tags_to_view = value.tags
+      this.title_to_view = value.title
     },
   },
 }

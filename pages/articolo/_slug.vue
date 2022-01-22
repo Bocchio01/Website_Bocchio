@@ -1,10 +1,10 @@
 <template>
   <main>
-    <cHeadBase v-if="article" :title="article.title" :description="article.description" type="article" />
+    <CHeadBase v-if="article" :title="article.title" :description="article.description" type="article" />
     <nuxt-content class="wrap" :document="article" />
-    <cNavigation v-if="navdata" :data="navdata" />
-    <cForum />
-    <cToTop />
+    <CNavigation v-if="navdata" :data="navdata" />
+    <CForum />
+    <CToTop />
   </main>
 </template>
 
@@ -21,7 +21,7 @@ export default {
     if (!article) throw { statusCode: 404 }
 
     const [prev, next] = await $content('articolo', { deep: true })
-      .where({ published: { $ne: process.env.SEE_UNPUBLISHED || false } })
+      .where({ published: { $ne: process.env.IS_DEV || false } })
       .only(['title', 'slug', 'img'])
       .sortBy('createdAt', 'asc')
       .surround(params.slug)

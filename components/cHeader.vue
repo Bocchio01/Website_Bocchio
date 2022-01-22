@@ -20,7 +20,7 @@
         <ul class="dropdown-content" :class="!showSubMenu ? 'hide' : ''">
           <li><nuxt-link to="/mix/chi-sono/">Chi sono?</nuxt-link></li>
           <li>
-            <nuxt-link to="/mix/qual-é-lo-scopo/">Qual è lo scopo?</nuxt-link>
+            <nuxt-link to="/mix/qual-e-lo-scopo/">Qual è lo scopo?</nuxt-link>
           </li>
           <li>
             <a href="#" @click="$store.commit('toggle_show', 'login')">Area personale</a>
@@ -199,6 +199,11 @@ export default {
         margin: 15px 15px;
       }
     }
+  }
+}
+@media (max-width: 750px) {
+  .Default header * {
+    transition: none !important;
   }
 }
 

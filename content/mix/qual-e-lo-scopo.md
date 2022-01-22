@@ -11,7 +11,7 @@ updatedAt: 2021-11-01T00:00:00Z
 
 # Qual é lo scopo?
 
-<cMedia s="#Scopo" :a="img.src" type="svg"></cMedia>
+<CMedia s="#Scopo" a="Qual é lo scopo?" type="svg"></CMedia>
 
 ## Questione di esigenze
 

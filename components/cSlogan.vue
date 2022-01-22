@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'cSlogan',
+  name: 'CSlogan',
   props: {
     sloganMsg: {
       type: String,

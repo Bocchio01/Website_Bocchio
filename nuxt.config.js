@@ -34,7 +34,7 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ['nuxt-font-loader', '@nuxtjs/dotenv'],
+  buildModules: ['@nuxtjs/dotenv'],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -100,19 +100,10 @@ export default {
     },
   },
 
-  fontLoader: {
-    url: {
-      google: 'https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap',
-      local: 'https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap',
-    },
-    prefetch: true,
-    preconnect: true,
-  },
-
   env: {
     HOST_URL: process.env.HOST_URL,
     UTILS_SITE: process.env.UTILS_SITE,
-    SEE_UNPUBLISHED: process.env.SEE_UNPUBLISHED,
+    IS_DEV: process.env.IS_DEV,
   },
 
   router: {

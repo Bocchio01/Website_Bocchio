@@ -8,24 +8,22 @@
 <script>
 export default {
   mounted() {
-    if (process.client) {
-      this.$store.commit('set_token')
-      this.$store.dispatch('UserLogin')
-      this.$store.dispatch('InteractionsUpdate')
-      setTimeout(() => {
-        const el = document.getElementsByClassName('loading')[0]
-        el.style.opacity = 0
-        el.style.top = '-100vh'
-      }, 2500)
-      setTimeout(() => this.$store.commit('toggle_show', 'loading'), 5000)
-    }
+    this.$store.commit('set_token')
+    this.$store.dispatch('UserLogin')
+    this.$store.dispatch('InteractionsUpdate')
+    setTimeout(() => {
+      const el = document.getElementsByClassName('loading')[0]
+      el.style.opacity = 0
+      el.style.top = '-100vh'
+    }, 2500)
+    setTimeout(() => this.$store.commit('toggle_show', 'loading'), 5000)
   },
 }
 </script>
 
 <style lang="scss">
 div.loading {
-  z-index: 10;
+  z-index: 1100;
   position: fixed;
   top: 0px;
   left: 0px;

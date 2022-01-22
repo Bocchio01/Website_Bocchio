@@ -12,7 +12,7 @@
       -->
 
       <svg v-if="s.indexOf('#') == 0">
-        <use :xlink:href="'/svg/svg_list.svg' + s" :alt="a"></use>
+        <use :xlink:href="require('~/assets/svg/svg_list.svg') + s" :alt="a"></use>
       </svg>
 
       <nuxt-picture v-else-if="provider == 'Cloudinary'" provider="cloudinary" :src="s" sizes="xs:320px sm:400px md:460px lg:700px" v-bind:alt="a ? a : c" format="webp" />
@@ -29,7 +29,13 @@
     </figure>
 
     <figure v-if="type == 'iframe'">
-      <iframe :src="s" v-bind:title="[a ? a : c]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe
+        :src="s"
+        v-bind:title="[a ? a : c]"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
 
       <figcaption>{{ c }}</figcaption>
     </figure>

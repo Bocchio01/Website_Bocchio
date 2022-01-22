@@ -1,5 +1,5 @@
 <template>
-  <cHeadBase v-if="portale" :title="portale.title" :description="portale.description" />
+  <CHeadBase v-if="portale" :title="portale.title" :description="portale.description" />
 </template>
 
 <script>

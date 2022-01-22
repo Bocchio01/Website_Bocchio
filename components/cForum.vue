@@ -10,7 +10,7 @@
       <div class="info">
         <div class="user">
           <p>{{ post.nickname }}</p>
-          <img :src="require('@/assets/img/Avatar' + post.avatar)" alt="User avatar" />
+          <img :src="require('@/assets/png/Avatar' + post.avatar)" alt="User avatar" />
         </div>
         <p>{{ post.creation_date }}</p>
         <p v-if="post.modified_date">{{ post.modified_date }}</p>

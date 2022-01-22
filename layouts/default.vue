@@ -1,13 +1,13 @@
 <template>
   <div class="Default">
-    <cLoading v-if="$store.getters.show.loading" />
-    <cHeader />
-    <cSlogan />
+    <CLoading v-if="$store.getters.show.loading" />
+    <CHeader />
+    <CSlogan />
     <Nuxt keep-alive />
-    <lazy-cFooter />
+    <Lazy-CFooter />
 
-    <lazy-cBackground />
-    <lazy-cLogin />
+    <Lazy-CBackground />
+    <Lazy-CLogin />
   </div>
 </template>
 

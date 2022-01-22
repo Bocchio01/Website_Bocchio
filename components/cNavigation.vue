@@ -10,7 +10,7 @@
         { host: "Dropbox/Mega",
         url: "http:// ... "}] -->
           <p>{{ file.host }}</p>
-          <img :src="'/AttachmentIcon/' + file.host + '.png'" :alt="file.host + ' icon'" />
+          <img :src="require('@/assets/png/AttachmentIcon/' + file.host + '.png')" :alt="file.host + ' icon'" />
           <a :href="file.url" class="link_hidden" target="_blank" rel="nofollow noopener noreferrer">
             <div class="button">Scopri di più!</div>
           </a>
@@ -25,7 +25,7 @@
       <div>
         <div class="wrap document" v-if="data.prev">
           <p>{{ data.prev.title }}</p>
-          <cMedia :s="data.prev.img.src" :a="data.prev.img.src"></cMedia>
+          <CMedia :s="data.prev.img.src" :a="data.prev.img.src"></CMedia>
           <NuxtLink :to="'/articolo/' + data.prev.slug + '/'" class="link_hidden">
             <div class="button"><span>&#8617;</span></div>
           </NuxtLink>
@@ -33,7 +33,7 @@
 
         <div class="wrap document" v-if="data.portal.urlPortal">
           <p>Portale del progetto</p>
-          <cMedia :s="data.portal.img.src" :a="data.portal.img.src"></cMedia>
+          <CMedia :s="data.portal.img.src" :a="data.portal.img.src"></CMedia>
           <NuxtLink :to="data.portal.urlPortal" class="link_hidden">
             <div class="button"><span>&#8605;</span></div>
           </NuxtLink>
@@ -41,7 +41,7 @@
 
         <div class="wrap document" v-if="data.next">
           <p>{{ data.next.title }}</p>
-          <cMedia :s="data.next.img.src" :a="data.next.img.src"></cMedia>
+          <CMedia :s="data.next.img.src" :a="data.next.img.src"></CMedia>
           <NuxtLink :to="'/articolo/' + data.next.slug + '/'" class="link_hidden">
             <div class="button"><span>&#8618;</span></div>
           </NuxtLink>

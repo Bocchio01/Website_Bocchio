@@ -1,6 +1,6 @@
 <template>
   <div>
-    <cWrap v-for="(data, index) in datas" :key="index" :obj="data" />
+    <CWrap v-for="(data, index) in datas" :key="index" :obj="data" />
   </div>
 </template>
 
@@ -38,7 +38,7 @@ export default {
           },
         },
         {
-          path: '/mix/qual-é-lo-scopo/',
+          path: '/mix/qual-e-lo-scopo/',
           title: 'Qual é lo scopo?',
           paragraph: [
             "Questo sito nasce dall'esigenza di avere uno spazio completamente mio dove poter condividere con altri le mie idee e i miei progetti.",

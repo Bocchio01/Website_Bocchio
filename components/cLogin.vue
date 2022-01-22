@@ -55,7 +55,7 @@
 
           <div class="inline">
             <label for="avatar">Avatar</label>
-            <img id="avatar" :src="require('@/assets/img/Avatar' + user.preferences.avatar)" alt="AvatarSelected" @click="show_avatar = !show_avatar" />
+            <img id="avatar" :src="require('@/assets/png/Avatar' + user.preferences.avatar)" alt="AvatarSelected" @click="show_avatar = !show_avatar" />
 
             <button @click="updateVal('/icon.png', 'preferences.avatar')">Ripristina</button>
           </div>
@@ -66,7 +66,7 @@
               <img
                 v-for="(img, index) in images_woman"
                 :key="index"
-                :src="require('@/assets/img/Avatar/Woman/' + img)"
+                :src="require('@/assets/png/Avatar/Woman/' + img)"
                 alt="AvatarWoman"
                 @click="updateVal('/Woman/' + img, 'preferences.avatar')"
               />
@@ -76,7 +76,7 @@
               <img
                 v-for="(img, index) in images_man"
                 :key="index"
-                :src="require('@/assets/img/Avatar/Man/' + img)"
+                :src="require('@/assets/png/Avatar/Man/' + img)"
                 alt="AvatarMan"
                 @click="updateVal('/Man/' + img, 'preferences.avatar')"
               />
@@ -151,12 +151,12 @@ export default {
   mounted() {
     document.getElementById('autologin').checked = JSON.parse(localStorage.getItem('autologin'))
     this.images_man = require
-      .context('@/assets/img/Avatar/Man/', false, /\.png$/)
+      .context('@/assets/png/Avatar/Man/', false, /\.png$/)
       .keys()
       .map((s) => s.slice(2))
 
     this.images_woman = require
-      .context('@/assets/img/Avatar/Woman/', false, /\.png$/)
+      .context('@/assets/png/Avatar/Woman/', false, /\.png$/)
       .keys()
       .map((s) => s.slice(2))
   },

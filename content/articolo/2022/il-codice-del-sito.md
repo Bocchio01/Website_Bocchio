@@ -16,7 +16,7 @@ updatedAt: 2022-01-17T02:20:00Z
 
 # Il codice del sito
 
-<cMedia :s="img.src" :a="img.src"></cMedia>
+<CMedia :s="img.src" :a="img.src"></CMedia>
 
 ## Le conoscenze di partenza
 
