@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<title>Generated Image</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    @font-face {
+        font-family: 'Bungee Shade';
+        font-style: normal;
+        font-weight: normal;
+        src: url(/*Inject_font*/) format('woff2');
+    }
+
+    body {
+        background-color: --background;
+        background-image: radial-gradient(circle at 25px 25px, --foreground 1%, transparent 0%), radial-gradient(circle at 100px 100px, --foreground 1%, transparent 0%);
+        background-size: 150px 150px;
+        height: 100vh;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo {
+        margin: 0 75px;
+        background: --foreground;
+        border-radius: 30%;
+        padding: 20px;
+        height: 300px;
+        width: auto;
+    }
+
+    .heading {
+        margin: 130px;
+        margin-bottom: 100px;
+
+        font-family: 'Bungee Shade';
+        font-weight: bold;
+        font-size: 100px;
+        font-style: normal;
+        color: --foreground;
+        line-height: 1.8;
+        background-color: --background;
+    }
+</style>
+
+<body>
+    <div>
+        <img class="logo" alt="Generated Image" src="/*Inject_image_src*/" />
+        <p class="heading">/*Inject_title*/</p>
+    </div>
+</body>
+
+</html>

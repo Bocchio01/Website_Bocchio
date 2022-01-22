@@ -79,9 +79,9 @@ export const mutations = {
   },
 
   CounterVisite(state, path) {
-    var my_object = JSON.parse(localStorage.getItem('visite'))
-    my_object[path] ? my_object[path]++ : (my_object[path] = 1)
-    localStorage.setItem('visite', JSON.stringify(my_object))
+    var visite = JSON.parse(localStorage.getItem('visite'))
+    visite[path] ? visite[path]++ : (visite[path] = 1)
+    localStorage.setItem('visite', JSON.stringify(visite))
   },
 
   cleanvisite() {
@@ -126,7 +126,7 @@ export const actions = {
       action: 'InteractionsUpdate',
       data: JSON.stringify(JSON.parse(localStorage.getItem('visite'))),
     })
-      .then((res) => commit('cleanvisite'))
+      .then(commit('cleanvisite'))
       .catch((res) => commit('auth_error', res.Log))
   },
 }

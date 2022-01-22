@@ -172,7 +172,7 @@ export default {
 
     CloseLogin() {
       this.$store.commit('toggle_show', 'login')
-      this.$store.dispatch('UserUpdate')
+      if (this.user.id) this.$store.dispatch('UserUpdate')
       if (this.user.preferences.autologin == false) localStorage.removeItem('token')
     },
 
