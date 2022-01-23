@@ -8,10 +8,11 @@ const exePath =
     ? '/usr/bin/google-chrome'
     : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 
-const isDev = process.env.IS_DEV || !process.env.AWS_REGION || false
+// const isDev = process.env.IS_DEV || !process.env.AWS_REGION || false
 
+const isDev = 0
 exports.handler = async function (event) {
-  if (isDev) {
+  if (1 || isDev) {
     options = {
       args: [],
       executablePath: exePath,
@@ -37,7 +38,8 @@ exports.handler = async function (event) {
   html = html.replace('/*Inject_image_src*/', `data:image/svg+xml;base64,${logo}`)
   html = html.replace('/*Inject_font*/', `data:font/woff2;charset=utf-8;base64,${font}`)
 
-  await page.setViewport({ width: 1536, height: 877 })
+  // Recommend 1200×628
+  await page.setViewport({ width: 1200, height: 685 })
   await page.setContent(html)
 
   const file = await page.screenshot('webp')

@@ -1,4 +1,4 @@
-export default (args, target_url = '/PWS/main.php') => {
+export default (args, target_url = '/PWS/Main.php') => {
   const xhttp = new XMLHttpRequest()
   const FD = new FormData(args.form)
   for (const [key, value] of Object.entries(args)) {

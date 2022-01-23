@@ -121,11 +121,7 @@ export default {
 
 @media (max-width: 750px) {
   .wrap.card:hover {
-    transform: unset;
-    img,
-    svg {
-      transform: unset;
-    }
+    background-color: var(--Color_Text_BG);
   }
 }
 </style>
