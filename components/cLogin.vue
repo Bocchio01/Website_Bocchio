@@ -3,44 +3,57 @@
     <div class="wrap popup">
       <h1>Area personale</h1>
 
-      <CMenuScelta @toParent="handler" :tags="tags_array" :multiple="false" :start="[tags_array[0]]" />
+      <CMenuScelta @toParent="handler" :tags="tags_array" :multiple="false" />
       <p>{{ $store.state.status }}</p>
       <div>
-        <div v-show="tags_to_view.includes('Sign up')">
-          <h2>Sign up</h2>
-          <p>Inserisci i dati richiesti e riceverai a breve un e-mail di conferma.</p>
-        </div>
-        <div v-show="tags_to_view.includes('Login')">
-          <h2>Login</h2>
-          <p>Inserisci i dati di login</p>
-        </div>
+        <div v-show="tags_to_view.includes('Sign up') || tags_to_view.includes('Login')" class="tooltip">
+          <span class="tooltiptext" v-show="$store.state.user.id">
+            <mark> Effettua il Logout prima di effettuare altre operazioni qui </mark>
+          </span>
+          <div v-show="tags_to_view.includes('Sign up')">
+            <h2>Sign up</h2>
+            <p>Inserisci i dati richiesti e riceverai a breve un e-mail di conferma.</p>
+          </div>
+          <div v-show="tags_to_view.includes('Login')">
+            <h2>Login</h2>
+            <p>Inserisci i dati di login</p>
+          </div>
 
-        <div v-show="tags_to_view.includes('Sign up')">
-          <label for="nickname">Nickname</label>
-          <input id="nickname" type="text" :value="user.nickname" @input="updateVal($event, 'nickname')" required placeholder="Es: Bocchio01" />
-        </div>
+          <div v-show="tags_to_view.includes('Sign up')">
+            <label for="nickname">Nickname</label>
+            <input id="nickname" type="text" :value="user.nickname" @input="updateVal($event, 'nickname')" required placeholder="Es: Bocchio01" />
+          </div>
 
-        <div v-show="tags_to_view.includes('Sign up') || tags_to_view.includes('Login')">
-          <label for="email">E-mail</label>
-          <input id="email" type="email" :value="user.email" @input="updateVal($event, 'email')" required placeholder="Es: tommaso.bocchietti@gmail.com" />
-        </div>
+          <div v-show="tags_to_view.includes('Sign up') || tags_to_view.includes('Login')">
+            <label for="email">E-mail</label>
+            <input id="email" type="email" :value="user.email" @input="updateVal($event, 'email')" required placeholder="Es: tommaso.bocchietti@gmail.com" />
+          </div>
 
-        <div style="margin-bottom: 0" v-show="tags_to_view.includes('Sign up') || tags_to_view.includes('Login')">
-          <label for="password">Password</label>
-          <input id="password" type="password" :value="user.password" @input="updateVal($event, 'password')" minlength="5" required placeholder="Es: *password segreta*" />
-        </div>
+          <div style="margin-bottom: 0" v-show="tags_to_view.includes('Sign up') || tags_to_view.includes('Login')">
+            <label for="password">Password</label>
+            <input id="password" type="password" :value="user.password" @input="updateVal($event, 'password')" minlength="5" required placeholder="Es: *password segreta*" />
+          </div>
 
-        <div style="margin-top: 0; color: #a2a2a2; display: inline-flex" v-show="tags_to_view.includes('Login')">
-          <p>Password dimenticata? Inserisci l'email nel campo sopra e <u @click="ForgotPassword()" style="cursor: pointer">clicca qua!</u></p>
-        </div>
+          <div style="margin-top: 0; color: #a2a2a2; display: inline-flex" v-show="tags_to_view.includes('Login')">
+            <p>Password dimenticata? Inserisci l'email nel campo sopra e <u @click="ForgotPassword()" style="cursor: pointer">clicca qua!</u></p>
+          </div>
 
-        <div style="justify-content: flex-start; align-items: center; display: flex !important" v-show="tags_to_view.includes('Login')">
-          <input type="checkbox" id="autologin" @click="UserLogin()" style="width: unset; margin: 0px 5px" />
-          <label for="autologin" style="width: unset; margin: 0px">Ricordami su questo dispositivo</label>
+          <div v-show="tags_to_view.includes('Login')">
+            <label for="autologin">
+              <input type="checkbox" id="autologin" :checked="user.autologin" @click="updateVal(!user.autologin, 'autologin')" style="width: unset; margin: 0px 5px" />Ricordami su
+              questo dispositivo
+            </label>
+          </div>
+          <div v-show="tags_to_view.includes('Sign up')">
+            <button type="submit" @click="$store.dispatch('UserSignup')">SignUp</button>
+          </div>
+          <div v-show="tags_to_view.includes('Login')">
+            <button type="submit" @click="$store.dispatch('UserLogin')">Login</button>
+          </div>
         </div>
 
         <div v-show="tags_to_view.includes('Impostazioni')" class="tooltip">
-          <span class="tooltiptext" v-show="!$store.state.user.token">
+          <span class="tooltiptext" v-show="!$store.state.user.id">
             <mark> Effettua il Login per avere accesso alle funzionalità del sito </mark>
           </span>
 
@@ -88,18 +101,18 @@
 
           <div class="inline no-button">
             <label>Tema</label>
-            <div @click="updateVal(!user.preferences.dark, 'preferences.dark')">
-              <div @click="updateVal(true, 'preferences.dark')">
-                <input id="light" value="0" type="radio" :checked="!user.preferences.dark" />
+            <div>
+              <div @click="updateVal('light', 'preferences.theme')">
+                <input id="light" type="radio" :checked="user.preferences.theme == 'light'" />
                 <label for="light"> <span></span> Chiaro </label>
               </div>
-              <div @click="updateVal(false, 'preferences.dark')">
-                <input id="dark" value="0" type="radio" :checked="user.preferences.dark" />
+              <div @click="updateVal('dark', 'preferences.theme')">
+                <input id="dark" type="radio" :checked="user.preferences.theme == 'dark'" />
                 <label for="dark"> <span></span> Scuro </label>
               </div>
             </div>
 
-            <button @click="updateVal(false, 'preferences.dark')">Ripristina</button>
+            <button @click="updateVal('light', 'preferences.theme')">Ripristina</button>
           </div>
 
           <div class="inline">
@@ -115,13 +128,6 @@
           </div>
 
           <button type="submit" @click="$store.commit('UserLogout')">Logout</button>
-        </div>
-
-        <div v-show="tags_to_view.includes('Sign up')">
-          <button type="submit" @click="$store.dispatch('UserSignup')">SignUp</button>
-        </div>
-        <div v-show="tags_to_view.includes('Login')">
-          <button type="submit" @click="$store.dispatch('UserLogin')">Login</button>
         </div>
       </div>
     </div>
@@ -196,7 +202,7 @@ export default {
         document.documentElement.style.setProperty('--Size_Variable', val.preferences.font + 'px')
         document.documentElement.style.setProperty('--Color_Main', val.preferences.color)
 
-        if (val.preferences.dark == true) {
+        if (val.preferences.theme == 'dark') {
           document.documentElement.style.setProperty('--black', 'white')
           document.documentElement.style.setProperty('--white', 'black')
         } else {

@@ -21,3 +21,5 @@ updatedAt: 2022-01-17T02:20:00Z
 ## Le conoscenze di partenza
 
 Nulle.
+
+<CMedia s="http://localhost/PWS/?id_pagina=4&tipo_pagina=Articolo&submit=Genera" c="Bocchio's Analitics" type="iframe"></CMedia>

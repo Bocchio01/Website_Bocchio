@@ -41,6 +41,12 @@
   }
 }
 
+@media (max-width: 1200px) {
+  .wrap {
+    width: 70%;
+  }
+}
+
 @media (max-width: 1030px) {
   :root {
     --Padding_Wrap: 30px;
@@ -52,13 +58,10 @@
   }
 }
 
-@media (max-width: 1200px) {
-  .wrap {
-    width: 70%;
-  }
-}
-
 @media (max-width: 750px) {
+  :root {
+    --Padding_Wrap: 15px;
+  }
   .wrap {
     width: 90%;
   }

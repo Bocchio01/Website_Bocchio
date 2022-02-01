@@ -8,9 +8,9 @@
 <script>
 export default {
   mounted() {
-    this.$store.commit('set_token')
     this.$store.dispatch('UserLogin')
-    this.$store.dispatch('InteractionsUpdate')
+    this.$store.dispatch('InteractionsUpdate', this.$route.fullPath + '?loading=true')
+
     setTimeout(() => {
       const el = document.getElementsByClassName('loading')[0]
       el.style.opacity = 0

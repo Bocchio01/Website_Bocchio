@@ -33,8 +33,10 @@
 
   --Color_Text: var(--black);
   --Color_Text_BG: var(--white);
-  --Color_Body_BG: var(--black);
-  --Color_Body_Star: var(--white);
+  /* --Color_Body_BG: var(--black);
+  --Color_Body_Star: var(--white); */
+  --Color_Body_BG: black;
+  --Color_Body_Star: white;
   --Color_Hover: var(--Color_Main);
   --Font_Special: 'Bungee Shade', cursive;
   --Font_Base: 'Roboto Condensed', sans-serif;

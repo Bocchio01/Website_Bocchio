@@ -4,16 +4,17 @@ export const state = () => ({
   status: '',
   user: {
     id: null,
-    token: null,
     nickname: null,
     email: null,
     password: null,
     preferences: {
-      dark: false,
+      theme: 'light',
       color: '#ffa500',
       font: 0,
       avatar: '/icon.png',
+      lang: 'IT', // Get browser default lang by I18N
     },
+    autologin: false,
   },
   show: {
     loading: true,
@@ -29,11 +30,6 @@ export const mutations = {
   },
   auth_success(state, Data) {
     state.user = Data
-    if (JSON.parse(localStorage.getItem('autologin'))) {
-      localStorage.setItem('token', Data.token)
-    } else {
-      localStorage.removeItem('token')
-    }
     state.status = 'Utente attuale: ' + state.user.nickname
   },
   auth_error(state, Log) {
@@ -51,20 +47,20 @@ export const mutations = {
   },
 
   UserLogout(state) {
-    localStorage.removeItem('token')
-    localStorage.removeItem('autologin')
+    document.cookie = 'token='
     state.user = {
       id: null,
-      token: null,
       nickname: null,
       email: null,
       password: null,
       preferences: {
-        dark: false,
+        theme: 'light',
         color: '#ffa500',
         font: 0,
         avatar: '/icon.png',
+        lang: 'IT', // Get browser default lang by I18N
       },
+      autologin: false,
     }
     state.status = null
   },
@@ -76,20 +72,6 @@ export const mutations = {
     } else {
       state.user[path[0]][path[1]] = obj.e.target ? obj.e.target.value : obj.e
     }
-  },
-
-  CounterVisite(state, path) {
-    var visite = JSON.parse(localStorage.getItem('visite'))
-    visite[path] ? visite[path]++ : (visite[path] = 1)
-    localStorage.setItem('visite', JSON.stringify(visite))
-  },
-
-  cleanvisite() {
-    localStorage.setItem('visite', JSON.stringify({}))
-  },
-
-  set_token(state) {
-    state.user.token = localStorage.getItem('token') || null
   },
 }
 
@@ -110,8 +92,8 @@ export const actions = {
       action: 'UserSignup',
       data: JSON.stringify(state.user),
     })
-      .then((res) => (res.Log.pop(), commit('auth_error', res.Log)))
-      .catch((res) => commit('auth_error', res.Log))
+      .then((res) => (commit('auth_error', res.Log.pop()), commit('UserLogout')))
+      .catch((res) => commit('auth_error', res.Log), commit('UserLogout'))
   },
 
   UserUpdate({ commit, state }) {
@@ -121,12 +103,12 @@ export const actions = {
     }).catch((res) => commit('auth_error', res.Log))
   },
 
-  InteractionsUpdate({ commit }) {
+  InteractionsUpdate({ commit }, route) {
     return sendRequest({
       action: 'InteractionsUpdate',
-      data: JSON.stringify(JSON.parse(localStorage.getItem('visite'))),
+      data: JSON.stringify(route),
     })
-      .then(commit('cleanvisite'))
+      .then()
       .catch((res) => commit('auth_error', res.Log))
   },
 }

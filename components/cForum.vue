@@ -2,7 +2,7 @@
   <div class="wrap forum" v-if="forum">
     <!-- <button @click="getforum()">Clicca</button> -->
     <h2>Forum</h2>
-    <p v-if="!currentNickname">Per partecipare alla discussione devi essere loggato al sito. Clicca su 'Area personale' dal menu in testa alla pagina per accedere.</p>
+    <p v-if="!id_user">Per partecipare alla discussione devi essere loggato al sito. Clicca su 'Area personale' dal menu in testa alla pagina per accedere.</p>
     <p v-else-if="posts">Di seguito la discussione relativa all'articolo. Scorri in fondo alla pagina per dire la tua a riguardo!</p>
     <p v-else>Nessuno ha ancora aperto una discussione relativa all'articolo. Per farlo, utilizza il box qui sotto!</p>
 
@@ -14,9 +14,9 @@
         </div>
         <p>{{ post.creation_date }}</p>
         <p v-if="post.modified_date">{{ post.modified_date }}</p>
-        <button v-if="currentNickname == post.nickname" @click="action(post, 'ForumModifyPost')">Modifica</button>
-        <button v-if="currentNickname == post.nickname" @click="action(post, 'ForumDeletePost')">Elimina</button>
-        <button v-else-if="post.id_post == post.refer && currentNickname" @click="action(post, 'ForumAwnserPost')">Replica</button>
+        <button v-if="id_user == post.id_user" @click="action(post, 'ForumModifyPost')">Modifica</button>
+        <button v-if="id_user == post.id_user" @click="action(post, 'ForumDeletePost')">Elimina</button>
+        <button v-else-if="post.id_post == post.refer && id_user" @click="action(post, 'ForumAwnserPost')">Replica</button>
       </div>
       <div class="divisore"></div>
       <div class="text">
@@ -87,9 +87,9 @@ export default {
     }
   },
   computed: {
-    currentNickname: {
+    id_user: {
       get() {
-        return this.$store.state.user.nickname
+        return this.$store.state.user.id
       },
     },
     currentUrl: {
@@ -118,7 +118,7 @@ export default {
         data: JSON.stringify({
           selected_post: this.selected_post,
           url: this.currentUrl,
-          nickname: this.currentNickname,
+          id_user: this.id_user,
           new_post: this.new_post,
         }),
       })

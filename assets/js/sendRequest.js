@@ -22,6 +22,7 @@ export default (args, target_url = '/PWS/Main.php') => {
         }
       }
     }
+    xhttp.withCredentials = true
     xhttp.open('POST', process.env.UTILS_SITE + target_url)
 
     xhttp.send(FD)
