@@ -87,6 +87,9 @@ export default {
 @media (max-width: 1000px) {
   .searchBar {
     display: block;
+    hr {
+      margin-block: 10px;
+    }
   }
 }
 </style>

@@ -3,11 +3,11 @@
     <div class="wrap popup">
       <h1>Area personale</h1>
 
-      <CMenuScelta @toParent="handler" :tags="tags_array" :multiple="false" />
+      <CMenuScelta @toParent="handler" :tags="tags_array" :multiple="false" :start="[tags_array[0]]" />
       <p>{{ $store.state.status }}</p>
       <div>
         <div v-show="tags_to_view.includes('Sign up') || tags_to_view.includes('Login')" class="tooltip">
-          <span class="tooltiptext" v-show="$store.state.user.id">
+          <span class="tooltiptext" v-show="user.id">
             <mark> Effettua il Logout prima di effettuare altre operazioni qui </mark>
           </span>
           <div v-show="tags_to_view.includes('Sign up')">
@@ -34,8 +34,10 @@
             <input id="password" type="password" :value="user.password" @input="updateVal($event, 'password')" minlength="5" required placeholder="Es: *password segreta*" />
           </div>
 
-          <div style="margin-top: 0; color: #a2a2a2; display: inline-flex" v-show="tags_to_view.includes('Login')">
-            <p>Password dimenticata? Inserisci l'email nel campo sopra e <u @click="ForgotPassword()" style="cursor: pointer">clicca qua!</u></p>
+          <div style="margin-top: 0; color: #a2a2a2" v-show="tags_to_view.includes('Login')">
+            <p>
+              Password dimenticata? <a :href="utils_site + '/PWS/?action=ForgotPassword'" target="_blank" rel="nofollow noopener noreferrer" style="color: #a2a2a2">Clicca qua!</a>
+            </p>
           </div>
 
           <div v-show="tags_to_view.includes('Login')">
@@ -118,7 +120,7 @@
           <div class="inline">
             <label for="color">Colore</label>
             <input id="color" type="color" :value="user.preferences.color" @input="updateVal($event, 'preferences.color')" />
-            <button @click="updateVal('#ffa500', 'preferences.color')">Ripristina</button>
+            <button @click="updateVal('#ff9800', 'preferences.color')">Ripristina</button>
           </div>
 
           <div class="inline">
@@ -151,6 +153,11 @@ export default {
     user: {
       get() {
         return this.$store.state.user
+      },
+    },
+    utils_site: {
+      get() {
+        return process.env.UTILS_SITE
       },
     },
   },

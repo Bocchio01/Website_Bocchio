@@ -25,7 +25,7 @@
     </div>
 
     <div class="wrap write tooltip">
-      <span class="tooltiptext" v-show="!$store.state.user.token" @click="$store.commit('toggle_show', 'login')">
+      <span class="tooltiptext" v-show="!id_user" @click="$store.commit('toggle_show', 'login')">
         <mark>Effettua il Login per poter partecipare alla discussione</mark>
       </span>
 

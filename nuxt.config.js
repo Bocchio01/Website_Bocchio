@@ -39,6 +39,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/content
+    '@nuxtjs/i18n',
     '@nuxtjs/pwa',
     '@nuxt/content',
     '@nuxtjs/composition-api/module',
@@ -56,11 +57,35 @@ export default {
   build: {
     analyze: false,
   },
-  // loadingIndicator: '~/components/loading.html',
 
   image: {
     cloudinary: {
       baseURL: 'https://res.cloudinary.com/bocchio/image/upload',
+    },
+  },
+
+  i18n: {
+    baseUrl: process.env.HOST_URL,
+    locales: ['it', 'en', 'fr'],
+    // locales: [
+    //   { code: 'en', iso: 'en-US', file: 'en.js', dir: 'ltr' },
+    //   { code: 'ar', iso: 'ar-EG', file: 'ar.js', dir: 'rtl' },
+    //   { code: 'fr', iso: 'fr-FR', file: 'fr.js' },
+    // ],
+    defaultLocale: 'en',
+    vueI18n: {
+      fallbackLocale: 'it',
+      messages: {
+        it: {
+          welcome: 'Benvenuti',
+        },
+        en: {
+          welcome: 'welcome',
+        },
+        fr: {
+          welcome: 'Benvenué',
+        },
+      },
     },
   },
 
@@ -73,7 +98,7 @@ export default {
       short_name: "Bocchio's WebSite",
       description:
         "Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione all'ingegneria.",
-      background_color: '#ffffff',
+      background_color: '#000000',
       theme_color: '#000000',
       lang: 'it',
       useWebmanifestExtension: true,

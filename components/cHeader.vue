@@ -13,6 +13,8 @@
       </label>
     </div>
     <ul :style="!showMenu ? 'max-height: 0px' : 'max-height: 500px'">
+      <li><nuxt-link :to="switchLocalePath('en')">English</nuxt-link></li>
+      <li><nuxt-link :to="switchLocalePath('fr')">Français</nuxt-link></li>
       <li><nuxt-link to="/articolo/">Articoli</nuxt-link></li>
       <li><nuxt-link to="/portale/">Portali</nuxt-link></li>
       <li>

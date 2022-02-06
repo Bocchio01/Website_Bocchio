@@ -9,14 +9,16 @@
 export default {
   mounted() {
     this.$store.dispatch('UserLogin')
-    this.$store.dispatch('InteractionsUpdate', this.$route.fullPath + '?loading=true')
+    if (!localStorage.getItem('master')) this.$store.dispatch('InteractionsUpdate', this.$route.fullPath + '?loading=true')
+    const loading = document.getElementsByClassName('loading')[0]
+    const sloganHome = document.getElementsByClassName('sloganHome')[0]
 
     setTimeout(() => {
-      const el = document.getElementsByClassName('loading')[0]
-      el.style.opacity = 0
-      el.style.top = '-100vh'
+      loading.style.opacity = 0
+      loading.style.top = '-100vh'
+      sloganHome.style.animationName = 'login'
     }, 2500)
-    setTimeout(() => this.$store.commit('toggle_show', 'loading'), 5000)
+    setTimeout(() => (this.$store.commit('toggle_show', 'loading'), (sloganHome.style.animationName = 'none')), 7000)
   },
 }
 </script>

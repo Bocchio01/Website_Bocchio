@@ -1,12 +1,11 @@
 <template>
-  <div class="sloganBase" v-bind:class="[isHome ? 'sloganHome' : 'sloganNotHome']">
+  <div class="sloganBase" :class="isHome ? 'sloganHome' : 'sloganNotHome'">
     {{ sloganMsg }}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CSlogan',
   props: {
     sloganMsg: {
       type: String,
@@ -16,10 +15,7 @@ export default {
 
   computed: {
     isHome() {
-      if (this.$route.path == '/') {
-        return true
-      }
-      return false
+      return this.$route.path == '/'
     },
   },
 }
@@ -29,6 +25,7 @@ export default {
 .Default {
   div.sloganBase {
     width: 100%;
+    text-shadow: -10px 10px 15px rgba(#fff, 0.5);
     text-align: center;
     display: flex;
     justify-content: center;
@@ -43,10 +40,12 @@ export default {
     }
 
     &.sloganHome {
-      padding: 20px;
-      font-size: 130px;
-      min-height: calc(100vh - var(--Size_Text_Slogan));
-      padding-bottom: 50px;
+      height: calc(100vh - var(--Size_Text_Slogan));
+      padding: 20px 15px 50px 25px;
+      --Font_Size_Slogan_Home: 160px;
+      font-size: 160px;
+      animation: 3.5s linear 0s forwards;
+      animation-name: none;
     }
   }
 }
@@ -56,7 +55,8 @@ export default {
     --Size_Text_Slogan: 60px;
   }
   .Default div.sloganBase.sloganHome {
-    font-size: 90px;
+    --Font_Size_Slogan_Home: 120px;
+    font-size: 120px;
   }
 }
 
@@ -65,7 +65,35 @@ export default {
     --Size_Text_Slogan: 35px;
   }
   .Default div.sloganBase.sloganHome {
-    font-size: 60px;
+    --Font_Size_Slogan_Home: 65px;
+    font-size: 65px;
+  }
+}
+
+@keyframes login {
+  0% {
+    opacity: 1;
+    font-size: 1px;
+  }
+  30% {
+    font-size: var(--Font_Size_Slogan_Home);
+  }
+  90% {
+    font-size: calc(0.8 * var(--Font_Size_Slogan_Home));
+    opacity: 0;
+  }
+  95% {
+    font-size: var(--Font_Size_Slogan_Home);
+  }
+  96% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    font-size: var(--Font_Size_Slogan_Home);
   }
 }
 </style>

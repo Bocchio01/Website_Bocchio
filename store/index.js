@@ -9,7 +9,7 @@ export const state = () => ({
     password: null,
     preferences: {
       theme: 'light',
-      color: '#ffa500',
+      color: '#ff9800',
       font: 0,
       avatar: '/icon.png',
       lang: 'IT', // Get browser default lang by I18N
@@ -47,7 +47,7 @@ export const mutations = {
   },
 
   UserLogout(state) {
-    document.cookie = 'token='
+    sendRequest({ action: 'UserLogout' })
     state.user = {
       id: null,
       nickname: null,
@@ -55,14 +55,14 @@ export const mutations = {
       password: null,
       preferences: {
         theme: 'light',
-        color: '#ffa500',
+        color: '#ff9800',
         font: 0,
         avatar: '/icon.png',
         lang: 'IT', // Get browser default lang by I18N
       },
       autologin: false,
     }
-    state.status = null
+    state.status = ''
   },
 
   update_user(state, obj) {
@@ -92,7 +92,7 @@ export const actions = {
       action: 'UserSignup',
       data: JSON.stringify(state.user),
     })
-      .then((res) => (commit('auth_error', res.Log.pop()), commit('UserLogout')))
+      .then((res) => (res.Log.pop(), commit('auth_error', res.Log), commit('UserLogout')))
       .catch((res) => commit('auth_error', res.Log), commit('UserLogout'))
   },
 

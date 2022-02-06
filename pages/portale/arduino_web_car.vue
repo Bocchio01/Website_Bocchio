@@ -140,6 +140,7 @@ export default {
       height: 20px;
       width: 20px;
       border-radius: 50%;
+      vertical-align: middle;
     }
     &.open::after {
       background-color: green;
@@ -154,13 +155,14 @@ export default {
     }
   }
   > p {
+    border: var(--Border_Settings_Wrap);
     display: flex;
     flex-direction: column-reverse;
     overflow: auto;
     text-align: left;
     font-family: 'Lucida Console', 'Courier New', monospace;
     font-size: var(--Size_Text_Wrap);
-    color: var(--Color_Text_BG);
+    color: white;
     background-color: var(--Color_Body_BG);
     height: 200px;
     white-space: nowrap;
