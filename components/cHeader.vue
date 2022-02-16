@@ -36,7 +36,7 @@
       </li>
       <li>
         <nuxt-link :to="switchLocalePath($t('cHeader.switch.iso'))">
-          <img style="height: calc(1.7 * var(--Size_Text_Header))" :src="require('~/assets/png/lang/' + $t('cHeader.switch.img'))" :alt="'Flag ' + $t('cHeader.switch.iso')" />
+          <img style="height: calc(1.7 * var(--Size_Text_Header))" :src="require('~/assets/png/Lang/' + $t('cHeader.switch.img'))" :alt="'Flag ' + $t('cHeader.switch.iso')" />
         </nuxt-link>
       </li>
     </ul>

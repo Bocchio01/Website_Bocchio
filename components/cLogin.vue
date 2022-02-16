@@ -75,7 +75,7 @@
             <label for="mod_lang">Lingua</label>
 
             <nuxt-link style="text-align: center" :to="switchLocalePath($t('cHeader.switch.iso'))">
-              <img :src="require('~/assets/png/lang/' + $t('cHeader.switch.img'))" :alt="'Flag ' + $t('cHeader.switch.iso')" />
+              <img :src="require('~/assets/png/Lang/' + $t('cHeader.switch.img'))" :alt="'Flag ' + $t('cHeader.switch.iso')" />
             </nuxt-link>
 
             <button style="visibility: hidden; height: 0px; padding-block: 0px">{{ $t('cLogin.button.to_default') }}</button>
