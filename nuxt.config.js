@@ -90,7 +90,6 @@ export default {
     routes: async () => {
       const { $content } = require('@nuxt/content')
       const Articoli = await $content('', { deep: true }).only(['path']).fetch()
-      // console.log(Articoli)
       const routes = Articoli.map((route) => {
         if (route.path.indexOf('article') > -1) {
           route.path = route.path.substring(0, 11) + route.path.substring(16)
@@ -123,7 +122,6 @@ export default {
           ]
           route.locale = 'it'
         }
-        console.log(route)
         return route
       })
 

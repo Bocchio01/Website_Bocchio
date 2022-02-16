@@ -8,10 +8,10 @@ const exePath =
     ? '/usr/bin/google-chrome'
     : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 
-const isDev = !!process.env.IS_DEV
+const isDev = !!process.env.IS_DEV || false
 
 exports.handler = async function (event) {
-  if (!!process.env.IS_DEV) {
+  if (!!process.env.IS_DEV || false) {
     options = {
       args: [],
       executablePath: exePath,
