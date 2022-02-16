@@ -8,10 +8,11 @@ const exePath =
     ? '/usr/bin/google-chrome'
     : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 
-const isDev = process.env.IS_DEV
+const isDev = process.env.IS_DEV || !process.env.AWS_REGION || false
+// const isDev = 0
 
 exports.handler = async function (event) {
-  if (process.env.IS_DEV) {
+  if (isDev) {
     options = {
       args: [],
       executablePath: exePath,
@@ -51,6 +52,6 @@ exports.handler = async function (event) {
       'Content-Type': isDev ? 'text/html' : 'image/webp',
     },
     body: isDev ? html : file.toString('base64'),
-    isBase64Encoded: !isDev,
+    isBase64Encoded: isDev ? false : true,
   }
 }
