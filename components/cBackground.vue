@@ -4,22 +4,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  mounted() {
-    window.onscroll = () => {
-      if (this.$store.state.show.submenu || this.$store.state.show.mainmenu) {
-        this.$store.commit('set_show', ['submenu', false])
-        this.$store.commit('set_show', ['mainmenu', false])
-        try {
-          document.getElementById('menu-btn').checked = false
-        } catch (error) {}
-      }
-    }
-  },
-}
-</script>
-
 <style lang="scss">
 #particle-container {
   position: fixed;

@@ -10,17 +10,17 @@
 
 <script>
 export default {
-  async asyncData({ $content, params }) {
-    const [article] = await $content('articolo', { deep: true })
+  async asyncData({ $content, params, app, error }) {
+    const [article] = await $content(app.i18n.locale + '/article', { deep: true })
       .where({ slug: params.slug })
       .fetch()
       .catch(() => {
-        throw { statusCode: 404 }
+        error({ statusCode: 404 })
       })
 
     if (!article) throw { statusCode: 404 }
 
-    const [prev, next] = await $content('articolo', { deep: true })
+    const [prev, next] = await $content(app.i18n.locale + '/article', { deep: true })
       .where({ published: { $ne: process.env.IS_DEV || false } })
       .only(['title', 'slug', 'img'])
       .sortBy('createdAt', 'asc')

@@ -1,9 +1,9 @@
 <template>
   <div class="wrap nav_container">
     <div class="wrap navigation" v-if="files" style="flex: 1 1 250px">
-      <h2>Allegati</h2>
-      <p v-if="files.length == 1">Di seguito la cartella del progetto.</p>
-      <p v-else>Di seguito le cartelle del progetto.</p>
+      <h2>{{ $t('cNavigation.attachment.h2') }}</h2>
+      <p v-if="files.length == 1">{{ $t('cNavigation.attachment.p.0') }}</p>
+      <p v-else>{{ $t('cNavigation.attachment.p.1') }}</p>
       <div>
         <div class="wrap document" v-for="(file, index) in files" :key="index">
           <!-- [
@@ -12,29 +12,29 @@
           <p>{{ file.host }}</p>
           <img :src="require('@/assets/png/AttachmentIcon/' + file.host + '.png')" :alt="file.host + ' icon'" />
           <a :href="file.url" class="link_hidden" target="_blank" rel="nofollow noopener noreferrer">
-            <div class="button">Scopri di più!</div>
+            <div class="button">{{ $t('cNavigation.attachment.button') }}</div>
           </a>
         </div>
       </div>
     </div>
 
     <div class="wrap navigation" style="flex: 5 1 300px" v-if="data">
-      <h2>Naviga nel sito</h2>
+      <h2>{{ $t('cNavigation.navigation.h2') }}</h2>
       <p>{{ pharse }}</p>
 
       <div>
         <div class="wrap document" v-if="data.prev">
           <p>{{ data.prev.title }}</p>
           <CMedia :s="data.prev.img.src" :a="data.prev.img.src"></CMedia>
-          <NuxtLink :to="'/articolo/' + data.prev.slug + '/'" class="link_hidden">
+          <NuxtLink :to="localePath('/article/' + data.prev.slug + '/')" class="link_hidden">
             <div class="button"><span>&#8617;</span></div>
           </NuxtLink>
         </div>
 
         <div class="wrap document" v-if="data.portal.urlPortal">
-          <p>Portale del progetto</p>
+          <p>{{ $t('cNavigation.navigation.portal_title') }}</p>
           <CMedia :s="data.portal.img.src" :a="data.portal.img.src"></CMedia>
-          <NuxtLink :to="data.portal.urlPortal" class="link_hidden">
+          <NuxtLink :to="localePath(data.portal.urlPortal)" class="link_hidden">
             <div class="button"><span>&#8605;</span></div>
           </NuxtLink>
         </div>
@@ -42,7 +42,7 @@
         <div class="wrap document" v-if="data.next">
           <p>{{ data.next.title }}</p>
           <CMedia :s="data.next.img.src" :a="data.next.img.src"></CMedia>
-          <NuxtLink :to="'/articolo/' + data.next.slug + '/'" class="link_hidden">
+          <NuxtLink :to="localePath('/article/' + data.next.slug + '/')" class="link_hidden">
             <div class="button"><span>&#8618;</span></div>
           </NuxtLink>
         </div>
@@ -78,19 +78,23 @@ export default {
     var p = !!this.data.prev,
       n = !!this.data.next,
       u = !!this.data.portal.urlPortal,
-      a = '',
-      b = '',
-      c = ''
+      i18n = Object.values(this.$t('cNavigation.navigation.p'))
 
-    if (p) a = "l'articolo precedente"
-    if (n) b = "l'articolo successivo"
-    if (p && n) {
-      a = "l'articolo precedente, successivo"
-      b = ''
+    if (p && n && u) {
+      this.pharse = i18n[0]
+    } else if (p && n && !u) {
+      this.pharse = i18n[1]
+    } else if (p && !n && !u) {
+      this.pharse = i18n[2]
+    } else if (!p && n && !u) {
+      this.pharse = i18n[3]
+    } else if (!p && !n && u) {
+      this.pharse = i18n[4]
+    } else if (p && !n && u) {
+      this.pharse = i18n[5]
+    } else if (!p && n && !u) {
+      this.pharse = i18n[6]
     }
-    if (u) c = p || n ? ' e il portale associato al progetto' : ' il portale associato al progetto'
-
-    this.pharse = 'Di seguito ' + a + b + c + '.'
   },
 }
 </script>

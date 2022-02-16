@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p>Puoi trovarmi anche qui</p>
+    <p>{{ $t('cFooter') }}</p>
     <div>
       <a href="https://github.com/Bocchio01" rel="nofollow noopener noreferrer" target="_blank"></a>
       <a href="https://t.me/Bocchio01" rel="nofollow noopener noreferrer" target="_blank"></a>

@@ -3,24 +3,16 @@
     <div>
       <p tabindex="0" @click="addOrRemove(tag)" @keyup.enter="addOrRemove(tag)" v-for="(tag, index) in tags" :key="index" v-bind:class="{ active: isActive[tag] }">{{ tag }}</p>
     </div>
-    <p v-show="!tags_selected.length">Seleziona un argomento.</p>
+    <!-- <p v-show="!tags_selected.length">Seleziona un argomento.</p> -->
   </nav>
 </template>
 
 <script>
 export default {
   props: {
-    tags: {
-      type: Array,
-      require: true,
-    },
-    multiple: {
-      type: Boolean,
-      default: true,
-    },
-    start: {
-      type: Array,
-    },
+    tags: { type: Array, require: true },
+    multiple: { type: Boolean, default: true },
+    start: { type: Array },
   },
 
   data() {

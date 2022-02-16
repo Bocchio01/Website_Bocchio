@@ -1,82 +1,95 @@
 <template>
-  <div class="msg_bg" :class="[$store.getters.show.login ? 'visible' : 'hidden']" @click.self="CloseLogin()">
+  <div class="msg_bg" :class="[$store.state.show.login ? 'visible' : 'hidden']" @click.self="CloseLogin()">
     <div class="wrap popup">
-      <h1>Area personale</h1>
+      <h1>{{ $t('cLogin.title') }}</h1>
 
       <CMenuScelta @toParent="handler" :tags="tags_array" :multiple="false" :start="[tags_array[0]]" />
       <p>{{ $store.state.status }}</p>
       <div>
-        <div v-show="tags_to_view.includes('Sign up') || tags_to_view.includes('Login')" class="tooltip">
+        <div v-show="tags_to_view[0] || tags_to_view[1]" class="tooltip">
           <span class="tooltiptext" v-show="user.id">
-            <mark> Effettua il Logout prima di effettuare altre operazioni qui </mark>
+            <mark> {{ $t('cLogin.tooltiptext.0') }} </mark>
           </span>
-          <div v-show="tags_to_view.includes('Sign up')">
-            <h2>Sign up</h2>
-            <p>Inserisci i dati richiesti e riceverai a breve un e-mail di conferma.</p>
+          <div v-show="tags_to_view[0]">
+            <h2>{{ $t('cLogin.sign_up.h2') }}</h2>
+            <p>{{ $t('cLogin.sign_up.p') }}</p>
           </div>
-          <div v-show="tags_to_view.includes('Login')">
-            <h2>Login</h2>
-            <p>Inserisci i dati di login</p>
+          <div v-show="tags_to_view[1]">
+            <h2>{{ $t('cLogin.login.h2') }}</h2>
+            <p>{{ $t('cLogin.login.p') }}</p>
           </div>
 
-          <div v-show="tags_to_view.includes('Sign up')">
+          <div v-show="tags_to_view[0]">
             <label for="nickname">Nickname</label>
             <input id="nickname" type="text" :value="user.nickname" @input="updateVal($event, 'nickname')" required placeholder="Es: Bocchio01" />
           </div>
 
-          <div v-show="tags_to_view.includes('Sign up') || tags_to_view.includes('Login')">
+          <div v-show="tags_to_view[0] || tags_to_view[1]">
             <label for="email">E-mail</label>
             <input id="email" type="email" :value="user.email" @input="updateVal($event, 'email')" required placeholder="Es: tommaso.bocchietti@gmail.com" />
           </div>
 
-          <div style="margin-bottom: 0" v-show="tags_to_view.includes('Sign up') || tags_to_view.includes('Login')">
+          <div style="margin-bottom: 0" v-show="tags_to_view[0] || tags_to_view[1]">
             <label for="password">Password</label>
             <input id="password" type="password" :value="user.password" @input="updateVal($event, 'password')" minlength="5" required placeholder="Es: *password segreta*" />
           </div>
 
-          <div style="margin-top: 0; color: #a2a2a2" v-show="tags_to_view.includes('Login')">
+          <div style="margin-top: 0; color: #a2a2a2" v-show="tags_to_view[1]">
             <p>
-              Password dimenticata? <a :href="utils_site + '/PWS/?action=ForgotPassword'" target="_blank" rel="nofollow noopener noreferrer" style="color: #a2a2a2">Clicca qua!</a>
+              {{ $t('cLogin.login.forgotpassword.0') }}
+              <a :href="utils_site + '/BWS/' + $i18n.locale + '/?action=ForgotPassword'" target="_blank" rel="nofollow noopener noreferrer" style="color: #a2a2a2">{{
+                $t('cLogin.login.forgotpassword.1')
+              }}</a>
             </p>
           </div>
 
-          <div v-show="tags_to_view.includes('Login')">
+          <div v-show="tags_to_view[1]">
             <label for="autologin">
-              <input type="checkbox" id="autologin" :checked="user.autologin" @click="updateVal(!user.autologin, 'autologin')" style="width: unset; margin: 0px 5px" />Ricordami su
-              questo dispositivo
+              <input type="checkbox" id="autologin" :checked="user.autologin" @click="updateVal(!user.autologin, 'autologin')" style="width: unset; margin: 0px 5px" />
+              {{ $t('cLogin.login.rememberme') }}
             </label>
           </div>
-          <div v-show="tags_to_view.includes('Sign up')">
-            <button type="submit" @click="$store.dispatch('UserSignup')">SignUp</button>
+          <div v-show="tags_to_view[0]">
+            <button type="submit" @click="$store.dispatch('UserSignup')">{{ $t('cLogin.button.sign_up') }}</button>
           </div>
-          <div v-show="tags_to_view.includes('Login')">
-            <button type="submit" @click="$store.dispatch('UserLogin')">Login</button>
+          <div v-show="tags_to_view[1]">
+            <button type="submit" @click="$store.dispatch('UserLogin')">{{ $t('cLogin.button.login') }}</button>
           </div>
         </div>
 
-        <div v-show="tags_to_view.includes('Impostazioni')" class="tooltip">
+        <div v-show="tags_to_view[2]" class="tooltip">
           <span class="tooltiptext" v-show="!$store.state.user.id">
-            <mark> Effettua il Login per avere accesso alle funzionalità del sito </mark>
+            <mark> {{ $t('cLogin.tooltiptext.1') }} </mark>
           </span>
 
-          <h2>Impostazioni utente</h2>
-          <p>Modifica il tuo Nickname o scegli il tuo Avatar tra quelli disponibili.</p>
+          <h2>{{ $t('cLogin.settings_user.h2') }}</h2>
+          <p>{{ $t('cLogin.settings_user.p') }}</p>
 
           <div class="inline">
             <label for="mod_nickname">Nickname</label>
             <input id="mod_nickname" type="text" :value="user.nickname" @input="updateVal($event, 'nickname')" placeholder="Es: Bocchio01" />
-            <span></span>
+            <button style="visibility: hidden; height: 0px; padding-block: 0px">{{ $t('cLogin.button.to_default') }}</button>
+          </div>
+
+          <div class="inline">
+            <label for="mod_lang">Lingua</label>
+
+            <nuxt-link style="text-align: center" :to="switchLocalePath($t('cHeader.switch.iso'))">
+              <img :src="require('~/assets/png/lang/' + $t('cHeader.switch.img'))" :alt="'Flag ' + $t('cHeader.switch.iso')" />
+            </nuxt-link>
+
+            <button style="visibility: hidden; height: 0px; padding-block: 0px">{{ $t('cLogin.button.to_default') }}</button>
           </div>
 
           <div class="inline">
             <label for="avatar">Avatar</label>
             <img id="avatar" :src="require('@/assets/png/Avatar' + user.preferences.avatar)" alt="AvatarSelected" @click="show_avatar = !show_avatar" />
 
-            <button @click="updateVal('/icon.png', 'preferences.avatar')">Ripristina</button>
+            <button @click="updateVal('/icon.png', 'preferences.avatar')">{{ $t('cLogin.button.to_default') }}</button>
           </div>
 
           <div id="avatar_container" v-show="show_avatar" @click="show_avatar = false">
-            <h2>Avatar femminili</h2>
+            <h2>{{ $t('cLogin.settings_user.avatar.woman') }}</h2>
             <div>
               <img
                 v-for="(img, index) in images_woman"
@@ -86,7 +99,7 @@
                 @click="updateVal('/Woman/' + img, 'preferences.avatar')"
               />
             </div>
-            <h2>Avatar maschili</h2>
+            <h2>{{ $t('cLogin.settings_user.avatar.man') }}</h2>
             <div>
               <img
                 v-for="(img, index) in images_man"
@@ -98,38 +111,38 @@
             </div>
           </div>
 
-          <h2>Impostazioni sito</h2>
-          <p>Setta i seguenti parametri del sito come preferisci.</p>
+          <h2>{{ $t('cLogin.settings_site.h2') }}</h2>
+          <p>{{ $t('cLogin.settings_site.p') }}</p>
 
           <div class="inline no-button">
-            <label>Tema</label>
+            <label>{{ $t('cLogin.settings_site.theme.0') }}</label>
             <div>
               <div @click="updateVal('light', 'preferences.theme')">
                 <input id="light" type="radio" :checked="user.preferences.theme == 'light'" />
-                <label for="light"> <span></span> Chiaro </label>
+                <label for="light"> <span></span> {{ $t('cLogin.settings_site.theme.1') }} </label>
               </div>
               <div @click="updateVal('dark', 'preferences.theme')">
                 <input id="dark" type="radio" :checked="user.preferences.theme == 'dark'" />
-                <label for="dark"> <span></span> Scuro </label>
+                <label for="dark"> <span></span> {{ $t('cLogin.settings_site.theme.2') }} </label>
               </div>
             </div>
 
-            <button @click="updateVal('light', 'preferences.theme')">Ripristina</button>
+            <button @click="updateVal('light', 'preferences.theme')">{{ $t('cLogin.button.to_default') }}</button>
           </div>
 
           <div class="inline">
-            <label for="color">Colore</label>
+            <label for="color">{{ $t('cLogin.settings_site.color') }}</label>
             <input id="color" type="color" :value="user.preferences.color" @input="updateVal($event, 'preferences.color')" />
-            <button @click="updateVal('#ff9800', 'preferences.color')">Ripristina</button>
+            <button @click="updateVal('#ff9800', 'preferences.color')">{{ $t('cLogin.button.to_default') }}</button>
           </div>
 
           <div class="inline">
-            <label for="font_size">Altezza Font</label>
+            <label for="font_size">{{ $t('cLogin.settings_site.font') }}</label>
             <input id="font_size" type="range" min="-10" max="10" :value="user.preferences.font" @input="updateVal($event, 'preferences.font')" />
-            <button @click="updateVal(0, 'preferences.font')">Ripristina</button>
+            <button @click="updateVal(0, 'preferences.font')">{{ $t('cLogin.button.to_default') }}</button>
           </div>
 
-          <button type="submit" @click="$store.commit('UserLogout')">Logout</button>
+          <button type="submit" @click="$store.commit('UserLogout')">{{ $t('cLogin.button.logout') }}</button>
         </div>
       </div>
     </div>
@@ -137,13 +150,10 @@
 </template>
 
 <script>
-import sendRequest from '~/assets/js/sendRequest'
-
 export default {
   data() {
     return {
-      tags_to_view: [],
-      tags_array: ['Sign up', 'Login', 'Impostazioni'],
+      tags_to_view: [false, false, false],
       show_avatar: false,
       images_man: [],
       images_woman: [],
@@ -158,6 +168,11 @@ export default {
     utils_site: {
       get() {
         return process.env.UTILS_SITE
+      },
+    },
+    tags_array: {
+      get() {
+        return Object.values(this.$t('cLogin.tags_array'))
       },
     },
   },
@@ -180,7 +195,7 @@ export default {
     },
 
     handler(value) {
-      this.tags_to_view = value
+      this.tags_to_view = this.tags_array.map((el) => el == value)
     },
 
     CloseLogin() {
@@ -191,15 +206,6 @@ export default {
 
     UserLogin() {
       localStorage.setItem('autologin', document.getElementById('autologin').checked)
-    },
-
-    ForgotPassword() {
-      sendRequest({
-        action: 'ForgotPassword',
-        data: JSON.stringify({ email: this.$store.state.user.email }),
-      })
-        .then((res) => alert(res.Data))
-        .catch((res) => alert(res.Log.pop()))
     },
   },
 
@@ -328,6 +334,7 @@ export default {
   .wrap.popup {
     div.inline {
       flex-direction: column;
+      width: 80%;
       > *:not(img) {
         width: 100% !important;
         max-width: unset !important;

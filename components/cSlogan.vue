@@ -15,7 +15,7 @@ export default {
 
   computed: {
     isHome() {
-      return this.$route.path == '/'
+      return this.$route.path == this.localePath('/')
     },
   },
 }
@@ -25,7 +25,6 @@ export default {
 .Default {
   div.sloganBase {
     width: 100%;
-    text-shadow: -10px 10px 15px rgba(#fff, 0.5);
     text-align: center;
     display: flex;
     justify-content: center;
@@ -35,11 +34,13 @@ export default {
     font-family: var(--Font_Special);
 
     &.sloganNotHome {
+      text-shadow: -5px 5px 5px rgba(#fff, 1);
       margin: 27px auto;
       font-size: var(--Size_Text_Slogan);
     }
 
     &.sloganHome {
+      text-shadow: -7px 7px 5px rgba(#fff, 1);
       height: calc(100vh - var(--Size_Text_Slogan));
       padding: 20px 15px 50px 25px;
       --Font_Size_Slogan_Home: 160px;

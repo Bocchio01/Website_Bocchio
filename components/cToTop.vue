@@ -1,6 +1,7 @@
 <template>
   <button @click="top" class="ToTop"><span>&#8686;</span></button>
 </template>
+
 <script>
 export default {
   methods: {
@@ -10,6 +11,7 @@ export default {
   },
 }
 </script>
+
 <style lang="scss">
 button.ToTop {
   position: fixed;

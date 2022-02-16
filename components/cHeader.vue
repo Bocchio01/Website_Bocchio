@@ -2,32 +2,42 @@
   <header>
     <div>
       <div>
-        <router-link to="/" custom v-slot="{ navigate }">
+        <router-link :to="localePath('/')" custom v-slot="{ navigate }">
           <div class="logo" @click="navigate"></div>
         </router-link>
-        <nuxt-link to="/">Tommaso Bocchietti</nuxt-link>
+        <nuxt-link :to="localePath('/')">Tommaso Bocchietti</nuxt-link>
       </div>
       <input class="menu-btn" type="checkbox" id="menu-btn" />
       <label class="menu-icon" for="menu-btn" @click="Menu_click" @keyup.enter="Menu_click" tabindex="0">
         <span class="navicon"></span>
       </label>
     </div>
-    <ul :style="!showMenu ? 'max-height: 0px' : 'max-height: 500px'">
-      <li><nuxt-link :to="switchLocalePath('en')">English</nuxt-link></li>
-      <li><nuxt-link :to="switchLocalePath('fr')">Français</nuxt-link></li>
-      <li><nuxt-link to="/articolo/">Articoli</nuxt-link></li>
-      <li><nuxt-link to="/portale/">Portali</nuxt-link></li>
+    <ul :style="!showMenu ? 'max-height: 0px' : 'max-height: 1000px'">
+      <li>
+        <nuxt-link :to="localePath('/article/')">{{ $t('cHeader.links.0') }}</nuxt-link>
+      </li>
+      <li>
+        <nuxt-link :to="localePath('/portal/')">{{ $t('cHeader.links.1') }}</nuxt-link>
+      </li>
+
       <li>
         <a @click="SubMenu_click" @keyup.enter="SubMenu_click" :class="{ hover: showSubMenu }" tabindex="0" style="cursor: pointer">Mix</a>
         <ul class="dropdown-content" :class="!showSubMenu ? 'hide' : ''">
-          <li><nuxt-link to="/mix/chi-sono/">Chi sono?</nuxt-link></li>
           <li>
-            <nuxt-link to="/mix/qual-e-lo-scopo/">Qual è lo scopo?</nuxt-link>
+            <nuxt-link :to="localePath('/mix/who-am-i')">{{ $t('cHeader.links.2') }}</nuxt-link>
           </li>
           <li>
-            <a href="#" @click="$store.commit('toggle_show', 'login')">Area personale</a>
+            <nuxt-link :to="localePath('/mix/what-s-the-aim')">{{ $t('cHeader.links.3') }}</nuxt-link>
+          </li>
+          <li>
+            <a href="#" @click="$store.commit('toggle_show', 'login')">{{ $t('cHeader.links.4') }}</a>
           </li>
         </ul>
+      </li>
+      <li>
+        <nuxt-link :to="switchLocalePath($t('cHeader.switch.iso'))">
+          <img style="height: calc(1.7 * var(--Size_Text_Header))" :src="require('~/assets/png/lang/' + $t('cHeader.switch.img'))" :alt="'Flag ' + $t('cHeader.switch.iso')" />
+        </nuxt-link>
       </li>
     </ul>
   </header>
@@ -53,6 +63,19 @@ export default {
       },
     },
   },
+
+  mounted() {
+    window.onscroll = () => {
+      if (this.$store.state.show.submenu || this.$store.state.show.mainmenu) {
+        this.$store.commit('set_show', ['submenu', false])
+        this.$store.commit('set_show', ['mainmenu', false])
+        try {
+          document.getElementById('menu-btn').checked = false
+        } catch (error) {}
+      }
+    }
+  },
+
   methods: {
     Menu_click() {
       this.showMenu = !this.showMenu

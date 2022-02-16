@@ -12,7 +12,7 @@ export const state = () => ({
       color: '#ff9800',
       font: 0,
       avatar: '/icon.png',
-      lang: 'IT', // Get browser default lang by I18N
+      lang: 'it',
     },
     autologin: false,
   },
@@ -26,11 +26,11 @@ export const state = () => ({
 
 export const mutations = {
   auth_request(state) {
-    state.status = 'Connessione al server...'
+    state.status = this.$i18n.t('vuex.0')
   },
   auth_success(state, Data) {
     state.user = Data
-    state.status = 'Utente attuale: ' + state.user.nickname
+    state.status = this.$i18n.t('vuex.1') + state.user.nickname
   },
   auth_error(state, Log) {
     if (!state.show.loading) {
@@ -58,7 +58,7 @@ export const mutations = {
         color: '#ff9800',
         font: 0,
         avatar: '/icon.png',
-        lang: 'IT', // Get browser default lang by I18N
+        lang: 'it',
       },
       autologin: false,
     }
@@ -111,8 +111,4 @@ export const actions = {
       .then()
       .catch((res) => commit('auth_error', res.Log))
   },
-}
-
-export const getters = {
-  show: (state) => state.show,
 }

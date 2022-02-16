@@ -1,6 +1,6 @@
 <template>
   <div class="media">
-    <figure v-if="type == 'img' || type == 'svg'" :class="[espansione ? 'embedded_img msg_bg visible' : '']" @click="expand()">
+    <figure v-if="type == 'img' || type == 'svg'" :class="[espansione ? 'embedded_img msg_bg visible' : '']" @click="espansione = !espansione">
       <!--
       xs: 320,
       sm: 640,
@@ -57,14 +57,9 @@ export default {
       espansione: false,
     }
   },
-
-  methods: {
-    expand() {
-      if (this.type == 'img') this.espansione = !this.espansione
-    },
-  },
 }
 </script>
+
 <style lang="scss">
 .media {
   margin-block: 30px;

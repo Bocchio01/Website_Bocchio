@@ -3,30 +3,20 @@
     class="wrap card"
     v-show="search_title ? obj.title.toLowerCase().indexOf(search_title.toLowerCase()) != -1 : tags.length != 0 ? tags.some((r) => obj.tag.includes(r)) : true"
   >
-    <nuxt-link :to="obj.path" class="link_hidden">
-      <div class="button">{{ msg }}</div>
+    <nuxt-link :to="localePath(obj.path)" class="link_hidden">
+      <div v-if="msg" class="button">{{ msg }}</div>
     </nuxt-link>
+
     <div>
       <h1>{{ obj.title }}</h1>
-      <div v-html="obj.paragraph.join('<br>')"></div>
+      <div v-if="Array.isArray(obj.paragraph)" v-html="obj.paragraph.join('<br>')"></div>
+      <div v-else v-html="Object.values(obj.paragraph).join('<br>')"></div>
     </div>
 
     <figure>
-      <!--
-      xs: 320,
-      sm: 640,
-      md: 768,
-      lg: 1024,
-      xl: 1280,
-      xxl: 1536,
-      '2xl': 1536
-      -->
-
       <svg v-if="obj.img.src.indexOf('#') == 0">
-        <!-- :src="require('@/assets/png/Avatar/Man/' + img)" -->
         <use :xlink:href="require('~/assets/svg/svg_list.svg') + obj.img.src" :alt="obj.img.alt"></use>
       </svg>
-
       <nuxt-picture v-else-if="obj.img.src.indexOf('http') == -1" provider="cloudinary" :src="obj.img.src" v-bind:alt="obj.img.alt" format="webp" />
       <img v-else :src="obj.img.src" :alt="obj.img.alt" />
     </figure>
@@ -36,24 +26,15 @@
 <script>
 export default {
   props: {
-    obj: {
-      type: Object,
-      required: true,
-    },
+    obj: { type: Object, required: true },
     tags: {
       type: Array,
       default: () => {
         return []
       },
     },
-    search_title: {
-      type: String,
-      default: '',
-    },
-    msg: {
-      type: String,
-      default: 'Scopri di più',
-    },
+    search_title: { type: String, default: '' },
+    msg: { type: String, default: '' },
   },
 }
 </script>

@@ -8,19 +8,19 @@
 
 <script>
 export default {
-  async asyncData({ $content }) {
+  async asyncData({ $content, app, error }) {
     var tags_array = []
-    const articles = await $content('articolo', { deep: true })
+    const articles = await $content(app.i18n.locale + '/article', { deep: true })
       .where({ published: { $ne: process.env.IS_DEV || false } })
       .only(['title', 'slug', 'paragraph', 'img', 'tag'])
       .sortBy('createdAt', 'desc')
       .fetch()
       .catch(() => {
-        throw { statusCode: 404 }
+        error({ statusCode: 404 })
       })
 
     articles.forEach((element) => {
-      element.path = '/articolo/' + element.slug + '/'
+      element.path = '/article/' + element.slug + '/'
       if (element.tag) tags_array = tags_array.concat(element.tag)
     })
     tags_array = tags_array.filter((item, pos) => {

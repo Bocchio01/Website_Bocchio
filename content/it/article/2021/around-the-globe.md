@@ -12,7 +12,7 @@ img:
   alt: Attorno al globo
 tag: [Programmazione, Matematica]
 
-portalurl: /portale/attorno_al_globo/
+portalurl: /it/portal/around_the_globe/
 
 createdAt: 2021-08-21T15:55:00Z
 updatedAt: 2021-08-25T21:59:00Z

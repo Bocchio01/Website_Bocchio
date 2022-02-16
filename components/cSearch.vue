@@ -1,12 +1,12 @@
 <template>
   <div class="searchBar wrap">
     <div style="flex: 1 1 200px">
-      <label>Ricerca per titolo</label>
+      <label>{{ $t('cSearch.0') }}</label>
       <input id="search" type="search" v-model="title_to_view" placeholder="Titolo.." autocomplete="new-password" />
     </div>
     <hr v-if="tags" />
     <div v-if="tags" style="flex: 4 1 400px">
-      <label>Ricerca per tag (#)</label>
+      <label>{{ $t('cSearch.1') }}</label>
       <CMenuScelta @toParent="handler" :tags="tags" />
     </div>
   </div>

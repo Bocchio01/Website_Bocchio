@@ -9,15 +9,17 @@
 
 <script>
 export default {
-  async asyncData({ $content }) {
-    const portali = await $content('portale')
+  async asyncData({ $content, app, error }) {
+    const portali = await $content(app.i18n.locale + '/portal')
       .where({ published: { $ne: process.env.IS_DEV || false } })
       .sortBy('createdAt', 'desc')
       .fetch()
       .catch(() => {
-        throw { statusCode: 404 }
+        error({ statusCode: 404 })
       })
-
+    portali.forEach((element) => {
+      element.path = '/portal/' + element.slug + '/'
+    })
     return { portali }
   },
 

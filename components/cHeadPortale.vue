@@ -11,8 +11,9 @@ export default {
   },
 
   async fetch() {
-    const slug = this.$route.name.slice(8)
-    this.portale = await this.$content('portale', slug).fetch()
+    const lang = this.$i18n.locale
+    const slug = lang != 'en' ? this.$route.fullPath.slice(10) : this.$route.fullPath.slice(7)
+    this.portale = await this.$content(lang + '/portal', slug).fetch()
   },
 }
 </script>

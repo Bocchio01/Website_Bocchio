@@ -6,7 +6,6 @@ export default {
   target: 'static',
   ssr: true,
 
-  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: 'Bocchio - %s',
     title: 'Home',
@@ -24,36 +23,20 @@ export default {
     ...meta,
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/css/global.css', '@/assets/css/portali.scss', '@/assets/css/wrap.scss', '@/assets/css/miscellaneous.scss'],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/leaflet.client.js'],
+  plugins: ['~/plugins/leaflet.client.js', '~/plugins/i18n.js'],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: ['@nuxtjs/dotenv'],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/content
-    '@nuxtjs/i18n',
-    '@nuxtjs/pwa',
-    '@nuxt/content',
-    '@nuxtjs/composition-api/module',
-    '@nuxt/image',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/robots',
-  ],
+  modules: ['@nuxtjs/i18n', '@nuxtjs/pwa', '@nuxt/content', '@nuxtjs/composition-api/module', '@nuxt/image', '@nuxtjs/robots', '@nuxtjs/sitemap'],
 
-  // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
     liveEdit: false,
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     analyze: false,
   },
@@ -66,26 +49,17 @@ export default {
 
   i18n: {
     baseUrl: process.env.HOST_URL,
-    locales: ['it', 'en', 'fr'],
-    // locales: [
-    //   { code: 'en', iso: 'en-US', file: 'en.js', dir: 'ltr' },
-    //   { code: 'ar', iso: 'ar-EG', file: 'ar.js', dir: 'rtl' },
-    //   { code: 'fr', iso: 'fr-FR', file: 'fr.js' },
-    // ],
+    langDir: 'i18n/',
+    locales: [
+      { code: 'en', iso: 'en-US', file: 'en.json', dir: 'ltr' },
+      { code: 'it', iso: 'it-IT', file: 'it.json', dir: 'ltr' },
+    ],
+    parsePages: false,
+    lazy: true,
     defaultLocale: 'en',
+    vueI18nLoader: true,
     vueI18n: {
       fallbackLocale: 'it',
-      messages: {
-        it: {
-          welcome: 'Benvenuti',
-        },
-        en: {
-          welcome: 'welcome',
-        },
-        fr: {
-          welcome: 'Benvenué',
-        },
-      },
     },
   },
 
@@ -96,11 +70,10 @@ export default {
     manifest: {
       name: "Bocchio's WebSite",
       short_name: "Bocchio's WebSite",
-      description:
-        "Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione all'ingegneria.",
-      background_color: '#000000',
-      theme_color: '#000000',
-      lang: 'it',
+      description: "More than a simple portfolio: a complete tuor through Bocchio's mind and interests. Articles, portals and WebApps that goes from coding to engineering.",
+      background_color: '#000',
+      theme_color: '#000',
+      lang: 'en',
       useWebmanifestExtension: true,
     },
   },
@@ -112,17 +85,62 @@ export default {
   sitemap: {
     hostname: process.env.HOST_URL,
     gzip: true,
+    trailingSlash: true,
+    i18n: true,
     routes: async () => {
       const { $content } = require('@nuxt/content')
-      const Articoli = await $content('articolo', { deep: true }).only(['slug']).fetch()
-      const Portali = await $content('portale').only(['slug']).fetch()
-      const Mix = await $content('mix').only(['slug']).fetch()
+      const Articoli = await $content('', { deep: true }).only(['path']).fetch()
+      // console.log(Articoli)
+      const routes = Articoli.map((route) => {
+        if (route.path.indexOf('article') > -1) {
+          route.path = route.path.substring(0, 11) + route.path.substring(16)
+        }
 
-      var link_Articoli = Articoli.map((articolo) => '/articolo/' + articolo.slug)
-      var link_Portali = Portali.map((portale) => '/portale/' + portale.slug)
-      var link_Mix = Mix.map((mix) => '/mix/' + mix.slug)
-      return [].concat(link_Articoli, link_Portali, link_Mix)
+        if (route.path.indexOf('/en/') == 0) {
+          route.url = `${route.path.slice(3)}/`
+          route.links = [
+            {
+              lang: 'en',
+              url: route.url,
+            },
+            {
+              lang: 'it',
+              url: '/it' + route.url,
+            },
+          ]
+          route.locale = 'en'
+        } else {
+          route.url = `${route.path}/`
+          route.links = [
+            {
+              lang: 'en',
+              url: route.url.slice(3),
+            },
+            {
+              lang: 'it',
+              url: route.url,
+            },
+          ]
+          route.locale = 'it'
+        }
+        console.log(route)
+        return route
+      })
+
+      return routes
     },
+    // filter({ routes }) {
+    //   return routes.map((route) => {
+    //     if (route.url.indexOf('/it/') == 0) {
+    //       route.locale = 'it'
+    //     } else {
+    //       route.locale = 'en'
+    //     }
+    //     route.url = `${route.url}/`
+
+    //     return route
+    //   })
+    // },
   },
 
   env: {
@@ -132,7 +150,7 @@ export default {
   },
 
   router: {
-    middleware: 'stats',
+    middleware: 'statistics',
   },
 
   robots: {

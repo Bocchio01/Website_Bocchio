@@ -1,7 +1,7 @@
 <template>
   <div class="loading">
     <div class="logo"></div>
-    <p>{{ $store.state.status || 'Caricamento...' }}</p>
+    <p>{{ $store.state.status || $t('cLoading') }}</p>
   </div>
 </template>
 
@@ -11,20 +11,28 @@ export default {
     this.$store.dispatch('UserLogin')
     if (!localStorage.getItem('master')) this.$store.dispatch('InteractionsUpdate', this.$route.fullPath + '?loading=true')
     const loading = document.getElementsByClassName('loading')[0]
-    const sloganHome = document.getElementsByClassName('sloganHome')[0]
 
     setTimeout(() => {
+      this.$store.commit('update_user', { e: this.$i18n.getLocaleCookie(), target: 'preferences.lang' })
       loading.style.opacity = 0
       loading.style.top = '-100vh'
-      sloganHome.style.animationName = 'login'
     }, 2500)
-    setTimeout(() => (this.$store.commit('toggle_show', 'loading'), (sloganHome.style.animationName = 'none')), 7000)
+    setTimeout(() => this.$store.commit('toggle_show', 'loading'), 7000)
+
+    if (document.getElementsByClassName('sloganHome')[0]) {
+      var sloganHome = document.getElementsByClassName('sloganHome')[0]
+      setTimeout(() => {
+        sloganHome.style.animationName = 'login'
+      }, 2500)
+      setTimeout(() => (sloganHome.style.animationName = 'none'), 7000)
+    }
   },
 }
 </script>
 
 <style lang="scss">
 div.loading {
+  // visibility: hidden;
   z-index: 1100;
   position: fixed;
   top: 0px;
