@@ -2,7 +2,7 @@
   <div class="searchBar wrap">
     <div style="flex: 1 1 200px">
       <label>{{ $t('cSearch.0') }}</label>
-      <input id="search" type="search" v-model="title_to_view" placeholder="Titolo.." autocomplete="new-password" />
+      <input id="search" type="search" v-model="title_to_view" :placeholder="$t('cSearch.2')" autocomplete="new-password" />
     </div>
     <hr v-if="tags" />
     <div v-if="tags" style="flex: 4 1 400px">
@@ -26,7 +26,10 @@ export default {
     }
   },
   mounted() {
-    document.getElementById('search').autocomplete = Math.random()
+    document.getElementById('search').disabled = true
+    setTimeout(() => {
+      document.getElementById('search').disabled = false
+    }, 100)
   },
   methods: {
     handler(value) {

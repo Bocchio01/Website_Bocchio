@@ -34,13 +34,13 @@ export default {
     font-family: var(--Font_Special);
 
     &.sloganNotHome {
-      text-shadow: -5px 5px 5px rgba(#fff, 1);
+      text-shadow: -5px 5px 20px rgba(#fff, 0.5);
       margin: 27px auto;
       font-size: var(--Size_Text_Slogan);
     }
 
     &.sloganHome {
-      text-shadow: -7px 7px 5px rgba(#fff, 1);
+      text-shadow: -7px 7px 20px rgba(#fff, 0.5);
       height: calc(100vh - var(--Size_Text_Slogan));
       padding: 20px 15px 50px 25px;
       --Font_Size_Slogan_Home: 160px;

@@ -132,7 +132,8 @@
       "avatar": {
         "woman": "Female avatars",
         "man": "Male avatars"
-      }
+      },
+      "newsletter": "Newsletter with a list of the articles published in the past month"
     },
     "settings_site": {
       "h2": "Site's settings",
@@ -143,7 +144,7 @@
     }
   },
 
-  "cSearch": ["Search by title", "Search by tag (#)"],
+  "cSearch": ["Search by title", "Search by tag (#)", "Title.."],
 
   "cNavigation": {
     "attachment": {

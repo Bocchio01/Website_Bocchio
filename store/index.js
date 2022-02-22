@@ -13,6 +13,7 @@ export const state = () => ({
       font: 0,
       avatar: '/icon.png',
       lang: 'it',
+      newsletter: false,
     },
     autologin: false,
   },
@@ -59,6 +60,7 @@ export const mutations = {
         font: 0,
         avatar: '/icon.png',
         lang: 'it',
+        newsletter: false,
       },
       autologin: false,
     }

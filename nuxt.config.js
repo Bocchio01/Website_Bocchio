@@ -1,4 +1,5 @@
 import getSiteMeta from './assets/js/getSiteMeta.js'
+import sendRequest from './assets/js/sendRequest.js'
 
 const meta = getSiteMeta()
 
@@ -127,18 +128,6 @@ export default {
 
       return routes
     },
-    // filter({ routes }) {
-    //   return routes.map((route) => {
-    //     if (route.url.indexOf('/it/') == 0) {
-    //       route.locale = 'it'
-    //     } else {
-    //       route.locale = 'en'
-    //     }
-    //     route.url = `${route.url}/`
-
-    //     return route
-    //   })
-    // },
   },
 
   env: {

@@ -132,7 +132,8 @@
       "avatar": {
         "woman": "Avatar femminili",
         "man": "Avatar maschili"
-      }
+      },
+      "newsletter": "Newsletter con l'elenco degli articoli pubblicati nel mese passato"
     },
     "settings_site": {
       "h2": "Impostazioni sito",
@@ -143,7 +144,7 @@
     }
   },
 
-  "cSearch": ["Ricerca per titolo", "Ricerca per tag (#)"],
+  "cSearch": ["Ricerca per titolo", "Ricerca per tag (#)", "Titolo.."],
 
   "cNavigation": {
     "attachment": {

@@ -111,6 +111,17 @@
             </div>
           </div>
 
+          <label for="mod_newsletter">
+            <input
+              type="checkbox"
+              id="mod_newsletter"
+              :checked="user.preferences.newsletter"
+              @click="updateVal(!user.preferences.newsletter, 'preferences.newsletter')"
+              style="width: unset; margin: 0px 5px"
+            />
+            {{ $t('cLogin.settings_user.newsletter') }}
+          </label>
+
           <h2>{{ $t('cLogin.settings_site.h2') }}</h2>
           <p>{{ $t('cLogin.settings_site.p') }}</p>
 
@@ -119,11 +130,11 @@
             <div>
               <div @click="updateVal('light', 'preferences.theme')">
                 <input id="light" type="radio" :checked="user.preferences.theme == 'light'" />
-                <label for="light"> <span></span> {{ $t('cLogin.settings_site.theme.1') }} </label>
+                <label for="light"> <span></span> {{ $t('cLogin.settings_site.theme.2') }} </label>
               </div>
               <div @click="updateVal('dark', 'preferences.theme')">
                 <input id="dark" type="radio" :checked="user.preferences.theme == 'dark'" />
-                <label for="dark"> <span></span> {{ $t('cLogin.settings_site.theme.2') }} </label>
+                <label for="dark"> <span></span> {{ $t('cLogin.settings_site.theme.1') }} </label>
               </div>
             </div>
 

@@ -12,7 +12,7 @@ export default {
 
   async fetch() {
     const lang = this.$i18n.locale
-    const slug = lang != 'en' ? this.$route.fullPath.slice(10) : this.$route.fullPath.slice(7)
+    const slug = lang == this.$i18n.defaultLocale ? this.$route.fullPath.slice(7) : this.$route.fullPath.slice(10)
     this.portale = await this.$content(lang + '/portal', slug).fetch()
   },
 }

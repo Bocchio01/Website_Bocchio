@@ -1,3 +1,14 @@
+<i18n>
+{
+  "it": {
+    "hello": "Ciao"
+},
+  "en": {
+    "hello": "Hello"
+}
+}
+</i18n>
+
 <template>
   <div class="wrap Portale Around_the_globe">
     <CHeadPortale />
