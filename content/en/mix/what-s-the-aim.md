@@ -1,59 +1,59 @@
 ---
 title: What's the aim?
-description: The reasons behind the creation of 'Bocchio's WebSite'. How it came about, how it has been developed and what are my plans for his future.
+description: The reasons behind the creation of Bocchio's WebSite. How it came about, how it has been developed and what are my plans for his future.
 img:
   src: '#Scopo'
   alt: What's the aim?
 
-createdAt: 2021-10-20T00:00:00Z
-updatedAt: 2021-11-01T00:00:00Z
+createdAt: 2022-02-12T21:18:00Z
+updatedAt: 2022-02-26T01:15:00Z
 ---
 
 # What's the aim?
 
 <CMedia :s="img.src" :a="img.src"></CMedia>
 
-## Questione di esigenze
+## A question of needs
 
-Era l'inizio del 2021 quando dentro di me incominciava a nascere un'esigenza particolare. Stavo infatti completando il progetto "Gorlu la stampante" e mi stavo rendendo conto sempre di più che tramite i soliti social media "facebookiani" avevo difficoltà a condividerne le caratteristiche e quelle che io consideravo essere i punti di forza. Anche banalmente con le persone che più potevano essere incuriosite, **non riuscivo a comunicare in maniera efficace** il contenuto che volevo passasse.
+It was the beginning of 2021 when a particular need began to arise within me. I was in fact completing the "Gorlu the printer" project and I was realising more and more that through the usual "Facebookian" social media I was finding it difficult to share its features and what I considered to be its strengths. Even trivially with the people who were most likely to be intrigued, **I could not communicate effectively** the content I wanted to pass on.
 
-L'unico modo era quello di mostrarla direttamente di persona e creare in quel momento tutto un discorso che la esaltasse a pieno per quello che era. Un metodo che non faceva una piega, se solo non fosse che limitavo il numero di persone ad una cerchia strettissima. Anzi ancora peggio, ad una cerchia di persone in qualche modo selezionate da me.
+The only way was to show it directly in person and to create at that moment a whole discourse that would enhance it for what it was. A method actullay worked well, except that I limited the number of people to a very small circle. Even worse, to a circle of people somehow selected by me.
 
-**Io volevo semplicemente cercare di incuriosire, magari iniziare un dialogo o un dibattito dove discutere apertamente di idee, progetti, consigli o anche ricevere critiche.** Si, perché è proprio dalle critiche che io forse imparo di più. Mi spronano a fare meglio, a colmare o sistemare delle mie mancanze. Dei semplici complimenti me ne faccio poco e niente. Le critiche le trasformo sempre in opportunità di crescita.
+**I simply wanted to try arouse curiosity, maybe start a dialogue or a debate where openly discuss ideas, projects, advice or even receive criticism.** Yes, because it is precisely from criticism that I perhaps learn the most. They spur me on to do better, to make up for or fix my shortcomings. I do little from simple compliments. I always turn criticism into an opportunity for self growth.
 
-## Il problema dei social media
+## The problem with social media
 
-Le varie piattaforme online sono fatte e pensate per i grandi numeri: hanno come obbiettivo primario quello di accontentare la più vasta gamma di persone possibile. Le sfumature del singolo passano (ovviamente) in secondo piano.
+The various online platforms are made and designed for large numbers: their primary objective is to satisfy the widest possible range of people. The nuances of the individual (obviously) take a back seat.
 
-I social media sono quindi poco personalizzabili per quanto riguarda la modalità di pubblicazione dei contenuti. In particolare sono ottimizzati quasi esclusivamente sulla buona fruizione di foto e video, mentre **il testo (probabilmente anche a causa della pigrizia dell'uomo moderno abituato ormai a troppi comfrot) viene quasi sempre del tutto trascurato o minimizzato** ai famosi _MAX 256 caratteri_...
+Social media are therefore not very customisable in terms of how content is published. In particular, they are optimised almost exclusively on the good use of photos and videos, while **text (probably also due to the laziness of modern man who is used to too many comforts) is almost always completely neglected or minimised** to the famous _MAX 256 characters_...
 
-Io sono però fermamente convinto che il testo giochi ancora oggi un ruolo importante: se scritto bene infatti credo sia il migliore strumento per trasmettere in poche righe grandi quantità d'informazioni in maniera efficacie e diretta. D'altro canto penso sia oggettivo dire che guardare un video o un immagine è _meno faticoso_ che leggere una paginata scritta. **Ma ancora oggi, esso è necessario e non può essere trascurato.**
+However, I am firmly convinced that text still plays an important role today: if it is well written, I believe it is the best tool to convey large quantities of information in a few lines in an effective and direct manner. On the other hand, I think it is objective to say that watching a video or an image is _less tiring_ than reading a page of text. **But even today, it is necessary and cannot be neglected.**
 
-## Il sito Web e la libertà di espressione
+## The website and freedom of expression
 
-Decisi allora, una volta finita la stampantina, di prendermi un attimo di pausa da quella che era la lista dei vari progetti per creare invece un sito web personale. Scelsi fin da subito di non affidarmi a nessun template giá fatto di qualche CMS come WordPress o simili, ma di partire completamente da pagina bianca e avere così la possibilità di rendere quello spazio web al 100% mio. Perché alla fine **se un sito personale non rispecchiasse la persona a cui appartiene, che sito personale sarebbe?**
+I decided then, once I had finished the printer, to take a break from my list of projects and create a personal website instead. I decided right away not to rely on any ready-made template of some CMS like WordPress or similar, but to start completely from a blank page and thus have the possibility to make that web space 100% mine. Because in the end **if a personal website doesn't reflect the person to whom it belongs, what kind of personal website would it be?**
 
-Fin da subito tutto è stato **impostato in modo che avesse come corpo principale la sezione degli Articoli**. Quello che infatti mi premeva di più, come anticipato nei paragrafi precedenti, era riuscire ad incuriosire il lettore e allo stesso tempo dare una descrizione più o meno approfondita del progetto. Ho quindi creato _una struttura di pagina che gerarchicamente ponesse il testo come elemento principale e al suo seguito immagini e video._
+Right from the beginning everything was **set up so that the main body of the site would be the Articles section**. As mentioned in the previous paragraphs, what I really wanted was to make the reader curious and at the same time give a more or less in-depth description of the project. I therefore created _a page structure with the text as the main element, followed by images and videos._
 
-Una volta quindi creato lo scheletro base, ho poi pensato a creare il _forum che è per me strumento essenziale al dialogo e alla liberta espressione di dubbi domande e curiosità del lettore._
+Once I had created the basic skeleton, I then thought about creating the _forum, which for me is an essential tool for dialogue and the free expression of doubts, questions and curiosity of the reader._
 
-Un giorno però mi resi conto dell'enorme potenzialità che ancora non stavo sfruttando e così nacque...
+One day, however, I realised the enormous potential that I was not yet exploiting, and so it was born...
 
 ## Bocchio's WebSite
 
-Con il progetto "Arduino Web Car" stavo infatti incominciando a scrivere un client che da locale si collegasse a Glitch dove era hostato il mio server del progetto. Subito dopo aver iniziato la scrittura del client mi è stato però chiaro che questo approccio comportava poi che **se qualcuno avesse voluto provare anche lui il progetto, sarebbe stato costretto a scaricare ed installare** magari diversi linguaggi i programamzione assieme ad una moltitudine di moduli aggiuntivi e quant'altro. Insomma, bene ma non benissimo.
+With the "Arduino Web Car" project I was in fact starting to write a client that would connect to an external services where my project server was hosted. Right after I started writing the client, it became clear to me that this approach meant that **if anyone wanted to try the project, they would have to download and install** several programming languages and a multitude of additional modules and so on. In short, not great.
 
-L'unico modo per ovviare a questa scocciatura era quindi quello di spostare ogni programma dal locale all'online. Bene, **ma allora perchè non hostare tutto sul mio sito? Ed è così che nacque la sezioni Portali**, ovvero l'insieme di _tutte le WebApp necessarie per usufruire a pieno delle funzionalità di alcuni progetti._
+The only way to get around this hassle was to move every programme from local to online. Well, **then why not host everything on my own site? And that's how the Portals section** was born, i.e. the set of _all the WebApps needed to take full advantage of the functionalities of some projects._
 
-Mi resi così conto dell'enorme potenzilità che tutto il progetto del sito aveva preso. Da una semplice bacheca dove inserire qualche articoletto una tantum, il sito era appena diventato per me un laboratorio online dove sperimentare e creare delle vere e proprie applicazioni a cui **ognuno poteva accedere con facilità ed immediatezza, usufruendone in totale libertà.**
+I then realised the enormous potential that the whole website project had taken on. From a simple noticeboard where I could post a few one-off articles, the site had just become for me an online laboratory where I could experiment and create real applications that **everyone could access easily and immediately, using them in total freedom.**
 
-## In futuro
+## In the future
 
-Al momento non ho in mente di apportare modifiche sostanziali né alla struttura né ai contenuti del sito: sono completamente soddisfatto del lavoro fatto fin'ora e la mia unica speranza è venga in qualche modo apprezzato da chi ne vorrà usufruire.
+As of today, I have no plans to make substantial changes to either the structure or the contents of the site: I am completely satisfied with the work done so far and my only hope is that it will be appreciated in some way by those who wish to use it.
 
 <div style="display: flex">
-  <nuxt-link to="/article/" class="button">Scopri gli articoli</nuxt-link>
-  <nuxt-link to="/portal/" class="button">Scopri i portali</nuxt-link>
+  <nuxt-link to="/article/" class="button">Explore articles</nuxt-link>
+  <nuxt-link to="/portal/" class="button">Explore portals</nuxt-link>
 </div>
 
-Per il momento quindi non rimane altro che incominciare a girovagare per il sito: a tal proposito, usa i due tasti qui sopra. Chi lo sa, _magari tra uno dei miei progetti troverai ispirazione per il tuo progetto..._ buona lettura!
+For the moment, therefore, there is nothing left to do but to start playing with the site: for this, use the two buttons above. Who knows, _maybe among one of my projects you will find inspiration for your own project..._ good reading!

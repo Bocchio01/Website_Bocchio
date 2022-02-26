@@ -1,6 +1,6 @@
 {
   "seo": {
-    "description": "More than a simple portfolio: a complete tuor through Bocchio's mind and interests. Articles, portals and WebApps that goes from coding to engineering."
+    "description": "More than a simple portfolio: a complete tuor through Bocchio's mind and interests. Articles, portals and WebApps that goes from programming to engineering."
   },
 
   "index": {
@@ -10,7 +10,7 @@
         "title": "Who am I?",
         "paragraph": [
           "Hi! My name is Tommaso and I am a mechanical engineering student at Politecnico di Milano.",
-          "While studying, in my free time I develop a huge passion for computer science and coding.",
+          "While studying, in my free time I develop a huge passion for computer science and programming.",
           "<b>I always want to create new things, try my hand at new challenges, and many times I get carried away until I succeed or am fully satisfied.</b>",
           "Finally, I strongly believe in contact with nature as a source of inspiration, and this is probably why I practice Orienteering..."
         ],
@@ -129,6 +129,7 @@
     "settings_user": {
       "h2": "User's settings",
       "p": "Change your Nickname or select a different avatar from the available ones.",
+      "label": "Lang",
       "avatar": {
         "woman": "Female avatars",
         "man": "Male avatars"
@@ -140,7 +141,7 @@
       "p": "Set following paramethers as you prefer.",
       "theme": ["Theme", "Dark", "Light"],
       "color": "Color",
-      "font": "Font dimension"
+      "font": "Font size"
     }
   },
 

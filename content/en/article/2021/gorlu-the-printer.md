@@ -10,109 +10,109 @@ paragraph:
 img:
   src: /v1635033169/Articoli/Gorlu%20la%20stampante/Gorlu.jpg
   alt: Gorlu the printer
-tag: [Coding]
+tag: [Programming]
 
-createdAt: 2021-06-09T12:47:00Z
-updatedAt: 2021-11-05T21:54:00Z
+createdAt: 2022-02-12T21:18:00Z
+updatedAt: 2022-02-25T21:49:00Z
 ---
 
 # Gorlu the printer
 
 <CMedia :s="img.src" :a="img.src"></CMedia>
 
-## L'idea iniziale
+## Initial idea
 
-Una sera di Ottobre, vedendo la scatola di Arduino riposta sulla mensola, mi è venuta voglia di creare qualcosa di più complesso del solito "led on/off" o del semplice sensore...
+One evening in October, seeing the Arduino box sitting on the shelf, I started thinking about creating something more complex than the usual "on/off led" or simple sensor...
 
-Pochi giorni prima mi era capitato sott'occhio un video su YouTube di questa piccola stampante automatizzata e ho quindi preso ispirazione da lì.
+A few days before, I was watching a YouTube video of this small automated printer, and so I took inspiration from it.
 
-Cercando poi online ho visto che era un progetto molto comunque e praticamente tutto il codice necessario era già presente e pronto da scaricare dalle repository GitHub. Ma no, a me le cose facili non piacciono e non mi soddisfano.
+Searching online I saw that it was a very common project and practically all the necessary code was already there, ready to be downloaded from the GitHub repository. But no, I don't like easy things and I'm never satisfied with them.
 
-## Gli obbiettivi
+## The objectives
 
-Deciso quindi a creare qualcosa di più di un semplice [plotter CNC](https://it.wikipedia.org/wiki/Macchina_a_controllo_numerico), ho pensato alle funzioni che avrei voluto integrare:
+Having decided to create something more than a simple [CNC plotter](https://en.wikipedia.org/wiki/Numerical_control), I thought about the functions I wanted to integrate:
 
-- **Stampa di immagini digitali (di qualsiasi formato)** semplificandole ovviamente prima e quindi analizzandole alla ricerca di quelle definibili come le _linee principali_ dell'immagine;
-- La possibilità di stampare in tempo reale una qualsiasi linea disegnata a mano libera sul PC. **Utilizzare quindi il plotter come un vero e proprio braccio robotico sincronizzato con la propria mano**;
-- E infine, anche se aggiunta "a lavori in corso", la funzionalità di **stampa di un vero e proprio testo** con la possibilità di scegliere font, dimensioni, allineamento ecc..
+- **Printing of digital images (any format)** obviously simplifying them first and then analysing them in search of what could be defined as the _main lines_ of the image;
+- The possibility of printing in real time any line drawn freehand on the PC. **Use the plotter as a real robotic arm synchronised with your hand**;
+- And finally, even if added while "work is in progress", the function of **printing a real text** with the possibility of choosing font, size, alignment, etc...
 
-Definiti quindi gli obiettivi principali, sono partito dalla scrittura del codice.
+Having defined the main objectives, I started by writing the code.
 
-## L’impostazione del codice
+## Setting up the code
 
-Visto che fino a quel momento se non per qualche linguaggio web conoscevo solamente il C, ho deciso di imparare la sintassi di Python potendo così sfruttare poi la moltitudine di librerie che sapevo essere disponibili online.
+Since up to that moment I only knew C, except for a few web languages, I decided to learn Python's syntax so that I could take advantage of the multitude of libraries that I knew were available online.
 
-**Il codice si basa quindi su Python per quanto riguarda la parte di analisi ed elaborazione nonché l'interfaccia grafica, e sul C++ per quanto riguarda il programma che governa Arduino.**
+**The code is based on Python for the analysis, elaboration and the graphical interface, and on C++ for the Arduino program.**
 
-<CMedia s="/v1637023033/Articoli/Gorlu%20la%20stampante/Logo_py_c.png" c="Loghi di Python e C++"></CMedia>
+<CMedia s="/v1637023033/Articoli/Gorlu%20la%20stampante/Logo_py_c.png" c="Python and C++ logos"></CMedia>
 
-Tra le librerie più importanti che ho scelto di utilizzare ci sono sicuramente:
+Among the most important libraries I have chosen to use are:
 
-- [OpenCV + PIL](https://opencv.org/) per l'elaborazione e l'estrapolazione dei dati dalle immagini;
-- [NumPy](https://numpy.org/) per la manipolazione di array e matrici (utile essendo i file di tipo immagine salvati in memoria RAM sotto formato di matrice);
-- [pySerial](https://pythonhosted.org/pyserial/) per la comunicazione tramite porta USB con Arduino;
-- [Tkinter](https://tkdocs.com/) per la creazione dell'interfaccia grafica (GUI);
-- [AF_Motor.h](https://learn.adafruit.com/adafruit-motor-shield/library-install) per il controllo dei segnali elettrici verso i motorini della stampante.
+- [OpenCV + PIL](https://opencv.org/) for processing and extracting data from images;
+- [NumPy](https://numpy.org/) for manipulating arrays and matrices (useful since image files are stored in RAM as matrix);
+- [pySerial](https://pythonhosted.org/pyserial/) for communication via USB port with Arduino;
+- [Tkinter](https://tkdocs.com/) for creating the graphical user interface (GUI);
+- [AF_Motor.h](https://learn.adafruit.com/adafruit-motor-shield/library-install) for controlling the electrical signals to the printer motors.
 
-## L'algoritmo
+## The algorithm
 
-**L'algoritmo principale**, ovvero quello che si occupa della stampa di immagini digitali, **è sostanzialmente un algoritmo di ricerca e ordinamento**.
+**The main algorithm**, the one that has with digital image printing, **is basically a search and sort algorithm**.
 
-Data un'immagine in input la semplifica (sfruttando la [funzione Canny()](https://it.wikipedia.org/wiki/Algoritmo_di_Canny) presente in OpenCV) estrandone le linee principali e salvando poi i pixel individuati in una matrice bidimensionale.
+Given an input image, it simplifies it (using the [Canny() function](https://en.wikipedia.org/wiki/Canny_edge_detector) present in OpenCV) by extracting the main lines and then saving the identified pixels in a two-dimensional matrix.
 
-<CMedia s="/v1637024651/Articoli/Gorlu%20la%20stampante/Canny.png" c="Un esempio di utilizzo dell'algoritmo Canny"></CMedia>
+<CMedia s="/v1637024651/Articoli/Gorlu%20la%20stampante/Canny.png" c="An example of Canny's algorithm application"></CMedia>
 
-Ne viene allora eseguita la scansione con la logica di andare a stampare non singoli punti (rischiando così di avere problemi con l'inchiostro della penna), ma linee continue. **Preso un elemento A, l'algoritmo ne analizza i pixel in posizioni limitrofe in cerca di un elemento B da stampare. In caso di successo ne invia le coordinate ad Arduino, altrimenti allarga il campo di ricerca sempre centranto in A fino a che non viene identificato un elemento B.** Il programma poi cicla prendendo come punto di partenza le coordinate dell'elemento B appena individuato, e continua in maniera analoga fino a che tutta la matrice non è stata scansionata.
+It is then scanned with the logic of printing not single dots (which could lead to problems with pen ink) but continuous lines. **Taken an element A, the algorithm scans its pixels in neighbouring positions looking for an element B to print. If successful, it sends the coordinates to the Arduino, otherwise it widens the search field, always centred on A, until a B element is identified.** The program then loops, taking as its starting point the coordinates of the B element it has just identified, and continues in the same way until the whole matrix has been scanned.
 
-<CMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_1.png" c="Simulazione grafica dell'algoritmo di ricerca"></CMedia>
+<CMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_1.png" c="Graphical simulation of the search algorithm"></CMedia>
 
-<CMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_2.png" c="Uno screen dell'algoritmo di ricerca"></CMedia>
+<CMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_2.png" c="A screenshot of the search algorithm"></CMedia>
 
-Vista la sua semplicità e la sua bassa complessità computazionale, l'algoritmo risulta essere rapido e poco dispendioso di risorse. Inoltre, lavorando sempre e solo all'interno della RAM, non vi è mai la necessità di salvare dati sul disco fisso e questo permette di lasciare il PC libero da superflui file di salvataggio.
+Since its simplicity and low computational complexity, the algorithm is fast and resource-efficient. In addition, working always and only within the RAM, there is never the need to save data on the hard disk and this allows to leave the PC free from unnecessary temporary files.
 
-Entrambe le funzionalità di stampa di immagini digitali che di testo, sono gestite dal'algoritmo sopra descritto. Quando infatti si sceglie di stampare del testo, il programma trasforma il foglio scritto in immagine (tramite una sorta di cattura dello schermo) e lo passa come argomento di input all'algoritmo che lo elaborerà come una qualsiasi altra immagine.
+Both digital image and text printing functions are managed by the algorithm described above. In fact, when you choose to print text, the programm transforms the written sheet into an image (by taking a sort of screen capture) and passes it as an input argument to the algorithm, which will process it like any other image.
 
-Per quanto riguarda invece la funzionalità legata alla stampa simultanea mano/Arduino, essa viene gestita molto semplicemente inviando le coordinate del mouse quando il tocco è attivo. Nulla di piu semplice direi.
+Speaking about the simultaneous printing hand/Arduino function, this is handled simply by sending the coordinates of the mouse when the touch is active. Nothing simpler.
 
-## La struttura
+## The structure
 
-Ovviamente nulla funzionerebbe senza una buona struttura a sostegno. **La stampante si può dire essere composta da 2 parti principali:**
+Obviously nothing would work without a good structure ahead. **The printer can be simplified to be composed of 2 main parts:**
 
-- Due carrelli con i relativi motorini;
-- Il sistema di controllo dell'altezza della penna.
+- Two carriages with their motors;
+- The pen height control system.
 
-In particolare, **i due carrelli servono a muovere il foglio lungo le due direzioni X e Y** (per essere precisi, lungo una direzione viene mosso il foglio in sé, mentre nell'altra direzione viene traslata la penna). Sono ricavati da due lettori di DVD di un vecchio computer e i motorini che li muovono (già integrati originariamente nella struttura) lavorano ruotando di n° micro-step per volta.
+In particular, **the two carriages are used to move the sheet along the two directions X and Y** (to be precise, along one direction the sheet itself is moved, while in the other direction the pen is moved). They are made from two DVD drives from an old computer, and the motors that move them (already integrated in the original structure) work by rotating n° micro-steps per time.
 
-Questa tipologia di motore viene infatti definita stepper-motor e non ragionano per angoli di rotazione, ma secondo un numero di step rotazionali da compiere (solitamente un giro completo è suddiviso in ~500 step). **Conoscendo la rotazione associata a ciascuno step e quindi il conseguente spostamento del carrello, è facile convertire il delta tra due coordinate di pixel in un determinato numero di step da fare per raggiungere lo spostamento della penna necessario.**
+This type of motor is in fact called a stepper-motor and they do not work using the login of angles of rotation, but counting the number of rotational steps to be completed (usually a complete revolution is divided into ~500 steps). **Knowing the rotation associated with each step and therefore the consequent displacement of the carriage, it is easy to convert the delta between two pixel coordinates into a given number of steps to be taken to achieve the necessary pen displacement.**
 
-<CMedia s="https://res.cloudinary.com/bocchio/video/upload/v1632851317/Articoli/Gorlu%20la%20stampante/Movimento_carrelli.mp4" c="Scorrimento dei due carrelli" type="video"></CMedia>
+<CMedia s="https://res.cloudinary.com/bocchio/video/upload/v1632851317/Articoli/Gorlu%20la%20stampante/Movimento_carrelli.mp4" c="Sliding of carriages" type="video"></CMedia>
 
-Il meccanismo legato invece al movimento della penna **lungo l'asse Z** è invece leggermente più fine e delicato: è composto infatti da **un servo-motore legato con un filo inestensibile alla mina della penna.** Quando la penna deve essere alzata, il servo compie una rotazione di qualche grado, mandando in tensione il filo e tirando così verso l'alto la mina. Per ritornare con la mina sul foglio, il servo rilascia la tensione lungo il filo, e un elastico spinge verso il basso la mina.
+The mechanism for the movement of the pen **along the Z axis** is slightly more complex and delicate: it is composed of **a servo-motor tied with an inextensible wire to the lead of the pen**. When the pen is to be raised, the servo rotates a few degrees, stretching the wire and pulling the pen lead upwards. To return the lead to the paper, the servo releases tension along the wire, and a rubber band pushes the lead down.
 
-<CMedia s="https://res.cloudinary.com/bocchio/video/upload/v1632851576/Articoli/Gorlu%20la%20stampante/Movimento_penna.mp4" c="Il meccanismo per alzare e abbasare la penna" type="video"></CMedia>
+<CMedia s="https://res.cloudinary.com/bocchio/video/upload/v1632851576/Articoli/Gorlu%20la%20stampante/Movimento_penna.mp4" c="The up/down mechanism of the pen" type="video"></CMedia>
 
-In questo modo visto che l'elastico genera sempre la stessa forza sulla mina, la stampa avrà una distribuzione di inchiostro omogenea (ottimo no?).
+In this way, since the rubber band always generates the same force on the lead, the print will always have an even distribution of ink (great, isn't it?).
 
-## Gorlu la stampante!
+## Gorlu the printer!
 
-Dopo quindi qualche giorno davanti al PC e un paio di notti con gli attrezzi in mano, **la stampantina GORLU era ufficialmente nata :)**
+After a few days in front of the PC programming and a couple of nights with hand tools, **the GORLU printer was officially born :)**.
 
-Il nome non ha mai avuto un significato preciso e mi è venuto in mente durante la sua costruzione. Però mi è fin da subito piaciuto e poi del resto, why not?
+The name never had a precise meaning and came to mind during its assembling. But I liked it right away and after all, why not?
 
-Ecco qualche video del progetto finito.. Enjoy!
+Here are some videos of the finished project... Enjoy!
 
-<CMedia s="https://www.youtube.com/embed/qBS6WiSzQmI" c="Stampa di Pikachu" type="iframe"></CMedia>
+<CMedia s="https://www.youtube.com/embed/qBS6WiSzQmI" c="Plotting of Pikachu" type="iframe"></CMedia>
 
-## Realizzarlo da sé
+## Make it yourself
 
-Nel caso si volesse provare a realizzare per conto proprio, a fondo pagina nella sezione degli allegati è possibile trovare alcuni file utili allo scopo. Inoltre, per quanto riguarda il codice, é possibile trovarlo a [questa repository GitHub](https://github.com/Bocchio01/Arduino_CNC_plotter).
+If you want to try to make it yourself, you can find some useful files at the bottom of the page in the attachments section. You can also find the code at [this GitHub repository](https://github.com/Bocchio01/Arduino_CNC_plotter).
 
-Una volta scaricato occorrerà, se ancora non presente sul PC, installare [Python](https://www.python.org/downloads/) e le librerie aggiuntive.
+Once downloaded, you will need to install [Python](https://www.python.org/downloads/) and the additional libraries, if not already present on your PC.
 
 ```shell
 //Windows
-cd C:/Users/ *Nome_utente* /AppData/Local/Programs/Python/Python39/Scripts\
+cd C:/Users/ *User_Name* /AppData/Local/Programs/Python/Python39/Scripts\
 pip install opencv-python pillow numpy pyserial tk
 ```
 
-Installata la libreria [AF_Motor.h](https://learn.adafruit.com/adafruit-motor-shield/library-install) e caricato lo sketck di Arduino sulla scheda, si è pronti ad avviare il file _main.py_ e a giocare con il proprio nuovo plotter CNC!
+After installing the [AF_Motor.h](https://learn.adafruit.com/adafruit-motor-shield/library-install) library and loading the Arduino sketch on the board, you are ready to start the _main.py_ file and play with your new CNC plotter!

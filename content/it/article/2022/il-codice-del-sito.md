@@ -22,6 +22,6 @@ updatedAt: 2022-01-17T02:20:00Z
 
 Nulle.
 
-<CMedia s="http://localhost/BWS/it/Analytics.php?anni=1&id_pagina=9&tipo_pagina=&lingua=&anno_partenza=&submit=Genera" c="Bocchio's Analitics" type="iframe"></CMedia>
+<CMedia s="http://localhost/BWS/it/analytics.php?anni=1&id_pagina=9&tipo_pagina=&lingua=&anno_partenza=&submit=Genera" c="Bocchio's Analitics" type="iframe"></CMedia>
 
 <CMedia s="https://open.spotify.com/embed/playlist/1NVMtezq5vWtoDhG9fnZhx?utm_source=generator&theme=0" c="Spotify playlist" type="iframe"></CMedia>

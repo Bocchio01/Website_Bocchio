@@ -64,10 +64,12 @@ export default {
 .media {
   margin-block: 30px;
   text-align: center;
+  &:first-of-type img {
+    width: unset;
+  }
   &:first-of-type img,
   &:first-of-type svg {
     max-height: 450px;
-    width: unset;
   }
   > figure {
     svg {

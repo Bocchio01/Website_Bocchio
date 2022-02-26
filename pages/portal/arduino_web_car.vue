@@ -51,7 +51,7 @@
 <script>
 import { toRef } from '@nuxtjs/composition-api'
 
-import { Web_car } from '@/assets/js/Web_car.js'
+import { Web_car } from '@/assets/js/portal/arduino_web_car.js'
 
 export default {
   setup() {

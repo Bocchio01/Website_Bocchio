@@ -100,9 +100,9 @@ export default {
   }
 }
 
-@media (max-width: 750px) {
-  .wrap.card:hover {
-    background-color: var(--Color_Text_BG);
-  }
-}
+// @media (max-width: 750px) {
+//   .wrap.card:hover {
+//     background-color: var(--Color_Text_BG);
+//   }
+// }
 </style>

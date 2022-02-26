@@ -13,7 +13,7 @@ img:
 tag: [Programmazione]
 
 createdAt: 2021-06-09T12:47:00Z
-updatedAt: 2021-11-05T21:54:00Z
+updatedAt: 2022-02-25T21:49:00Z
 ---
 
 # Gorlu la stampante
@@ -26,7 +26,7 @@ Una sera di Ottobre, vedendo la scatola di Arduino riposta sulla mensola, mi è 
 
 Pochi giorni prima mi era capitato sott'occhio un video su YouTube di questa piccola stampante automatizzata e ho quindi preso ispirazione da lì.
 
-Cercando poi online ho visto che era un progetto molto comunque e praticamente tutto il codice necessario era già presente e pronto da scaricare dalle repository GitHub. Ma no, a me le cose facili non piacciono e non mi soddisfano.
+Cercando poi online ho visto che era un progetto molto comunue e praticamente tutto il codice necessario era già presente e pronto da scaricare dalle repository GitHub. Ma no, a me le cose facili non piacciono e non mi soddisfano.
 
 ## Gli obbiettivi
 
@@ -34,7 +34,7 @@ Deciso quindi a creare qualcosa di più di un semplice [plotter CNC](https://it.
 
 - **Stampa di immagini digitali (di qualsiasi formato)** semplificandole ovviamente prima e quindi analizzandole alla ricerca di quelle definibili come le _linee principali_ dell'immagine;
 - La possibilità di stampare in tempo reale una qualsiasi linea disegnata a mano libera sul PC. **Utilizzare quindi il plotter come un vero e proprio braccio robotico sincronizzato con la propria mano**;
-- E infine, anche se aggiunta "a lavori in corso", la funzionalità di **stampa di un vero e proprio testo** con la possibilità di scegliere font, dimensioni, allineamento ecc..
+- E infine, anche se aggiunta "a lavori in corso", la funzionalità di **stampa di un vero e proprio testo** con la possibilità di scegliere font, dimensioni, allineamento ecc...
 
 Definiti quindi gli obiettivi principali, sono partito dalla scrittura del codice.
 
@@ -83,7 +83,7 @@ Ovviamente nulla funzionerebbe senza una buona struttura a sostegno. **La stampa
 
 In particolare, **i due carrelli servono a muovere il foglio lungo le due direzioni X e Y** (per essere precisi, lungo una direzione viene mosso il foglio in sé, mentre nell'altra direzione viene traslata la penna). Sono ricavati da due lettori di DVD di un vecchio computer e i motorini che li muovono (già integrati originariamente nella struttura) lavorano ruotando di n° micro-step per volta.
 
-Questa tipologia di motore viene infatti definita stepper-motor e non ragionano per angoli di rotazione, ma secondo un numero di step rotazionali da compiere (solitamente un giro completo è suddiviso in ~500 step). **Conoscendo la rotazione associata a ciascuno step e quindi il conseguente spostamento del carrello, è facile convertire il delta tra due coordinate di pixel in un determinato numero di step da fare per raggiungere lo spostamento della penna necessario.**
+Questa tipologia di motore viene infatti definita motore passo-passo e non ragionano per angoli di rotazione, ma secondo un numero di step rotazionali da compiere (solitamente un giro completo è suddiviso in ~500 step). **Conoscendo la rotazione associata a ciascuno step e quindi il conseguente spostamento del carrello, è facile convertire il delta tra due coordinate di pixel in un determinato numero di step da fare per raggiungere lo spostamento della penna necessario.**
 
 <CMedia s="https://res.cloudinary.com/bocchio/video/upload/v1632851317/Articoli/Gorlu%20la%20stampante/Movimento_carrelli.mp4" c="Scorrimento dei due carrelli" type="video"></CMedia>
 
@@ -95,7 +95,7 @@ In questo modo visto che l'elastico genera sempre la stessa forza sulla mina, la
 
 ## Gorlu la stampante!
 
-Dopo quindi qualche giorno davanti al PC e un paio di notti con gli attrezzi in mano, **la stampantina GORLU era ufficialmente nata :)**
+Dopo, quindi, qualche giorno davanti al PC e un paio di notti con gli attrezzi in mano, **la stampantina GORLU era ufficialmente nata :)**
 
 Il nome non ha mai avuto un significato preciso e mi è venuto in mente durante la sua costruzione. Però mi è fin da subito piaciuto e poi del resto, why not?
 
@@ -105,7 +105,7 @@ Ecco qualche video del progetto finito.. Enjoy!
 
 ## Realizzarlo da sé
 
-Nel caso si volesse provare a realizzare per conto proprio, a fondo pagina nella sezione degli allegati è possibile trovare alcuni file utili allo scopo. Inoltre, per quanto riguarda il codice, é possibile trovarlo a [questa repository GitHub](https://github.com/Bocchio01/Arduino_CNC_plotter).
+Nel caso si volesse provare a realizzare per conto proprio, a fondo pagina nella sezione degli allegati è possibile trovare alcuni file utili allo scopo. Inoltre, per quanto riguarda il codice, è possibile trovarlo a [questa repository GitHub](https://github.com/Bocchio01/Arduino_CNC_plotter).
 
 Una volta scaricato occorrerà, se ancora non presente sul PC, installare [Python](https://www.python.org/downloads/) e le librerie aggiuntive.
 

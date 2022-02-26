@@ -72,7 +72,7 @@
           </div>
 
           <div class="inline">
-            <label for="mod_lang">Lingua</label>
+            <label for="mod_lang">{{ $t('cLogin.settings_user.label') }}</label>
 
             <nuxt-link style="text-align: center" :to="switchLocalePath($t('cHeader.switch.iso'))">
               <img :src="require('~/assets/png/Lang/' + $t('cHeader.switch.img'))" :alt="'Flag ' + $t('cHeader.switch.iso')" />
@@ -122,6 +122,8 @@
             {{ $t('cLogin.settings_user.newsletter') }}
           </label>
 
+          <hr style="margin-bottom: 30px" />
+
           <h2>{{ $t('cLogin.settings_site.h2') }}</h2>
           <p>{{ $t('cLogin.settings_site.p') }}</p>
 
@@ -149,9 +151,11 @@
 
           <div class="inline">
             <label for="font_size">{{ $t('cLogin.settings_site.font') }}</label>
-            <input id="font_size" type="range" min="-10" max="10" :value="user.preferences.font" @input="updateVal($event, 'preferences.font')" />
+            <input id="font_size" type="range" min="-5" max="5" :value="user.preferences.font" @input="updateVal($event, 'preferences.font')" />
             <button @click="updateVal(0, 'preferences.font')">{{ $t('cLogin.button.to_default') }}</button>
           </div>
+
+          <hr style="margin-bottom: 35px" />
 
           <button type="submit" @click="$store.commit('UserLogout')">{{ $t('cLogin.button.logout') }}</button>
         </div>
@@ -206,7 +210,7 @@ export default {
     },
 
     handler(value) {
-      this.tags_to_view = this.tags_array.map((el) => el == value)
+      this.tags_to_view = this.tags_array.map((el) => value.includes(el))
     },
 
     CloseLogin() {

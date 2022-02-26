@@ -2,25 +2,23 @@
 
 Finally I decided to code my personal online space. If you want to understand how the site has been structured I strongly suggest you to read this article.
 
+---
+
 # To-do list
 
 ## BUG
 
-- [ ] Controllare se un utente può o meno eliminare l'account
-- [ ] Sistemare il css della 'x' di pulizia nelle barre di ricerca (ora è blu ma deve essere o nero o bianco)
-- [ ] L'auto compilazione dei campi di login continua ad avere interferenze con quelle di search
+- [x] L'auto compilazione dei campi di login continua ad avere interferenze con quelle di search
 
 ## Generale
 
-- Possibili:
-  - Traduzione di lingua, possibilità:
-    - I18n
-    - A mano (solo italino e inglese)
-
----
+- Sistemare la privacy policy multilingua (cambiare iubenda)
+- Controllare se un utente può o meno eliminare l'account
+- Sistemare il css della 'x' di pulizia nelle barre di ricerca (ora è blu ma deve essere o nero o bianco)
 
 ## Articoli
 
+- Aggiungere il link della repo all'articolo "around the globe"
 - Possibili:
   - Stampa in PDF dei testi degli articoli
   - Lettura con player audio integrato
@@ -33,14 +31,10 @@ Finally I decided to code my personal online space. If you want to understand ho
     - Instagram (?)
   - Navigazione nel sito:
     - Link che rimanda ad Elenco Articoli / Portali da CNavigation
-
----
+  - Forum:
+    - Traduzione automatica (online API DeepL)
 
 ## Portali
-
-- Ottimizzare i file (.md + .js)
-
----
 
 ## Server
 

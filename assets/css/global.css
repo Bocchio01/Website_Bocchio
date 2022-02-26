@@ -48,7 +48,7 @@
   --Border_Radius_Wrap: 20px;
   --Size_Title: 40px;
   --Size_Text_Wrap: calc(17px + var(--Size_Variable));
-  --Padding_Wrap: 64px;
+  --Padding_Wrap: 50px;
   --Padding_Wrap_Min: 15px;
 
   /* Header - Footer*/

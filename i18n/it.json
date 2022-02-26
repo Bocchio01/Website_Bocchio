@@ -35,7 +35,7 @@
       },
       {
         "path": "/mix/what-s-the-aim",
-        "title": "Qual é lo scopo?",
+        "title": "Qual è lo scopo?",
         "paragraph": [
           "Questo sito nasce dall'esigenza di avere uno spazio completamente mio dove poter condividere con altri le mie idee e i miei progetti.",
           "Sono infatti convinto che i social media siano per certi versi restrittivi e costringano a troppe limitazioni.",
@@ -129,6 +129,7 @@
     "settings_user": {
       "h2": "Impostazioni utente",
       "p": "Modifica il tuo Nickname o scegli il tuo Avatar tra quelli disponibili.",
+      "label": "Lingua",
       "avatar": {
         "woman": "Avatar femminili",
         "man": "Avatar maschili"

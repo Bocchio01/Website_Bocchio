@@ -1,11 +1,90 @@
 <i18n>
 {
   "it": {
-    "hello": "Ciao"
-},
+    "tags_array": ["Istruzioni", "Dati", "Mappa"],
+
+    "instructions": {
+      "h2": "Istruzioni",
+      "p": [
+        "Questo script ti permetterà di calcolare con facilità l'azimut e la distanza tra due punti del mondo.",
+        "Comandi disponibili:",
+        "Con il tasto <span>&#8597;</span> è possibile invertire le coordinate di partenza con quelle di arrivo.",
+        "Il punto di partenza è segnato in verde",
+        "mentre quello di arrivo in rosso"],
+      "li": [
+        "Seleziona -> Click sulla mappa",
+        "Modifica -> Trascina il marker sulla mappa",
+        "Elimina -> Icona del cestino dal box di input dati o doppio click del marker sulla mappa",
+        "Ricerca -> Lente di ingrandimento sulla mappa",
+        "Focus -> Click del marker dal box di input dati"
+      ]
+    },
+
+    "data": {
+      "input": {
+        "h2": "Dati in input",
+        "p": "Clicca sulla mappa per inserire le coordinate:"
+      },
+      "output": {
+        "h2": "Dati in output",
+        "p": "Visualizza qui i risultati:",
+        "results": [
+          "Azimut tra i due punti:",
+          "Distanza sulla superficie:",
+          "Inclinazione del tunnel:",
+          "Lunghezza del tunnel:"
+          ]
+      }
+    },
+
+    "map": {
+      "h2": "Mappa",
+      "popup": ["Questo punto di ", " ha coordinate "]
+    }
+  },
+
   "en": {
-    "hello": "Hello"
-}
+    "tags_array": ["Instructions", "Data", "Map"],
+
+    "instructions": {
+      "h2": "Instructions",
+      "p": [
+        "This script will let you calculate easly azimuth angle and distances between two points on the earth's surface.",
+        "Available controls:",
+        "With the button <span>&#8597;</span> is possible to invert starting and arrival coordinates.",
+        "Starting point is the green one",
+        "while the arrival is the red one"],
+      "li": [
+        "Select -> Click on the map",
+        "Modify -> Drag the marker on the map",
+        "Delete -> Trash icon from input data box or double click of marker on the map",
+        "Search -> Magnifying glass on the map",
+        "Focus -> Click of marker from input data box"
+      ]
+    },
+
+    "data": {
+      "input": {
+        "h2": "Input data",
+        "p": "Click on the map to enter coordinates here:"
+      },
+      "output": {
+        "h2": "Output data",
+        "p": "View results here:",
+        "results": [
+          "Azimuth between points:",
+          "Distance over Earth's surface:",
+          "Tunnel's angle:",
+          "Tunnel's lenght:"
+          ]
+      }
+    },
+
+    "map": {
+      "h2": "Map",
+      "popup": ["This point called ", " has coordinates "]
+    }
+  }
 }
 </i18n>
 
@@ -14,46 +93,48 @@
     <CHeadPortale />
     <CMenuScelta @toParent="handler" :tags="tags_array" />
     <div class="affianca">
-      <div class="box" v-show="tags_to_view.includes(tags_array[0])" style="flex: 1 1 300px">
-        <h2>Istruzioni</h2>
+      <div class="box" v-show="tags_to_view[0]" style="flex: 1 1 300px">
+        <h2>{{ $t('instructions.h2') }}</h2>
         <div>
-          <p>Questo script ti permetterà di calcolare con facilità l'azimut e la distanza tra due punti del mondo.</p>
+          <p>{{ $t('instructions.p.0') }}</p>
           <br />
-          <p><strong>Comandi disponibili:</strong></p>
+          <p>
+            <strong>{{ $t('instructions.p.1') }}</strong>
+          </p>
           <ul>
-            <li>Seleziona -> Click sulla mappa</li>
-            <li>Modifica -> Trascina il marker sulla mappa</li>
-            <li>Elimina -> Icona del cestino dal box di input dati o doppio click del marker sulla mappa</li>
-            <li>Ricerca -> Lente di ingrandimento sulla mappa</li>
-            <li>Focus -> Click del marker dal box di input dati</li>
+            <li>{{ $t('instructions.li.0') }}</li>
+            <li>{{ $t('instructions.li.1') }}</li>
+            <li>{{ $t('instructions.li.2') }}</li>
+            <li>{{ $t('instructions.li.3') }}</li>
+            <li>{{ $t('instructions.li.4') }}</li>
           </ul>
           <br />
-          <p>Con il tasto <span>&#8597;</span> è possibile invertire le coordinate di partenza con quelle di arrivo.</p>
+          <p v-html="$t('instructions.p.2')"></p>
 
           <p>
-            Il punto di partenza è segnato in verde <span><img style="height: 25px" :src="markers[0].IconUrl" /></span>, mentre quello di arrivo in rosso
-            <span><img style="height: 25px" :src="markers[1].IconUrl" /></span>.
+            {{ $t('instructions.p.3') }} <span><img style="height: 25px" :src="markers[0].IconUrl" /></span>, {{ $t('instructions.p.4') }}
+            <span><img style="height: 25px" :src="markers[1].IconUrl" /></span>
           </p>
         </div>
       </div>
 
-      <div class="box" style="flex: 1 1 300px" v-show="tags_to_view.includes(tags_array[1])">
-        <h2>Dati in input</h2>
-        <p>Clicca sulla mappa per inserire le coordinate:</p>
+      <div class="box" style="flex: 1 1 300px" v-show="tags_to_view[1]">
+        <h2>{{ $t('data.input.h2') }}</h2>
+        <p>{{ $t('data.input.p') }}</p>
 
         <div class="result">
           <div>
             <div v-for="(marker, index) in markers" :key="marker.id" style="display: flex">
               <img style="height: 25px" :src="marker.IconUrl" @click="initialLocation = marker.position" />
-              <input style="color: var(--Color_Text)" v-model="marker.position" placeholder="Nessun punto selezionato" type="text" disabled />
+              <input style="color: var(--Color_Text)" v-model="marker.position" type="text" disabled />
               <span style="cursor: pointer" @click="clean(index)">&#x1F5D1;&#xFE0F;</span>
             </div>
           </div>
           <span style="cursor: pointer" @click="inverti()">&#8597;</span>
         </div>
         <hr />
-        <h2>Dati in output</h2>
-        <p>Visualizza qui i risultati:</p>
+        <h2>{{ $t('data.output.h2') }}</h2>
+        <p>{{ $t('data.output.p') }}</p>
         <div class="result affianca">
           <div class="compass-bg">
             <img
@@ -64,23 +145,23 @@
           </div>
           <div>
             <p>
-              Azimut tra i due punti: <b> {{ risultati.azimut }}°</b>
+              {{ $t('data.output.results.0') }} <b> {{ risultati.azimut }}°</b>
             </p>
             <p>
-              Distanza sulla superficie: <b> {{ risultati.distanza }} km</b>
+              {{ $t('data.output.results.1') }} <b> {{ risultati.distanza }} km</b>
             </p>
             <p>
-              Inclinazione del tunnel: <b> {{ risultati.inclinazione }}°</b>
+              {{ $t('data.output.results.2') }} <b> {{ risultati.inclinazione }}°</b>
             </p>
             <p>
-              Lunghezza del tunnel: <b> {{ risultati.lunghezza }} km</b>
+              {{ $t('data.output.results.3') }} <b> {{ risultati.lunghezza }} km</b>
             </p>
           </div>
         </div>
       </div>
 
-      <div class="box" style="flex: 10 1 400px" v-show="tags_to_view.includes(tags_array[2])">
-        <h2>Mappa</h2>
+      <div class="box" style="flex: 10 1 400px" v-show="tags_to_view[2]">
+        <h2>{{ $t('map.h2') }}</h2>
         <div style="height: 90vh">
           <client-only>
             <l-map ref="myMap" :zoom="13" @ready="onReady" @locationfound="onLocationFound" :center="initialLocation" :options="{ attributionControl: false }" @click="addMarker">
@@ -109,7 +190,7 @@
                 :icon="marker.IconObj"
                 @dblclick="clean(index)"
               >
-                <l-popup>Questo punto di {{ marker.id }} ha coordinate {{ marker.position }}</l-popup>
+                <l-popup>{{ $t('map.popup.0') }} {{ marker.id }} {{ $t('map.popup.1') }} {{ marker.position }}</l-popup>
               </l-marker>
             </l-map>
           </client-only>
@@ -120,14 +201,12 @@
 </template>
 
 <script>
-import { Around_the_globe } from '@/assets/js/Around_the_globe.js'
+import { Around_the_globe } from '@/assets/js/portal/around_the_globe.js'
 
 export default {
   data() {
     return {
-      tags_array: ['Guida', 'Dati', 'Mappa'],
-      tags_to_view: ['Mappa'],
-
+      tags_to_view: [false, false, true],
       risultati: Around_the_globe.result,
       initialLocation: [0, 0],
 
@@ -164,6 +243,15 @@ export default {
       ],
     }
   },
+
+  computed: {
+    tags_array: {
+      get() {
+        return Object.values(this.$t('tags_array'))
+      },
+    },
+  },
+
   mounted() {
     this.markers[0].IconObj = this.createIcon(this.markers[0].IconUrl)
     this.markers[1].IconObj = this.createIcon(this.markers[1].IconUrl)
@@ -191,7 +279,7 @@ export default {
       this.initialLocation = location.latlng
     },
     handler(value) {
-      this.tags_to_view = value
+      this.tags_to_view = this.tags_array.map((el) => value.includes(el))
     },
     inverti() {
       var foo = this.markers[0].position

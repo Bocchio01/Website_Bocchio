@@ -10,70 +10,70 @@ paragraph:
 img:
   src: /v1636152274/Articoli/Around%20the%20globe/Around_the_globe_icon.jpg
   alt: Around the globe
-tag: [Coding, Maths]
+tag: [Programming, Maths]
 
 portalurl: /portal/around_the_globe/
 
-createdAt: 2021-08-21T15:55:00Z
-updatedAt: 2021-08-25T21:59:00Z
+createdAt: 2022-02-12T21:19:00Z
+updatedAt: 2022-02-25T22:36:00Z
 ---
 
 # Around the globe
 
 <CMedia :s="img.src" :a="img.src"></CMedia>
 
-## Introduzione
+## Introduction
 
-Questo semplice script nasce da un esigenza reale di un mio amico: un giorno mi disse di voler creare un palo di **crocevia con dei cartelli che indicassero le città più importanti nel mondo**. Aveva quindi la necessità di sapere l'azimut con il quale angolare i cartelli di modo che fossero direzionati correttamente. Nello scrivere il codice si sono poi aggiunte altre piccole funzioni che danno quel tocco di originalità all'algoritmo. Ma partiamo dalle basi.
+This simple script borns from a real need of a friend of mine: one day he told me he wanted to create a **crossroad pole with signs indicating the most important cities in the world**. So he needed to know the azimuth with which to angle the signs so that they would be directed correctly. While writing the code, other small functions were added to give the algorithm a touch of originality. But let's start with the basics.
 
-## Le basi di partenza
+## The basics
 
-Lo scopo principale era quello di ottenere a partire dalle coordinate geografiche di due punti, l'azimut tra di essi. [L'azimut](https://it.wikipedia.org/wiki/Azimut) è infatti l'angolo che si viene a formare tra la linea immaginaria che congiunge i due punti, e il meridiano passante per il punto iniziale.
+The main aim was to obtain, from the geographical coordinates of two points, the azimuth between them. [The azimuth](https://en.wikipedia.org/wiki/Azimuth) is in fact the angle formed between the imaginary line joining the two points and the meridian passing through the initial point.
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Azimut.jpg" c="Esempio di azimut tra due persone"></CMedia>
+<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Azimut.jpg" c="Example of azimuth between two people"></CMedia>.
 
-Utilizzando concetti base di Analisi e Geometria 2, è possibile visualizzare la superficie del [geoide terrestre](https://it.wikipedia.org/wiki/Geoide) attraverso un semplice sistema di 3 equazioni goniometriche. A partire da una qualsiasi coppia latitudine - longitudine, ovvero coordinate polari, sono facilmente ricavabili le coordinate cartesiane, ovvero la terna dei valori x-y-z, del punto considerato. **Sfruttando quindi le coordinate cartesiane è poi facile adoperare operazioni con vettori e piani**, essendo di fatto il sistema appena parametrizzato uno spazio euclideo formato dalla terna elemenatre dei versori I-J-K.
+Using basic concepts of "Analysis and Geometry 2" course, it is possible to visualise the surface of [the Earth's geoid](https://en.wikipedia.org/wiki/Geoid) through a simple system of 3 goniometric equations. Starting from any latitude-longitude pair, i.e. polar coordinates, it is easy to derive the Cartesian coordinates, i.e. the triplet of x-y-z values, of the point considered. **Using the Cartesian coordinates it is then also easy to use operations with vectors and planes**, since the system that has just been parameterized is in fact a Euclidean space formed by the trio of elementary verses I-J-K.
 
-In particolare, per rappresentare al meglio il geoide terrestre, ho deciso di sfruttare l'ellissoide di Hayford, uno dei primi [ellissoidi di riferimento](https://it.wikipedia.org/wiki/Ellissoide_di_riferimento).
+In particular, in order to best represent the Earth's geoid, I decided to exploit the Hayford ellipsoid, one of the first [reference ellipsoids](https://en.wikipedia.org/wiki/Reference_ellipsoid).
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Ellissoide_Matlab.png" c="L'ellissoide di Hayford rappresentato in Matlab"></CMedia>
+<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Ellissoid_Matlab.png" c="The Hayford ellipsoid represented in Matlab"></CMedia>
 
-## La matematica dietro l'algoritmo
+## The mathematics behind the algorithm
 
-Per il calcolo dell'azimut vengono sfruttati concetti base di Analisi e Geometria 1 applicati allo spazio tridimensionale. Sfruttando la parametrizzazione euclidea, sappiamo essere possibili sia il prodotto scalare che il prodotto vettoriale ed è quindi naturale risolvere il problema in questi termini.
+Basic concepts from the course "Analysis and Geometry 1" applied to three-dimensional space are used to calculate the azimuth. Taking advantage of the Euclidean parameterization, we know that both the scalar product and the vector product are possible, and it is therefore natural to solve the problem in these terms.
 
-Ricordando che il nostro obbiettivo è **l'angolo definito come 'NORD - Osservatore - Oggetto osservato'**, rappresentandone un esempio applicato ad una sfera 3D, si ottiene la situazione descritta nell'immagine sotto.
+Remembering that our objective is **the angle defined as 'NORTH - Observer - Observed Object'**, representing an example applied to a 3D sphere, we obtain the situation described in the image below.
 
 <CMedia s="/v1635210809/Articoli/Around%20the%20globe/Azimut_matlab.png" a="Azimut_matlab"></CMedia>
 
-Ma allora osservando che le linee che collegano 'NORD - Osservatore' e 'Osservatore - Oggetto osservato', non sono altro che le intersezioni di due piani cartesiani con la sfera, allora appare chiaro che **l'azimut cercato è di fatto l'angolo formato tra questi due piani: il primo passante per i tre punti 'NORD - Osservatore - Centro della sfera', mentre il secondo passante per i tre punti 'Osservatore - Oggetto osservato - Centro della sfera'**.
+But then, observing that the lines connecting 'NORTH - Observer' and 'Observer - Observed object' are nothing other than the intersections of two Cartesian planes with the sphere, it appears clear that **the azimuth searched is in fact the angle formed between these two planes: the first passing through the three points 'NORTH - Observer - Centre of the sphere', while the second passing through the three points 'Observer - Observed object - Centre of the sphere'**.
 
-Sapendo poi che ogni piano cartesiano è individuato tramire un vettore normale al piano stesso, e che l'angolo tra due vettori è ricavabile per via trigonometrica, allora l'azimut cercato ha valore:
+Knowing that each Cartesian plane is identified by a vector normal to the plane itself, and that the angle between two vectors can be obtained trigonometrically, then the azimuth searched has value
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Formula_finale_azimut.png" c="p1, p2 sono i vettori normali ai due piani cartesiani"></CMedia>
+<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Formula_finale_azimut.png" c="p1, p2 are the normal vectors to the two Cartesian planes"></CMedia>.
 
-Per avere una comprensione più chiara e gloabale del problema e della sua soluzione, è forse utile osservare il tutto in maniera più interattiva grazie all'uso di GeoGebra.
+To get a clearer and more gloabal understanding of the problem and its solution, it is perhaps useful to look at it in a more interactively way using GeoGebra.
 
-<CMedia type="iframe" s="https://www.geogebra.org/3d/snm5rqfd?embed" a="File di GeoGebra"></CMedia>
+<CMedia type="iframe" s="https://www.geogebra.org/3d/snm5rqfd?embed" a="GeoGebra file"></CMedia>
 
-<a href="https://www.geogebra.org/3d/snm5rqfd" class="button" rel="nofollow noopener noreferrer" target="_blank">File online di GeoGebra</a>
+<a href="https://www.geogebra.org/3d/snm5rqfd" class="button" rel="nofollow noopener noreferrer" target="_blank">Online Geogebra file</a>
 
-## L'algoritmo
+## The algorithm
 
-L'implementazione a livello di algoritmo di tutta la matematica spiegata sopra, avviene per mezzo di **JavaScript** e in particolare della libreria **Math.js**. La libreria offre infatti una vasta scelta di operatori e funzioni matematiche a partire dalle basilari di trigonometria fino ad operazioni con vettori e matrici e non solo.
+The implementation at the algorithm level of all the mathematics explained above is done using **JavaScript** and in particular the **Math.js** library. This library offers a wide range of mathematical operators and functions, from basic trigonometry to operations with vectors and matrices and more.
 
-Dopo aver salvato i dati di latitudine e longitudine in un array, ne esegue la conversione da gradi a radianti di modo da facilitare l'uso di funzioni trigonometriche essenziali per ricavare poi le coordinate cartesiane dei punti.
+After saving latitude and longitude data in an array, it converts them from degrees to radians to facilitate the use of essential trigonometric functions for later deriving the Cartesian coordinates of points.
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Algoritmo_coordinate_cartesiane.png" c="L'algoritmo per il cambio di parametrizzazione"></CMedia>
+<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Algoritmo_coordinate_cartesiane.png" c="The algorithm for the changing of parameterization"></CMedia>.
 
-Successivamente l'algoritmo elabora i vettori normali ai due piani cartesiani necessari per il calcolo dell'azimut. Per fare ciò calcola, come sottrazione di coordinate dei tre punti di riferimento, due vettori che appartengono al piano e, con l'utilizzo del prodotto vettoriale su quest'ultimi, **calcola il vettore normale al piano cartesiano**. L'operazione viene poi ripetuta anche per il secondo piano cartesiano e **infine viene calcolato l'angolo formato tra i due vettori normali ai piani**, ottenendo così l'azimut ricercato.
+Next, the algorithm computes the normal vectors of the two Cartesian planes needed to calculate the azimuth. To do this it calculates, as a subtraction of the coordinates of the three reference points, two vectors that belong to the plane and, using the vector product on these, **calculates the normal vector to the Cartesian plane**. The operation is then repeated for the second Cartesian plane and **finally the angle formed between the two vectors normal to the planes is calculated**, thus obtaining the azimuth wanted.
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Algoritmo_vettore_piano.png" c="Vettore normale al piano - Calcolo dell'angolo tra vettori"></CMedia>
+<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Algoritmo_vettore_piano.png" c="Vector normal to the plane - Calculation of the angle between vectors"></CMedia>
 
-## Testalo e divertiti!
+## Test it and have fun!
 
-Il programmino è ovviamente online e di libero utilizzo. Contiene come detto nell'introduzione molte altre funzioni divertenti ed interessanti come il calcolo delle distanze o altro ancora.<br> Se vuoi dare uno sguardo al codice lo trovi su GitHub a questo <a href="#">link</a>, altrimenti se vuoi direttamente provare il programma naviga nella sezione:
+The progamm is obviously online and free to use. It contains, as said in the introduction, many more funnny and interesting functionalities like the distances calculus or much more.<br> If you want to have a look at the code you can find it of course on GitHub at this <a href="#">link</a>, otherwise if you prefer to try it directly, just browse the section:
 
-<nuxt-link :to="portalurl" class="button">Portale > Attorno_al_globo</nuxt-link>
+<nuxt-link :to="portalurl" class="button">Portal > Around_the_globe</nuxt-link>
 
-**Non ti sei mai chiesto con quale inclinazione scavare un tunnel fino a Tokyo?** E per quanto dovresti scavare? Il programma ha tutte le risposte alle tue domande! Buon utilizzo!
+**Haven't you ever wondered what angle of slope you need to dig a tunnel to Tokyo? And how far would you have to dig?** The programm has all the answers to your questions! Enjoy using it!

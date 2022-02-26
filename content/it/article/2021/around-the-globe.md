@@ -15,7 +15,7 @@ tag: [Programmazione, Matematica]
 portalurl: /it/portal/around_the_globe/
 
 createdAt: 2021-08-21T15:55:00Z
-updatedAt: 2021-08-25T21:59:00Z
+updatedAt: 2022-02-25T22:36:00Z
 ---
 
 # Attorno al globo
@@ -24,7 +24,7 @@ updatedAt: 2021-08-25T21:59:00Z
 
 ## Introduzione
 
-Questo semplice script nasce da un esigenza reale di un mio amico: un giorno mi disse di voler creare un palo di **crocevia con dei cartelli che indicassero le città più importanti nel mondo**. Aveva quindi la necessità di sapere l'azimut con il quale angolare i cartelli di modo che fossero direzionati correttamente. Nello scrivere il codice si sono poi aggiunte altre piccole funzioni che danno quel tocco di originalità all'algoritmo. Ma partiamo dalle basi.
+Questo semplice script nasce da un'esigenza reale di un mio amico: un giorno mi disse di voler creare un palo di **crocevia con dei cartelli che indicassero le città più importanti nel mondo**. Aveva quindi la necessità di sapere l'azimut con il quale angolare i cartelli di modo che fossero direzionati correttamente. Nello scrivere il codice si sono poi aggiunte altre piccole funzioni che danno quel tocco di originalità all'algoritmo. Ma partiamo dalle basi.
 
 ## Le basi di partenza
 
@@ -32,7 +32,7 @@ Lo scopo principale era quello di ottenere a partire dalle coordinate geografich
 
 <CMedia s="/v1635210809/Articoli/Around%20the%20globe/Azimut.jpg" c="Esempio di azimut tra due persone"></CMedia>
 
-Utilizzando concetti base di Analisi e Geometria 2, è possibile visualizzare la superficie del [geoide terrestre](https://it.wikipedia.org/wiki/Geoide) attraverso un semplice sistema di 3 equazioni goniometriche. A partire da una qualsiasi coppia latitudine - longitudine, ovvero coordinate polari, sono facilmente ricavabili le coordinate cartesiane, ovvero la terna dei valori x-y-z, del punto considerato. **Sfruttando quindi le coordinate cartesiane è poi facile adoperare operazioni con vettori e piani**, essendo di fatto il sistema appena parametrizzato uno spazio euclideo formato dalla terna elemenatre dei versori I-J-K.
+Utilizzando concetti base dal corso "Analisi e Geometria 2", è possibile visualizzare la superficie del [geoide terrestre](https://it.wikipedia.org/wiki/Geoide) attraverso un semplice sistema di 3 equazioni goniometriche. A partire da una qualsiasi coppia latitudine - longitudine, ovvero coordinate polari, sono facilmente ricavabili le coordinate cartesiane, ovvero la terna dei valori x-y-z, del punto considerato. **Sfruttando quindi le coordinate cartesiane è poi facile adoperare operazioni con vettori e piani**, essendo di fatto il sistema appena parametrizzato uno spazio euclideo formato dalla terna elemenatre dei versori I-J-K.
 
 In particolare, per rappresentare al meglio il geoide terrestre, ho deciso di sfruttare l'ellissoide di Hayford, uno dei primi [ellissoidi di riferimento](https://it.wikipedia.org/wiki/Ellissoide_di_riferimento).
 
@@ -40,7 +40,7 @@ In particolare, per rappresentare al meglio il geoide terrestre, ho deciso di sf
 
 ## La matematica dietro l'algoritmo
 
-Per il calcolo dell'azimut vengono sfruttati concetti base di Analisi e Geometria 1 applicati allo spazio tridimensionale. Sfruttando la parametrizzazione euclidea, sappiamo essere possibili sia il prodotto scalare che il prodotto vettoriale ed è quindi naturale risolvere il problema in questi termini.
+Per il calcolo dell'azimut vengono sfruttati concetti base dal corso "Analisi e Geometria 1" applicati allo spazio tridimensionale. Sfruttando la parametrizzazione euclidea, sappiamo essere possibili sia il prodotto scalare che il prodotto vettoriale ed è quindi naturale risolvere il problema in questi termini.
 
 Ricordando che il nostro obbiettivo è **l'angolo definito come 'NORD - Osservatore - Oggetto osservato'**, rappresentandone un esempio applicato ad una sfera 3D, si ottiene la situazione descritta nell'immagine sotto.
 
