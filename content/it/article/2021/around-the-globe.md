@@ -72,7 +72,7 @@ Successivamente l'algoritmo elabora i vettori normali ai due piani cartesiani ne
 
 ## Testalo e divertiti!
 
-Il programmino è ovviamente online e di libero utilizzo. Contiene come detto nell'introduzione molte altre funzioni divertenti ed interessanti come il calcolo delle distanze o altro ancora.<br> Se vuoi dare uno sguardo al codice lo trovi su GitHub a questo <a href="#">link</a>, altrimenti se vuoi direttamente provare il programma naviga nella sezione:
+Il programmino è ovviamente online e di libero utilizzo. Contiene come detto nell'introduzione molte altre funzioni divertenti ed interessanti come il calcolo delle distanze o altro ancora.<br> Se vuoi dare uno sguardo al codice lo trovi su GitHub a questo <a href="https://gist.github.com/Bocchio01/78001e29f59d98b7b22bfadb905f7175">link</a>, altrimenti se vuoi direttamente provare il programma naviga nella sezione:
 
 <nuxt-link :to="portalurl" class="button">Portale > Attorno_al_globo</nuxt-link>
 

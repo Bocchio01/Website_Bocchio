@@ -66,7 +66,7 @@
   "cHeader": {
     "switch": {
       "iso": "en",
-      "img": "it.png"
+      "img": "en.png"
     },
     "links": ["Articoli", "Portali", "Chi sono?", "Qual è lo scopo?", "Area personale"]
   },
@@ -108,7 +108,7 @@
 
   "cLogin": {
     "title": "Area Personale",
-    "tags_array": ["Registrazione", "Accesso", "Impostazioni"],
+    "tags_array": ["Registrazione", "Accesso", "Impostazioni / Uscita"],
     "tooltiptext": ["Effettua il Logout prima di effettuare altre operazioni qui", "Effettua l'accesso per poter usufruire alle funzionalità aggiuntive del sito"],
     "button": {
       "sign_up": "Registrati",
@@ -129,7 +129,14 @@
     "settings_user": {
       "h2": "Impostazioni utente",
       "p": "Modifica il tuo Nickname o scegli il tuo Avatar tra quelli disponibili.",
-      "label": "Lingua",
+      "modifypassword": ["Per modificare la password ", "clicca qua!"],
+      "lang": {
+        "label": "Lingua",
+        "switch": {
+          "iso": "en",
+          "img": "it.png"
+        }
+      },
       "avatar": {
         "woman": "Avatar femminili",
         "man": "Avatar maschili"
@@ -145,7 +152,7 @@
     }
   },
 
-  "cSearch": ["Ricerca per titolo", "Ricerca per tag (#)", "Titolo.."],
+  "cSearch": ["Ricerca per titolo", "Ricerca per tag (#)", "Titolo..."],
 
   "cNavigation": {
     "attachment": {

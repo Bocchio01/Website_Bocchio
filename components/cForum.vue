@@ -16,7 +16,7 @@
         <div class="button_controll">
           <button v-if="id_user == post.id_user && id_user" @click="action(post, 'ForumModifyPost')">{{ $t('cForum.button.modify') }}</button>
           <button v-if="id_user == post.id_user && id_user" @click="action(post, 'ForumDeletePost')">{{ $t('cForum.button.delete') }}</button>
-          <button v-else-if="post.id_post == post.refer && id_user" @click="action(post, 'ForumAwnserPost')">{{ $t('cForum.button.reply') }}</button>
+          <button v-if="post.id_post == post.refer && id_user" @click="action(post, 'ForumAwnserPost')">{{ $t('cForum.button.reply') }}</button>
         </div>
       </div>
       <div class="divisore"></div>

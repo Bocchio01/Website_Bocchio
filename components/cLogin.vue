@@ -37,7 +37,7 @@
           <div style="margin-top: 0; color: #a2a2a2" v-show="tags_to_view[1]">
             <p>
               {{ $t('cLogin.login.forgotpassword.0') }}
-              <a :href="utils_site + '/BWS/' + $i18n.locale + '/?action=ForgotPassword'" target="_blank" rel="nofollow noopener noreferrer" style="color: #a2a2a2">{{
+              <a :href="utils_site + '/BWS/site/?l=' + $i18n.locale + '&action=ForgotPassword'" target="_blank" rel="nofollow noopener noreferrer" style="color: #a2a2a2">{{
                 $t('cLogin.login.forgotpassword.1')
               }}</a>
             </p>
@@ -64,6 +64,12 @@
 
           <h2>{{ $t('cLogin.settings_user.h2') }}</h2>
           <p>{{ $t('cLogin.settings_user.p') }}</p>
+          <p style="color: #a2a2a2">
+            {{ $t('cLogin.settings_user.modifypassword.0') }}
+            <a :href="utils_site + '/BWS/site/?l=' + $i18n.locale + '&action=ModifyPassword'" target="_blank" rel="nofollow noopener noreferrer" style="color: #a2a2a2">{{
+              $t('cLogin.settings_user.modifypassword.1')
+            }}</a>
+          </p>
 
           <div class="inline">
             <label for="mod_nickname">Nickname</label>
@@ -72,10 +78,10 @@
           </div>
 
           <div class="inline">
-            <label for="mod_lang">{{ $t('cLogin.settings_user.label') }}</label>
+            <label for="mod_lang">{{ $t('cLogin.settings_user.lang.label') }}</label>
 
-            <nuxt-link style="text-align: center" :to="switchLocalePath($t('cHeader.switch.iso'))">
-              <img :src="require('~/assets/png/Lang/' + $t('cHeader.switch.img'))" :alt="'Flag ' + $t('cHeader.switch.iso')" />
+            <nuxt-link style="text-align: center" :to="switchLocalePath($t('cLogin.settings_user.lang.switch.iso'))">
+              <img :src="require('~/assets/png/Lang/' + $t('cLogin.settings_user.lang.switch.img'))" :alt="'Flag ' + $t('cLogin.settings_user.lang.switch.iso')" />
             </nuxt-link>
 
             <button style="visibility: hidden; height: 0px; padding-block: 0px">{{ $t('cLogin.button.to_default') }}</button>
@@ -89,7 +95,7 @@
           </div>
 
           <div id="avatar_container" v-show="show_avatar" @click="show_avatar = false">
-            <h2>{{ $t('cLogin.settings_user.avatar.woman') }}</h2>
+            <!-- <h2>{{ $t('cLogin.settings_user.avatar.woman') }}</h2> -->
             <div>
               <img
                 v-for="(img, index) in images_woman"
@@ -99,7 +105,7 @@
                 @click="updateVal('/Woman/' + img, 'preferences.avatar')"
               />
             </div>
-            <h2>{{ $t('cLogin.settings_user.avatar.man') }}</h2>
+            <!-- <h2>{{ $t('cLogin.settings_user.avatar.man') }}</h2> -->
             <div>
               <img
                 v-for="(img, index) in images_man"

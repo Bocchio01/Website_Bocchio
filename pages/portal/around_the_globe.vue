@@ -91,7 +91,7 @@
 <template>
   <div class="wrap Portale Around_the_globe">
     <CHeadPortale />
-    <CMenuScelta @toParent="handler" :tags="tags_array" />
+    <CMenuScelta @toParent="handler" :tags="tags_array" :start="[tags_array[1], tags_array[2]]" />
     <div class="affianca">
       <div class="box" v-show="tags_to_view[0]" style="flex: 1 1 300px">
         <h2>{{ $t('instructions.h2') }}</h2>
@@ -206,7 +206,7 @@ import { Around_the_globe } from '@/assets/js/portal/around_the_globe.js'
 export default {
   data() {
     return {
-      tags_to_view: [false, false, true],
+      tags_to_view: [],
       risultati: Around_the_globe.result,
       initialLocation: [0, 0],
 
@@ -272,7 +272,6 @@ export default {
       mapObject.addControl(searchControl)
       mapObject.locate()
 
-      this.tags_to_view = []
       this.geodesic = new L.Geodesic().addTo(mapObject)
     },
     onLocationFound(location) {

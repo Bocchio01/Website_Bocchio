@@ -30,13 +30,13 @@ This simple script borns from a real need of a friend of mine: one day he told m
 
 The main aim was to obtain, from the geographical coordinates of two points, the azimuth between them. [The azimuth](https://en.wikipedia.org/wiki/Azimuth) is in fact the angle formed between the imaginary line joining the two points and the meridian passing through the initial point.
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Azimut.jpg" c="Example of azimuth between two people"></CMedia>.
+<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Azimut.jpg" c="Example of azimuth between two people"></CMedia>
 
 Using basic concepts of "Analysis and Geometry 2" course, it is possible to visualise the surface of [the Earth's geoid](https://en.wikipedia.org/wiki/Geoid) through a simple system of 3 goniometric equations. Starting from any latitude-longitude pair, i.e. polar coordinates, it is easy to derive the Cartesian coordinates, i.e. the triplet of x-y-z values, of the point considered. **Using the Cartesian coordinates it is then also easy to use operations with vectors and planes**, since the system that has just been parameterized is in fact a Euclidean space formed by the trio of elementary verses I-J-K.
 
 In particular, in order to best represent the Earth's geoid, I decided to exploit the Hayford ellipsoid, one of the first [reference ellipsoids](https://en.wikipedia.org/wiki/Reference_ellipsoid).
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Ellissoid_Matlab.png" c="The Hayford ellipsoid represented in Matlab"></CMedia>
+<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Ellissoide_Matlab.png" c="The Hayford ellipsoid represented in Matlab"></CMedia>
 
 ## The mathematics behind the algorithm
 
@@ -48,9 +48,9 @@ Remembering that our objective is **the angle defined as 'NORTH - Observer - Obs
 
 But then, observing that the lines connecting 'NORTH - Observer' and 'Observer - Observed object' are nothing other than the intersections of two Cartesian planes with the sphere, it appears clear that **the azimuth searched is in fact the angle formed between these two planes: the first passing through the three points 'NORTH - Observer - Centre of the sphere', while the second passing through the three points 'Observer - Observed object - Centre of the sphere'**.
 
-Knowing that each Cartesian plane is identified by a vector normal to the plane itself, and that the angle between two vectors can be obtained trigonometrically, then the azimuth searched has value
+Knowing that each Cartesian plane is identified by a vector normal to the plane itself, and that the angle between two vectors can be obtained trigonometrically, then the azimuth searched has value:
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Formula_finale_azimut.png" c="p1, p2 are the normal vectors to the two Cartesian planes"></CMedia>.
+<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Formula_finale_azimut.png" c="p1, p2 are the normal vectors to the two Cartesian planes"></CMedia>
 
 To get a clearer and more gloabal understanding of the problem and its solution, it is perhaps useful to look at it in a more interactively way using GeoGebra.
 
@@ -64,7 +64,7 @@ The implementation at the algorithm level of all the mathematics explained above
 
 After saving latitude and longitude data in an array, it converts them from degrees to radians to facilitate the use of essential trigonometric functions for later deriving the Cartesian coordinates of points.
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Algoritmo_coordinate_cartesiane.png" c="The algorithm for the changing of parameterization"></CMedia>.
+<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Algoritmo_coordinate_cartesiane.png" c="The algorithm for the changing of parameterization"></CMedia>
 
 Next, the algorithm computes the normal vectors of the two Cartesian planes needed to calculate the azimuth. To do this it calculates, as a subtraction of the coordinates of the three reference points, two vectors that belong to the plane and, using the vector product on these, **calculates the normal vector to the Cartesian plane**. The operation is then repeated for the second Cartesian plane and **finally the angle formed between the two vectors normal to the planes is calculated**, thus obtaining the azimuth wanted.
 
@@ -72,7 +72,7 @@ Next, the algorithm computes the normal vectors of the two Cartesian planes need
 
 ## Test it and have fun!
 
-The progamm is obviously online and free to use. It contains, as said in the introduction, many more funnny and interesting functionalities like the distances calculus or much more.<br> If you want to have a look at the code you can find it of course on GitHub at this <a href="#">link</a>, otherwise if you prefer to try it directly, just browse the section:
+The progamm is obviously online and free to use. It contains, as said in the introduction, many more funnny and interesting functionalities like the distances calculus or much more.<br> If you want to have a look at the code you can find it of course on GitHub at this <a href="https://gist.github.com/Bocchio01/78001e29f59d98b7b22bfadb905f7175">link</a>, otherwise if you prefer to try it directly, just browse the section:
 
 <nuxt-link :to="portalurl" class="button">Portal > Around_the_globe</nuxt-link>
 

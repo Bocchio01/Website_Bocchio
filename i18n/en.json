@@ -66,7 +66,7 @@
   "cHeader": {
     "switch": {
       "iso": "it",
-      "img": "en.png"
+      "img": "it.png"
     },
     "links": ["Articles", "Portals", "Who am I?", "What's the aim?", "Personal area"]
   },
@@ -108,7 +108,7 @@
 
   "cLogin": {
     "title": "Personal area",
-    "tags_array": ["Sign up", "Login", "Settings"],
+    "tags_array": ["Sign up", "Login", "Settings / Logout"],
     "tooltiptext": ["Do Logout before doing other stuff here", "Do Login in order to have access to premium functionalities of the site"],
     "button": {
       "sign_up": "Sign up",
@@ -129,7 +129,14 @@
     "settings_user": {
       "h2": "User's settings",
       "p": "Change your Nickname or select a different avatar from the available ones.",
-      "label": "Lang",
+      "modifypassword": ["To change your password ", "click here!"],
+      "lang": {
+        "label": "Lang",
+        "switch": {
+          "iso": "it",
+          "img": "en.png"
+        }
+      },
       "avatar": {
         "woman": "Female avatars",
         "man": "Male avatars"
@@ -145,7 +152,7 @@
     }
   },
 
-  "cSearch": ["Search by title", "Search by tag (#)", "Title.."],
+  "cSearch": ["Search by title", "Search by tag (#)", "Title..."],
 
   "cNavigation": {
     "attachment": {
