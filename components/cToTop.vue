@@ -1,5 +1,5 @@
 <template>
-  <button @click="top" class="ToTop" tabindex="1"><span>&#8686;</span></button>
+  <button @click="top" class="ToTop"><span>&#8686;</span></button>
 </template>
 
 <script>

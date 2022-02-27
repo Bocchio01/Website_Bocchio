@@ -7,7 +7,7 @@
       <a href="https://www.instagram.com/bocchio_01/" rel="nofollow noopener noreferrer" target="_blank"></a>
       <a href="mailto:tommaso.bocchietti@gmail.com" rel="nofollow noopener noreferrer" target="_blank"></a>
     </div>
-    <a href="https://www.iubenda.com/privacy-policy/68327853" title="Privacy Policy" target="_blank" style="font-size: medium">Privacy Policy</a>
+    <a href="https://www.iubenda.com/privacy-policy/87953468" title="Privacy Policy" target="_blank" style="font-size: medium">Privacy Policy</a>
     <div class="copyright">
       <p>Tommaso Bocchietti © {{ year }}</p>
     </div>

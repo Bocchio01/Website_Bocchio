@@ -5,7 +5,7 @@ paragraph:
   [
     'A nice little CNC plotter for printing images or text.<br>',
     'Made with Arduino, some components from an old PC and a pair of wooden blocks, this little plotter <b>was able to surprse even me with its drawing accuracy.</b>',
-    'Easy to make, during the article you will find all the source code (Python and C++) and many usefull document to do it by yourself.',
+    'Easy to make, inside the article you will find all the source code (Python and C++) and many useful document to do it by yourself.',
   ]
 img:
   src: /v1635033169/Articoli/Gorlu%20la%20stampante/Gorlu.jpg
@@ -32,17 +32,17 @@ Searching online I saw that it was a very common project and practically all the
 
 Having decided to create something more than a simple [CNC plotter](https://en.wikipedia.org/wiki/Numerical_control), I thought about the functions I wanted to integrate:
 
-- **Printing of digital images (any format)** obviously simplifying them first and then analysing them in search of what could be defined as the _main lines_ of the image;
-- The possibility of printing in real time any line drawn freehand on the PC. **Use the plotter as a real robotic arm synchronised with your hand**;
+- **Printing of digital images (any format)** obviously simplifying them first and then analyzing them in search of what could be defined as the _main lines_ of the image;
+- The possibility of printing in real time any line drawn freehand on the PC. **Use the plotter as a real robotic arm synchronized with your hand**;
 - And finally, even if added while "work is in progress", the function of **printing a real text** with the possibility of choosing font, size, alignment, etc...
 
 Having defined the main objectives, I started by writing the code.
 
 ## Setting up the code
 
-Since up to that moment I only knew C, except for a few web languages, I decided to learn Python's syntax so that I could take advantage of the multitude of libraries that I knew were available online.
+Since up to that moment I only knew C and a few web languages, I decided to learn Python's syntax so that I could take advantage of the multitude of libraries that I knew were available online.
 
-**The code is based on Python for the analysis, elaboration and the graphical interface, and on C++ for the Arduino program.**
+**The code is based on Python for the analysis, elaboration, and the graphical interface, and on C++ for the Arduino program.**
 
 <CMedia s="/v1637023033/Articoli/Gorlu%20la%20stampante/Logo_py_c.png" c="Python and C++ logos"></CMedia>
 
@@ -56,21 +56,21 @@ Among the most important libraries I have chosen to use are:
 
 ## The algorithm
 
-**The main algorithm**, the one that has with digital image printing, **is basically a search and sort algorithm**.
+**The main algorithm**, the one that has to do with digital image printing, **is basically a search and sort algorithm**.
 
 Given an input image, it simplifies it (using the [Canny() function](https://en.wikipedia.org/wiki/Canny_edge_detector) present in OpenCV) by extracting the main lines and then saving the identified pixels in a two-dimensional matrix.
 
 <CMedia s="/v1637024651/Articoli/Gorlu%20la%20stampante/Canny.png" c="An example of Canny's algorithm application"></CMedia>
 
-It is then scanned with the logic of printing not single dots (which could lead to problems with pen ink) but continuous lines. **Taken an element A, the algorithm scans its pixels in neighbouring positions looking for an element B to print. If successful, it sends the coordinates to the Arduino, otherwise it widens the search field, always centred on A, until a B element is identified.** The program then loops, taking as its starting point the coordinates of the B element it has just identified, and continues in the same way until the whole matrix has been scanned.
+It is then scanned with the logic of printing not single dots (which could lead to problems with pen ink) but continuous lines. **Given an element A, the algorithm scans its pixels in neighboring positions looking for an element B to print. If successful, it sends the coordinates to the Arduino, otherwise it widens the search field, always centered on A, until a B element is identified.** The program then loops, taking as its starting point the coordinates of the B element it has just identified, and continues in the same way until the whole matrix has been scanned.
 
 <CMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_1.png" c="Graphical simulation of the search algorithm"></CMedia>
 
 <CMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_2.png" c="A screenshot of the search algorithm"></CMedia>
 
-Since its simplicity and low computational complexity, the algorithm is fast and resource-efficient. In addition, working always and only within the RAM, there is never the need to save data on the hard disk and this allows to leave the PC free from unnecessary temporary files.
+Since its simplicity and low computational complexity, the algorithm is fast and resource efficient. In addition, working always and only within the RAM, there is never the need to save data on the hard disk and this allows to leave the PC free from unnecessary temporary files.
 
-Both digital image and text printing functions are managed by the algorithm described above. In fact, when you choose to print text, the programm transforms the written sheet into an image (by taking a sort of screen capture) and passes it as an input argument to the algorithm, which will process it like any other image.
+Both digital image and text printing functions are managed by the algorithm described above. In fact, when you choose to print text, the program transforms the written sheet into an image (by taking a sort of screen capture) and passes it as an input argument to the algorithm, which will process it like any other image.
 
 Speaking about the simultaneous printing hand/Arduino function, this is handled simply by sending the coordinates of the mouse when the touch is active. Nothing simpler.
 

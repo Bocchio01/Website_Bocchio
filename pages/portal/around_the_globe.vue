@@ -49,7 +49,7 @@
     "instructions": {
       "h2": "Instructions",
       "p": [
-        "This script will let you calculate easly azimuth angle and distances between two points on the earth's surface.",
+        "This script will let you easily calculate azimuth angle and distances between two points on the earth's surface.",
         "Available controls:",
         "With the button <span>&#8597;</span> is possible to invert starting and arrival coordinates.",
         "Starting point is the green one",

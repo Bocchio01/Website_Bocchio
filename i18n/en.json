@@ -10,7 +10,7 @@
         "title": "Who am I?",
         "paragraph": [
           "Hi! My name is Tommaso and I am a mechanical engineering student at Politecnico di Milano.",
-          "While studying, in my free time I develop a huge passion for computer science and programming.",
+          "In addition to my university studies, I developed a great passion for IT and programming in my free time.",
           "<b>I always want to create new things, try my hand at new challenges, and many times I get carried away until I succeed or am fully satisfied.</b>",
           "Finally, I strongly believe in contact with nature as a source of inspiration, and this is probably why I practice Orienteering..."
         ],
@@ -24,9 +24,9 @@
         "title": "Site's contents",
         "paragraph": [
           "The site is structured over three main sections:",
-          "<ul><li>Articles: <b>all the projects realized described accurately</b></li><li>Portals: <b>WebApps builts to support particular features of some project</b></li><li>Forum: designed <b>to encourage discussion and exchange of ideas.</b> You can visit it at the bottom of each article.</li></ul>",
-          "Generally speaking, all articles, portals and site itself are to be considered free to use.",
-          "<b>The distribution of the contents, ideas or concepts that can be found on these pages is absolutely a positive act and to be promoted.</b>"
+          "<ul><li>Articles: <b>all the projects realized accurately described</b></li><li>Portals: <b>WebApps built to support particular features of some project</b></li><li>Forum: designed <b>to encourage discussion and exchange of ideas.</b> You can visit it at the bottom of each article.</li></ul>",
+          "Unless stated otherwise, all articles, portals and site itself are to be considered free to use.",
+          "<b>I encourage spreading any idea you find on my site you may find worthy of sharing.</b>"
         ],
         "img": {
           "src": "#Contenuti",
@@ -37,9 +37,9 @@
         "path": "/mix/what-s-the-aim",
         "title": "What's the aim?",
         "paragraph": [
-          "This site was born out of the desire to have my own space where I could share my ideas and projects with others.",
-          "I'm convinced that social media are for some aspect restrictive and impose you too many limitations.",
-          "<b>So, main aim has always been to create a web space that was totally personal</b> and to be organized in completely autonomy. While developing it, I realized his <b>enormous potential</b>, that was very far from a simple board of articles and posts..."
+          "This site was born from the desire to have my own space where I could share my ideas and projects with others.",
+          "I believe that social media are for some aspect restrictive and impose you too many limitations.",
+          "<b>So, my main aim has always been to create a web space that was totally personal</b> and that I could organize in complete autonomy. While developing it, I realized his <b>enormous potential</b>, that was much more than a simple board of articles and posts..."
         ],
         "img": {
           "src": "#Scopo",
@@ -70,7 +70,7 @@
     },
     "links": ["Articles", "Portals", "Who am I?", "What's the aim?", "Personal area"]
   },
-  "cFooter": "You can find me also here",
+  "cFooter": "You can also find me here",
 
   "cForum": {
     "header": {
@@ -109,7 +109,7 @@
   "cLogin": {
     "title": "Personal area",
     "tags_array": ["Sign up", "Login", "Settings / Logout"],
-    "tooltiptext": ["Do Logout before doing other stuff here", "Do Login in order to have access to premium functionalities of the site"],
+    "tooltiptext": ["Please logout before logging in again", "Please login to start using the premium features of this site"],
     "button": {
       "sign_up": "Sign up",
       "login": "Login",
@@ -157,19 +157,19 @@
   "cNavigation": {
     "attachment": {
       "h2": "Attachments",
-      "p": ["Hereafter is project's folder.", "Hereafter is project's folders."],
+      "p": ["Here is the project's folder.", "Here are the project's folders."],
       "button": "Explore more!"
     },
     "navigation": {
       "h2": "Browse through the site",
       "p": [
-        "Hereafter are the previous, the next article and the portal related to this project.",
-        "Hereafter are the previous article and the portal related to this project.",
-        "Hereafter is the previous article.",
-        "Hereafter is the next article.",
-        "Hereafter is the portal related to this project.",
-        "Hereafter are the previous article and the portal related to this project.",
-        "Hereafter are the next article and the portal related to this project."
+        "Here are the previous, the next article and the portal related to this project.",
+        "Here are the previous article and the portal related to this project.",
+        "Here is the previous article.",
+        "Here is the next article.",
+        "Here is the portal related to this project.",
+        "Here are the previous article and the portal related to this project.",
+        "Here are the next article and the portal related to this project."
       ],
       "portal_title": "Project's portal"
     }
