@@ -15,9 +15,9 @@ updatedAt: 2022-02-25T22:52:00Z
 
 ## Ciao!
 
-Mi chiamo Tommaso, ho 20 anni e abito a Como, in Italia.
+Mi chiamo Tommaso, ho 20 anni e abito a Como, in Italia. (Edit: ora ho 21 anni)
 
-Se dovessi descrivermi con pochi e semplici aggettivi **probabilmente direi che sono testardo, tendenzialmente solitario, e forse anche un pelo controverso**. Ma d'altronde chi non lo è a questa età?
+Se dovessi descrivermi con pochi e semplici aggettivi **probabilmente direi che sono testardo, tendenzialmente solitario, e forse anche un pelo controverso (e qualcuno suggerisce anche pieno di risorse...).** Ma d'altronde chi non lo è a questa età?
 
 Molti mi conoscono come chi è sempre pronto a guidare il gruppo quando c'è da lavorare o prendere decisioni e poi il primo pronto a scherzare quando c'è da scherzare. Probabilmente è anche per questa strana combo che i miei amici non mi hanno ancora mandato a quel paese. Loro sono tra quelli che mi dicono di essere unico, mentre altri mi dicono di essere semplicemente incoerente. Ma a me poco interessa.
 

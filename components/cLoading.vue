@@ -9,7 +9,7 @@
 export default {
   mounted() {
     this.$store.dispatch('UserLogin')
-    if (!localStorage.getItem('master')) this.$store.dispatch('InteractionsUpdate', this.$route.fullPath + '?loading=true')
+    if (localStorage.getItem('admin') != process.env.API_KEY) this.$store.dispatch('InteractionsUpdate', '?loading=true')
     const loading = document.getElementsByClassName('loading')[0]
 
     setTimeout(() => {

@@ -1,5 +1,4 @@
 import getSiteMeta from './assets/js/getSiteMeta.js'
-import sendRequest from './assets/js/sendRequest.js'
 
 const meta = getSiteMeta()
 
@@ -133,6 +132,7 @@ export default {
   env: {
     HOST_URL: process.env.HOST_URL,
     UTILS_SITE: process.env.UTILS_SITE,
+    API_KEY: process.env.API_KEY,
     IS_DEV: process.env.IS_DEV,
   },
 

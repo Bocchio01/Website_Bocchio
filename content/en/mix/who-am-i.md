@@ -15,9 +15,9 @@ updatedAt: 2022-02-26T00:13:00Z
 
 ## Hi!
 
-My name is Tommaso, I'm 20 years old and I live in Como, Italy.
+My name is Tommaso, I'm 20 years old and I live in Como, Italy. (Edit: now I'm 21)
 
-If I had to describe myself with a few simple adjectives **I'd probably say I'm stubborn, tend to be solitary, and maybe even a bit contentious**. But then again, who isn't at this age?
+If I had to describe myself with a few simple adjectives **I'd probably say I'm stubborn, tend to be solitary, and maybe even a bit contentious (someone also suggested resourceful...).** But then again, who isn't at this age?
 
 Many people know me as the one who is always ready to lead the group, to get my hands dirty when there is work to be done, and to joke when there is something to joke about. It is probably also because of this strange combination that my friends have not yet told me to fuck off. They are among those who tell me to be unique, while others tell me that I’m simply incoherent. But I don’t really care.
 
