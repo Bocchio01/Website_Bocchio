@@ -72,7 +72,7 @@ Next, the algorithm computes the normal vectors of the two Cartesian planes need
 
 ## Test it and have fun!
 
-The program is obviously online and free to use. It contains, as said in the introduction, many more fun and interesting functionalities like the distance calculator and much more.<br> If you want to have a look at the code you can find it of course on GitHub at this <a href="https://gist.github.com/Bocchio01/78001e29f59d98b7b22bfadb905f7175">link</a>, otherwise if you prefer to try it directly, just browse the section:
+The program is obviously online and free to use. It contains, as said in the introduction, many more fun and interesting functionalities like the distance calculator and much more.<br> If you want to have a look at the code you can find it of course on GitHub at this [link](https://gist.github.com/Bocchio01/78001e29f59d98b7b22bfadb905f7175), otherwise if you prefer to try it directly, just browse the section:
 
 <nuxt-link :to="portalurl" class="button">Portal > Around_the_globe</nuxt-link>
 

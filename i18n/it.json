@@ -176,5 +176,17 @@
   },
 
   "vuex": ["Connessione al server...", "Utente attuale: "],
-  "cLoading": "Caricamento..."
+  "cLoading": "Caricamento...",
+
+  "article": {
+    "title": "Sezione articoli",
+    "description": "Pagina di elenco degli articoli del sito Bocchio's WebSite",
+    "msg": "Vai all'articolo"
+  },
+
+  "portal": {
+    "title": "Sezione portali",
+    "description": "Pagina di elenco dei portali del sito Bocchio's WebSite",
+    "msg": "Accedi al portale"
+  }
 }

@@ -1,41 +1,35 @@
 # Bocchio's WebSite
 
-Finally I decided to code my personal online space. If you want to understand how the site has been structured I strongly suggest you to read this article.
+My personal website: an online laboratory that helps me talk about the projects I have done, in some cases build new ones and generally experiment.
 
----
+## Discovering new stuff
 
-# To-do list
+I have used this project over the last few months as an online lab where I could discover some new techniques and take a look at the unknown world of javascript, frameworks, basic HTML, CSS and so on.
 
-## BUG
+Started just for fun, it quickly became a full website with user registration, database, analytics, forum, integrated WebApp and some other cool features.
 
-## Generale
+Sometimes I preferred to avoid using ready-made libraries just to have a more complete view on how to manage particular web-related tasks (like cookies or loggin system).
 
-- Visione password con occhio
-- Sistemare la privacy policy multilingua (cambiare iubenda)
-- Controllare se un utente può o meno eliminare l'account
-- Sistemare il css della 'x' di pulizia nelle barre di ricerca (ora è blu ma deve essere o nero o bianco)
+Many commits, many tests, many fails... but that's how I thought of it in my head
 
-## Articoli
+## Links and resources
 
-- Forum:
+The whole project is divided into two different repositories, one for the "frontend" and another for the "backend/database". The database is also hosted on a different domain/host.
 
-  - Traduzione automatica (online API DeepL)
+Links to the repositories:
 
-- Possibili:
-  - Stampa in PDF dei testi degli articoli
-  - Lettura con player audio integrato
-  - Allegati:
-    - Link
-  - Condivisione social:
-    - Facebook
-    - What's App
-    - Twitter
-    - Instagram (?)
-  - Navigazione nel sito:
-    - Link che rimanda ad Elenco Articoli / Portali da CNavigation
+- [Frontend](https://github.com/Bocchio01/Bocchio_WebSite) (Nuxt/VueJS framework, HTML and CSS)
+- [Backend/Database](https://github.com/Bocchio01/Bocchio_WebSite_Utils) (PHP and MySQL)
 
-## Portali
+Links to sites:
 
-## Server
+- [Frontend](https://github.com/Bocchio01/Bocchio_WebSite) (hosted on Netlify)
+- [Backend/Database](https://github.com/Bocchio01/Bocchio_WebSite_Utils) (hosted on Altervista)
 
-- Best practice (database, variable, function type definition)
+## Explore
+
+Everything is ready for your visit! Go and leave feedback under one of the articles already on the site, or play with one of the portal. It's up to you! See you there...
+
+Have a good day of coding,
+
+Tommaso :panda_face:

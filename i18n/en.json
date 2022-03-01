@@ -176,5 +176,17 @@
   },
 
   "vuex": ["Connection to the server...", "Current user: "],
-  "cLoading": "Loading..."
+  "cLoading": "Loading...",
+
+  "article": {
+    "title": "Articles section",
+    "description": "Bocchio's WebSite article list page",
+    "msg": "Go to the article"
+  },
+
+  "portal": {
+    "title": "Portals section",
+    "description": "Bocchio's WebSite portals list page",
+    "msg": "Access the portal"
+  }
 }

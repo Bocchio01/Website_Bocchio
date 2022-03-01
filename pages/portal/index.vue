@@ -1,26 +1,8 @@
-<i18n>
-
-{
-  "it": {
-    "title": "Sezione portali",
-    "description": "Pagina di elenco dei portali del sito Bocchio's WebSite",
-    "msg": "Vai al portale"
-  },
-
- "en": {
-    "title": "Portals section",
-    "description": "Bocchio's WebSite portals list page",
-    "msg": "Access the portal"
-  }
-}
-
-</i18n>
-
 <template>
   <div>
-    <CHeadBase :title="$t('title')" :description="$t('description')" />
+    <CHeadBase :title="$t('portal.title')" :description="$t('portal.description')" />
     <CSearch @toParent="handler" />
-    <CWrap v-for="(portale, index) in portali" :key="index" :obj="portale" :search_title="title_to_view" :msg="$t('msg')" />
+    <CWrap v-for="(portale, index) in portali" :key="index" :obj="portale" :search_title="title_to_view" :msg="$t('portal.msg')" />
   </div>
 </template>
 

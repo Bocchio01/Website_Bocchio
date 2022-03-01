@@ -1,26 +1,8 @@
-<i18n>
-
-{
-  "it": {
-    "title": "Sezione articoli",
-    "description": "Pagina di elenco degli articoli del sito Bocchio's WebSite",
-    "msg": "Vai all'articolo"
-  },
-
- "en": {
-    "title": "Articles section",
-    "description": "Bocchio's WebSite article list page",
-    "msg": "Go to the article"
-  }
-}
-
-</i18n>
-
 <template>
   <div>
-    <CHeadBase :title="$t('title')" :description="$t('description')" />
+    <CHeadBase :title="$t('article.title')" :description="$t('article.description')" />
     <CSearch @toParent="handler" :tags="tags_array" />
-    <CWrap v-for="(article, index) in articles" :key="index" :obj="article" :tags="tags_to_view" :search_title="title_to_view" :msg="$t('msg')" />
+    <CWrap v-for="(article, index) in articles" :key="index" :obj="article" :tags="tags_to_view" :search_title="title_to_view" :msg="$t('article.msg')" />
   </div>
 </template>
 
