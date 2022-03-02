@@ -30,6 +30,6 @@ Links to sites:
 
 Everything is ready for your visit! Go and leave feedback under one of the articles already on the site, or play with one of the portal. It's up to you! See you there...
 
-Have a good day of coding,
+Have a nice coding day,
 
 Tommaso :panda_face:

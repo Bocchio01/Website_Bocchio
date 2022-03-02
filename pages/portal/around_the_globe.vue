@@ -140,7 +140,7 @@
             <img
               class="compass-pointer"
               src="https://vasilis-tsirimokos.com/codepen/compass-pointer.png"
-              :style="'transform: rotate(' + (parseInt(risultati.azimut) || 0) + 45 + 'deg);margin:0px'"
+              :style="'transform: rotate(' + (parseInt(risultati.azimut) + 45) + 'deg);margin:0px'"
             />
           </div>
           <div>
