@@ -30,7 +30,10 @@
             <nuxt-link :to="localePath('/mix/what-s-the-aim')">{{ $t('cHeader.links.3') }}</nuxt-link>
           </li>
           <li>
-            <a href="#" @click="$store.commit('toggle_show', 'login')">{{ $t('cHeader.links.4') }}</a>
+            <nuxt-link :to="localePath('/mix/to-the-adventure')">{{ $t('cHeader.links.4') }}</nuxt-link>
+          </li>
+          <li>
+            <a href="#" @click="$store.commit('toggle_show', 'login')">{{ $t('cHeader.links.5') }}</a>
           </li>
         </ul>
       </li>
@@ -194,7 +197,7 @@ export default {
       padding: 0px;
     }
     .dropdown-content {
-      max-height: 220px;
+      max-height: 290px;
       display: block;
       position: absolute;
       right: 0px;

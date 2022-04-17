@@ -35,7 +35,16 @@
 }*/
 </style>
 <template>
-  <div id="joystick_id" class="vue-joystick" :style="style" @touchmove="handleTouch" @mousemove="handleMove" @mousedown="handleStart" @mouseup="handleRelease" @touchend="handleRelease"></div>
+  <div
+    id="joystick_id"
+    class="vue-joystick"
+    :style="style"
+    @touchmove="handleTouch"
+    @mousemove="handleMove"
+    @mousedown="handleStart"
+    @mouseup="handleRelease"
+    @touchend="handleRelease"
+  ></div>
 </template>
 <script>
 export default {
@@ -98,8 +107,8 @@ export default {
       const parameters = [Math.round(x - rect.left), 256 - Math.round(y - rect.top)]
       this.x = Math.min(128, Math.round(x - rect.left) - 128)
       this.y = Math.round(y - rect.top) - 128
-      const min = [-90, -50]
-      const max = [90, 50]
+      const min = [-6, -20]
+      const max = [6, 20]
       var fin_value = []
       for (var i = 0; i < min.length; i++) {
         var range = max[i] - min[i]
