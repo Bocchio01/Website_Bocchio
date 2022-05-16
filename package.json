@@ -19,7 +19,7 @@
     "json-pointer": "^0.6.2",
     "leaflet-geosearch": "^3.6.0",
     "leaflet.geodesic": "^2.6.1",
-    "mathjs": "^10.5.0",
+    "mathjs": "^10.5.3",
     "nuxt": "^2.15.8",
     "puppeteer-core": "7.0.4",
     "vue2-leaflet": "^2.7.1",
