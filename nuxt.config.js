@@ -98,7 +98,13 @@ export default {
       const Articoli = await $content('', { deep: true }).only(['path']).fetch()
       const routes = Articoli.map((route) => {
         if (route.path.indexOf('article') > -1) {
-          route.path = route.path.substring(0, 11) + route.path.substring(16)
+          let indexes = []
+          for (let index = 0; index < route.path.length; index++) {
+            if (route.path[index] === '/') {
+              indexes.push(index)
+            }
+          }
+          route.path = route.path.substring(0, indexes[2]) + route.path.substring(indexes[3])
         }
 
         if (route.path.indexOf('/en/') == 0) {
