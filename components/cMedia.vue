@@ -1,6 +1,7 @@
 <template>
   <div class="media">
-    <figure v-if="type == 'img' || type == 'svg'" :class="[espansione ? 'embedded_img msg_bg visible' : '']" @click="espansione = !espansione">
+    <figure v-if="type == 'img' || type == 'svg'" :class="[espansione ? 'embedded_img msg_bg visible' : '']"
+      @click="espansione = !espansione">
       <!--
       xs: 320,
       sm: 640,
@@ -15,7 +16,8 @@
         <use :xlink:href="require('~/assets/svg/svg_list.svg') + s" :alt="a"></use>
       </svg>
 
-      <nuxt-picture v-else-if="provider == 'Cloudinary'" provider="cloudinary" :src="s" sizes="xs:320px sm:400px md:460px lg:700px" v-bind:alt="a ? a : c" format="webp" />
+      <nuxt-picture v-else-if="s.indexOf('http') == -1 && provider == 'Cloudinary'" provider="cloudinary" :src="s"
+        sizes="xs:320px sm:400px md:460px lg:700px" v-bind:alt="a ? a : c" format="webp" />
       <img v-else :src="s" v-bind:alt="a ? a : c" />
       <figcaption>{{ c }}</figcaption>
     </figure>
@@ -29,13 +31,9 @@
     </figure>
 
     <figure v-if="type == 'iframe'">
-      <iframe
-        :src="s"
-        v-bind:title="[a ? a : c]"
-        frameborder="0"
+      <iframe :src="s" v-bind:title="[a ? a : c]" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+        allowfullscreen></iframe>
 
       <figcaption>{{ c }}</figcaption>
     </figure>
@@ -64,28 +62,33 @@ export default {
 .media {
   margin-block: 30px;
   text-align: center;
+
   &:first-of-type img {
     width: unset;
   }
+
   &:first-of-type img,
   &:first-of-type svg {
     max-height: 450px;
   }
-  > figure {
+
+  >figure {
     svg {
       padding: 20px;
       aspect-ratio: 1;
     }
+
     svg,
     img,
-    > video,
-    > iframe {
+    >video,
+    >iframe {
       max-width: 100%;
       width: 700px;
       border-radius: 20px;
       background-color: white;
     }
-    > figcaption {
+
+    >figcaption {
       font-style: italic;
       font-size: calc(var(--Size_Text_Wrap) - 2px);
       font-family: var(--Font_Base);
@@ -93,6 +96,7 @@ export default {
       padding-inline: 10px;
       overflow-wrap: anywhere;
     }
+
     &.embedded_img {
       color: white;
       overflow: auto;
@@ -104,7 +108,8 @@ export default {
         width: unset;
         background-color: white;
       }
-      > figcaption {
+
+      >figcaption {
         font-size: calc(5px + var(--Size_Text_Wrap));
       }
     }
@@ -112,13 +117,13 @@ export default {
 }
 
 @media (min-width: 700px) {
-  .media > figure > iframe {
+  .media>figure>iframe {
     height: 400px;
   }
 }
 
 @media (max-width: 700px) {
-  .media > figure > iframe {
+  .media>figure>iframe {
     height: 300px;
   }
 }

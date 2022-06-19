@@ -7,10 +7,17 @@
         </router-link>
         <nuxt-link :to="localePath('/')">Tommaso Bocchietti</nuxt-link>
       </div>
-      <input class="menu-btn" type="checkbox" id="menu-btn" />
-      <label class="menu-icon" for="menu-btn" @click="Menu_click" @keyup.enter="Menu_click" tabindex="0">
-        <span class="navicon"></span>
-      </label>
+
+      <div>
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn" @click="Menu_click" @keyup.enter="Menu_click" tabindex="0">
+          <span class="navicon"></span>
+        </label>
+        <nuxt-link class="lang-icon-main" :to="switchLocalePath($t('cHeader.switch.iso'))">
+          <img style="" :src="require('~/assets/png/Lang/' + $t('cHeader.switch.img'))"
+            :alt="'Flag ' + $t('cHeader.switch.iso')" />
+        </nuxt-link>
+      </div>
     </div>
     <ul :style="!showMenu ? 'max-height: 0px' : 'max-height: 1000px'">
       <li>
@@ -21,7 +28,8 @@
       </li>
 
       <li>
-        <a @click="SubMenu_click" @keyup.enter="SubMenu_click" :class="{ hover: showSubMenu }" tabindex="0" style="cursor: pointer">Mix</a>
+        <a @click="SubMenu_click" @keyup.enter="SubMenu_click" :class="{ hover: showSubMenu }" tabindex="0"
+          style="cursor: pointer">Mix</a>
         <ul class="dropdown-content" :class="!showSubMenu ? 'hide' : ''">
           <li>
             <nuxt-link :to="localePath('/mix/who-am-i')">{{ $t('cHeader.links.2') }}</nuxt-link>
@@ -37,12 +45,15 @@
           </li>
         </ul>
       </li>
-      <li>
+
+      <li class="lang-icon-sub">
         <nuxt-link :to="switchLocalePath($t('cHeader.switch.iso'))">
-          <img style="height: calc(1.7 * var(--Size_Text_Header))" :src="require('~/assets/png/Lang/' + $t('cHeader.switch.img'))" :alt="'Flag ' + $t('cHeader.switch.iso')" />
+          <img :src="require('~/assets/png/Lang/' + $t('cHeader.switch.img'))"
+            :alt="'Flag ' + $t('cHeader.switch.iso')" />
         </nuxt-link>
       </li>
     </ul>
+
   </header>
 </template>
 
@@ -74,7 +85,7 @@ export default {
         this.$store.commit('set_show', ['mainmenu', false])
         try {
           document.getElementById('menu-btn').checked = false
-        } catch (error) {}
+        } catch (error) { }
       }
     }
   },
@@ -100,6 +111,7 @@ export default {
 
 <style lang="scss">
 .Default {
+
   header,
   .dropdown-content {
     display: flex;
@@ -129,48 +141,58 @@ export default {
       font-weight: bold;
       font-family: var(--Font_Special);
       font-size: var(--Size_Text_Header);
+
       &:hover,
       &.hover {
         color: var(--Color_Hover);
       }
     }
-    > div {
+
+    >div {
       display: flex;
       justify-content: space-between;
-      > div {
+
+      >div {
         display: flex;
         align-items: center;
       }
-      > .menu-btn {
+
+      >div>.menu-btn {
         display: none;
-        &:checked ~ .menu-icon {
-          > .navicon {
+
+        &:checked~.menu-icon {
+          >.navicon {
             background: transparent;
 
             &::after,
             &::before {
               top: 0;
             }
+
             &::before {
               transform: rotate(-45deg);
             }
+
             &::after {
               transform: rotate(45deg);
             }
           }
         }
       }
-      > .menu-icon {
+
+      >div>.menu-icon {
         display: none;
         cursor: pointer;
         padding: 30px;
-        > .navicon {
+
+        >.navicon {
           align-self: center;
           background: var(--Color_Text);
           height: 2px;
           position: relative;
           transition: all 0.2s ease-out;
           width: 18px;
+
           &::after,
           &::before {
             background: var(--Color_Text);
@@ -180,14 +202,36 @@ export default {
             transition: all 0.2s ease-out;
             width: 100%;
           }
+
           &::before {
             top: 6px;
           }
+
           &::after {
             top: -6px;
           }
         }
       }
+
+      >div>.lang-icon-main {
+        display: none;
+        cursor: pointer;
+        margin: 0px;
+        margin-right: 7px;
+
+        >img {
+          height: calc(1.7 * var(--Size_Text_Header));
+          vertical-align: middle
+        }
+      }
+    }
+
+    .lang-icon-sub {
+      img {
+        height: calc(1.7 * var(--Size_Text_Header))
+      }
+
+      height: 0
     }
 
     ul {
@@ -196,6 +240,7 @@ export default {
       list-style-type: none;
       padding: 0px;
     }
+
     .dropdown-content {
       max-height: 290px;
       display: block;
@@ -211,17 +256,29 @@ export default {
   .Default {
     header {
       display: block;
-      > div > .menu-icon {
+
+      >div>div>.menu-icon {
         display: inline-flex;
       }
+
+      >div>div>.lang-icon-main {
+        display: inline-flex;
+      }
+
       ul {
         display: block;
         overflow: hidden;
+
         // transition: max-height 0.3s ease-out;
-        > li {
+        >li {
           text-align: center;
         }
       }
+
+      .lang-icon-sub {
+        display: none
+      }
+
       .dropdown-content {
         position: relative;
         margin: 15px 15px;
@@ -229,6 +286,7 @@ export default {
     }
   }
 }
+
 @media (max-width: 750px) {
   .Default header * {
     transition: none !important;
@@ -239,8 +297,9 @@ export default {
   :root {
     --Size_Text_Header: 19px;
   }
+
   .Default {
-    header > div > .menu-icon {
+    header>div>.menu-icon {
       padding: 15px;
     }
   }

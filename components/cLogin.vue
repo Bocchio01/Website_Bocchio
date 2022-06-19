@@ -26,7 +26,7 @@
 
           <div v-show="tags_to_view[0] || tags_to_view[1]">
             <label for="email">E-mail</label>
-            <input id="email" type="email" :value="user.email" @input="updateVal($event, 'email')" required placeholder="Es: tommaso.bocchietti@gmail.com" />
+            <input id="email" type="email" :value="user.email" @input="updateVal($event, 'email')" required placeholder="Es: webmaster@bocchio.dev" />
           </div>
 
           <div style="margin-bottom: 0" v-show="tags_to_view[0] || tags_to_view[1]">

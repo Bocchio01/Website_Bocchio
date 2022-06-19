@@ -77,11 +77,12 @@ a {
 
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
   background: var(--Color_Body_BG);
-}
+} */
 
 ::-webkit-scrollbar-thumb {
   background: rgba(50, 50, 50, 0.8);

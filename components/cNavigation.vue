@@ -25,7 +25,7 @@
       <div>
         <div class="wrap document" v-if="data.prev">
           <p>{{ data.prev.title }}</p>
-          <CMedia :s="data.prev.img.src" :a="data.prev.img.src"></CMedia>
+          <CMedia v-if="data.prev.img" :s="data.prev.img.src" :a="data.prev.img.src"></CMedia>
           <NuxtLink :to="localePath('/article/' + data.prev.slug + '/')" class="link_hidden">
             <div class="button"><span>&#8617;</span></div>
           </NuxtLink>
@@ -33,7 +33,7 @@
 
         <div class="wrap document" v-if="data.portal.urlPortal">
           <p>{{ $t('cNavigation.navigation.portal_title') }}</p>
-          <CMedia :s="data.portal.img.src" :a="data.portal.img.src"></CMedia>
+          <CMedia v-if="data.portal.img" :s="data.portal.img.src" :a="data.portal.img.src"></CMedia>
           <NuxtLink :to="localePath(data.portal.urlPortal)" class="link_hidden">
             <div class="button"><span>&#8605;</span></div>
           </NuxtLink>
@@ -41,7 +41,7 @@
 
         <div class="wrap document" v-if="data.next">
           <p>{{ data.next.title }}</p>
-          <CMedia :s="data.next.img.src" :a="data.next.img.src"></CMedia>
+          <CMedia v-if="data.next.img" :s="data.next.img.src" :a="data.next.img.src"></CMedia>
           <NuxtLink :to="localePath('/article/' + data.next.slug + '/')" class="link_hidden">
             <div class="button"><span>&#8618;</span></div>
           </NuxtLink>
@@ -113,27 +113,32 @@ export default {
   row-gap: 25px;
   margin-block: 25px;
 }
+
 .wrap.navigation {
   padding: var(--Padding_Wrap_Min);
   margin-block: 0px;
 
-  > div {
+  >div {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    > .document {
+
+    >.document {
       margin-inline: auto;
       text-align: center;
       margin: 10px;
       padding: var(--Padding_Wrap_Min);
       width: fit-content;
-      > p {
+
+      >p {
         font-weight: bold;
       }
+
       .media {
         margin-top: 0px;
         margin-bottom: 0px;
       }
+
       img {
         border-radius: 20px;
         background-color: white;
@@ -141,10 +146,12 @@ export default {
         max-height: 150px;
         max-width: 150px;
       }
+
       &:hover {
         transform: scale(1.05);
         background-color: gray;
-        > .link_hidden {
+
+        >.link_hidden {
           visibility: visible;
         }
       }
@@ -153,7 +160,7 @@ export default {
 }
 
 @media (max-width: 750px) {
-  .wrap.navigation > div > .document img {
+  .wrap.navigation>div>.document img {
     max-height: 75px;
     max-width: 75px;
   }

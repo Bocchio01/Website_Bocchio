@@ -2,7 +2,8 @@
   <div>
     <CHeadBase :title="$t('article.title')" :description="$t('article.description')" />
     <CSearch @toParent="handler" :tags="tags_array" />
-    <CWrap v-for="(article, index) in articles" :key="index" :obj="article" :tags="tags_to_view" :search_title="title_to_view" :msg="$t('article.msg')" />
+    <CWrap v-for="(article, index) in articles" :key="index" :obj="article" :tags="tags_to_view"
+      :search_title="title_to_view" :msg="$t('article.msg')" />
   </div>
 </template>
 

@@ -14,6 +14,10 @@ export default {
 
     const loading = document.getElementsByClassName('loading')[0]
 
+    if (process.env.IS_DEV) {
+      loading.style.display = "none"
+    }
+
     setTimeout(() => {
       this.$store.commit('update_user', { e: this.$i18n.getLocaleCookie(), target: 'preferences.lang' })
       loading.style.opacity = 0
@@ -34,7 +38,6 @@ export default {
 
 <style lang="scss">
 div.loading {
-  // visibility: hidden;
   z-index: 1100;
   position: fixed;
   top: 0px;
@@ -51,7 +54,8 @@ div.loading {
   font-size: var(--Size_Title);
   text-align: center;
   transition: all 1000ms ease-in;
-  > .logo {
+
+  >.logo {
     transition: all 1s 0.5s ease-in;
     width: 500px;
     height: 500px;
@@ -61,7 +65,7 @@ div.loading {
 }
 
 @media (max-width: 550px) {
-  div.loading > .logo {
+  div.loading>.logo {
     width: 300px;
     height: 300px;
     max-width: 80vw;

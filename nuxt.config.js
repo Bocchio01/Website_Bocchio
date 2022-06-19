@@ -35,6 +35,11 @@ export default {
 
   content: {
     liveEdit: false,
+    markdown: {
+      prism: {
+        theme: 'prism-themes/themes/prism-vsc-dark-plus.css',
+      },
+    },
   },
 
   build: {
@@ -70,7 +75,8 @@ export default {
     manifest: {
       name: "Bocchio's WebSite",
       short_name: "Bocchio's WebSite",
-      description: "More than a simple portfolio: a complete tuor through Bocchio's mind and interests. Articles, portals and WebApps that goes from programming to engineering.",
+      description:
+        "Tommaso Bocchietti. More than a simple portfolio: a complete tuor through Bocchio's mind and interests. Articles, portals and WebApps that goes from programming to engineering.",
       background_color: '#000',
       theme_color: '#000',
       lang: 'en',

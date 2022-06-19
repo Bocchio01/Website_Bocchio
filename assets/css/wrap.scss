@@ -25,6 +25,12 @@
     font-size: calc(1.5 * var(--Size_Text_Wrap));
     text-align: left;
   }
+  h3 {
+    margin-top: 20px;
+    width: fit-content;
+    border-bottom: 1px solid #a2a2a2;
+    text-align: left;
+  }
   * {
     font-size: var(--Size_Text_Wrap);
     font-family: var(--Font_Base);
@@ -38,6 +44,9 @@
   }
   pre {
     border-radius: var(--Border_Radius_Header);
+    max-width: 100%;
+    width: 700px;
+    margin-inline: auto !important;
   }
 }
 

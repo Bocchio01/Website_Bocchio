@@ -1,8 +1,6 @@
 <template>
-  <div
-    class="wrap card"
-    v-show="search_title ? obj.title.toLowerCase().indexOf(search_title.toLowerCase()) != -1 : tags.length != 0 ? tags.some((r) => obj.tag.includes(r)) : true"
-  >
+  <div class="wrap card"
+    v-show="search_title ? obj.title.toLowerCase().indexOf(search_title.toLowerCase()) != -1 : tags.length != 0 ? tags.some((r) => obj.tag.includes(r)) : true">
     <nuxt-link :to="localePath(obj.path)" class="link_hidden">
       <div v-if="msg" class="button">{{ msg }}</div>
     </nuxt-link>
@@ -13,11 +11,12 @@
       <div v-else v-html="Object.values(obj.paragraph).join('<br>')"></div>
     </div>
 
-    <figure>
+    <figure v-if="obj.img">
       <svg v-if="obj.img.src.indexOf('#') == 0">
         <use :xlink:href="require('~/assets/svg/svg_list.svg') + obj.img.src" :alt="obj.img.alt"></use>
       </svg>
-      <nuxt-picture v-else-if="obj.img.src.indexOf('http') == -1" provider="cloudinary" :src="obj.img.src" v-bind:alt="obj.img.alt" format="webp" />
+      <nuxt-picture v-else-if="obj.img.src.indexOf('http') == -1" provider="cloudinary" :src="obj.img.src"
+        v-bind:alt="obj.img.alt" format="webp" />
       <img v-else :src="obj.img.src" :alt="obj.img.alt" />
     </figure>
   </div>
@@ -48,22 +47,27 @@ export default {
   padding: var(--Padding_Wrap);
   row-gap: 15px;
   column-gap: 64px;
+
   &:nth-child(2n) {
     flex-direction: row-reverse;
   }
-  > div {
+
+  >div {
     flex: auto;
     overflow-wrap: anywhere;
-    > div {
+
+    >div {
       margin-block: 10px;
       max-width: fit-content;
     }
   }
-  > .link_hidden > div.button {
+
+  >.link_hidden>div.button {
     font-size: calc(var(--Size_Text_Wrap) + 5px);
     font-family: var(--Font_Special);
     text-decoration: none;
   }
+
   img,
   svg {
     height: 300px;
@@ -74,24 +78,30 @@ export default {
     border-radius: 20px;
     background-color: white;
   }
+
   svg {
     padding: 15px;
     aspect-ratio: 1;
   }
+
   &:hover {
     transform: scale(1.05);
     background-color: gray;
-    > .link_hidden {
+
+    >.link_hidden {
       visibility: visible;
     }
+
     img,
     svg {
       transform: scale(1.1);
     }
   }
 }
+
 @media (max-width: 1030px) {
   .wrap.card {
+
     img,
     svg {
       max-height: 200px;
