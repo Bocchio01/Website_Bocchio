@@ -29,6 +29,10 @@ I probably create a strange effect on the people around me: I feel like many peo
 
 This is, I believe, Tommaso Bocchietti in a few lines, although in reality this page would probably have been more correct if it was written by some friend of mine who really knows me, not by myself. After all, who really knows themselve?
 
+<nuxt-link to="/mix/to-the-adventure/" class="button">To the adventure!</nuxt-link>
+
+Especially for those who would like to learn more about who I am and/or how I think, I recommend visiting the adventure page by clicking above. Sometimes you can best understand a person by what he does and not by what he says...
+
 ## Mechanics
 
 Ever since I was a child, I have had a penchant for anything with gears and complex mechanisms inside it that governed its movement. Probably unconsciously I was simply **looking for logic and rationality**, for something I could control 100% without depending on external variable factors.

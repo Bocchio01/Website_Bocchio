@@ -66,7 +66,22 @@ Ne viene allora eseguita la scansione con la logica di andare a stampare non sin
 
 <CMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_1.png" c="Simulazione grafica dell'algoritmo di ricerca"></CMedia>
 
-<CMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_2.png" c="Uno screen dell'algoritmo di ricerca"></CMedia>
+```python
+while not img_to_print.all():
+        i, cont = 0, cont + 1
+        while True:
+            i += 1
+            try:
+                y = np.where(img_to_print[max(0, Y-i): Y+i+1, max(0, X-i): X+i+1] == 0)[0][0]
+                x = np.where(img_to_print[max(0, Y-i): Y+i+1, max(0, X-i): X+i+1] == 0)[1][0]
+                X, Y = x + max(0, X-i), y + max(0, Y-i)
+                img_to_print[Y][X] = 255
+                break
+            except:
+                pass
+```
+
+<!-- <CMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_2.png" c="Uno screen dell'algoritmo di ricerca"></CMedia> -->
 
 Vista la sua semplicità e la sua bassa complessità computazionale, l'algoritmo risulta essere rapido e poco dispendioso di risorse. Inoltre, lavorando sempre e solo all'interno della RAM, non vi è mai la necessità di salvare dati sul disco fisso e questo permette di lasciare il PC libero da superflui file di salvataggio.
 

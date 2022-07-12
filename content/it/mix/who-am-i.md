@@ -29,6 +29,10 @@ Creo probabilmente uno strano effetto nelle persone che mi circondano: parecchie
 
 Questo credo sia Tommaso Bocchietti in poche righe, anche se in realtà questa pagina probabilmente sarebbe stato più corretto se l'avessi fatta scrivere da qualche mio amico o simili che mi conosce sul serio. Mica da me stesso, come si fa a conoscersi realmente?
 
+<nuxt-link to="/it/mix/to-the-adventure/" class="button">All'avventura!</nuxt-link>
+
+Soprattutto a chi volesse approfondire meglio chi sono e/o come ragiono, consiglio di visitare la pagina dedicata alle avventure cliccando qui sopra. Alcune volte si comprende meglio una persona da quello che fa e non da quello che dice...
+
 ## La meccanica
 
 Fin da piccolo ho avuto una certa propensione verso tutto ciò che avesse all'interno ingranaggi e in generale meccanismi complessi che ne governavano il movimento. Probabilmente inconsciamente ero semplicemente **alla ricerca di logica e razionalità**, di qualcosa che potessi controllare al 100% senza che dipendesse da fattori esterni variabili.

@@ -64,11 +64,48 @@ L'implementazione a livello di algoritmo di tutta la matematica spiegata sopra, 
 
 Dopo aver salvato i dati di latitudine e longitudine in un array, ne esegue la conversione da gradi a radianti di modo da facilitare l'uso di funzioni trigonometriche essenziali per ricavare poi le coordinate cartesiane dei punti.
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Algoritmo_coordinate_cartesiane.png" c="L'algoritmo per il cambio di parametrizzazione"></CMedia>
+```javascript
+  terna_cartesiana: function (polare) {
+    /*
+        Calcolo delle coordinate cartesiane di un punto a partire dalle due sue coordinate polari
+        alfa => longitudine
+        beta => latitudine
+    */
+
+    const alfa = polare[1]
+    const beta = polare[0]
+
+    var terna_cartesiane = [this.Req * sin(alfa) * sin(beta), this.Req * cos(alfa) * sin(beta), this.Rpo * cos(beta)]
+
+    return terna_cartesiane
+  }
+```
+
+<!-- <CMedia s="/v1635210809/Articoli/Around%20the%20globe/Algoritmo_coordinate_cartesiane.png" c="L'algoritmo per il cambio di parametrizzazione"></CMedia> -->
 
 Successivamente l'algoritmo elabora i vettori normali ai due piani cartesiani necessari per il calcolo dell'azimut. Per fare ciò calcola, come sottrazione di coordinate dei tre punti di riferimento, due vettori che appartengono al piano e, con l'utilizzo del prodotto vettoriale su quest'ultimi, **calcola il vettore normale al piano cartesiano**. L'operazione viene poi ripetuta anche per il secondo piano cartesiano e **infine viene calcolato l'angolo formato tra i due vettori normali ai piani**, ottenendo così l'azimut ricercato.
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Algoritmo_vettore_piano.png" c="Vettore normale al piano - Calcolo dell'angolo tra vettori"></CMedia>
+```javascript
+    vettore_piano_cartesiano: function (p1, p2, p3) {
+    // Calcolo del vettore matematico (array) generatore del piano passante per i 3 punti di partenza
+
+    var vettore = cross(subtract(p1, p2), subtract(p1, p3))
+    var vettore = divide(vettore, norm(vettore))
+
+    return vettore
+  },
+
+   angolo_vettori: function (vet_1, vet_2) {
+    // Calcolo dell'angolo in gradi tra due vettori matematici
+
+    var CosTheta = max(min(dot(vet_1, vet_2) / (norm(vet_1) * norm(vet_2)), 1), -1)
+    var Theta = divide(re(acos(CosTheta)), pi / 180)
+
+    return Theta
+  }
+```
+
+<!-- <CMedia s="/v1635210809/Articoli/Around%20the%20globe/Algoritmo_vettore_piano.png" c="Vettore normale al piano - Calcolo dell'angolo tra vettori"></CMedia> -->
 
 ## Testalo e divertiti!
 

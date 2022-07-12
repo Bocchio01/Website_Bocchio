@@ -1,6 +1,4 @@
 ---
-published: false
-
 title: Il codice del sito
 description: "Tutta l'evoluzione che questo sito ha avuto durante la sua costruzione: gli esperimenti, le scelte fatte e quindi le tecnologie attualmente adoperate."
 paragraph: ["Un misto tra story telling e tecnicismi del codice di questo sito e del suo database.",
@@ -23,15 +21,15 @@ updatedAt: 2022-05-06T23:48:00Z
 
 Questo sito è stato fin da subito per me un grande laboratorio online dove poter sperimentare e testare molti dei linguaggi, delle tecniche e delle problematiche che riguardano lo sviluppo web moderno.
 
-Riassumento brevemente si può dire che, grazie al continuo sviluppo e alla mia incessante voglia di migliorare, sono passato dall'avere una conoscenza decisamente limitata di HTML e CSS, ad avere una visione molto più completa delle architetture Web, dei Framework, nonchè della manipolazione di dati server/client.
+Riassumendo brevemente si può dire che, grazie al continuo sviluppo e alla mia incessante voglia di migliorare, sono passato dall'avere una conoscenza decisamente limitata di HTML e CSS, ad avere una visione molto più completa delle architetture Web, dei Framework, nonché della manipolazione di dati server/client.
 
-Il salto più grande è stato sicuramente il passaggio dall'utilizzo di linguaggi _"vaniglia"_, all'uso di tecnologie più strutturate quali i framework JavaScript che per altro costituiscono attualmente lo scheletro portante del sito.
+**Il salto più grande è stato sicuramente il passaggio dall'utilizzo di linguaggi _"vaniglia"_, all'uso di tecnologie più strutturate quali i framework JavaScript che per altro costituiscono attualmente lo scheletro portante del sito.**
 
 ## Primi esperimenti
 
 ### Marzo 2021
 
-I primi esperimenti avevano il semplice scopo di fare un po' una rispolverata generale delle poche nozioni che avevo appreso a scuola. Per questo creai delle semplici pagine statiche con puro HTML e CSS così da ripassare i principali _<\tag>_ e gli attributi di stile, nonchè la corretta struttura da dare al DOM (Document Object Model).
+I primi esperimenti avevano il semplice scopo di fare un po' una rispolverata generale delle poche nozioni che avevo appreso a scuola. Per questo creai delle semplici pagine statiche con puro HTML e CSS così da ripassare i principali _<\tag>_ e gli attributi di stile, nonché la corretta struttura da dare al DOM (Document Object Model).
 
 ```html
 <html>
@@ -68,7 +66,7 @@ Incominciai poi ad implementare anche qualche semplice funzionalità di database
 ### Giugno 2021
 
 Dopo ormai 2 mesi di test, ero riuscito ad ottenere un sito che se all'apparenza sembrava potesse funzionare "decentemente", in realtà non mi soddisfaceva per niente dal lato del codice. Provai allora a sostituire il semplice JS vanilla, con le potenzialità di JQuery che infatti portò un leggero miglioramento nella facilità di gestione delle pagine e dei contenuti in generale.
-Oltre a questa piccola nota positiva, il resto del codice riportava delle profonde criticità dovute principalmente alla mia inesperienza con questo tipo di programmazione e al susseguirsi di numerevoli micro correzioni a causa di un progetto poco definito già in partenza.
+Oltre a questa piccola nota positiva, **il resto del codice riportava delle profonde criticità dovute principalmente alla mia inesperienza con questo tipo di programmazione e al susseguirsi di innumerevoli micro correzioni a causa di un progetto poco definito già in partenza**.
 Ma sapevo che questa era ancora semplicemente una fase di puro testing e che il risultato finale era ancora ben lontano.
 
 La prima bozza del sito, risultato degli esperimenti fino a quel momento effettuati, è ancora online e [visibile al seguente link](https://bocchio.altervista.org/) così come [la sua repository](https://github.com/Bocchio01/Personal_web_site).
@@ -77,86 +75,115 @@ La prima bozza del sito, risultato degli esperimenti fino a quel momento effettu
 
 Volendo allora riassumere le principali criticità/limitazioni riscontrate:
 
-- Impossibilità nello sviluppare modularmente il sito;
+- Impossibilità nello sviluppare in maniera modulare il sito;
 - Processo macchinoso per la creazione di nuovi contenuti;
 - Utilizzo spropositato di HTML, CSS, e JS, in relazione anche alla bassa complessità del sito.
 
-Decisi allora di ripartire completamente da zero, avendo però ora in mente in maniera più delineata la direzione da seguire sia in quanto a stile grafico che in quanto a scopo finale da dare all'intero progetto.
+**Decisi allora di ripartire completamente da zero, avendo però ora in mente in maniera più delineata la direzione da seguire sia in quanto a stile grafico che in quanto a scopo finale da dare all'intero progetto.**
 
 ## L'approccio a Vue e NuxtJS
 
 ### Settembre 2021
 
 Passata l'estate, incominciai a valutare seriamente l'utilizzo di un FrameworkJS (a me sconosciuti fino a quel momento).
-Scelsi quasi in automatico di provare VueJS visto che anche senza conoscerlo riuscivo a muovermi facilmente all'interno di progetti e repository fornite d'esempio. La sua semplicità si è rilevata strabiliante anche più avanti nel progetto. Dopo circa 1 mese di sperimentazione su progettini minori, addocchiai NuxtJS che veniva consigliato proprio per la creazione di siti web. Appena scaricato capiì che era il framework più adatto alle mie esigenze ed iniziai così a risviluppare da zero il mio sito web.
+Scelsi quasi in automatico di provare [VueJS](https://vuejs.org/) visto che anche senza conoscerlo riuscivo a muovermi facilmente all'interno di progetti e repository fornite d'esempio. La sua semplicità si è rilevata strabiliante anche più avanti nel progetto. Dopo circa 1 mese di sperimentazione su progetti minori, adocchiai [NuxtJS](https://v3.nuxtjs.org/) che veniva consigliato proprio per la creazione di siti web. Appena scaricato capii che era il framework più adatto alle mie esigenze ed **iniziai così a ri-sviluppare da zero il mio sito web**.
 
-<!-- <CMedia s="/v1655594577/Articoli/Il%20codice%20del%20sito/Nuxt_logo.png" c="Logo del web-framework Nuxt"></CMedia> -->
+<CMedia s="https://www.youtube.com/embed/nhBVL41-_Cw" c="Panoramica del Framework Vue" type="iframe"></CMedia>
 
 ### Ottobre 2021
 
-Visto che della parte grafica ero abbastanza soddisfatto già dalla prima versione, decisi di trasferire tale e quale lo stile, ristrutturandolo però ora in file SCSS. Questo semplice cambio di approccio portò ad eliminare molto dello stile ridondante e ad ottimizzarne le sue possibili modifiche successive. Presi poi vantaggio delle comodità offerte dal framework, per concentrarmi maggiormente sulla creazione e gestione dei contenuti, adoperando il modulo aggiuntivo di [NuxtContent](https://content.nuxtjs.org/).
+Visto che della parte grafica ero abbastanza soddisfatto già dalla prima versione, decisi di trasferire tale e quale lo stile, ristrutturandolo però ora in file [SCSS](https://sass-lang.com/). Questo semplice cambio di approccio portò ad eliminare molto dello stile ridondante e ad ottimizzarne le sue possibili modifiche successive. Presi poi vantaggio delle comodità offerte dal framework, per **concentrarmi maggiormente sulla creazione e gestione dei contenuti, adoperando il modulo aggiuntivo di NuxtContent**.
 
 ### Dicembre 2021
 
-Avendo quindi ricreato tutte le funzionalità precedentemente integrate nella prima versione del sito, iniziai ora a sperimentare nuovamente aggiungendo un vero e proprio database. Avendo già delle conoscenze di PHP, scelsi appunto di creare un database MySQL, sfruttando l'hosting gratuito fornito da altervista. In poco tempo quindi scrissi la logica e le tabelle necessarie a gestire l'autenticazione e l'analytics per ogni pagina.
+Avendo quindi ricreato tutte le funzionalità precedentemente integrate nella prima versione del sito, iniziai ora a sperimentare nuovamente aggiungendo [un vero e proprio database](#il-database). Avendo già delle conoscenze di PHP, scelsi appunto di creare un database MySQL, sfruttando l'hosting gratuito fornito da AlterVista. In poco tempo quindi **scrissi la logica e le tabelle necessarie a gestire l'autenticazione e l'analytics per ogni pagina**.
 
 ### Gennaio 2022
 
-Incominciai ad uplodare con costanza dopo ogni sessione di scrittura, il codice e i file aggiornati sull'host di Netilfy. Ad un certo punto, controllando che funzionasse sempre tutto, mi accordi che al refresh di ogni articolo, il sito si rompeva e nella console appariva un errore che sembrava legato al core vero e proprio del modulo di NuxtContent. Dopo giorni passati a cercare informazioni utili online su come cercare di risolvere, e consapevole che l'errore si presentava solamente nella versione pubblicata online e mai in sulla versione locale, incominciai più o meno ad impazzire. Era un bug abbastanza fastidioso visto che bloccava l'intero sito e non ne permetteva quindi l'accesso.
-Incominciai allora a provare più o meno di tutto, fino a quando non rinominai uno dei file degli articoli da "gorlu la stampante.md" a "gorlu-la-stampante.md". Il bug sparì, e si, l'unico errore che stavo facendo era quello di lasciare spazi vuoti nei nomi dei file... bhe non ero troppo contento dopo averlo scoperto.
+Incominciai ad uplodare con costanza dopo ogni sessione di scrittura, il codice e i file aggiornati sull'[host di Netlify](https://www.netlify.com/). Ad un certo punto, controllando che funzionasse sempre tutto, mi accorsi che al refresh di ogni articolo, il sito si rompeva e nella console appariva un errore che sembrava legato al core vero e proprio del modulo di NuxtContent. Dopo giorni passati a cercare informazioni utili online su come cercare di risolvere, e consapevole che l'errore si presentava solamente nella versione pubblicata online e mai sulla versione locale, incominciai più o meno ad impazzire. Era un bug abbastanza fastidioso visto che bloccava l'intero sito e non ne permetteva l'accesso.
+Incominciai allora a provare più o meno di tutto, fino a quando non rinominai uno dei file degli articoli da "gorlu la stampante.md" a "gorlu-la-stampante.md". Il bug sparì... meglio che non commento 😡.
 
-Risolto quindi il fatidico bug, pensai che non sarebbe stato male avere il sito multilingua e così, sfruttando il modulo di i18n, creai manualmente la traduzione di ogni pagina.
+Risolto quindi il fatidico bug, **pensai che non sarebbe stato male avere il sito multilingua** e così, sfruttando il modulo di i18n, creai manualmente la traduzione di ogni pagina.
 
 ### Febbrario 2022
 
-Ormai soddisfatto del progetto, decisi di non apportare ulteriori modifiche e incominciai a testare bene ogni funzionalità creata e quindi lanciarlo online.
+Ormai soddisfatto del progetto, decisi di non apportare ulteriori modifiche e incominciai a testare bene ogni funzionalità creata per poi quindi lanciarlo online.
 
 ### Maggio 2022
 
-Dopo mesi di attesa per questioni varie, comprai finalmente il nome di dominio! Bocchio.dev era ufficialmente online ed operativo.
+Dopo mesi di attesa per questioni varie, comprai finalmente il nome di dominio! **Bocchio.dev era ufficialmente online ed operativo**.
+
+<CMedia s="/v1657554206/Articoli/Il%20codice%20del%20sito/FuochiArtificioBocchio.png" c="Accurata rappresetazione del mio stato d'animo :)"></CMedia>
 
 ## Moduli principali
 
-Tra i moduli principali del sito ci sono:
+Ovviamente **niente di tutta questa struttura sarebbe stata possibile senza l'utilizzo di risorse esterne create da altri sviluppatori**. Quelle che nel campo della programmazione in C venivano chiamate librerie, nell'ambito dello sviluppo Web prendono il nome di moduli, e tra i principali utilizzati nel sito ci sono:
 
-- NuxtContent: si occupa di ordinare, elencare e quindi reperire quando richiesti i contenuti presenti sul sito. Tutte le pagine delle sezioni "articoli" e "mix", sono infatti semplici file di markdown (.md) che vengono di volta in volta interpretati, trasformati in file javascript object notation (.json), ed impiantati poi dentro al DOM. Questo modulo è quindi di fondamentale importanza vista la funzionalità di content-delivery interno che svolge.
+- [NuxtContent](https://content.nuxtjs.org/): si occupa di ordinare, elencare e quindi reperire quando richiesti i contenuti presenti sul sito. Tutte le pagine delle sezioni “articoli” e “mix” sono infatti semplici file di markdown (.md) che vengono di volta in volta interpretati, trasformati in file javascript object notation (.json), ed impiantati poi dentro al DOM. Questo modulo è quindi di fondamentale importanza vista la **funzionalità di content-delivery interno** che svolge.
 
-- NuxtImage: si occupa di ottimizzare il caricamento dei file multimediali dal provider esterno. Ogni file multimediale (immagine o video breve) è infatti caricato sulla piattaforma estrena di Cloudinary. Il modulo prende quindi in carico la richiesta e la ottimizza in base alla dimensione dello schermo del dispositivo. Tutto ciò viene operativamente svolto dal modulo andando ad applicare dei parameteri nell'url di chiamata alla risorsa, di modo che il provider restituisca il file ridimensionato e nel formato migliore per il web (.webp).
+- [NuxtImage](https://image.nuxtjs.org/): si occupa di **ottimizzare il caricamento dei file multimediali dal provider esterno**. Ogni file multimediale (immagine o video breve) è infatti caricato sulla piattaforma esterna di Cloudinary. Il modulo prende quindi in carico la richiesta e la ottimizza in base alla dimensione dello schermo del dispositivo. Tutto ciò viene operativamente svolto dal modulo andando ad applicare dei parametri nell'url di chiamata alla risorsa, di modo che il provider restituisca il file ridimensionato e nel formato migliore per il web (.webp).
 
-- Nuxti18n: modulo appositamente creato per la traduzione multilingua. Si occupa di caricare correttamente tutto il contenuto stastico dall'apposito file "lang.json" in base alla lingua selezionata. Gestisce inoltre il corretto reindirizzamento dei link interni.
+- [Nuxti18n](https://i18n.nuxtjs.org/): modulo appositamente creato per la traduzione multilingua. Si occupa di caricare correttamente tutto il contenuto statico dall'apposito file "lang.json" in base alla lingua selezionata. Gestisce inoltre il corretto reindirizzamento dei link interni.
 
-- NuxtPWA: crea un file di ServiceWorker e offre quindi la possibilità di installare come una vera app il sito sia su mobile che su desktop. Inoltre, ottimizza al meglio l'uso della memoria cache portando così performance all'intero progetto.
+- [NuxtPWA](https://pwa.nuxtjs.org/): crea un file di ServiceWorker ed offre quindi la possibilità di installare come una vera app il sito sia su mobile che su desktop. Inoltre, ottimizza al meglio l'uso della memoria cache portando così performance all'intero progetto.
 
-## L'organizazzione della repository
+## L'organizzazione della repository
 
-La repository è fortemente influenzata, per quanto riguarda l'organizzazione dei file, dalla struttura che impone il framework di NuxtJS. Ogni cartella ha un nome ed uno scopo ben preciso. Inoltre avendo scelto di affidarmi ad un framework che adopera la logica delle pagine "a componenti", tra i file di codice è possibile distinguere
+La repository è fortemente influenzata, per quanto riguarda l'organizzazione dei file, dalla struttura che impone NuxtJS. Ogni cartella ha un nome ed uno scopo ben preciso. Inoltre, avendo scelto di affidarmi ad un framework che adopera la logica delle _pagine a componenti_, tra il codice è possibile distinguere a grandi linee due categorie di file:
 
-Di seguito solo le principali:
+Nella prima categoria rientrano:
 
-- Pages: contiene i file con le strutture portanti per le varie tipologie di pagina. Vi è quindi un file con la struttura della Home, una con la strutture delle pagine di index come Articoli o Portali, e una con la struttura delle pagine di articolo vero e proprio. Ogni file dunque non contiene propriamente il codice html che compone la pagina, ma solo i nomi dei tag dei componenti che devono essere inseriti
+- I contenuti delle cartelle: /assets - /static - /content - /i18n
+- Tutti i file presenti nella root della repository, ed in particolare il file: nuxt.config.js
 
-la struttura delle pagine presenti sul sito, ovvero la struttura di pagine statiche come la Home, o dinamiche come gli index degli articoli/portali;
+Tra quelli sopra elencati è quindi possibile identificare file di configurazione (necessari per dichiarare i parametri di setup del framework in base alle proprie preferenze), file di stile (sia .scss che classico .css), nonché risorse statiche quali immagini o documenti. **Particolare attenzione va data alla cartella /content, che appunto contiene tutti i file .md relativi agli articoli e alle pagine di mix.** Come spiegato in precedenza infatti, il modulo NuxtContent attinge proprio da questa cartella per caricare il contenuto delle varie pagine. Anche questo articolo è in realtà un file salvato all'interno della cartella /content.
 
-- Components: per come struttari ed ideati i framework, essi funzionano con una struttura scomponibile a blocchi, ovvero i componenti. Ogni pagina è infatti l'unione di più componenti ripetuti e caricato con un diverso contenuto. _Ogni componente è quindi un elemento che viene inserito nelle pagine con un contenuto diverso ma di struttura simile._
+<CMedia s="/v1657558786/Articoli/Il%20codice%20del%20sito/Repository.png" c="Root del progetto"></CMedia>
 
-- Content: file .md che vengono poi presi in considerazione dal modulo di NuxtContent
+Nella seconda categoria rientrano i contenuti delle cartelle: /components - /pages
 
-- Static, Assets: contengono tutti i file statici, quali i file CSS o le immagini .SVG, o ancora i file Javascript che vengono utilizzati dai portali del sito.
-
-Al di fuori di queste cartelle, si trovano i file di configurazione utilizzati in particolare da Nuxt stesso per settare alcuni parametri di funzionamento e puntare correttamente alle varie librerie di Node.
+La cartella /components è di particolare importanza visto che costituisce l'essenza dello scheletro portante del progetto nonché racchiude in sé la logica e le motivazioni dietro l'utilizzo di un WebFramework. Per come strutturati ed ideati infatti, essi funzionano in maniera modulare e ogni pagina è scomponibile in blocchi primari, ovvero i componenti. **I componenti web sono blocchi di codice che racchiudono la struttura interna di elementi HTML, compresi CSS e JavaScript, e consentono di applicarne il codice relativo in una qualsiasi posizione all'interno della pagina web.** Ogni pagina è infatti l'unione di più componenti ripetuti ma caricati con un diverso contenuto. La struttura rimane quindi sempre la stessa (e da qui la modularità del progetto), ma il framework prende in carico il compito di iniettare di volta in volta il contenuto richiesto dallo specifico elemento.
 
 ## Il database
 
-Ovviamente, giusto per non farmi mancare nulla, ho pensato sarebbe stato comodo e giusto avere un vero e prorpio database dietro le quinte del sito. Il suo scopo principale era inizialmente solo quello di gestire i dati legti agli utenti del sito, e quindi avere la possibilità di salvare nome utente, mail, password ecc.., ma con il passare del tempo e visto il divertimento che mi portava, il progetto si ampliò.
-Incominciai così a creare tutta una parte di analitycs e struttare quindi una serie di tabelle per il salvataggio del numero di visite per ciascuna pagina, il trend per ogni mese e molto altro.
-Successivamente creai un vero e proprio secondo sito, da cui poter visualizzare con comodità i dati salvati grazie all'uso di grafici e tabelle.
-Tutto quanto descritto sopra, è scritto con il linguaggio PHP e con l'uso di un semplice database MySQL, visto che queste erano le uniche scelte che l'host del secondo sito (altervista) offriva.
+**Avendo in mente di attivare anche un forum**, avevo la necessità di conservare dati in maniera permanente e poterli reperire con facilità ed immediatezza. Nella prima versione del sito, avevo risolto questo problema andando a salvare i dati su dei file .json che venivano letti e scritti da uno script in PHP. Essendo infatti il sito, come detto in precedenza, hostato su un server Apache, avevo la possibilità di eseguire modifiche ai file direttamente dallo script. In questo modo però, nonostante il tutto fosse altamente automatizzato, risultava difficile avere una chiara visione dei contenuti dei forum essendo i post non su un unico file ma suddivisi nelle varie sottocartelle della repo.
+
+<CMedia s="/v1657622148/Articoli/Il%20codice%20del%20sito/MySQL-Logo.jpg" c="Logo MySQL"></CMedia>
+
+Ripartito da capo con l'intero progetto, decisi ora di risolvere il problema adoperando una via risolutiva più consona ed adatta. Incominciai così a giocare con i database, ed in particolare con quello che può essere considerato il primo passo da fare per esplorare questo campo, ovvero un DB MySQL. **Sempre l'host della prima versione del sito, offriva infatti il servizio di un semplice database relazionale facilmente compatibile con gli script PHP.**
+
+### Funzionalità di base
+
+Compresa allora l'impalcatura da voler dare al progetto di backend, iniziai strutturando una semplice tabella per la memorizzazione dei dati legati agli utenti tra cui _nickname - email - password_.
+
+**Da qui il progetto si ampliò decisamente a causa del divertimento che provavo nella manipolazione dei dati e nell'approfondimento delle tecniche di interconnessione tra servizi online.** Nonostante considerassi il linguaggio PHP ormai antiquato, incominciai invece a comprenderne le potenzialità e decisi così di creare un vero e proprio server backend anche se non strettamente necessario ai fini del sito.
+
+Impostato dunque il database per contenere i dati essenziali legati ai forum, aggiunsi poi le varie personalizzazioni di colori e font per gli utenti registrati. In questo modo sono riuscito ad approfondire ulteriormente la gestione dei dati nel browser, nonché l'uso dei Cookies o ancora dei token di autenticazione.
+
+### Analytics
+
+Successivamente, una volta costruita una buona base di partenza con un paio di funzioni di log utili in fase di debug e non solo, pensai di aggiungere un servizio esterno di analytics al sito per pura curiosità nel capirne meglio il funzionamento. Visti però i requisiti monetari / di hosting richiesti, **decisi di scrivere da zero un semplice applicativo che mi permettesse di tenere traccia dei dati essenziali relativi alle pagine presenti sul sito**.
+
+Punto di partenza fondante di tutta l'architettura, è la completa distinzione dei dati raccolti in base alla lingua di visualizzazione. All'apertura di ogni pagina, viene inviata una richiesta dal browser all'host del database contenente l'url della pagina visualizzata. A questo punto uno script PHP prende in carico la richiesta e va ad aggiornare opportunamente i campi del DB.
+
+I dati che vengono salvati sono quindi quelli relativi alle visite di ogni pagina suddivise in base alla lingua e al mese corrente. Sfruttando poi la libreria _PHPlot_ ho creato una semplice interfaccia che facilitasse la fruizione / analisi dei dati raccolti per mezzo di grafici autogenerati.
+
+<!-- <CMedia s="http://localhost/BWS/site/analytics.php?lingue=1&anni=1&id_pagina=25&tipo_pagina=Article&lingua=it&anno_partenza=&submit=Genera" c="Pagina di Analytics" type="iframe"></CMedia> -->
+
+<CMedia s="https://bocchioutils.altervista.org/BWS/site/analytics.php?lingue=1&anni=1&id_pagina=25&tipo_pagina=Article&lingua=it&anno_partenza=&submit=Genera" c="Pagina di Analytics" type="iframe"></CMedia>
+
+Ovviamente è una versione di analytics molto semplice rispetto a quelle utilizzate in ambito lavorativo ma, oltre ad essere stato molto diverte da implementare, svolge egregiamente il suo lavoro e soprattutto non salvando alcun dato legato all'utente, è sicuramente regolare rispetto a questioni legate alla privacy.
+
+### Il sito backend
+
+Ampliando la pagina di visualizzazione dei dati di analytics, creai un vero e proprio mini-sito con una pagina dove poter reperire facilmente ed in modo chiaro i dati dalle tabelle del DB, nonché un paio di pagine con relativi script per permettere agli utenti di gestire un possibile cambio o recupero delle credenziali.
+
+Il sito di backend, o come soprannominato in seguito delle _utilità_, è visitabile a [questo link](https://bocchioutils.altervista.org/BWS/site/). Vista la possibilità di poter facilmente integrare script PHP con un database MySQL, è molto probabile che sempre su questo dominio affiancherò parte dei miei futuri progetti che richiederanno una parte di memorizzazione dei dati o semplicemente una elaborazione pesante eseguibile solo lato server.
 
 ## I barbatrucchi nascosti
 
-Tra quelli che a me piace definire come barbatrucchi, ovvero delle piccole ma efficaci funzionalità che lavorano nel dietro le quinte del sito principale, c'è sicuramente lo script relativo alle cosidette "OG image" o immagini OpenGraph. Quando infatti si prova a condividere un link del sito tramite un qualsiasi social o semplicemente per messaggio WhatsApp, appa quasi immediatamente un'immagine con il logo del sito e il titolo della pagina condivisa sotto. Ovviamente quella è un immagine che viene generata di volta in volta in maniera totalemente automatizzata, sfruttando quelle che vengo chiamate "serveless function" o "funzionalità senza server". Queste sono infatti dei piccoli pezzi di codice che è possibile eseguire online senza dover necessariamente adoperare un server proprio in quanto vengono immediatamente rigirate ai server di Amazon che le eseguono e danno in output il risultato. Ogni volta che si condivide quini una pagina del sito, viene fatta la richista e questa funzione appositamente scritta che è in grado di generare l'immagine per come pensata da me e con il titolo corretto
+Tra quelli che a me piace definire come barbatrucchi, ovvero delle **piccole ma efficaci funzionalità che lavorano nel dietro le quinte del sito principale**, c'è sicuramente lo script relativo alle cosidette _OG image_ o _immagini OpenGraph_. Quando infatti si prova a condividere un link del sito tramite un qualsiasi social o semplicemente per messaggio WhatsApp, appare quasi immediatamente un'immagine con il logo del sito e il titolo della pagina condivisa sotto.
 
-<!--
-	- Analytics;
-	- Traduzione Forum automatica.
--->
+Tale immagine viene generata di volta in volta in maniera totalmente automatizzata, sfruttando quelle che vengo chiamate _serveless function_ o _funzionalità senza server_. Queste sono infatti dei piccoli pezzi di codice che è possibile eseguire online senza dover necessariamente adoperare un server proprietario in quanto vengono immediatamente rigirate ai server di Amazon che le eseguono e danno in output il risultato. Ogni volta che si condivide quindi una pagina del sito, viene fatta la richiesta a questa funzione appositamente creata che **è in grado di generare l'immagine con logo e titolo della pagina**.
+
+<CMedia s="https://bocchio.dev/.netlify/functions/og-image?title=I barbatrucchi nascosti" c="Immagine generata al momento" provider=""></CMedia>
