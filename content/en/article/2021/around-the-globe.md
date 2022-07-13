@@ -64,11 +64,48 @@ The implementation at the algorithm level of all the mathematics explained above
 
 After saving latitude and longitude data in an array, it converts them from degrees to radians to facilitate the use of essential trigonometric functions for later deriving the Cartesian coordinates of points.
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Algoritmo_coordinate_cartesiane.png" c="The algorithm for the changing of parameterization"></CMedia>
+```javascript
+  terna_cartesiana: function (polare) {
+    /*
+        Calcolo delle coordinate cartesiane di un punto a partire dalle due sue coordinate polari
+        alfa => longitudine
+        beta => latitudine
+    */
+
+    const alfa = polare[1]
+    const beta = polare[0]
+
+    var terna_cartesiane = [this.Req * sin(alfa) * sin(beta), this.Req * cos(alfa) * sin(beta), this.Rpo * cos(beta)]
+
+    return terna_cartesiane
+  }
+```
+
+<!-- <CMedia s="/v1635210809/Articoli/Around%20the%20globe/Algoritmo_coordinate_cartesiane.png" c="The algorithm for the changing of parameterization"></CMedia> -->
 
 Next, the algorithm computes the normal vectors of the two Cartesian planes needed to calculate the azimuth. To do this it calculates, as a subtraction of the coordinates of the three reference points, two vectors that belong to the plane and, using the vector product on these, **calculates the normal vector to the Cartesian plane**. The operation is then repeated for the second Cartesian plane and **finally the angle formed between the two vectors normal to the planes is calculated**, thus obtaining the azimuth wanted.
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Algoritmo_vettore_piano.png" c="Vector normal to the plane - Calculation of the angle between vectors"></CMedia>
+```javascript
+    vettore_piano_cartesiano: function (p1, p2, p3) {
+    // Calcolo del vettore matematico (array) generatore del piano passante per i 3 punti di partenza
+
+    var vettore = cross(subtract(p1, p2), subtract(p1, p3))
+    var vettore = divide(vettore, norm(vettore))
+
+    return vettore
+  },
+
+   angolo_vettori: function (vet_1, vet_2) {
+    // Calcolo dell'angolo in gradi tra due vettori matematici
+
+    var CosTheta = max(min(dot(vet_1, vet_2) / (norm(vet_1) * norm(vet_2)), 1), -1)
+    var Theta = divide(re(acos(CosTheta)), pi / 180)
+
+    return Theta
+  }
+```
+
+<!-- <CMedia s="/v1635210809/Articoli/Around%20the%20globe/Algoritmo_vettore_piano.png" c="Vector normal to the plane - Calculation of the angle between vectors"></CMedia> -->
 
 ## Test it and have fun!
 

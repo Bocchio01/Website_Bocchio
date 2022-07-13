@@ -50,9 +50,7 @@ Nessuno dei due particolarmente allenato, nessuno dei due particolarmente abitua
   <iframe src='https://connect.garmin.com/modern/activity/embed/7281333384' title='Riva San Vitale Ciclismo' width='465' height='500' frameborder='0'></iframe>
 </div> -->
 
-Un [veloce giro di prova](https://connect.garmin.com/modern/activity/7281333384) dell'attrezzatura il 10 Agosto attorno al lago di Lugano, un veloce sguardo alle statistiche di quei pochi Km ed è così che l'appuntamento per il 1° Settembre 2021 era fissato.
-
-**Il resto è storia!** Buona visione.
+Un [veloce giro di prova](https://connect.garmin.com/modern/activity/7281333384) dell'attrezzatura il 10 Agosto attorno al lago di Lugano, un veloce sguardo alle statistiche di quei pochi Km ed è così che l'appuntamento per il 1° Settembre 2021 era fissato. **Il resto è storia!** Buona visione.
 
 ### I video maker stanno lavorando intensamente per produrre un reportage sintetico ma dettagliato. Si prega di attendere...
 

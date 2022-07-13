@@ -17,7 +17,7 @@
       </svg>
 
       <nuxt-picture v-else-if="s.indexOf('http') == -1 && provider == 'Cloudinary'" provider="cloudinary" :src="s"
-        sizes="xs:320px sm:400px md:460px lg:700px" v-bind:alt="a ? a : c" format="webp" />
+        sizes="xs:320px sm:400px md:460px lg:1000px" v-bind:alt="a ? a : c" format="webp" />
       <img v-else :src="s" v-bind:alt="a ? a : c" />
       <figcaption>{{ c }}</figcaption>
     </figure>

@@ -13,7 +13,7 @@ createdAt: 2022-03-25T23:48:00Z
 updatedAt: 2022-05-06T23:48:00Z
 ---
 
-# La costruzione del sito
+# Il codice del sito
 
 <CMedia :s="img.src" :a="img.src"></CMedia>
 
@@ -133,16 +133,16 @@ La repository è fortemente influenzata, per quanto riguarda l'organizzazione de
 
 Nella prima categoria rientrano:
 
-- I contenuti delle cartelle: /assets - /static - /content - /i18n
-- Tutti i file presenti nella root della repository, ed in particolare il file: nuxt.config.js
+- I contenuti delle cartelle: _/assets - /static - /content - /i18n_
+- Tutti i file presenti nella root della repository, ed in particolare il file: _nuxt.config.js_
 
-Tra quelli sopra elencati è quindi possibile identificare file di configurazione (necessari per dichiarare i parametri di setup del framework in base alle proprie preferenze), file di stile (sia .scss che classico .css), nonché risorse statiche quali immagini o documenti. **Particolare attenzione va data alla cartella /content, che appunto contiene tutti i file .md relativi agli articoli e alle pagine di mix.** Come spiegato in precedenza infatti, il modulo NuxtContent attinge proprio da questa cartella per caricare il contenuto delle varie pagine. Anche questo articolo è in realtà un file salvato all'interno della cartella /content.
+Tra quelli sopra elencati è quindi possibile identificare file di configurazione (necessari per dichiarare i parametri di setup del framework in base alle proprie preferenze), file di stile (sia .scss che classico .css), nonché risorse statiche quali immagini o documenti. **Particolare attenzione va data alla cartella _/content_, che appunto contiene tutti i file .md relativi agli articoli e alle pagine di mix.** Come spiegato in precedenza infatti, il modulo NuxtContent attinge proprio da questa cartella per caricare il contenuto delle varie pagine. Anche questo articolo è in realtà un file salvato all'interno della cartella _/content_.
 
 <CMedia s="/v1657558786/Articoli/Il%20codice%20del%20sito/Repository.png" c="Root del progetto"></CMedia>
 
-Nella seconda categoria rientrano i contenuti delle cartelle: /components - /pages
+Nella seconda categoria rientrano i contenuti delle cartelle: _/components - /pages_
 
-La cartella /components è di particolare importanza visto che costituisce l'essenza dello scheletro portante del progetto nonché racchiude in sé la logica e le motivazioni dietro l'utilizzo di un WebFramework. Per come strutturati ed ideati infatti, essi funzionano in maniera modulare e ogni pagina è scomponibile in blocchi primari, ovvero i componenti. **I componenti web sono blocchi di codice che racchiudono la struttura interna di elementi HTML, compresi CSS e JavaScript, e consentono di applicarne il codice relativo in una qualsiasi posizione all'interno della pagina web.** Ogni pagina è infatti l'unione di più componenti ripetuti ma caricati con un diverso contenuto. La struttura rimane quindi sempre la stessa (e da qui la modularità del progetto), ma il framework prende in carico il compito di iniettare di volta in volta il contenuto richiesto dallo specifico elemento.
+La cartella _/components_ è di particolare importanza visto che costituisce l'essenza dello scheletro portante del progetto nonché racchiude in sé la logica e le motivazioni dietro l'utilizzo di un WebFramework. Per come strutturati ed ideati infatti, essi funzionano in maniera modulare e ogni pagina è scomponibile in blocchi primari, ovvero i componenti. **I componenti web sono blocchi di codice che racchiudono la struttura interna di elementi HTML, compresi CSS e JavaScript, e consentono di applicarne il codice relativo in una qualsiasi posizione all'interno della pagina web.** Ogni pagina è infatti l'unione di più componenti ripetuti ma caricati con un diverso contenuto. La struttura rimane quindi sempre la stessa (e da qui la modularità del progetto), ma il framework prende in carico il compito di iniettare di volta in volta il contenuto richiesto dallo specifico elemento.
 
 ## Il database
 
@@ -168,9 +168,11 @@ Punto di partenza fondante di tutta l'architettura, è la completa distinzione d
 
 I dati che vengono salvati sono quindi quelli relativi alle visite di ogni pagina suddivise in base alla lingua e al mese corrente. Sfruttando poi la libreria _PHPlot_ ho creato una semplice interfaccia che facilitasse la fruizione / analisi dei dati raccolti per mezzo di grafici autogenerati.
 
-<!-- <CMedia s="http://localhost/BWS/site/analytics.php?lingue=1&anni=1&id_pagina=25&tipo_pagina=Article&lingua=it&anno_partenza=&submit=Genera" c="Pagina di Analytics" type="iframe"></CMedia> -->
+<CMedia s="/v1657670913/Articoli/Il%20codice%20del%20sito/Analytics_screen_2.png" a="Pagina di Analytics"></CMedia>
 
-<CMedia s="https://bocchioutils.altervista.org/BWS/site/analytics.php?lingue=1&anni=1&id_pagina=25&tipo_pagina=Article&lingua=it&anno_partenza=&submit=Genera" c="Pagina di Analytics" type="iframe"></CMedia>
+<a href="https://bocchioutils.altervista.org/BWS/site/analytics.php?l=en&stat=1" class="button" rel="nofollow noopener noreferrer" target="_blank">Visita la pagina di Analytics</a>
+
+Quella nell'immagine è solo una piccola parte delle informazioni che l'applicativo raccoglie. É possibile visitare e consultare liberamente tali dati cliccando sul tasto qui sopra.
 
 Ovviamente è una versione di analytics molto semplice rispetto a quelle utilizzate in ambito lavorativo ma, oltre ad essere stato molto diverte da implementare, svolge egregiamente il suo lavoro e soprattutto non salvando alcun dato legato all'utente, è sicuramente regolare rispetto a questioni legate alla privacy.
 
@@ -182,8 +184,8 @@ Il sito di backend, o come soprannominato in seguito delle _utilità_, è visita
 
 ## I barbatrucchi nascosti
 
-Tra quelli che a me piace definire come barbatrucchi, ovvero delle **piccole ma efficaci funzionalità che lavorano nel dietro le quinte del sito principale**, c'è sicuramente lo script relativo alle cosidette _OG image_ o _immagini OpenGraph_. Quando infatti si prova a condividere un link del sito tramite un qualsiasi social o semplicemente per messaggio WhatsApp, appare quasi immediatamente un'immagine con il logo del sito e il titolo della pagina condivisa sotto.
+Tra quelli che a me piace definire come _barbatrucchi_, ovvero delle **piccole ma efficaci funzionalità che lavorano nel dietro le quinte del sito principale**, c'è sicuramente lo script relativo alle cosidette _OG image_ o _immagini OpenGraph_. Quando infatti si prova a condividere un link del sito tramite un qualsiasi social o semplicemente per messaggio WhatsApp, appare quasi immediatamente un'immagine con il logo del sito e il titolo della pagina condivisa sotto.
 
-Tale immagine viene generata di volta in volta in maniera totalmente automatizzata, sfruttando quelle che vengo chiamate _serveless function_ o _funzionalità senza server_. Queste sono infatti dei piccoli pezzi di codice che è possibile eseguire online senza dover necessariamente adoperare un server proprietario in quanto vengono immediatamente rigirate ai server di Amazon che le eseguono e danno in output il risultato. Ogni volta che si condivide quindi una pagina del sito, viene fatta la richiesta a questa funzione appositamente creata che **è in grado di generare l'immagine con logo e titolo della pagina**.
+Tale immagine viene generata di volta in volta in maniera totalmente automatizzata, sfruttando quelle che vengo chiamate _serveless function_ o _funzionalità senza server_. Queste sono infatti dei piccoli pezzi di codice che è possibile eseguire online senza dover necessariamente adoperare un server proprietario in quanto vengono immediatamente rigirate ai server di Amazon che le eseguono e danno in output il risultato. Ogni volta che si condivide quindi una link del sito, viene inviata una richiesta a questa funzione che **genera l'immagine con logo e titolo della pagina** come nell'esempio sotto.
 
-<CMedia s="https://bocchio.dev/.netlify/functions/og-image?title=I barbatrucchi nascosti" c="Immagine generata al momento" provider=""></CMedia>
+<CMedia s="https://bocchio.dev/.netlify/functions/og-image?title=Barbatrucco!&theme=dark" c="Immagine generata ora dal server" provider=""></CMedia>

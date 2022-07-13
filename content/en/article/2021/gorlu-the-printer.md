@@ -66,7 +66,22 @@ It is then scanned with the logic of printing not single dots (which could lead 
 
 <CMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_1.png" c="Graphical simulation of the search algorithm"></CMedia>
 
-<CMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_2.png" c="A screenshot of the search algorithm"></CMedia>
+```python
+while not img_to_print.all():
+        i, cont = 0, cont + 1
+        while True:
+            i += 1
+            try:
+                y = np.where(img_to_print[max(0, Y-i): Y+i+1, max(0, X-i): X+i+1] == 0)[0][0]
+                x = np.where(img_to_print[max(0, Y-i): Y+i+1, max(0, X-i): X+i+1] == 0)[1][0]
+                X, Y = x + max(0, X-i), y + max(0, Y-i)
+                img_to_print[Y][X] = 255
+                break
+            except:
+                pass
+```
+
+<!-- <CMedia s="/v1632851575/Articoli/Gorlu%20la%20stampante/Algoritmo_di_ricerca_2.png" c="A screenshot of the search algorithm"></CMedia> -->
 
 Since its simplicity and low computational complexity, the algorithm is fast and resource efficient. In addition, working always and only within the RAM, there is never the need to save data on the hard disk and this allows to leave the PC free from unnecessary temporary files.
 

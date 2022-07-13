@@ -19,7 +19,7 @@ For my more interested readers who would like to leave some comments, there is a
 
 ## Guided by the Moon
 
-If it is the Moon that calls, Bocchio and Mosca answer. If you then add the first snow of the year, then the tenting is a must.
+If the Moon calls, Bocchio and Mosca answer. If you add the first snow of the year, then the tenting is a must.
 
 Brief reportage of a quick outing on [Monte Bregagno](https://it.wikipedia.org/wiki/Monte_Bregagno) preceded by a very pleasant dinner with my aunt Anna and Michele (Ah yes, Moscatelli is allergic to dairy products...)
 
@@ -33,19 +33,17 @@ Oh yeah, lucky that we had to leave at 6pm!
 
 ## London calling
 
-What happens when your friend jokingly says to you: **_Why don't we cycle to London?_**
+What happens when your friend jokingly says to you: **Why don't we cycle to London?**
 
 It was May 2021 and during an orienteering trip to Bellamonte (TN), my friend Marco Spazio Enterprise came up with this statement which at first seemed to us just for laughs, but it would only take three months to see us actually riding our bikes with compass heading 315.97°N.
 
-Towards July in fact, maybe disoriented by university exams, and looking at Google Maps I wrote to Spazio: _But you know what? Let's do it!_
+Towards July in fact, maybe disoriented by university exams, and looking at Google Maps I wrote to Spazio: _You know what? Let's do it!_
 
 Neither of us particularly trained, neither of us particularly used to grinding out long distances on bikes, but both **very determined to succeed in what seemed to everyone to be an impossible feat** (or at least for two runaways like us...).
 
-A [quick test ride](https://connect.garmin.com/modern/activity/7281333384) of the equipment on 10 August around Lake Lugano, a quick look at the statistics of those few kilometres, and so the appointment for 1 September 2021 was set.
+A [quick test ride](https://connect.garmin.com/modern/activity/7281333384) of the equipment on 10 August around Lake Lugano, a quick look at the statistics of those few kilometres, and the appointment for 1 September 2021 was set. **The rest is history!** Enjoy.
 
-**The rest is history!** Enjoy.
-
-### The video makers are working hard to produce a concise but detailed report. Please wait...
+### Video makers are working hard to produce a concise but detailed report. Please wait...
 
 <!-- <CMedia s="https://www.nautica.it/wp-content/uploads/2019/09/taboule-cuscus-freddo.jpg" c="...Voulez-vous un peu de taboulé?..." provider=""></CMedia> -->
 
@@ -57,6 +55,6 @@ After a week decidedly heavier than it should have been, I allowed myself 3 days
 
 <CMedia s="https://www.youtube.com/embed/XQmPAtAZnMY" c="Tour in Lucca City" type="iframe"></CMedia>
 
-The butterfly at the end of the video is a _Peacock butterfly_, also known in Italian as _Vanessa io_ or _Occhio di pavone_. The scientific name is [Aglais io](https://it.wikipedia.org/wiki/Aglais_io), and a local gentleman told us that we were lucky to spot it as it is now increasingly rare to find them around. According to some oriental traditions, it is a symbol of a healthy life and marital happiness.
+The butterfly at the end of the video is a _Peacock butterfly_, also known in Italian as _Vanessa io_ or _Occhio di pavone_. The scientific name is [Aglais io](https://en.wikipedia.org/wiki/Aglais_io), and a local gentleman told us that we were lucky to spot it as it is now increasingly rare to find them around. According to some oriental traditions, it is a symbol of a healthy life and marital happiness.
 
 Fun fact: obviously I hadn't told So-So anything until an hour or so before my arrival... hihihi, surprise :)
