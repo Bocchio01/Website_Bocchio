@@ -15,7 +15,7 @@
     "@nuxtjs/robots": "^2.5.0",
     "@nuxtjs/sitemap": "^2.4.0",
     "chrome-aws-lambda": "7.0.0",
-    "core-js": "^3.23.4",
+    "core-js": "^3.23.5",
     "json-pointer": "^0.6.2",
     "leaflet-geosearch": "^3.6.1",
     "leaflet.geodesic": "^2.6.1",
