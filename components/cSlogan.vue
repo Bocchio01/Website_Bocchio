@@ -9,7 +9,8 @@ export default {
   props: {
     sloganMsg: {
       type: String,
-      default: "What's Next?",
+      default: "Get Things Done!",
+      // default: "What's Next?",
     },
   },
 
