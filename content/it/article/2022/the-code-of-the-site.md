@@ -168,9 +168,9 @@ Punto di partenza fondante di tutta l'architettura, è la completa distinzione d
 
 I dati che vengono salvati sono quindi quelli relativi alle visite di ogni pagina suddivise in base alla lingua e al mese corrente. Sfruttando poi la libreria _PHPlot_ ho creato una semplice interfaccia che facilitasse la fruizione / analisi dei dati raccolti per mezzo di grafici autogenerati.
 
-<CMedia s="/v1657670913/Articoli/Il%20codice%20del%20sito/Analytics_screen_2.png" a="Pagina di Analytics"></CMedia>
+<CMedia s="https://bocchioutils.altervista.org/BWS/site/analytics.php?l=it&isStatistics=1" a="Analytics page" type="iframe"></CMedia>
 
-<a href="https://bocchioutils.altervista.org/BWS/site/analytics.php?l=en&stat=1" class="button" rel="nofollow noopener noreferrer" target="_blank">Visita la pagina di Analytics</a>
+<a href="https://bocchioutils.altervista.org/BWS/site/analytics.php?l=it&isStatistics=1" class="button" target="_blank">Visita la pagina di Analytics</a>
 
 Quella nell'immagine è solo una piccola parte delle informazioni che l'applicativo raccoglie. É possibile visitare e consultare liberamente tali dati cliccando sul tasto qui sopra.
 

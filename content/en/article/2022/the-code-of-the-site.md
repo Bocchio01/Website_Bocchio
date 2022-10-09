@@ -170,9 +170,9 @@ The fundamental starting point of the entire architecture is the complete distin
 
 The data that are saved are then those relating to the visits of each page divided according to language and the current month. Taking advantage of the _PHPlot_ library, I created a simple interface to facilitate the use / analysis of the collected data by the help of auto-generated graphs.
 
-<CMedia s="/v1657670913/Articoli/Il%20codice%20del%20sito/Analytics_screen_2.png" a="Analytics page"></CMedia>
+<CMedia s="https://bocchioutils.altervista.org/BWS/site/analytics.php?l=en&isStatistics=1" a="Analytics page" type="iframe"></CMedia>
 
-<a href="https://bocchioutils.altervista.org/BWS/site/analytics.php?l=en&stat=1" class="button" rel="nofollow noopener noreferrer" target="_blank">Visit the Analytics page</a>
+<a href="https://bocchioutils.altervista.org/BWS/site/analytics.php?l=en&isStatistics=1" class="button" target="_blank">Visit the Analytics page</a>
 
 The one in the image is just an example of the informations that the application collect. You can freely visit and consult this data by clicking on the button above.
 

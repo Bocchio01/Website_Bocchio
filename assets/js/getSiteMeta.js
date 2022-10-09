@@ -6,7 +6,8 @@ export default (args) => {
     (args && args.description) ||
     "Tommaso Bocchietti. Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione all'ingegneria."
   const type = (args && args.type) || 'website'
-  const url = (args && host_url + args.url) || host_url + '/'
+  const tmpUrl = (args && host_url + args.url) || host_url + '/'
+  const url = tmpUrl.substring(tmpUrl.length - 1) == '/' ? tmpUrl : tmpUrl + '/'
   const theme = '&theme=' + (url.indexOf(host_url + '/portal/') == 0 ? 'dark' : 'light')
 
   const og_image_url = host_url + '/.netlify/functions/og-image?title=' + (title == 'Home' ? "Bocchio's WebSite" : title) + theme

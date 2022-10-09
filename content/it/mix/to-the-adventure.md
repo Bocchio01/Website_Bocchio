@@ -54,6 +54,8 @@ Un [veloce giro di prova](https://connect.garmin.com/modern/activity/7281333384)
 
 ### I video maker stanno lavorando intensamente per produrre un reportage sintetico ma dettagliato. Si prega di attendere...
 
+<CMedia s="https://www.youtube.com/embed/videoseries?list=PL0vzqvmThXohDPV-yPDlPBsmZ4WrfTbvr" c="Questi sono i primi 8 giorni 😀... continuare ad aspettare per il seguito..." type="iframe"></CMedia>
+
 <!-- <CMedia s="https://www.nautica.it/wp-content/uploads/2019/09/taboule-cuscus-freddo.jpg" c="...Voulez-vous un peu de taboulé?..." provider=""></CMedia> -->
 
 ## Tour a Lucca City

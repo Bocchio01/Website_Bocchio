@@ -45,6 +45,8 @@ A [quick test ride](https://connect.garmin.com/modern/activity/7281333384) of th
 
 ### Video makers are working hard to produce a concise but detailed report. Please wait...
 
+<CMedia s="https://www.youtube.com/embed/videoseries?list=PL0vzqvmThXohDPV-yPDlPBsmZ4WrfTbvr" c="Here are the first 8 days 😀... continue waiting for the following..." type="iframe"></CMedia>
+
 <!-- <CMedia s="https://www.nautica.it/wp-content/uploads/2019/09/taboule-cuscus-freddo.jpg" c="...Voulez-vous un peu de taboulé?..." provider=""></CMedia> -->
 
 ## Tour in Lucca City

@@ -9,6 +9,7 @@
       <h1>{{ obj.title }}</h1>
       <div v-if="Array.isArray(obj.paragraph)" v-html="obj.paragraph.join('<br>')"></div>
       <div v-else v-html="Object.values(obj.paragraph).join('<br>')"></div>
+      <p v-if="obj.tag" v-html="obj.tag.join(' - ')"></p>
     </div>
 
     <figure v-if="obj.img">
@@ -59,6 +60,13 @@ export default {
     >div {
       margin-block: 10px;
       max-width: fit-content;
+    }
+
+    >p {
+      color: gray;
+      text-align: center;
+      text-decoration: underline;
+      font-weight: bold;
     }
   }
 
