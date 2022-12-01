@@ -12,7 +12,7 @@
     "@nuxt/content": "1.15.1",
     "@nuxtjs/composition-api": "^0.32.0",
     "@nuxtjs/i18n": "^7.3.0",
-    "@nuxtjs/robots": "^2.5.0",
+    "@nuxtjs/robots": "^3.0.0",
     "@nuxtjs/sitemap": "^2.4.0",
     "chrome-aws-lambda": "7.0.0",
     "core-js": "^3.26.0",
