@@ -29,8 +29,6 @@ export default {
 
   components: true,
 
-  buildModules: ['@nuxtjs/dotenv'],
-
   modules: ['@nuxtjs/i18n', '@nuxtjs/pwa', '@nuxt/content', '@nuxtjs/composition-api/module', '@nuxt/image', '@nuxtjs/robots', '@nuxtjs/sitemap'],
 
   content: {

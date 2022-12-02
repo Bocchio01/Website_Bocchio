@@ -16,6 +16,7 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "chrome-aws-lambda": "7.0.0",
     "core-js": "^3.26.1",
+    "dropbox": "^10.33.0",
     "json-pointer": "^0.6.2",
     "leaflet-geosearch": "^3.7.0",
     "leaflet.geodesic": "^2.6.1",
@@ -30,7 +31,6 @@
   },
   "devDependencies": {
     "@nuxt/image": "^0.7.1",
-    "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/pwa": "^3.3.5",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "^2.8.0",

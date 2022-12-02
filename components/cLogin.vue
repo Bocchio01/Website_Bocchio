@@ -270,7 +270,7 @@ export default {
   margin: auto;
   max-width: 700px;
   max-height: calc(100vh - 100px);
-  overflow-y: overlay;
+  overflow-y: auto;
 
   * {
     margin-block: 0;
