@@ -1,6 +1,6 @@
 // src/plugins/vue-leaflet.js
 import Vue from 'vue'
-import { LMap, LTileLayer, LMarker, LControlAttribution, LControlLayers, LControlScale, LPopup } from 'vue2-leaflet'
+import { LMap, LTileLayer, LMarker, LControlAttribution, LControlLayers, LControlScale, LPopup, LImageOverlay } from 'vue2-leaflet'
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch'
 import Vue2LeafletLocatecontrol from 'vue2-leaflet-locatecontrol'
 import { Geodesic } from 'leaflet.geodesic'
@@ -27,6 +27,7 @@ const VueLeaflet = {
     Vue.component('l-control-scale', LControlScale)
     Vue.component('l-control-layers', LControlLayers)
     Vue.component('l-control-attribution', LControlAttribution)
+    Vue.component('l-image-overlay', LImageOverlay)
 
     Vue.component('v-locatecontrol', Vue2LeafletLocatecontrol)
 
