@@ -1,9 +1,8 @@
 <template>
   <div>
-    <CHeadBase :title="$t('portal.title')" :description="$t('portal.description')" />
-    <CSearch @toParent="handler" />
+    <CHeadBase :title="$t('mix.title')" :description="$t('mix.description')" />
     <CWrap v-for="(portale, index) in portali" :key="index" :obj="portale" :search_title="title_to_view"
-      :msg="$t('portal.msg')" />
+      :msg="$t('mix.msg')" />
   </div>
 </template>
 

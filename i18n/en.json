@@ -68,9 +68,9 @@
       "iso": "it",
       "img": "it.png"
     },
-    "links": ["Articles", "Portals", "Who am I?", "What's the aim?", "To the adventure!", "Personal area"]
+    "links": ["Articles", "Portals", "Mix"]
   },
-  "cFooter": "You can also find me here",
+  "cFooter": ["You can also find me here", "Personal area"],
 
   "cForum": {
     "header": {
@@ -188,5 +188,11 @@
     "title": "Portals section",
     "description": "Bocchio's WebSite portals list page",
     "msg": "Access the portal"
+  },
+
+  "mix": {
+    "title": "Mix section",
+    "description": "Bocchio's WebSite mix list page",
+    "msg": "Explore the mix"
   }
 }

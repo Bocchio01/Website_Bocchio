@@ -5,7 +5,7 @@ img:
   src: '#Scopo'
   alt: What's the aim?
 
-createdAt: 2022-02-12T21:18:00Z
+createdAt: 2022-02-12T21:18:01Z
 updatedAt: 2022-02-26T01:15:00Z
 ---
 

@@ -75,25 +75,27 @@ export default {
       .then((res) => (this.files = res.Data))
       .catch((res) => this.$store.commit('auth_error', res.Log))
 
-    var p = !!this.data.prev,
-      n = !!this.data.next,
-      u = !!this.data.portal.urlPortal,
-      i18n = Object.values(this.$t('cNavigation.navigation.p'))
+    if (this.data) {
+      var p = !!this.data.prev,
+        n = !!this.data.next,
+        u = !!this.data.portal.urlPortal,
+        i18n = Object.values(this.$t('cNavigation.navigation.p'))
 
-    if (p && n && u) {
-      this.pharse = i18n[0]
-    } else if (p && n && !u) {
-      this.pharse = i18n[1]
-    } else if (p && !n && !u) {
-      this.pharse = i18n[2]
-    } else if (!p && n && !u) {
-      this.pharse = i18n[3]
-    } else if (!p && !n && u) {
-      this.pharse = i18n[4]
-    } else if (p && !n && u) {
-      this.pharse = i18n[5]
-    } else if (!p && n && !u) {
-      this.pharse = i18n[6]
+      if (p && n && u) {
+        this.pharse = i18n[0]
+      } else if (p && n && !u) {
+        this.pharse = i18n[1]
+      } else if (p && !n && !u) {
+        this.pharse = i18n[2]
+      } else if (!p && n && !u) {
+        this.pharse = i18n[3]
+      } else if (!p && !n && u) {
+        this.pharse = i18n[4]
+      } else if (p && !n && u) {
+        this.pharse = i18n[5]
+      } else if (!p && n && !u) {
+        this.pharse = i18n[6]
+      }
     }
   },
 }

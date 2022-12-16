@@ -56,7 +56,7 @@ I usually do the **lessons online or directly at the student's home**. I am usua
 
 In addition, one thing that my pupils (and especially their parents) appreciate is what I call a summary, which is an excel sheet where I keep track of precisely everything that is done in the lesson, as well as the various minutes and prices. Below is an example:
 
-<CMedia s="/v1669949576/ripetizioni/SchedaroRipetizioni.jpg" c="Repetitions summary"></CMedia>.
+<CMedia s="/v1669949576/ripetizioni/SchedaroRipetizioni.jpg" c="Repetitions summary"></CMedia>
 
 P.S. if you had problems solving the price question that was on the hanging poster, I leave the solution here.
 

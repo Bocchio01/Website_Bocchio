@@ -68,9 +68,9 @@
       "iso": "en",
       "img": "en.png"
     },
-    "links": ["Articoli", "Portali", "Chi sono?", "Qual è lo scopo?", "All'avventura!", "Area personale"]
+    "links": ["Articoli", "Portali", "Mix"]
   },
-  "cFooter": "Puoi trovarmi anche qui",
+  "cFooter": ["Puoi trovarmi anche qui", "Area personale"],
 
   "cForum": {
     "header": {
@@ -188,5 +188,11 @@
     "title": "Sezione portali",
     "description": "Pagina di elenco dei portali del sito Bocchio's WebSite",
     "msg": "Accedi al portale"
+  },
+
+  "mix": {
+    "title": "Sezione pagine di mix",
+    "description": "Pagina di elenco dei mix del sito Bocchio's WebSite",
+    "msg": "Esplora il mix"
   }
 }

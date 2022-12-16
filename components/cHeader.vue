@@ -20,6 +20,7 @@
       </div>
     </div>
     <ul :style="!showMenu ? 'max-height: 0px' : 'max-height: 1000px'">
+
       <li>
         <nuxt-link :to="localePath('/article/')">{{ $t('cHeader.links.0') }}</nuxt-link>
       </li>
@@ -27,26 +28,7 @@
         <nuxt-link :to="localePath('/portal/')">{{ $t('cHeader.links.1') }}</nuxt-link>
       </li>
       <li>
-        <nuxt-link :to="localePath('/mix/')">Mix</nuxt-link>
-      </li>
-
-      <li>
-        <a @click="SubMenu_click" @keyup.enter="SubMenu_click" :class="{ hover: showSubMenu }" tabindex="0"
-          style="cursor: pointer">Mix</a>
-        <ul class="dropdown-content" :class="!showSubMenu ? 'hide' : ''">
-          <!-- <li>
-            <nuxt-link :to="localePath('/mix/who-am-i')">{{ $t('cHeader.links.2') }}</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link :to="localePath('/mix/what-s-the-aim')">{{ $t('cHeader.links.3') }}</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link :to="localePath('/mix/to-the-adventure')">{{ $t('cHeader.links.4') }}</nuxt-link>
-          </li> -->
-          <li>
-            <a href="#" @click="$store.commit('toggle_show', 'login')">{{ $t('cHeader.links.5') }}</a>
-          </li>
-        </ul>
+        <nuxt-link :to="localePath('/mix/')">{{ $t('cHeader.links.2') }}</nuxt-link>
       </li>
 
       <li class="lang-icon-sub">
