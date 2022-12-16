@@ -1,12 +1,13 @@
 ---
-title: Orienteering Maps
-description: Portale per accedere e consultare il mio personale archivio mappe (da orienteering) digitale.
+title: Orienteering_maps
+description: Portal to access and consult my digital (orienteering) map archive.
 paragraph:
   [
-    'Portale per poter consultare il mio archivio personale di carte da orinteering.<br>',
-    'Sono tutte carte su cui ho lavorato negli ultimi anni e che ho deciso di pubblicare qui per libera fruizione.',
+    'Portal to access and consult my digital (orienteering) map archive.<br>',
+    'Designed for those who, like me, when out and about always want to visit new places but with an orienteering map underneath.',
+    '<b>Please read the copyright conditions carefully before using the maps.</b>',
   ]
 img:
   src: /v1666484271/Portali/86.jpg
-  alt: Orienteering Maps
+  alt: Orienteering_maps
 ---

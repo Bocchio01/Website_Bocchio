@@ -1,8 +1,8 @@
-input[type="radio"] {
+input[type='radio'] {
   display: none;
 }
 
-input[type="radio"] + label span {
+input[type='radio'] + label span {
   display: inline-block;
   width: 20px !important;
   height: 20px !important;
@@ -13,11 +13,11 @@ input[type="radio"] + label span {
   border: var(--Border_Settings_Button);
 }
 
-input[type="radio"]:checked + label {
+input[type='radio']:checked + label {
   font-weight: bold;
 }
 
-input[type="radio"]:checked + label span {
+input[type='radio']:checked + label span {
   background-color: var(--Color_Main);
 }
 
@@ -59,7 +59,7 @@ input[type="radio"]:checked + label span {
   cursor: pointer;
 
   background-color: var(--Color_Main);
-  mask: url("/svg/Lampadina_ingranaggi.svg") no-repeat center;
+  mask: url('/svg/Lampadina_ingranaggi.svg') no-repeat center;
   &:hover ~ a {
     color: var(--Color_Hover);
   }
@@ -82,7 +82,7 @@ input[type="radio"]:checked + label span {
 }
 
 .msg_bg {
-  z-index: 1000;
+  z-index: 1001;
   top: 0px;
   left: 0px;
   position: fixed;

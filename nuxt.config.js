@@ -144,6 +144,8 @@ export default {
     UTILS_SITE: process.env.UTILS_SITE,
     API_KEY: process.env.API_KEY,
     IS_DEV: process.env.IS_DEV,
+    DBX_CLIENT_SECRET: process.env.DBX_CLIENT_SECRET,
+    DBX_REFRESH_TOKEN: process.env.DBX_REFRESH_TOKEN,
   },
 
   router: {
