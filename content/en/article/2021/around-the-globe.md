@@ -50,7 +50,13 @@ But then, observing that the lines connecting 'NORTH - Observer' and 'Observer -
 
 Knowing that each Cartesian plane is identified by a vector normal to the plane itself, and that the angle between two vectors can be obtained trigonometrically, then the azimuth searched has value:
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Formula_finale_azimut.png" c="p1, p2 are the normal vectors to the two Cartesian planes"></CMedia>
+$$
+\vec{p_1}, \vec{p_2} = \text{normal vectors to the two Cartesian planes}
+\\
+azimuth = \arccos(\frac{\vec{p_1} \cdot \vec{p_2}}{\left \| \vec{p_1} \right \| \left \| \vec{p_2} \right \|})
+$$
+
+<!-- <CMedia s="/v1635210809/Articoli/Around%20the%20globe/Formula_finale_azimut.png" c="p1, p2 are the normal vectors to the two Cartesian planes"></CMedia> -->
 
 To get a clearer and more global understanding of the problem and its solution, it is perhaps useful to look at it in a more interactive way using GeoGebra.
 

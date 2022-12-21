@@ -50,7 +50,13 @@ Ma allora osservando che le linee che collegano 'NORD - Osservatore' e 'Osservat
 
 Sapendo poi che ogni piano cartesiano è individuato tramire un vettore normale al piano stesso, e che l'angolo tra due vettori è ricavabile per via trigonometrica, allora l'azimut cercato ha valore:
 
-<CMedia s="/v1635210809/Articoli/Around%20the%20globe/Formula_finale_azimut.png" c="p1, p2 sono i vettori normali ai due piani cartesiani"></CMedia>
+$$
+\vec{p_1}, \vec{p_2} = \text{vettori normali ai due piani cartesiani}
+\\
+azimuth = \arccos(\frac{\vec{p_1} \cdot \vec{p_2}}{\left \| \vec{p_1} \right \| \left \| \vec{p_2} \right \|})
+$$
+
+<!-- <CMedia s="/v1635210809/Articoli/Around%20the%20globe/Formula_finale_azimut.png" c="p1, p2 sono i vettori normali ai due piani cartesiani"></CMedia> -->
 
 Per avere una comprensione più chiara e gloabale del problema e della sua soluzione, è forse utile osservare il tutto in maniera più interattiva grazie all'uso di GeoGebra.
 

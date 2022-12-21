@@ -60,7 +60,24 @@ In addition, one thing that my pupils (and especially their parents) appreciate 
 
 P.S. if you had problems solving the price question that was on the hanging poster, I leave the solution here.
 
-<CMedia s="/v1669956210/ripetizioni/Risoluzione_quesito_locandina.jpg" c="Poster problem solution"></CMedia>
+$$
+Price = Sol_1 + Sol_2
+\\
+Sol_1 =
+\begin{bmatrix} 3 & -2 & 5 \end{bmatrix}
+\begin{bmatrix} 2 \\ 6 \\ 3 \end{bmatrix}
+= 3 \cdot 2 + (-2) \cdot 6 + 5 \cdot 3 = 6 + (-12) + 15 = 9
+\\
+Sol_2 = \int_0^3 \int_0^{\frac{4}{3}x} 1\, dx\, dx = \int_0^3 \left. y \right|_0^{\frac{4}{3}x} \, dx = \int_0^3 \frac{4}{3}x \, dx = \frac{4}{3} \cdot \left. \frac{x^2}{2}\right|_0^3 = \frac{4}{3} \cdot \frac{3^2}{2} - 0 = 6
+$$
+
+Da cui:
+
+$$
+Price = 6 + 9 = 15 [\frac{€}{h}]
+$$
+
+<!-- <CMedia s="/v1669956210/ripetizioni/Risoluzione_quesito_locandina.jpg" c="Poster problem solution"></CMedia> -->
 
 ## How to get started
 

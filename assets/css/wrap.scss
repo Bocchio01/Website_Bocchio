@@ -14,7 +14,7 @@
   > :first-child {
     margin-top: 0px;
   }
-  *:not(pre *) {
+  *:not(h1, h2, .math *, .nuxt-content-highlight *) {
     font-size: var(--Size_Text_Wrap);
     font-family: var(--Font_Base);
   }
@@ -27,6 +27,7 @@
     margin-top: 50px;
     border-bottom: 1px solid #a2a2a2;
     font-size: calc(1.5 * var(--Size_Text_Wrap));
+    font-family: var(--Font_Base);
     text-align: left;
   }
   h3 {
@@ -48,6 +49,9 @@
     width: 700px;
     margin-inline: auto !important;
     margin-block: 30px !important;
+  }
+  .math {
+    overflow: auto;
   }
 }
 

@@ -19,6 +19,7 @@ export default {
         rel: 'canonical',
         href: process.env.HOST_URL,
       },
+      { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css' },
     ],
     ...meta,
   },
@@ -37,6 +38,8 @@ export default {
       prism: {
         theme: 'prism-themes/themes/prism-vsc-dark-plus.css',
       },
+      remarkPlugins: ['remark-math'],
+      rehypePlugins: ['rehype-katex'],
     },
   },
 
