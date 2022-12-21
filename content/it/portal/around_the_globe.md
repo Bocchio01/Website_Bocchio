@@ -11,4 +11,7 @@ paragraph:
 img:
   src: /v1636152274/Articoli/Around%20the%20globe/Around_the_globe_icon.jpg
   alt: Attorno_al_globo
+
+cretaed_at: 2022-02-12T21:18:10Z
+updated_at: 2022-02-16T01:36:33Z
 ---

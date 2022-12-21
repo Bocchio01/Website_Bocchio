@@ -62,12 +62,16 @@ P.S. if you had problems solving the price question that was on the hanging post
 
 $$
 Price = Sol_1 + Sol_2
-\\
+$$
+
+$$
 Sol_1 =
 \begin{bmatrix} 3 & -2 & 5 \end{bmatrix}
 \begin{bmatrix} 2 \\ 6 \\ 3 \end{bmatrix}
 = 3 \cdot 2 + (-2) \cdot 6 + 5 \cdot 3 = 6 + (-12) + 15 = 9
-\\
+$$
+
+$$
 Sol_2 = \int_0^3 \int_0^{\frac{4}{3}x} 1\, dx\, dx = \int_0^3 \left. y \right|_0^{\frac{4}{3}x} \, dx = \int_0^3 \frac{4}{3}x \, dx = \frac{4}{3} \cdot \left. \frac{x^2}{2}\right|_0^3 = \frac{4}{3} \cdot \frac{3^2}{2} - 0 = 6
 $$
 

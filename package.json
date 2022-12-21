@@ -9,7 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxt/content": "nuxt/content#feat/rehype-plugins",
+    "@nuxt/content": "1.15.1",
     "@nuxtjs/composition-api": "^0.32.0",
     "@nuxtjs/i18n": "^7.3.0",
     "@nuxtjs/robots": "^3.0.0",

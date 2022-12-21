@@ -96,7 +96,7 @@ export default {
     i18n: true,
     routes: async () => {
       const { $content } = require('@nuxt/content')
-      const Articoli = await $content('', { deep: true }).only(['path']).fetch()
+      const Articoli = await $content('', { deep: true }).only(['path', 'updatedAt']).fetch()
       const routes = Articoli.map((route) => {
         if (route.path.indexOf('article') > -1) {
           let indexes = []
@@ -135,6 +135,7 @@ export default {
           ]
           route.locale = 'it'
         }
+        route.lastmod = route.updatedAt
         return route
       })
 
@@ -153,6 +154,7 @@ export default {
 
   router: {
     middleware: 'statistics',
+    trailingSlash: true,
   },
 
   robots: {

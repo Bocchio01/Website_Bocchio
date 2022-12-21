@@ -74,6 +74,10 @@ export const mutations = {
     } else {
       state.user[path[0]][path[1]] = obj.e.target ? obj.e.target.value : obj.e
     }
+
+    if (state.user.id) {
+      this.dispatch('UserUpdate')
+    }
   },
 }
 
