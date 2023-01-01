@@ -35,7 +35,7 @@
     "@nuxt/image": "^0.7.1",
     "@nuxtjs/pwa": "^3.3.5",
     "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.8.0",
+    "prettier": "^2.8.1",
     "sass": "^1.56.1",
     "sass-loader": "^10.2.0"
   }
