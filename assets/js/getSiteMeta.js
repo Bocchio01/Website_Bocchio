@@ -8,7 +8,7 @@ export default (args) => {
   const type = (args && args.type) || 'website'
   const tmpUrl = (args && host_url + args.url) || host_url + '/'
   const url = tmpUrl.substring(tmpUrl.length - 1) == '/' ? tmpUrl : tmpUrl + '/'
-  const theme = '&theme=' + (url.indexOf(host_url + '/portal/') == 0 ? 'dark' : 'light')
+  const theme = '&theme=' + (url.indexOf('/portal/') > 0 ? 'dark' : 'light')
 
   const og_image_url = host_url + '/.netlify/functions/og-image?title=' + (title == 'Home' ? "Bocchio's WebSite" : title) + theme
 

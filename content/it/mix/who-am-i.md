@@ -5,8 +5,8 @@ img:
   src: '#Chi_sono'
   alt: Chi sono?
 
-createdAt: 2021-06-20T00:16:00Z
-updatedAt: 2022-02-25T22:52:00Z
+createdAt: 2022-02-12T21:18:00Z
+updatedAt: 2022-02-26T00:13:00Z
 ---
 
 # Chi sono?

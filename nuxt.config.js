@@ -19,7 +19,6 @@ export default {
         rel: 'canonical',
         href: process.env.HOST_URL,
       },
-      { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css' },
     ],
     ...meta,
   },
@@ -96,45 +95,27 @@ export default {
     i18n: true,
     routes: async () => {
       const { $content } = require('@nuxt/content')
-      const Articoli = await $content('', { deep: true }).only(['path', 'updatedAt']).fetch()
-      const routes = Articoli.map((route) => {
+      const MDcontents = await $content('', { deep: true }).only(['path', 'updatedAt']).fetch()
+
+      const routes = MDcontents.map((route) => {
         if (route.path.indexOf('article') > -1) {
-          let indexes = []
-          for (let index = 0; index < route.path.length; index++) {
-            if (route.path[index] === '/') {
-              indexes.push(index)
-            }
-          }
-          route.path = route.path.substring(0, indexes[2]) + route.path.substring(indexes[3])
+          route.path = route.path.replace(/\/\d{4}\/*/, '/')
         }
 
-        if (route.path.indexOf('/en/') == 0) {
-          route.url = `${route.path.slice(3)}/`
-          route.links = [
-            {
-              lang: 'en',
-              url: route.url,
-            },
-            {
-              lang: 'it',
-              url: '/it' + route.url,
-            },
-          ]
-          route.locale = 'en'
-        } else {
-          route.url = `${route.path}/`
-          route.links = [
-            {
-              lang: 'en',
-              url: route.url.slice(3),
-            },
-            {
-              lang: 'it',
-              url: route.url,
-            },
-          ]
-          route.locale = 'it'
-        }
+        route.locale = route.path.startsWith('/en/') ? 'en' : 'it'
+        route.url = route.path.replace(/^\/en\//, '')
+
+        route.links = [
+          {
+            lang: 'en',
+            url: `${route.path.slice(3)}/`,
+          },
+          {
+            lang: 'it',
+            url: '/it' + `${route.path.slice(3)}/`,
+          },
+        ]
+
         route.lastmod = route.updatedAt
         return route
       })

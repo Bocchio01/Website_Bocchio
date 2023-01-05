@@ -55,7 +55,7 @@ export default {
   }
 
   >div {
-    flex: auto;
+    flex: 1 1 340px;
     overflow-wrap: anywhere;
 
     >div {
