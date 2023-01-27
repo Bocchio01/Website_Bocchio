@@ -14,7 +14,7 @@
   > :first-child {
     margin-top: 0px;
   }
-  *:not(h1, h2, .math *, .nuxt-content-highlight *) {
+  *:not(h1, h2, .math *, .nuxt-content-highlight *, table *) {
     font-size: var(--Size_Text_Wrap);
     font-family: var(--Font_Base);
   }

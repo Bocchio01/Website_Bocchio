@@ -107,6 +107,7 @@ input[type='radio']:checked + label span {
 }
 
 table {
+  font-family: auto !important;
   font-size: var(--Size_Text_Wrap);
   border-collapse: collapse;
   width: 100%;
@@ -114,6 +115,12 @@ table {
   td {
     text-align: left;
     padding: 8px;
+  }
+  * {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background-color: unset;
   }
 
   tr:nth-child(even) {

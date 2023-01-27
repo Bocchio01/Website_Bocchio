@@ -72,10 +72,10 @@ Sol_1 =
 $$
 
 $$
-Sol_2 = \int_0^3 \int_0^{\frac{4}{3}x} 1\, dx\, dx = \int_0^3 \left. y \right|_0^{\frac{4}{3}x} \, dx = \int_0^3 \frac{4}{3}x \, dx = \frac{4}{3} \cdot \left. \frac{x^2}{2}\right|_0^3 = \frac{4}{3} \cdot \frac{3^2}{2} - 0 = 6
+Sol_2 = \int_0^3 \int_0^{\frac{4}{3}x} 1\, dy\, dx = \int_0^3 \left. y \right|_0^{\frac{4}{3}x} \, dx = \int_0^3 \frac{4}{3}x \, dx = \frac{4}{3} \cdot \left. \frac{x^2}{2}\right|_0^3 = \frac{4}{3} \cdot \frac{3^2}{2} - 0 = 6
 $$
 
-Da cui:
+And so we obtain:
 
 $$
 Price = 6 + 9 = 15 [\frac{€}{h}]
