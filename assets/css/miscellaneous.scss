@@ -111,11 +111,7 @@ table {
   font-size: var(--Size_Text_Wrap);
   border-collapse: collapse;
   width: 100%;
-  th,
-  td {
-    text-align: left;
-    padding: 8px;
-  }
+
   * {
     margin: 0;
     border: 0;
@@ -123,11 +119,30 @@ table {
     background-color: unset;
   }
 
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
+  th,
+  td {
+    text-align: left;
+    // padding: 8px;
+    padding-block: 0;
+    padding-inline: 15px;
+    border: 1px solid var(--black);
+    white-space: nowrap;
+  }
+
+  tr {
+    &:nth-child(even) {
+      background-color: var(--Color_tr_even);
+    }
+    &:hover {
+      background-color: var(--Color_Hover);
+      cursor: pointer;
+    }
   }
 
   th {
     background-color: var(--Color_Main);
+    &::first-letter {
+      text-transform: capitalize;
+    }
   }
 }

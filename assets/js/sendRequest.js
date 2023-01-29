@@ -9,12 +9,17 @@ export default (args, target_url = '/BWS/Main.php') => {
     xhttp.onreadystatechange = (e) => {
       if (xhttp.readyState === 4) {
         if (xhttp.status === 200) {
-          const json = JSON.parse(xhttp.responseText)
-          if (json.Status == 0) {
-            resolve(json)
-          } else {
-            console.warn(json.Log[json.Log.length - 1])
-            reject(json)
+          try {
+            const json = JSON.parse(xhttp.responseText)
+            if (json.Status == 0) {
+              resolve(json)
+            } else {
+              console.warn(json.Log[json.Log.length - 1])
+              reject(json)
+            }
+          } catch {
+            console.warn('Errore nella risposta del server')
+            reject({ Log: ['Il server sembrerebbe non rispondere'] })
           }
         } else {
           console.warn('Errore nella richiesta: Status -> ' + xhttp.status)

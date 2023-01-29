@@ -412,9 +412,17 @@
           if (val.preferences.theme == 'dark') {
             document.documentElement.style.setProperty('--black', 'white')
             document.documentElement.style.setProperty('--white', 'black')
+            document.documentElement.style.setProperty(
+              '--Color_tr_even',
+              '#191919'
+            )
           } else {
             document.documentElement.style.setProperty('--black', 'black')
             document.documentElement.style.setProperty('--white', 'white')
+            document.documentElement.style.setProperty(
+              '--Color_tr_even',
+              '#f2f2f2'
+            )
           }
         },
         deep: true,

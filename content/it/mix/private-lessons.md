@@ -5,6 +5,8 @@ img:
   src: '#Ripetizioni'
   alt: Ripetizioni!
 
+portalurl: /it/portal/private_lessons_management/
+
 createdAt: 2022-12-02T04:38:00Z
 updatedAt: 2022-12-02T04:38:00Z
 ---

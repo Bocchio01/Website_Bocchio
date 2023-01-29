@@ -7,7 +7,10 @@
     >
       <div class="box" v-for="(el, sub_index) in section" :key="sub_index">
         <h2>{{ el.title[$i18n.locale] }}</h2>
-        <table v-if="el.type == 'table' && el.baseTab && SUDO == false">
+        <table
+          v-if="el.type == 'table' && el.baseTab && editOn == null"
+          @dblclick="activateEdit(el)"
+        >
           <thead>
             <tr>
               <th v-for="(key, index) in el.baseTab" :key="index">
@@ -24,7 +27,10 @@
           </tbody>
         </table>
 
-        <table v-else-if="el.type == 'table' && SUDO == false">
+        <table
+          v-else-if="el.type == 'table' && editOn == null"
+          @dblclick="activateEdit(el)"
+        >
           <thead>
             <tr>
               <th v-for="(key, index) in Object.keys(el.data[0])" :key="index">
@@ -41,10 +47,18 @@
           </tbody>
         </table>
 
-        <table v-else-if="el.type == 'table' && el.sudoTab && SUDO == true">
+        <table
+          v-else-if="
+            el.type == 'table' && el.sudoTab && editOn.split('.')[0] == el.table
+          "
+        >
           <thead>
             <tr>
-              <th v-for="(key, index) in el.sudoTab" :key="index">
+              <th
+                v-for="(key, index) in el.sudoTab"
+                :key="index"
+                @click="sort(key)"
+              >
                 {{ el.locale[$i18n.locale][key] }}
               </th>
               <th v-for="(key, index) in el.controls" :key="key">
@@ -54,15 +68,15 @@
           </thead>
           <tbody>
             <tr
-              v-for="(row, index) in el.data"
+              v-for="(row, index) in sortedColumns"
               :key="index"
               :class="[editOn == el.table + '.' + row['id'] ? 'focusOn' : '']"
             >
               <td
                 v-for="(key, index) in el.sudoTab"
                 :key="index"
-                @click.self="editOn = null"
-                @dblclick.prevent="editOn = el.table + '.' + row['id']"
+                @dblclick="editOn = null"
+                @click="editOn = el.table + '.' + row['id']"
               >
                 <input
                   v-if="editOn == el.table + '.' + row['id']"
@@ -93,13 +107,13 @@
           </tbody>
         </table>
 
-        <div v-else-if="el.type == 'graph'">
+        <div v-else-if="el.type == 'graph'" style="background-color: white">
           <img :src="el.url" :alt="el.title" />
         </div>
 
         <div v-else>
-          <h2>Errore</h2>
-          <p>Questa tabella non prevede la modalità SUDO.</p>
+          <h2>SUDO</h2>
+          <p>Sei entrato in modalità SUDO.</p>
         </div>
       </div>
     </div>
@@ -112,22 +126,55 @@
       data: [],
       SUDO: false,
     },
+
     data() {
       return {
         editOn: null,
+        currentSort: 'id',
+        currentSortDir: 'desc',
+        sortedData: [],
       }
     },
+
+    computed: {
+      sortedColumns() {
+        return this.sortedData.sort((a, b) => {
+          let modifier = 1
+          if (this.currentSortDir === 'desc') modifier = -1
+          if (a[this.currentSort] < b[this.currentSort]) return -1 * modifier
+          if (a[this.currentSort] > b[this.currentSort]) return 1 * modifier
+          return 0
+        })
+      },
+    },
+
     methods: {
+      sort: function (s) {
+        //if s == current sort, reverse
+        if (s === this.currentSort) {
+          this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc'
+        }
+        this.currentSort = s
+      },
+
       sendModify(id, tab) {
         if ((id, tab)) {
           this.editOn = null
-          this.$emit('Modify', id, tab)
+          this.$emit('modifyRecord', id, tab)
         }
       },
 
       sendDelete(id) {
         if (id) {
-          this.$emit('Delete', id)
+          this.editOn = null
+          this.$emit('deleteRecord', id)
+        }
+      },
+
+      activateEdit(el) {
+        if (this.SUDO && el.sudoTab) {
+          this.sortedData = el.data
+          this.editOn = el.table
         }
       },
     },

@@ -1,73 +1,74 @@
 .wrap.Portale {
-    width: 95%;
+  width: 95%;
 }
 
 .box,
 .result {
-    padding: 10px;
-    border-radius: var(--Border_Radius_Wrap);
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    > h2 {
-        margin-top: 0px !important;
-    }
+  padding: 10px;
+  border-radius: var(--Border_Radius_Wrap);
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  overflow-x: auto;
+  > h2 {
+    margin-top: 0px !important;
+  }
 }
 
 .result {
-    display: flex;
-    flex-wrap: wrap;
-    width: fit-content;
-    margin: 20px auto;
-    border: var(--Border_Settings_Button);
-    border-color: var(--Color_Main);
-    * {
-        margin: 5px;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  width: fit-content;
+  margin: 20px auto;
+  border: var(--Border_Settings_Button);
+  border-color: var(--Color_Main);
+  * {
+    margin: 5px;
+  }
 }
 .box {
-    align-self: flex-start;
-    border: var(--Border_Settings_Wrap);
-    margin: calc(0.5 * var(--Margin_Gap));
+  align-self: flex-start;
+  border: var(--Border_Settings_Wrap);
+  margin: calc(0.5 * var(--Margin_Gap));
 }
 
 .affianca {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 input,
 button,
 .button {
-    border: var(--Border_Settings_Button);
-    border-radius: var(--Border_Radius_Header);
-    font-family: var(--Font_Base);
-    font-size: var(--Size_Text_Wrap);
-    margin-inline: auto;
-    margin-block: var(--Margin_Gap);
+  border: var(--Border_Settings_Button);
+  border-radius: var(--Border_Radius_Header);
+  font-family: var(--Font_Base);
+  font-size: var(--Size_Text_Wrap);
+  margin-inline: auto;
+  margin-block: var(--Margin_Gap);
 }
 
 button,
 .button {
-    // color: var(--Color_Text);
-    color: black;
+  // color: var(--Color_Text);
+  color: black;
 
-    display: block;
-    cursor: pointer;
-    padding: 10px;
-    background-color: var(--Color_Main);
-    text-decoration: underline;
-    text-align: center;
-    font-weight: bold;
-    width: fit-content;
-    &:hover {
-        color: rgb(0, 0, 0, 0.7) !important;
-    }
+  display: block;
+  cursor: pointer;
+  padding: 10px;
+  background-color: var(--Color_Main);
+  text-decoration: underline;
+  text-align: center;
+  font-weight: bold;
+  width: fit-content;
+  &:hover {
+    color: rgb(0, 0, 0, 0.7) !important;
+  }
 }
 
 @media (max-width: 1030px) {
-    .wrap.Portale {
-        padding: 10px;
-    }
+  .wrap.Portale {
+    padding: 10px;
+  }
 }
