@@ -21,7 +21,7 @@
     "leaflet-geosearch": "^3.7.0",
     "leaflet.geodesic": "^2.6.1",
     "mathjs": "^11.6.0",
-    "nuxt": "^2.15.8",
+    "nuxt": "^2.16.2",
     "prism-themes": "^1.9.0",
     "puppeteer-core": "7.0.4",
     "rehype-katex": "^5.0.0",
