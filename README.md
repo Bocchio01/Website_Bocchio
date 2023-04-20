@@ -1,35 +1,42 @@
-# Bocchio's WebSite
+# Nuxt 3 Minimal Starter
 
-My personal website: an online laboratory that helps me talk about the projects I have done, in some cases build new ones and generally experiment.
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Discovering new stuff
+## Setup
 
-I have used this project over the last few months as an online lab where I could discover some new techniques and take a look at the unknown world of javascript, frameworks, basic HTML, CSS and so on.
+Make sure to install the dependencies:
 
-Started just for fun, it quickly became a full website with user registration, database, analytics, forum, integrated WebApp and some other cool features.
+```bash
+# yarn
+yarn install
 
-Sometimes I preferred to avoid using ready-made libraries just to have a more complete view on how to manage particular web-related tasks (like cookies or loggin system).
+# npm
+npm install
 
-Many commits, many tests, many fails... but that's how I thought of it in my head
+# pnpm
+pnpm install
+```
 
-## Links and resources
+## Development Server
 
-The whole project is divided into two different repositories, one for the "frontend" and another for the "backend/database". The database is also hosted on a different domain/host.
+Start the development server on `http://localhost:3000`
 
-Links to the repositories:
+```bash
+npm run dev
+```
 
-- [Frontend](https://github.com/Bocchio01/Bocchio_WebSite) (Nuxt/VueJS framework, HTML and CSS)
-- [Backend/Database](https://github.com/Bocchio01/Bocchio_WebSite_Utils) (PHP and MySQL)
+## Production
 
-Links to sites:
+Build the application for production:
 
-- [Main website](https://bocchio.dev) (hosted on Netlify)
-- [Analytics/Database](https://bocchioutils.altervista.org) (hosted on Altervista)
+```bash
+npm run build
+```
 
-## Explore
+Locally preview production build:
 
-Everything is ready for your visit! Go and leave feedback under one of the articles already on the site, or play with one of the portal. It's up to you! See you there...
+```bash
+npm run preview
+```
 
-Have a nice coding day,
-
-Tommaso :panda_face:
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

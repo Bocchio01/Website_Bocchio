@@ -1,109 +1,102 @@
 <template>
-  <div class="sloganBase" :class="isHome ? 'sloganHome' : 'sloganNotHome'">
-    {{ sloganMsg }}
+  <div class="sloganBase" :class="isHome() ? 'sloganHome' : 'sloganNotHome'">
+    {{ props.sloganMsg || 'Get Things Done!' }}
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    sloganMsg: {
-      type: String,
-      default: "Get Things Done!",
-      // default: "What's Next?",
-    },
-  },
+<script setup lang="ts">
+  const props = defineProps<{
+    sloganMsg: { type: String; required: false }
+  }>()
 
-  computed: {
-    isHome() {
-      return this.$route.path == this.localePath('/')
-    },
-  },
-}
+  const isHome = () => {
+    const { path } = useRoute()
+    return path == '/'
+  }
 </script>
 
 <style lang="scss">
-.Default {
-  div.sloganBase {
-    width: 100%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--Color_Hover);
-    z-index: 1;
-    font-family: var(--Font_Special);
+  .Default {
+    div.sloganBase {
+      width: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--Color_Hover);
+      z-index: 1;
+      font-family: var(--Font_Special);
 
-    &.sloganNotHome {
-      text-shadow: -5px 5px 20px rgba(#fff, 0.5);
-      margin: 27px auto;
-      font-size: var(--Size_Text_Slogan);
+      &.sloganNotHome {
+        text-shadow: -5px 5px 20px rgba(#fff, 0.5);
+        margin: 27px auto;
+        font-size: var(--Size_Text_Slogan);
+      }
+
+      &.sloganHome {
+        text-shadow: -7px 7px 20px rgba(#fff, 0.5);
+        height: calc(100vh - var(--Size_Text_Slogan));
+        padding: 50px;
+        --Font_Size_Slogan_Home: 160px;
+        font-size: 160px;
+        animation: 3.5s linear 0s forwards;
+        animation-name: login;
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    :root {
+      --Size_Text_Slogan: 60px;
     }
 
-    &.sloganHome {
-      text-shadow: -7px 7px 20px rgba(#fff, 0.5);
-      height: calc(100vh - var(--Size_Text_Slogan));
-      padding: 50px;
-      --Font_Size_Slogan_Home: 160px;
-      font-size: 160px;
-      animation: 3.5s linear 0s forwards;
-      animation-name: none;
+    .Default div.sloganBase.sloganHome {
+      --Font_Size_Slogan_Home: 120px;
+      font-size: 120px;
     }
   }
-}
 
-@media (max-width: 1200px) {
-  :root {
-    --Size_Text_Slogan: 60px;
+  @media (max-width: 570px) {
+    :root {
+      --Size_Text_Slogan: 35px;
+    }
+
+    .Default div.sloganBase.sloganHome {
+      --Font_Size_Slogan_Home: 65px;
+      font-size: 65px;
+    }
   }
 
-  .Default div.sloganBase.sloganHome {
-    --Font_Size_Slogan_Home: 120px;
-    font-size: 120px;
-  }
-}
+  @keyframes login {
+    0% {
+      opacity: 1;
+      font-size: 1px;
+    }
 
-@media (max-width: 570px) {
-  :root {
-    --Size_Text_Slogan: 35px;
-  }
+    30% {
+      font-size: var(--Font_Size_Slogan_Home);
+    }
 
-  .Default div.sloganBase.sloganHome {
-    --Font_Size_Slogan_Home: 65px;
-    font-size: 65px;
-  }
-}
+    90% {
+      font-size: calc(0.8 * var(--Font_Size_Slogan_Home));
+      opacity: 0;
+    }
 
-@keyframes login {
-  0% {
-    opacity: 1;
-    font-size: 1px;
-  }
+    95% {
+      font-size: var(--Font_Size_Slogan_Home);
+    }
 
-  30% {
-    font-size: var(--Font_Size_Slogan_Home);
-  }
+    96% {
+      opacity: 1;
+    }
 
-  90% {
-    font-size: calc(0.8 * var(--Font_Size_Slogan_Home));
-    opacity: 0;
-  }
+    99% {
+      opacity: 0;
+    }
 
-  95% {
-    font-size: var(--Font_Size_Slogan_Home);
+    100% {
+      opacity: 1;
+      font-size: var(--Font_Size_Slogan_Home);
+    }
   }
-
-  96% {
-    opacity: 1;
-  }
-
-  99% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-    font-size: var(--Font_Size_Slogan_Home);
-  }
-}
 </style>
