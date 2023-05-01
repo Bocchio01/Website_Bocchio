@@ -20,7 +20,7 @@
     "json-pointer": "^0.6.2",
     "leaflet-geosearch": "^3.7.0",
     "leaflet.geodesic": "^2.6.1",
-    "mathjs": "^11.7.0",
+    "mathjs": "^11.8.0",
     "nuxt": "^2.15.8",
     "prism-themes": "^1.9.0",
     "puppeteer-core": "7.0.4",
