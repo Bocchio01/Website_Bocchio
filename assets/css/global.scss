@@ -1,0 +1,124 @@
+$Color_Main: #ff9800;
+$Size_Variable: 0px;
+$black: black;
+$white: white;
+
+$Color_Text: $black;
+$Color_Text_BG: $white;
+$Color_tr_even: #f2f2f2;
+$Color_Body_BG: black;
+$Color_Body_Star: white;
+$Color_Hover: $Color_Main;
+$Font_Special: 'Bungee Shade', cursive;
+$Font_Base: 'Roboto Condensed', sans-serif;
+$Border_Settings_Wrap: 1px solid #a2a2a2;
+
+$Transition_Setting: all 0.2s ease-in-out;
+$Border_Radius_Wrap: 20px;
+$Size_Title: 40px;
+$Size_Text_Wrap: calc(17px + $Size_Variable);
+$Padding_Wrap: 50px;
+$Padding_Wrap_Min: 15px;
+
+$Size_Text_Header: 30px;
+$Border_Radius_Header: 10px;
+
+$Size_Text_Footer: 25px;
+
+$Size_Text_Slogan: 80px;
+
+$Border_Settings_Button: 2px solid $black;
+$Margin_Gap: 25px;
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  line-height: 1.6;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Bungee Shade';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/BungeeShade_Regular.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/Roboto_Condensed.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+:root {
+  /* General */
+  --Color_Main: $Color_Main;
+  --Size_Variable: $Size_Variable;
+  --black: $black;
+  --white: $white;
+
+  --Color_Text: var(--black);
+  --Color_Text_BG: var(--white);
+  --Color_tr_even: #f2f2f2;
+  --Color_Body_BG: $Color_Body_BG;
+  --Color_Body_Star: $Color_Body_Star;
+  --Color_Hover: $Color_Hover;
+  --Font_Special: $Font_Special;
+  --Font_Base: $Font_Base;
+  --Border_Settings_Wrap: $Border_Settings_Wrap;
+
+  /* Wrap */
+  --Transition_Setting: $Transition_Setting;
+  --Border_Radius_Wrap: $Border_Radius_Wrap;
+  --Size_Title: $Size_Title;
+  --Size_Text_Wrap: $Size_Text_Wrap;
+  --Padding_Wrap: $Padding_Wrap;
+  --Padding_Wrap_Min: $Padding_Wrap_Min;
+
+  /* Header - Footer*/
+  --Size_Text_Header: $Size_Text_Header;
+  --Border_Radius_Header: $Border_Radius_Header;
+
+  --Size_Text_Footer: $Size_Text_Footer;
+
+  /* Slogan */
+  --Size_Text_Slogan: $Size_Text_Slogan;
+
+  /* Portali */
+  --Border_Settings_Button: $Border_Settings_Button;
+  --Margin_Gap: $Margin_Gap;
+}
+
+body,
+html {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--Color_Text);
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(50, 50, 50, 0.8);
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--Color_Main);
+}
