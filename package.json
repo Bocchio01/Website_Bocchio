@@ -11,8 +11,11 @@
   "devDependencies": {
     "@nuxt/content": "^2.7.0",
     "@nuxt/devtools": "latest",
+    "@nuxtjs/i18n": "^8.0.0-beta.13",
     "@types/node": "^18",
-    "nuxt": "^3.6.2"
+    "nuxt": "^3.6.2",
+    "rehype-katex": "^5.0.0",
+    "remark-math": "^4.0.0"
   },
   "dependencies": {
     "sass": "^1.63.6"

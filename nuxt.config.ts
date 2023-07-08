@@ -8,9 +8,9 @@ export default defineNuxtConfig({
     dbxRefreshToken: 'dbxRefreshToken',
     // Keys within public are also exposed client-side
     public: {
-      hostUrl: '/api',
-      utilsSite: '/api',
-      isDev: true,
+      hostUrl: 'https://bocchio.dev',
+      utilsSite: 'https://bocchioutils.altervista.org',
+      isDev: false,
     }
   },
 
@@ -22,45 +22,78 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      meta: [
-        { charset: 'utf-8' },
-        { name: 'author', content: 'Tommaso Bocchietti' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      ],
-      // script: [
-      //   // <script src="https://myawesome-lib.js"></script>
-      //   { src: 'https://awesome-lib.js' }
-      // ],
-      // link: [
-      //   // <link rel="stylesheet" href="https://myawesome-lib.css">
-      //   { rel: 'stylesheet', href: 'https://awesome-lib.css' }
-      // ],
-      // // please note that this is an area that is likely to change
-      // style: [
-      //   // <style type="text/css">:root { color: red }</style>
-      //   { children: ':root { color: red }', type: 'text/css' }
-      // ],
-      // noscript: [
-      //   // <noscript>JavaScript is required</noscript>
-      //   { children: 'JavaScript is required' }
-      // ]
-    }
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+    },
+  },
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          sourceMap: false,
+          additionalData(source: string, fp: string) {
+            // All scss files ending with imports.scss will not re-import additionalData
+            if (fp.endsWith('variables.scss')) return source;
+            return `@import "@/assets/css/variables.scss"; ${source}`
+          }
+        },
+      },
+    },
   },
 
   css: [
-    '@/assets/css/global.scss',
-    '@/assets/css/portali.scss',
-    '@/assets/css/wrap.scss',
-    '@/assets/css/miscellaneous.scss'
+    '~/assets/css/global.scss',
+    '~/assets/css/portali.scss',
+    '~/assets/css/wrap.scss',
+    '~/assets/css/miscellaneous.scss'
   ],
-
 
   modules: [
-    '@nuxt/content'
+    '@nuxtjs/i18n',
+    '@nuxt/content',
   ],
-  // content: {
-  //   // https://content.nuxtjs.org/api/configuration
-  // },
+
+  content: {
+    // https://content.nuxtjs.org/api/configuration
+    markdown: {
+      remarkPlugins: ['remark-math'],
+      rehypePlugins: ['rehype-katex'],
+    },
+    highlight: {
+      // Theme used in all color schemes.
+      // theme: 'github-light'
+      // OR
+      theme: {
+        // Default theme (same as single string)
+        default: 'github-dark',
+        // Theme used if `html.dark`
+        dark: 'github-light',
+        // Theme used if `html.sepia`
+        sepia: 'monokai'
+      }
+    }
+  },
+
+  i18n: {
+    /* module options */
+    baseUrl: process.env.NUXT_PUBLIC_HOST_URL,
+    lazy: true,
+    langDir: 'lang',
+    locales: [
+      { code: 'en', iso: 'en-US', file: 'en.json', dir: 'ltr' },
+      { code: 'it', iso: 'it-IT', file: 'it.json', dir: 'ltr' },
+    ],
+    strategy: 'prefix_except_default',
+    defaultLocale: 'en',
+    detectBrowserLanguage: {
+      useCookie: true,
+      // alwaysRedirect: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',  // recommended
+    },
+  },
+
 
   // spaLoadingTemplate: 'app/spa-loading-template.html',
   // ssr: false,

@@ -2,32 +2,32 @@
   position: relative;
   width: 60%;
   text-align: justify;
-  margin: var(--Margin_Gap) auto;
-  color: var(--Color_Text);
-  background-color: var(--Color_Text_BG);
-  padding: var(--Padding_Wrap);
-  // box-shadow: var(--Shadow_Setting);
-  border: var(--Border_Settings_Wrap);
-  border-radius: var(--Border_Radius_Wrap);
-  transition: var(--Transition_Setting);
-  font-family: var(--Font_Base);
+  margin: $Margin_Gap auto;
+  color: $Color_Text;
+  background-color: $Color_Text_BG;
+  padding: $Padding_Wrap;
+  // box-shadow: $Shadow_Setting;
+  border: $Border_Settings_Wrap;
+  border-radius: $Border_Radius_Wrap;
+  transition: $Transition_Setting;
+  font-family: $Font_Base;
   > :first-child {
     margin-top: 0px;
   }
   *:not(h1, h2, .math *, .nuxt-content-highlight *, table *) {
-    font-size: var(--Size_Text_Wrap);
-    font-family: var(--Font_Base);
+    font-size: $Size_Text_Wrap;
+    font-family: $Font_Base;
   }
   h1 {
-    font-size: var(--Size_Title);
-    font-family: var(--Font_Special);
+    font-size: $Size_Title;
+    font-family: $Font_Special;
     text-align: center;
   }
   h2 {
     margin-top: 50px;
     border-bottom: 1px solid #a2a2a2;
-    font-size: calc(1.5 * var(--Size_Text_Wrap));
-    font-family: var(--Font_Base);
+    font-size: calc(1.5 * $Size_Text_Wrap);
+    font-family: $Font_Base;
     text-align: left;
   }
   h3 {
@@ -40,11 +40,11 @@
     text-decoration: underline;
     font-weight: bold;
     &:hover {
-      color: var(--Color_Hover);
+      color: $Color_Hover;
     }
   }
   pre {
-    border-radius: var(--Border_Radius_Header);
+    border-radius: $Border_Radius_Header;
     max-width: 100%;
     width: 700px;
     margin-inline: auto !important;
@@ -64,11 +64,11 @@
 @media (max-width: 1030px) {
   :root {
     --Padding_Wrap: 30px;
-    --Size_Text_Wrap: calc(15px + var(--Size_Variable));
+    --Size_Text_Wrap: calc(15px + $Size_Variable);
     --Size_Title: 25px;
   }
   .wrap h2 {
-    font-size: calc(var(--Size_Title) - 5px);
+    font-size: calc($Size_Title) - 5px;
   }
 }
 

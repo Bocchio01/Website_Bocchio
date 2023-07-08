@@ -1,13 +1,23 @@
 <script setup>
-const { data: navigation } = await useAsyncData('navigation', () => {
-  return fetchContentNavigation()
-})
+
+const locale = useI18n()
+
+const { data: navigation } = await useAsyncData('navigation',
+  () => queryContent(locale.value, 'article')
+    .find()
+)
+
+console.log(locale.value, navigation)
+
 </script>
 
 <template>
-    <main class="text-left">
-      <nav>
-        <a href="" v-for="el in navigation">{{el}}</a>
-      </nav>
-    </main>
+  <main class="text-left">
+    <nav>
+      <p v-for="el in navigation">
+        <a :href="el._path">{{ el.title }}</a>
+        <br>
+      </p>
+    </nav>
+  </main>
 </template>

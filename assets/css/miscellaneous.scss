@@ -10,7 +10,7 @@ input[type='radio'] + label span {
   vertical-align: middle;
   cursor: pointer;
   border-radius: 50%;
-  border: var(--Border_Settings_Button);
+  border: $Border_Settings_Button;
 }
 
 input[type='radio']:checked + label {
@@ -18,7 +18,7 @@ input[type='radio']:checked + label {
 }
 
 input[type='radio']:checked + label span {
-  background-color: var(--Color_Main);
+  background-color: $Color_Main;
 }
 
 .tooltip {
@@ -36,16 +36,16 @@ input[type='radio']:checked + label span {
   background-color: rgba(255, 255, 255, 0.8);
   position: absolute;
   z-index: 1;
-  padding: var(--Padding_Wrap);
+  padding: $Padding_Wrap;
   transition: all 0.5s ease-out;
   > mark {
     padding: 15px;
     background-color: rgba(0, 0, 0, 0.95);
     color: white;
     text-align: center;
-    font-size: var(--Size_Text_Wrap);
-    border: var(--Border_Settings_Wrap);
-    border-radius: var(--Border_Radius_Wrap);
+    font-size: $Size_Text_Wrap;
+    border: $Border_Settings_Wrap;
+    border-radius: $Border_Radius_Wrap;
   }
 }
 
@@ -54,14 +54,14 @@ input[type='radio']:checked + label span {
 }
 
 .logo {
-  height: calc(1.7 * var(--Size_Text_Header));
-  width: calc(2.1 * var(--Size_Text_Header));
+  height: calc(1.7 * $Size_Text_Header);
+  width: calc(2.1 * $Size_Text_Header);
   cursor: pointer;
 
-  background-color: var(--Color_Main);
+  background-color: $Color_Main;
   mask: url('/svg/Lampadina_ingranaggi.svg') no-repeat center;
   &:hover ~ a {
-    color: var(--Color_Hover);
+    color: $Color_Hover;
   }
 }
 
@@ -78,7 +78,7 @@ input[type='radio']:checked + label span {
   right: 0px;
   visibility: hidden;
   text-decoration: none !important;
-  color: var(--Color_Text) !important;
+  color: $Color_Text !important;
 }
 
 .msg_bg {
@@ -108,7 +108,7 @@ input[type='radio']:checked + label span {
 
 table {
   font-family: auto !important;
-  font-size: var(--Size_Text_Wrap);
+  font-size: $Size_Text_Wrap;
   border-collapse: collapse;
   width: 100%;
 
@@ -125,22 +125,22 @@ table {
     // padding: 8px;
     padding-block: 0;
     padding-inline: 15px;
-    border: 1px solid var(--black);
+    border: 1px solid $black;
     white-space: nowrap;
   }
 
   tr {
     &:nth-child(even) {
-      background-color: var(--Color_tr_even);
+      background-color: $Color_tr_even;
     }
     &:hover {
-      background-color: var(--Color_Hover);
+      background-color: $Color_Hover;
       cursor: pointer;
     }
   }
 
   th {
-    background-color: var(--Color_Main);
+    background-color: $Color_Main;
     &::first-letter {
       text-transform: capitalize;
     }

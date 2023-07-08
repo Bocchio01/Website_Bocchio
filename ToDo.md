@@ -1,0 +1,1 @@
+- https://v8.i18n.nuxtjs.org/guide/seo

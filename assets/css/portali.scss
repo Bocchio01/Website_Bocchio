@@ -5,7 +5,7 @@
 .box,
 .result {
   padding: 10px;
-  border-radius: var(--Border_Radius_Wrap);
+  border-radius: $Border_Radius_Wrap;
   align-content: center;
   align-items: center;
   justify-content: center;
@@ -20,16 +20,16 @@
   flex-wrap: wrap;
   width: fit-content;
   margin: 20px auto;
-  border: var(--Border_Settings_Button);
-  border-color: var(--Color_Main);
+  border: $Border_Settings_Button;
+  border-color: $Color_Main;
   * {
     margin: 5px;
   }
 }
 .box {
   align-self: flex-start;
-  border: var(--Border_Settings_Wrap);
-  margin: calc(0.5 * var(--Margin_Gap));
+  border: $Border_Settings_Wrap;
+  margin: calc(0.5 * $Margin_Gap);
 }
 
 .affianca {
@@ -41,23 +41,23 @@
 input,
 button,
 .button {
-  border: var(--Border_Settings_Button);
-  border-radius: var(--Border_Radius_Header);
-  font-family: var(--Font_Base);
-  font-size: var(--Size_Text_Wrap);
+  border: $Border_Settings_Button;
+  border-radius: $Border_Radius_Header;
+  font-family: $Font_Base;
+  font-size: $Size_Text_Wrap;
   margin-inline: auto;
-  margin-block: var(--Margin_Gap);
+  margin-block: $Margin_Gap;
 }
 
 button,
 .button {
-  // color: var(--Color_Text);
+  // color: $Color_Text;
   color: black;
 
   display: block;
   cursor: pointer;
   padding: 10px;
-  background-color: var(--Color_Main);
+  background-color: $Color_Main;
   text-decoration: underline;
   text-align: center;
   font-weight: bold;
