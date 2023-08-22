@@ -1,18 +1,15 @@
+<script setup lang="ts">
+
+const isHome = false
+
+</script>
+
 <template>
   <div class="sloganBase" :class="isHome ? 'sloganHome' : 'sloganNotHome'">
     Get Things Done!
   </div>
 </template>
 
-<script>
-export default {
-  computed: {
-    isHome() {
-      return false
-    },
-  },
-}
-</script>
 
 <style lang="scss">
 $Font_Size_Slogan_Home: 160px;
@@ -32,19 +29,19 @@ div.sloganBase {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $Color_Hover;
+  color: var(--Color_Hover);
   z-index: 1;
-  font-family: $Font_Special;
+  font-family: var(--Font_Special);
 
   &.sloganNotHome {
     text-shadow: -5px 5px 20px rgba(#fff, 0.5);
     margin: 27px auto;
-    font-size: $Size_Text_Slogan;
+    font-size: var(--Size_Text_Slogan);
   }
 
   &.sloganHome {
     text-shadow: -7px 7px 20px rgba(#fff, 0.5);
-    height: calc(100vh - $Size_Text_Slogan);
+    height: calc(100vh - var(--Size_Text_Slogan));
     padding: 50px;
     $Font_Size_Slogan_Home: 160px;
     font-size: 160px;
@@ -75,7 +72,7 @@ div.sloganBase {
   }
 
   30% {
-    font-size: $Font_Size_Slogan_Home;
+    font-size: var(--Font_Size_Slogan_Home);
   }
 
   90% {
@@ -84,7 +81,7 @@ div.sloganBase {
   }
 
   95% {
-    font-size: $Font_Size_Slogan_Home;
+    font-size: var(--Font_Size_Slogan_Home);
   }
 
   96% {
@@ -97,7 +94,7 @@ div.sloganBase {
 
   100% {
     opacity: 1;
-    font-size: $Font_Size_Slogan_Home;
+    font-size: var(--Font_Size_Slogan_Home);
   }
 }
 </style>

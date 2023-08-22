@@ -11,12 +11,12 @@
   top: 0px;
   width: 100%;
   height: 100vh;
-  background-color: $Color_Body_BG;
+  background-color: var(--Color_Body_BG);
 
   >div {
     position: absolute;
     border-radius: 50%;
-    background: $Color_Body_Star;
+    background: var(--Color_Body_Star);
   }
 }
 

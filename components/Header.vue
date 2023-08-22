@@ -1,9 +1,14 @@
 <script setup>
 const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
+const localePath = useLocalePath()
 
 const availableLocales = computed(() => { return (locales.value).filter(i => i.code !== locale.value) })
+const showMenu = ref(false)
 
+const Menu_click = () => {
+    showMenu.value = !showMenu.value
+}
 </script>
 
 
@@ -63,10 +68,10 @@ header,
     width: 100%;
     z-index: 2;
     padding-inline: 15px;
-    border: $Border_Settings_Wrap;
-    border-radius: $Border_Radius_Header;
-    color: $Color_Text;
-    background-color: $Color_Text_BG;
+    border: var(--Border_Settings_Wrap);
+    border-radius: var(--Border_Radius_Header);
+    color: var(--Color_Text);
+    background-color: var(--Color_Text_BG);
     transition: all 0.1s ease-in;
 }
 
@@ -78,17 +83,17 @@ header,
 
 header {
     a {
-        color: $Color_Text;
+        color: var(--Color_Text);
 
         display: block;
         margin: 15px 15px;
         font-weight: bold;
-        font-family: $Font_Special;
-        font-size: $Size_Text_Header;
+        font-family: var(--Font_Special);
+        font-size: var(--Size_Text_Header);
 
         &:hover,
         &.hover {
-            color: $Color_Hover;
+            color: var(--Color_Hover);
         }
     }
 
@@ -131,7 +136,7 @@ header {
 
             >.navicon {
                 align-self: center;
-                background: $Color_Text;
+                background: var(--Color_Text);
                 height: 2px;
                 position: relative;
                 transition: all 0.2s ease-out;
@@ -139,7 +144,7 @@ header {
 
                 &::after,
                 &::before {
-                    background: $Color_Text;
+                    background: var(--Color_Text);
                     content: '';
                     height: 100%;
                     position: absolute;
@@ -164,7 +169,7 @@ header {
             margin-right: 7px;
 
             >img {
-                height: calc(1.7 * $Size_Text_Header);
+                height: calc(1.7 * var(--Size_Text_Header));
                 vertical-align: middle
             }
         }
@@ -172,7 +177,7 @@ header {
 
     .lang-icon-sub {
         img {
-            height: calc(1.7 * $Size_Text_Header);
+            height: calc(1.7 * var(--Size_Text_Header));
         }
 
         height: 0

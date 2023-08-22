@@ -27,38 +27,35 @@ export default defineNuxtConfig({
     },
   },
 
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          sourceMap: false,
-          additionalData(source: string, fp: string) {
-            // All scss files ending with imports.scss will not re-import additionalData
-            if (fp.endsWith('variables.scss')) return source;
-            return `@import "@/assets/css/variables.scss"; ${source}`
-          }
-        },
-      },
-    },
-  },
-
-  css: [
-    '~/assets/css/global.scss',
-    '~/assets/css/portali.scss',
-    '~/assets/css/wrap.scss',
-    '~/assets/css/miscellaneous.scss'
-  ],
-
   modules: [
     '@nuxtjs/i18n',
     '@nuxt/content',
+    '@nuxt/image',
+    // '@nuxtjs/tailwindcss',
   ],
+
+  css: ['@/assets/css/global.css'],
+  // postcss: {
+  //   plugins: {
+  //     tailwindcss: {},
+  //     autoprefixer: {},
+  //   },
+  // },
+
+  // css: [
+  //   '@/assets/style/variables.scss',
+  //   '@/assets/style/_global.scss',
+  //   '@/assets/style/_portali.scss',
+  //   '@/assets/style/_wrap.scss',
+  //   '@/assets/style/_miscellaneous.scss'
+  // ],
 
   content: {
     // https://content.nuxtjs.org/api/configuration
     markdown: {
       remarkPlugins: ['remark-math'],
       rehypePlugins: ['rehype-katex'],
+      anchorLinks: false
     },
     highlight: {
       // Theme used in all color schemes.
@@ -75,6 +72,12 @@ export default defineNuxtConfig({
     }
   },
 
+  image: {
+    cloudinary: {
+      baseURL: 'https://res.cloudinary.com/bocchio/image/upload',
+    },
+  },
+
   i18n: {
     /* module options */
     baseUrl: process.env.NUXT_PUBLIC_HOST_URL,
@@ -84,7 +87,7 @@ export default defineNuxtConfig({
       { code: 'en', iso: 'en-US', file: 'en.json', dir: 'ltr' },
       { code: 'it', iso: 'it-IT', file: 'it.json', dir: 'ltr' },
     ],
-    strategy: 'prefix_except_default',
+    strategy: 'prefix',
     defaultLocale: 'en',
     detectBrowserLanguage: {
       useCookie: true,

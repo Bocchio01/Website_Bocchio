@@ -1,23 +1,31 @@
-<script setup>
+<script setup lang="ts">
 
-const locale = useI18n()
+const { locale, t } = useI18n()
 
 const { data: navigation } = await useAsyncData('navigation',
   () => queryContent(locale.value, 'article')
+    .only(['title', 'paragraph', 'img', 'tag', '_path'])
+    .where({ _path: { $ne: `/${locale.value}/article` } })
+    .sort({ date: 1 })
     .find()
 )
 
-console.log(locale.value, navigation)
+
+const title: string = t('article.title')
+const description: string = t('article.description')
+// const section: Sections = 'blog'
+
+useHead({
+  title,
+  meta: [{ name: 'description', content: description }],
+})
+
+// console.log(locale.value, navigation)
 
 </script>
 
 <template>
-  <main class="text-left">
-    <nav>
-      <p v-for="el in navigation">
-        <a :href="el._path">{{ el.title }}</a>
-        <br>
-      </p>
-    </nav>
+  <main>
+    <Wrap v-for="(article, index) in navigation" :key="index" :obj="article" :msg="$t('article.msg')" />
   </main>
 </template>

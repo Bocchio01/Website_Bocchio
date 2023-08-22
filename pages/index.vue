@@ -1,7 +1,38 @@
+<script setup lang="ts">
+const { t, locale } = useI18n({
+    useScope: 'local',
+})
+
+const { data: indexCards } = await useAsyncData('indexCards',
+    () => queryContent()
+        .where({
+            $or: [
+                { _path: { $eq: `/${locale.value}/mix/who-am-i` } },
+                { _path: { $eq: `/${locale.value}/article` } },
+                { _path: { $eq: `/${locale.value}/mix/what-s-the-aim` } },
+            ]
+        })
+        .only(['title', '_path', 'paragraph', 'img'])
+        .find()
+)
+
+// console.log(indexCards)
+
+</script>
+
 <template>
     <div>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi cumque, incidunt ullam soluta nostrum nobis? Ipsam nesciunt perspiciatis expedita non unde. Sunt accusantium nulla quibusdam temporibus iste eaque incidunt. Est!
-        </p>
+        <Wrap v-for="(card, index) in indexCards" :key="index" :obj="card" :msg="t('msg')" />
     </div>
-  </template>
+</template>
+
+<i18n lang="json">
+{
+    "it": {
+        "msg": "Scopri di più!"
+    },
+    "en": {
+        "msg": "Explore more!"
+    }
+}
+</i18n>

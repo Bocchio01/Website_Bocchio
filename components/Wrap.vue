@@ -1,41 +1,78 @@
-<script>
-export default {
-  props: ['obj', 'search_title', 'tags', 'msg'],
-  computed: {
-    showCard() {
-      if (this.search_title) {
-        return this.obj.title.toLowerCase().indexOf(this.search_title.toLowerCase()) !== -1;
-      } else if (this.tags.length !== 0) {
-        return this.tags.some((r) => this.obj.tag.includes(r));
-      } else {
-        return true;
-      }
+<script setup lang="ts">
+
+interface Props {
+  obj: ObjInt;
+  tags?: string[];
+  msg?: string;
+  search_title?: string;
+}
+
+interface ObjInt {
+  title: string;
+  paragraph: string[];
+  description?: string;
+  tag?: string[];
+  img?: {
+    src: string;
+    alt: string;
+  };
+  _path: string;
+}
+
+const Props = withDefaults(defineProps<Props>(), {
+  obj: () => ({
+    title: '',
+    paragraph: [],
+    description: '',
+    tag: [],
+    img: {
+      src: '',
+      alt: ''
     },
-  },
-};
+    _path: ''
+  }),
+})
+
+const localePath = useLocalePath()
+
+// const showCard = computed(() => {
+//   const tags: string[] = Props.tags ? Props.tags.map(tag => tag) : [];
+//   const search_title: string = Props.search_title ? Props.search_title.toLowerCase() : '';
+//   const title: string = Props.obj.title ? Props.obj.title.toLowerCase() : '';
+//   const tag: string[] = Props.obj.tag ? Props.obj.tag.map(tag => tag) : [];
+
+//   return Props.search_title?.trim() !== ''
+//     ? Props.obj.title.includes(Props.search_title!)
+//     : Props.tags?.length !== 0
+//       ? Props.obj.tag?.some((r) => Props.obj.tag?.includes(r))
+//       : true;
+// });
+
+const showCard = computed(() => true)
+
 </script>
 
 <template>
   <div class="wrap card" v-show="showCard">
-    <nuxt-link :to="localePath(obj.path)" class="link_hidden">
+    <nuxt-link :to="Props.obj._path" class="link_hidden">
       <div v-if="msg" class="button">{{ msg }}</div>
     </nuxt-link>
 
     <div>
-      <h1>{{ obj.title }}</h1>
-      <div v-if="Array.isArray(obj.paragraph)" v-html="obj.paragraph.join('<br>')"></div>
-      <div v-else-if="obj.paragraph" v-html="Object.values(obj.paragraph).join('<br>')"></div>
-      <div v-else v-html="obj.description"></div>
-      <p v-if="obj.tag" v-html="obj.tag.join(' - ')"></p>
+      <h1>{{ Props.obj.title }}</h1>
+      <div v-html="Props.obj.paragraph.join('<br>')"></div>
+      <!-- <div v-else-if="Props.obj.paragraph)" v-html="Props.Object.values)(Props.obj.paragraph)).join('<br>')"></div> -->
+      <!-- <div v-else v-html="Props.obj.description)"></div> -->
+      <p v-if="Props.obj.tag" v-html="Props.obj.tag.join(' - ')"></p>
     </div>
 
-    <figure v-if="obj.img">
-      <svg v-if="obj.img.src.startsWith('#')">
-        <use :xlink:href="useAsset('/svg/svg_list.svg') + obj.img.src" :alt="obj.img.alt"></use>
+    <figure v-if="Props.obj.img">
+      <svg v-if="Props.obj.img.src.toString().startsWith('#')">
+        <use :xlink:href="useAsset('/svg/svg_list.svg') + Props.obj.img.src" :alt="Props.obj.img.alt"></use>
       </svg>
-      <nuxt-picture v-else-if="!obj.img.src.startsWith('http')" provider="cloudinary" :src="obj.img.src"
-        :alt="obj.img.alt" format="webp" />
-      <img v-else :src="obj.img.src" :alt="obj.img.alt" />
+      <nuxt-picture v-else-if="!Props.obj.img.src.startsWith('http')" provider="cloudinary" :src="Props.obj.img.src"
+        :alt="Props.obj.img.alt" format="webp" />
+      <img v-else :src="Props.obj.img.src" :alt="Props.obj.img.alt" />
     </figure>
   </div>
 </template>

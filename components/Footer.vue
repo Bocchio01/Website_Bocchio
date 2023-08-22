@@ -34,16 +34,16 @@ footer {
   width: 100%;
   margin: auto;
   padding-block: 20px;
-  font-family: $Font_Special;
-  font-size: $Size_Text_Footer;
+  font-family: var(--Font_Special);
+  font-size: var(--Size_Text_Footer);
   font-weight: bold;
-  border: $Border_Settings_Wrap;
-  border-radius: $Border_Radius_Header;
-  background-color: $Color_Text_BG;
+  border: var(--Border_Settings_Wrap);
+  border-radius: var(--Border_Radius_Header);
+  background-color: var(--Color_Text_BG);
 
   >p,
   >a {
-    color: $Color_Text;
+    color: var(--Color_Text);
     font-size: medium;
     cursor: pointer;
     z-index: 10;
@@ -54,7 +54,7 @@ footer {
     width: 50px;
     height: 50px;
     margin: 10px;
-    border: $Border_Settings_Wrap;
+    border: var(--Border_Settings_Wrap);
     border-radius: 50%;
     background-size: contain !important;
     background-color: white !important;
@@ -64,7 +64,7 @@ footer {
     }
 
     &:focus {
-      border: 3px solid $Color_Main;
+      border: 3px solid var(--Color_Main);
     }
 
     &:nth-child(1) {
@@ -85,9 +85,9 @@ footer {
   }
 
   >div.copyright {
-    border-top: $Border_Settings_Wrap;
+    border-top: var(--Border_Settings_Wrap);
     color: #a2a2a2;
-    border-top-color: $Color_Text;
+    border-top-color: var(--Color_Text);
   }
 }
 
