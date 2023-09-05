@@ -1,91 +1,53 @@
 <script setup lang="ts">
 
-import type { Article, Sections } from '~/types'
-
-const { path } = useRoute()
+import type { Article, Sections, PrevNextItem } from '~/types'
 
 const { data: article } = await useAsyncData('article-content',
-  () => queryContent<Article>()
-    .where({ _path: buildFullPath() })
-    .findOne(),
+    () => queryContent<Article>()
+        .where({ _path: buildFullPath() })
+        .findOne()
 )
 
-const section: Sections = 'article'
+const { data: prev_next } = await useAsyncData('prev-next',
+    () => queryContent<PrevNextItem>()
+        .sort({ date: -1 })
+        .where({ _path: { $ne: 'index' } })
+        .findSurround(buildFullPath()),
+)
+
+const [prev, next] = prev_next.value || []
+
+const portal: PrevNextItem | null = (article.value !== null && article.value.portalurl !== undefined) ?
+    {
+        title: article.value.title,
+        img: article.value.img,
+        _path: article.value.portalurl,
+    } : null
 
 const title: string = article.value?.title || ''
 const description: string = article.value?.description || ''
-const image: string = article.value?.img.src || ''
-const ogImage: string = buildOgImagePath(title, section)
+const section: Sections = 'article'
 
-useHead({
-  title: article.value?.title || '',
-  meta: [
-    { name: 'description', content: description },
-    {
-      name: 'description',
-      content: description,
-    },
-    // Test on: https://developers.facebook.com/tools/debug/ or https://socialsharepreview.com/
-    { property: 'og:site_name', content: 'Debbie Codes' },
-    { hid: 'og:type', property: 'og:type', content: 'website' },
-    {
-      property: 'og:url',
-      content: 'https://debbie.codes',
-    },
-    {
-      property: 'og:title',
-      content: title,
-    },
-    {
-      property: 'og:description',
-      content: description,
-    },
-    {
-      property: 'og:image',
-      content: ogImage || image,
-    },
-    // Test on: https://cards-dev.twitter.com/validator or https://socialsharepreview.com/
-    { name: 'twitter:site', content: '@debs_obrien' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    {
-      name: 'twitter:url',
-      content: 'https://debbie.codes',
-    },
-    {
-      name: 'twitter:title',
-      content: title,
-    },
-    {
-      name: 'twitter:description',
-      content: description,
-    },
-    {
-      name: 'twitter:image',
-      content: ogImage || image,
-    },
-  ],
-  link: [
-    {
-      rel: 'canonical',
-      href: `https://debbie.codes/${path}`,
-    },
-  ],
-})
+useHead(buildHeadObj(title, description, section))
+
 </script>
 
 <template>
-  <main>
+    <main>
 
-    <article v-if="article !== null">
-      <ContentRenderer :value="article" class="wrap">
-        <template #empty>
-          <p>No content found.</p>
-        </template>
-      </ContentRenderer>
-    </article>
+        <!-- <article v-if="article !== null">
+            <ContentRenderer :value="article" class="wrap">
+                <template #empty>
+                    <p>No content found.</p>
+                </template>
+            </ContentRenderer>
+        </article> -->
 
-    <!-- <CNavigation v-if="navdata" :data="navdata" /> -->
-    <!-- <CForum /> -->
-    <ToTop />
-  </main>
+        <!-- <div class="wrap nav_container" v-if="article !== null">
+            <ArticleAttachment :items="article.attachments" />
+            <ArticleNavigation :prev="prev" :next="next" :portal="portal" />
+        </div> -->
+        <ArticleForum />
+        <ToTop />
+    </main>
 </template>

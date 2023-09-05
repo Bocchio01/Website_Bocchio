@@ -5,4 +5,3 @@ export function useAsset(path: string) {
     })
     return assets['/assets' + path]
 }
-//Usage: <img :src="useAsset(dynamic_image_name + '.svg')" alt="Discover Nuxt 3" />

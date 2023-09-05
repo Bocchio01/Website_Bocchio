@@ -1,21 +1,4 @@
 {
-  "seo": {
-    "description": "Tommaso Bocchietti. Più di un semplice portfolio: un vero e proprio tour nella mente e negli interessi di Bocchio. Articoli, blog, portali e WebApp che spaziano dalla programmazione all'ingegneria."
-  },
-
-  "error": {
-    "wraps": {
-      "path": "/",
-      "title": "Errore",
-      "paragraph": ["Pensiamo che qualcosa sia andato storto.", "Se pensi possa essere un problema del sito, faccelo sapere tramite uno dei canali indicati a fondo pagina."],
-      "img": {
-        "src": "/v1633054972/Undefined.png",
-        "alt": "Icona non trovato"
-      }
-    },
-    "msg": "Torna alla home"
-  },
-
   "cHeader": {
     "switch": {
       "iso": "en",
@@ -107,45 +90,13 @@
 
   "cSearch": ["Ricerca per titolo", "Ricerca per tag (#)", "Titolo..."],
 
-  "cNavigation": {
-    "attachment": {
-      "h2": "Allegati",
-      "p": ["Di seguito la cartella del progetto.", "Di seguito le cartelle del progetto."],
-      "button": "Scopri di più!"
-    },
-    "navigation": {
-      "h2": "Naviga nel sito",
-      "p": [
-        "Di seguito l'articolo precedente, successivo e il portale associato al progetto.",
-        "Di seguito l'articolo precedente e il successivo.",
-        "Di seguito l'articolo precedente.",
-        "Di seguito l'articolo successivo.",
-        "Di seguito il portale associato al progetto.",
-        "Di seguito l'articolo precedente e il portale associato al progetto.",
-        "Di seguito l'articolo successivo e il portale associato al progetto."
-      ],
-      "portal_title": "Portale del progetto"
-    }
-  },
-
   "vuex": ["Connessione al server...", "Utente attuale: "],
   "cLoading": "Caricamento...",
 
-  "article": {
-    "title": "Sezione articoli",
-    "description": "Pagina di elenco degli articoli del sito Bocchio's WebSite",
-    "msg": "Vai all'articolo"
-  },
 
   "portal": {
     "title": "Sezione portali",
     "description": "Pagina di elenco dei portali del sito Bocchio's WebSite",
     "msg": "Accedi al portale"
-  },
-
-  "mix": {
-    "title": "Sezione pagine di mix",
-    "description": "Pagina di elenco dei mix del sito Bocchio's WebSite",
-    "msg": "Esplora il mix"
   }
 }

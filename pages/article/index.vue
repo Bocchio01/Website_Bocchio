@@ -6,9 +6,8 @@ const { t } = useI18n()
 
 const { data: articles } = await useAsyncData('article',
     () => queryContent<BaseCard>(buildFullPath())
-        .where({ published: { $ne: false } })
-        .sort({ date: -1 })
         .skip(1)
+        .without('body')
         .find(),
 )
 
@@ -16,32 +15,27 @@ const title: string = t('page-title')
 const description: string = t('page-description')
 const section: Sections = 'article'
 
-useHead({
-    title,
-    meta: [{ name: 'description', content: description }],
-})
+useHead(buildHeadObj(title, description, section))
+
 </script>
 
 <template>
     <main>
-        <!-- <Tags :section="section" /> -->
-        <div v-if="articles !== null">
-            <Card v-for="(article, index) in articles" :card-data="article" :message-link="t('message-link')" />
-        </div>
+        <CardList v-if="articles !== null" :list="(articles as BaseCard[])" :message-link="t('message-link')" />
     </main>
 </template>
 
 <i18n lang="json">
 {
     "it": {
-        "page-title": "Tutti gli articoli",
-        "page-description": "Ecco alcune delle mie avventure di mix.",
-        "message-link": "Scopri di più!"
+        "page-title": "Sezione articoli",
+        "page-description": "Pagina di elenco degli articoli del sito Bocchio's WebSite",
+        "message-link": "Vai all'articolo!"
     },
     "en": {
-        "page-title": "All the articles",
-        "page-description": "Here are some of my mix adventures.",
-        "message-link": "Explore more!"
+        "page-title": "Articles section",
+        "page-description": "Bocchio's WebSite article list page",
+        "message-link": "Go to the article!"
     }
 }
 </i18n>

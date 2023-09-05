@@ -4,43 +4,37 @@ import type { BaseCard, Sections } from '~/types'
 
 const { t } = useI18n()
 
-const { data: mixs } = await useAsyncData('mix',
+const { data: mixs } = await useAsyncData('mixs',
     () => queryContent<BaseCard>(buildFullPath())
-        .where({ published: { $ne: false } })
-        .sort({ date: -1 })
-        .find(),
+        .without('body')
+        .find()
 )
 
 const title: string = t('page-title')
 const description: string = t('page-description')
 const section: Sections = 'mix'
 
-useHead({
-    title,
-    meta: [{ name: 'description', content: description }],
-})
+useHead(buildHeadObj(title, description, section))
+
 </script>
 
 <template>
     <main>
-        <!-- <Tags :section="section" /> -->
-        <div v-if="mixs !== null">
-            <Card v-for="(mix, index) in mixs" :card-data="mix" :message-link="t('message-link')" />
-        </div>
+        <CardList v-if="mixs !== null" :list="(mixs as BaseCard[])" :message-link="t('message-link')" />
     </main>
 </template>
 
 <i18n lang="json">
 {
     "it": {
-        "page-title": "Tutte le avventure di mix",
-        "page-description": "Ecco alcune delle mie avventure di mix.",
-        "message-link": "Scopri di più!"
+        "page-title": "Sezione pagine di mix",
+        "page-description": "Pagina di elenco dei mix del sito Bocchio's WebSite",
+        "message-link": "Esplora il mix!"
     },
     "en": {
-        "page-title": "All the advetures of mix",
-        "page-description": "Here are some of my mix adventures.",
-        "message-link": "Explore more!"
+        "page-title": "Mix section",
+        "page-description": "Bocchio's WebSite mix list page",
+        "message-link": "Explore the mix!"
     }
 }
 </i18n>

@@ -1,21 +1,4 @@
 {
-  "seo": {
-    "description": "Tommaso Bocchietti. More than a simple portfolio: a complete tuor through Bocchio's mind and interests. Articles, portals and WebApps that goes from programming to engineering."
-  },
-
-  "error": {
-    "wraps": {
-      "path": "/",
-      "title": "Error",
-      "paragraph": ["We think something goes wrong.", "If you thinck this could be an issue of the site, please let us know by using one of the channel linked below."],
-      "img": {
-        "src": "/v1633054972/Undefined.png",
-        "alt": "Not found icon"
-      }
-    },
-    "msg": "Back to home"
-  },
-
   "cHeader": {
     "switch": {
       "iso": "it",
@@ -23,7 +6,6 @@
     },
     "links": ["Articles", "Portals", "Mix"]
   },
-  "cFooter": ["You can also find me here", "Personal area"],
 
   "cForum": {
     "header": {
@@ -107,45 +89,13 @@
 
   "cSearch": ["Search by title", "Search by tag (#)", "Title..."],
 
-  "cNavigation": {
-    "attachment": {
-      "h2": "Attachments",
-      "p": ["Here is the project's folder.", "Here are the project's folders."],
-      "button": "Explore more!"
-    },
-    "navigation": {
-      "h2": "Browse through the site",
-      "p": [
-        "Here are the previous, the next article and the portal related to this project.",
-        "Here are the previous article and the portal related to this project.",
-        "Here is the previous article.",
-        "Here is the next article.",
-        "Here is the portal related to this project.",
-        "Here are the previous article and the portal related to this project.",
-        "Here are the next article and the portal related to this project."
-      ],
-      "portal_title": "Project's portal"
-    }
-  },
-
   "vuex": ["Connection to the server...", "Current user: "],
   "cLoading": "Loading...",
 
-  "article": {
-    "title": "Articles section",
-    "description": "Bocchio's WebSite article list page",
-    "msg": "Go to the article"
-  },
 
   "portal": {
     "title": "Portals section",
     "description": "Bocchio's WebSite portals list page",
     "msg": "Access the portal"
-  },
-
-  "mix": {
-    "title": "Mix section",
-    "description": "Bocchio's WebSite mix list page",
-    "msg": "Explore the mix"
   }
 }

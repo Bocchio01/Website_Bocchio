@@ -1,41 +1,38 @@
 <script setup lang="ts">
 
-import type { BaseCard } from "~/types";
+import type { BaseCard, Providers } from '~/types';
 
 defineProps<{
-  cardData: BaseCard
-  messageLink: string;
+  item: BaseCard
+  messageLink: string
 }>()
 
 const localePath = useLocalePath()
 
-const showCard = computed(() => true)
-
-// console.log(cardData)
-
 </script>
 
 <template>
-  <div class="wrap card" v-show="showCard">
-    <!-- <nuxt-link :to="localePath(cardData._path.replace('/en', ''))" class="link_hidden">
-      <div v-if="messageLink" class="button">{{ messageLink }}</div>
-    </nuxt-link> -->
+  <div class="wrap card" v-show="true">
+    <nuxt-link :to="localePath(item._path.replace('/en', ''))" class="link_hidden">
+      <div class="button">{{ messageLink }}</div>
+    </nuxt-link>
 
     <div>
-      <h1>{{ cardData.title }}</h1>
-      <div v-if="cardData.paragraph" v-html="cardData.paragraph.join('<br>')"></div>
-      <!-- <div v-else-if="cardData.paragraph)" v-html="cardDataect.values)(cardData.paragraph)).join('<br>')"></div> -->
-      <div v-else v-html="cardData.description"></div>
-      <p v-if="cardData.tag" v-html="cardData.tag.join(' - ')"></p>
+      <h1>{{ item.title }}</h1>
+      <div v-if="item.paragraph" v-html="item.paragraph.join('<br>')"></div>
+      <div v-else v-html="item.description"></div>
+      <p v-if="item.tag" v-html="item.tag.join(' - ')"></p>
     </div>
 
-    <figure v-if="cardData.img">
-      <svg v-if="cardData.img.src.toString().startsWith('#')">
-        <use :xlink:href="useAsset('/svg/svg_list.svg') + cardData.img.src" :alt="cardData.img.alt"></use>
+    <figure>
+      <nuxt-picture v-if="item.img.provider == 'cloudinary'" provider="cloudinary" :src="item.img.src"
+        :alt="item.img.alt" />
+
+      <svg v-else-if="item.img.provider == 'localSvg'">
+        <use :xlink:href="useAsset('/svg/svg_list.svg') + '#' + item.img.src" :alt="item.img.alt"></use>
       </svg>
-      <nuxt-picture v-else-if="!cardData.img.src.startsWith('http')" provider="cloudinary" :src="cardData.img.src"
-        :alt="cardData.img.alt" format="webp" />
-      <img v-else :src="cardData.img.src" :alt="cardData.img.alt" />
+
+      <img v-else :src="item.img.src" :alt="item.img.alt" />
     </figure>
   </div>
 </template>
