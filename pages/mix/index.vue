@@ -4,17 +4,16 @@ import type { BaseCard, Sections } from '~/types'
 
 const { t } = useI18n()
 
-const { data: articles } = await useAsyncData('article',
+const { data: mixs } = await useAsyncData('mix',
     () => queryContent<BaseCard>(buildFullPath())
         .where({ published: { $ne: false } })
         .sort({ date: -1 })
-        .skip(1)
         .find(),
 )
 
 const title: string = t('page-title')
 const description: string = t('page-description')
-const section: Sections = 'article'
+const section: Sections = 'mix'
 
 useHead({
     title,
@@ -25,8 +24,8 @@ useHead({
 <template>
     <main>
         <!-- <Tags :section="section" /> -->
-        <div v-if="articles !== null">
-            <Card v-for="(article, index) in articles" :card-data="article" :message-link="t('message-link')" />
+        <div v-if="mixs !== null">
+            <Card v-for="(mix, index) in mixs" :card-data="mix" :message-link="t('message-link')" />
         </div>
     </main>
 </template>
@@ -34,12 +33,12 @@ useHead({
 <i18n lang="json">
 {
     "it": {
-        "page-title": "Tutti gli articoli",
+        "page-title": "Tutte le avventure di mix",
         "page-description": "Ecco alcune delle mie avventure di mix.",
         "message-link": "Scopri di più!"
     },
     "en": {
-        "page-title": "All the articles",
+        "page-title": "All the advetures of mix",
         "page-description": "Here are some of my mix adventures.",
         "message-link": "Explore more!"
     }

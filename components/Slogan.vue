@@ -1,11 +1,16 @@
 <script setup lang="ts">
 
-const isHome = false
+const localePath = useLocalePath()
+const route = useRoute()
+
+const isHomePage = computed(() => {
+  return route.path == localePath('/')
+})
 
 </script>
 
 <template>
-  <div class="sloganBase" :class="isHome ? 'sloganHome' : 'sloganNotHome'">
+  <div class="sloganBase" :class="isHomePage ? 'sloganHome' : 'sloganNotHome'">
     Get Things Done!
   </div>
 </template>

@@ -1,28 +1,37 @@
 <script setup lang="ts">
-const { t, locale } = useI18n({
-    useScope: 'local',
-})
 
-const { data: indexCards } = await useAsyncData('indexCards',
-    () => queryContent()
-        .where({
-            $or: [
-                { _path: { $eq: `/${locale.value}/mix/who-am-i` } },
-                { _path: { $eq: `/${locale.value}/article` } },
-                { _path: { $eq: `/${locale.value}/mix/what-s-the-aim` } },
-            ]
-        })
-        .only(['title', '_path', 'paragraph', 'img'])
-        .find()
-)
+import type { BaseCard } from "~/types";
 
-// console.log(indexCards)
+const { t, locale } = useI18n()
+
+const articles: any[] = []
+const articlePaths: string[] = [
+    'mix/who-am-i',
+    'article',
+    'mix/what-s-the-aim',
+]
+
+articlePaths.forEach(async path => {
+
+    const { data: article } = await useAsyncData(`homeCard`,
+        () => queryContent<BaseCard>(`/${locale.value}/${path}`)
+            .where({ published: { $ne: false } })
+            .without('body')
+            .findOne()
+    )
+
+    if (article !== null) {
+        articles.push(article)
+    }
+});
 
 </script>
 
 <template>
     <div>
-        <Wrap v-for="(card, index) in indexCards" :key="index" :obj="card" :msg="t('msg')" />
+        <div v-if="articles !== null">
+            <Card v-for="(mix, index) in articles" :card-data="mix" :message-link="t('message-link')" />
+        </div>
     </div>
 </template>
 

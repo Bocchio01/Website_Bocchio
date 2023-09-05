@@ -3,53 +3,6 @@
     "description": "Tommaso Bocchietti. More than a simple portfolio: a complete tuor through Bocchio's mind and interests. Articles, portals and WebApps that goes from programming to engineering."
   },
 
-  "index": {
-    "wraps": [
-      {
-        "path": "/mix/who-am-i/",
-        "title": "Who am I?",
-        "paragraph": [
-          "Hi! My name is Tommaso and I am a mechanical engineering student at Politecnico di Milano.",
-          "In addition to my university studies, I developed a great passion for IT and programming in my free time.",
-          "b>I always want to create new things, try my hand at new challenges, and many times I get carried away until I succeed or am fully satisfied./b>",
-          "Finally, I strongly believe in contact with nature as a source of inspiration, and this is probably why I practice Orienteering..."
-        ],
-        "img": {
-          "src": "#Chi_sono",
-          "alt": "Who am I?"
-        }
-      },
-      {
-        "path": "/article/",
-        "title": "Site's contents",
-        "paragraph": [
-          "The site is structured over three main sections:",
-          "ul>li>Articles: b>all the projects realized accurately described/b>/li>li>Portals: b>WebApps built to support particular features of some project/b>/li>li>Forum: designed b>to encourage discussion and exchange of ideas./b> You can visit it at the bottom of each article./li>/ul>",
-          "Unless stated otherwise, all articles, portals and site itself are to be considered free to use.",
-          "b>I encourage spreading any idea you find on my site you may find worthy of sharing./b>"
-        ],
-        "img": {
-          "src": "#Contenuti",
-          "alt": "Site's contents"
-        }
-      },
-      {
-        "path": "/mix/what-s-the-aim",
-        "title": "What's the aim?",
-        "paragraph": [
-          "This site was born from the desire to have my own space where I could share my ideas and projects with others.",
-          "I believe that social media are for some aspect restrictive and impose you too many limitations.",
-          "b>So, my main aim has always been to create a web space that was totally personal/b> and that I could organize in complete autonomy. While developing it, I realized his b>enormous potential/b>, that was much more than a simple board of articles and posts..."
-        ],
-        "img": {
-          "src": "#Scopo",
-          "alt": "What's the aim?"
-        }
-      }
-    ],
-    "msg": "Explore more!"
-  },
-
   "error": {
     "wraps": {
       "path": "/",

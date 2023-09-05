@@ -43,7 +43,7 @@ const espansione = ref(false)
       -->
 
       <svg v-if="s.indexOf('#') == 0">
-        <use :xlink:href="require('~/assets/svg/svg_list.svg') + s" :alt="a"></use>
+        <use :xlink:href="useAsset('/svg/svg_list.svg') + s" :alt="a"></use>
       </svg>
 
       <nuxt-picture v-else-if="s.indexOf('http') == -1 && provider == 'Cloudinary'" provider="cloudinary" :src="s"
@@ -94,10 +94,12 @@ const espansione = ref(false)
     img,
     >video,
     >iframe {
+      max-height: 80vh;
       max-width: 100%;
       width: 700px;
       border-radius: 20px;
       background-color: white;
+      aspect-ratio: auto !important;
     }
 
     >figcaption {
