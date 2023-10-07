@@ -76,3 +76,22 @@ export interface AttachmentItem {
     name: AttachmentProviders,
     url: string,
 }
+
+// Post
+
+export interface PostItem {
+    nickname: string,
+    avatar: string,
+    id_post: number,
+    id_page: number,
+    id_user: number,
+    message: string,
+    refer: number,
+    creation_date: string,
+    last_modify: string
+}
+
+export interface Forum {
+    isForum: boolean,
+    Posts: PostItem[],
+}

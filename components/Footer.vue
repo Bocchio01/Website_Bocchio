@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 const { t } = useI18n()
-
+const localePath = useLocalePath()
 const year = ref(new Date().getFullYear())
 
 </script>
@@ -16,7 +16,7 @@ const year = ref(new Date().getFullYear())
             <a href="mailto:webmaster@bocchio.dev" rel="nofollow noopener noreferrer" target="_blank"></a>
         </div>
         <a href="https://www.iubenda.com/privacy-policy/87953468" title="Privacy Policy" target="_blank">Privacy Policy</a>
-        <!-- <p @click="$store.commit('toggle_show', 'login')">{{ t('1') }}</p> -->
+        <nuxt-link :to="localePath('/user')">{{ t('1') }}</nuxt-link>
         <div class="copyright">
             <p>Tommaso Bocchietti © {{ year }}</p>
         </div>

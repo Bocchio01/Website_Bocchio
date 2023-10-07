@@ -17,11 +17,26 @@ const section: Sections = 'article'
 
 useHead(buildHeadObj(title, description, section))
 
+const tags = articles.value?.map((article) => article.tag).flat()
+
+const titleInput = ref<string>('')
+const tagsSelected = ref<Array<string>>([])
+
+const tagsSelecetedHandler = (tags: Array<string>) => {
+    tagsSelected.value = tags
+}
+
+const titleInputHandler = (title: string) => {
+    titleInput.value = title
+}
+
 </script>
 
 <template>
     <main>
-        <CardList v-if="articles !== null" :list="(articles as BaseCard[])" :message-link="t('message-link')" />
+        <navSearchBar :tags="tags" @tagsSelected="tagsSelecetedHandler" @titleInput="titleInputHandler" />
+        <CardList v-if="articles !== null" :list="(articles as BaseCard[])" :message-link="t('message-link')"
+            :tagsSelected="tagsSelected" :titleInput="titleInput" />
     </main>
 </template>
 

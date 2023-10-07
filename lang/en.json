@@ -1,46 +1,4 @@
 {
-  "cHeader": {
-    "switch": {
-      "iso": "it",
-      "img": "it.png"
-    },
-    "links": ["Articles", "Portals", "Mix"]
-  },
-
-  "cForum": {
-    "header": {
-      "h2": "Forum",
-      "p": [
-        "In order to partecipate to the discussion, you have to be Logged. Click on 'Personal Area' from the main menu on top of the page.",
-        "Nobody has open a discussion about the article yet. If you want to, use the box below",
-        "Below the discussion about the article. Scroll to the bottom of the page if you want to add your opinion!"
-      ]
-    },
-    "button": {
-      "modify": "Modify",
-      "delete": "Delete",
-      "reply": "Reply",
-      "submit": "Submit the post"
-    },
-    "writearea": {
-      "tooltiptext": "Do Login if you want to partecipate in the discussion",
-      "h2": "Write your post!",
-      "p": "If you have to insert special element like images, ordered list or other, use normal HTML syntax."
-    },
-    "DeletePost": {
-      "h2": "Delete the post?",
-      "p": "If you decide to delete the post, you wont be able to restore it."
-    },
-    "ModifyPost": {
-      "h2": "Modify the post?",
-      "p": "Write your message below.br />If you have to insert special element like images, ordered list or other, use normal HTML syntax."
-    },
-    "AwnserPost": {
-      "h2": "Reply to the post?",
-      "p": "Write your message below.br />If you have to insert special element like images, ordered list or other, use normal HTML syntax."
-    }
-  },
-
   "cLogin": {
     "title": "Personal area",
     "tags_array": ["Sign up", "Login", "Settings / Logout"],
@@ -86,8 +44,6 @@
       "font": "Font size"
     }
   },
-
-  "cSearch": ["Search by title", "Search by tag (#)", "Title..."],
 
   "vuex": ["Connection to the server...", "Current user: "],
   "cLoading": "Loading...",

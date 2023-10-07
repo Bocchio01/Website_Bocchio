@@ -1,5 +1,5 @@
 <script setup>
-const { locale, locales } = useI18n()
+const { t, locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 const localePath = useLocalePath()
 
@@ -17,6 +17,7 @@ const Menu_click = () => {
         <div>
             <div>
                 <router-link :to="localePath('/')" custom v-slot="{ navigate }">
+                    <!-- <div class="logo" style="mask: useAsset('/svg/Lampadina_ingranaggi.svg')" @click="navigate"></div> -->
                     <div class="logo" @click="navigate"></div>
                 </router-link>
                 <nuxt-link :to="localePath('/')">Tommaso Bocchietti</nuxt-link>
@@ -27,29 +28,29 @@ const Menu_click = () => {
                 <label class="menu-icon" for="menu-btn" @click="Menu_click" @keyup.enter="Menu_click" tabindex="0">
                     <span class="navicon"></span>
                 </label>
-                <nuxt-link class="lang-icon-main" :to="switchLocalePath($t('cHeader.switch.iso'))">
-                    <img style="" :src="useAsset('/png/Lang/' + $t('cHeader.switch.img'))"
-                        :alt="'Flag ' + $t('cHeader.switch.iso')" rel="nofollow noopener noreferrer" />
+                <nuxt-link class="lang-icon-main" :to="switchLocalePath(t('switch.iso'))">
+                    <img style="" :src="useAsset('/png/Lang/' + t('switch.img'))" :alt="'Flag ' + t('switch.iso')"
+                        rel="nofollow noopener noreferrer" />
                 </nuxt-link>
             </div>
         </div>
         <ul :style="!showMenu ? 'max-height: 0px' : 'max-height: 1000px'">
 
             <li>
-                <nuxt-link :to="localePath('/article/')">{{ $t('cHeader.links.0') }}</nuxt-link>
+                <nuxt-link :to="localePath('/article/')">{{ t('links.0') }}</nuxt-link>
             </li>
             <li>
-                <nuxt-link :to="localePath('/portal/')">{{ $t('cHeader.links.1') }}</nuxt-link>
+                <nuxt-link :to="localePath('/portal/')">{{ t('links.1') }}</nuxt-link>
             </li>
             <li>
-                <nuxt-link :to="localePath('/mix/')">{{ $t('cHeader.links.2') }}</nuxt-link>
+                <nuxt-link :to="localePath('/mix/')">{{ t('links.2') }}</nuxt-link>
             </li>
 
             <li class="lang-icon-sub">
                 <!-- <NuxtLink v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">{{locale.name}}</NuxtLink> -->
 
-                <nuxt-link :to="switchLocalePath($t('cHeader.switch.iso'))">
-                    <img :src="useAsset('/png/Lang/' + $t('cHeader.switch.img'))" :alt="'Flag ' + $t('cHeader.switch.iso')"
+                <nuxt-link :to="switchLocalePath(t('switch.iso'))">
+                    <img :src="useAsset('/png/Lang/' + t('switch.img'))" :alt="'Flag ' + t('switch.iso')"
                         rel="nofollow noopener noreferrer" />
                 </nuxt-link>
             </li>
@@ -57,6 +58,33 @@ const Menu_click = () => {
 
     </header>
 </template>
+
+<i18n lang="json">
+{
+    "it": {
+        "switch": {
+            "iso": "en",
+            "img": "en.png"
+        },
+        "links": [
+            "Articoli",
+            "Portali",
+            "Mix"
+        ]
+    },
+    "en": {
+        "switch": {
+            "iso": "it",
+            "img": "it.png"
+        },
+        "links": [
+            "Articles",
+            "Portals",
+            "Mix"
+        ]
+    }
+}
+</i18n>
 
 
 

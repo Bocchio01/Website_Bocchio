@@ -35,19 +35,21 @@ useHead(buildHeadObj(title, description, section))
 <template>
     <main>
 
-        <!-- <article v-if="article !== null">
+        <article v-if="article !== null">
             <ContentRenderer :value="article" class="wrap">
                 <template #empty>
                     <p>No content found.</p>
                 </template>
             </ContentRenderer>
-        </article> -->
+        </article>
 
-        <!-- <div class="wrap nav_container" v-if="article !== null">
-            <ArticleAttachment :items="article.attachments" />
-            <ArticleNavigation :prev="prev" :next="next" :portal="portal" />
-        </div> -->
-        <ArticleForum />
+        <div class="wrap nav_container" v-if="article !== null">
+            <articleAttachment :items="article.attachments" />
+            <articleNavigation :prev="prev" :next="next" :portal="portal" />
+        </div>
+        <div class="wrap forum" v-if="article !== null">
+            <articleForum />
+        </div>
         <ToTop />
     </main>
 </template>

@@ -1,47 +1,4 @@
 {
-  "cHeader": {
-    "switch": {
-      "iso": "en",
-      "img": "en.png"
-    },
-    "links": ["Articoli", "Portali", "Mix"]
-  },
-  "cFooter": ["Puoi trovarmi anche qui", "Area personale"],
-
-  "cForum": {
-    "header": {
-      "h2": "Forum",
-      "p": [
-        "Per partecipare alla discussione devi essere loggato al sito. Clicca su 'Area personale' dal menu in testa alla pagina per accedere.",
-        "Nessuno ha ancora aperto una discussione relativa all'articolo. Per farlo, utilizza il box qui sotto!",
-        "Di seguito la discussione relativa all'articolo. Scorri in fondo alla pagina per dire la tua a riguardo!"
-      ]
-    },
-    "button": {
-      "modify": "Modifica",
-      "delete": "Elimina",
-      "reply": "Replica",
-      "submit": "Invia il post"
-    },
-    "writearea": {
-      "tooltiptext": "Effettua il Login per poter partecipare alla discussione",
-      "h2": "Scrivi il tuo post!",
-      "p": "Utilizza normale linguaggio HTML se vuoi inserire elementi quali immagini, elenchi puntati o altro."
-    },
-    "DeletePost": {
-      "h2": "Eliminare il post?",
-      "p": "Se decididi eliminare il post non potrai più recuperarlo."
-    },
-    "ModifyPost": {
-      "h2": "Modificare il post?",
-      "p": "Scrivi nello spazio di seguito il tuo messaggio.br />Utilizza normale linguaggio HTML se vuoi inserire elementi quali immagini, elenchi puntati o altro."
-    },
-    "AwnserPost": {
-      "h2": "Replicare al post?",
-      "p": "Scrivi nello spazio di seguito il tuo messaggio.br />Utilizza normale linguaggio HTML se vuoi inserire elementi quali immagini, elenchi puntati o altro."
-    }
-  },
-
   "cLogin": {
     "title": "Area Personale",
     "tags_array": ["Registrazione", "Accesso", "Impostazioni / Uscita"],
@@ -88,11 +45,8 @@
     }
   },
 
-  "cSearch": ["Ricerca per titolo", "Ricerca per tag (#)", "Titolo..."],
-
   "vuex": ["Connessione al server...", "Utente attuale: "],
   "cLoading": "Caricamento...",
-
 
   "portal": {
     "title": "Sezione portali",

@@ -3,7 +3,8 @@
 import type { BaseCard } from '~/types';
 
 const props = defineProps<{
-    statusCode?: number
+    statusCode?: number,
+    statusMessage?: string,
 }>()
 
 const { t } = useI18n()
@@ -23,7 +24,16 @@ const errorCard: BaseCard = {
 
 <template>
     <div>
-        <Card v-if="errorCard" :item="errorCard" :message-link="t('message-link')" />
+        <Header />
+        <Slogan />
+
+        <div>
+            <Card v-if="errorCard" :item="errorCard" :message-link="t('message-link')" />
+        </div>
+
+        <Footer />
+
+        <Background />
     </div>
 </template>
 

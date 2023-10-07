@@ -16,7 +16,7 @@ const { t } = useI18n()
         <h2>{{ t('attachment') }}</h2>
 
         <div>
-            <ArticleAttachmentItem v-for="item in items" :item="item" :key="item.name"></ArticleAttachmentItem>
+            <articleAttachmentItem v-for="item in items" :item="item" :key="item.name"></articleAttachmentItem>
         </div>
 
     </div>

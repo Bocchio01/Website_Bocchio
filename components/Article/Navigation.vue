@@ -18,9 +18,9 @@ const { t } = useI18n()
         <h2>{{ t('navigation') }}</h2>
 
         <div>
-            <ArticleNavigationItem v-if="prev" :item="prev" type="prev"></ArticleNavigationItem>
-            <ArticleNavigationItem v-if="portal" :item="portal" type="portal"></ArticleNavigationItem>
-            <ArticleNavigationItem v-if="next" :item="next" type="next"></ArticleNavigationItem>
+            <articleNavigationItem v-if="prev" :item="prev" type="prev"></articleNavigationItem>
+            <articleNavigationItem v-if="portal" :item="portal" type="portal"></articleNavigationItem>
+            <articleNavigationItem v-if="next" :item="next" type="next"></articleNavigationItem>
         </div>
 
     </div>
