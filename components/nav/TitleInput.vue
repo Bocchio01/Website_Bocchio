@@ -31,3 +31,4 @@ watch(inputString, () => {
         "Title..."
     ]
 }
+</i18n>

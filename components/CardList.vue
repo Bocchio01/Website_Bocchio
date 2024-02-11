@@ -11,18 +11,20 @@ const props = defineProps<{
 
 const { list, messageLink, tagsSelected, titleInput } = toRefs(props)
 
-function showCard(Card: BaseCard) {
-
-    if (tagsSelected?.value !== null && tagsSelected?.value.length > 0 && Card.tag !== undefined) {
-        if (!tagsSelected?.value.some(tag => Card.tag?.includes(tag))) return false
+function showCard(Card: BaseCard): boolean {
+    if (tagsSelected?.value?.length > 0 && Card.tag) {
+        if (!tagsSelected.value.some(tag => Card.tag.includes(tag))) {
+            return false;
+        }
     }
 
-    if (titleInput?.value !== null && titleInput.value !== '') {
-        if (!Card.title.toLowerCase().includes(titleInput?.value.toLowerCase())) return false
+    if (titleInput?.value && Card.title.toLowerCase().includes(titleInput.value.toLowerCase())) {
+        return true;
     }
 
-    return true
+    return false;
 }
+
 
 </script>
 

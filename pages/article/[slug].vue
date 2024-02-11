@@ -43,13 +43,13 @@ useHead(buildHeadObj(title, description, section))
             </ContentRenderer>
         </article>
 
-        <div class="wrap nav_container" v-if="article !== null">
+        <!-- <div class="wrap nav_container" v-if="article !== null">
             <articleAttachment :items="article.attachments" />
             <articleNavigation :prev="prev" :next="next" :portal="portal" />
-        </div>
-        <div class="wrap forum" v-if="article !== null">
+        </div> -->
+        <!-- <div class="wrap forum" v-if="article !== null">
             <articleForum />
-        </div>
+        </div> -->
         <ToTop />
     </main>
 </template>
