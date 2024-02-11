@@ -1,42 +1,11 @@
 {
-  "name": "bocchio_nuxt",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate"
-  },
-  "dependencies": {
-    "@nuxt/content": "1.15.1",
-    "@nuxtjs/composition-api": "^0.32.0",
-    "@nuxtjs/i18n": "^7.3.1",
-    "@nuxtjs/robots": "^3.0.0",
-    "@nuxtjs/sitemap": "^2.4.0",
-    "chrome-aws-lambda": "7.0.0",
-    "core-js": "^3.29.1",
-    "dropbox": "^10.34.0",
-    "json-pointer": "^0.6.2",
-    "leaflet-geosearch": "^3.7.0",
-    "leaflet.geodesic": "^2.6.1",
-    "mathjs": "^11.7.0",
-    "nuxt": "^2.15.8",
-    "prism-themes": "^1.9.0",
-    "puppeteer-core": "7.0.4",
-    "rehype-katex": "^5.0.0",
-    "remark-math": "^4.0.0",
-    "vue2-leaflet": "^2.7.1",
-    "vue2-leaflet-geosearch": "^1.0.6",
-    "vue2-leaflet-locatecontrol": "^1.0.2",
-    "vuex": "^3.6.2"
-  },
-  "devDependencies": {
-    "@nuxt/image": "^0.7.1",
-    "@nuxtjs/pwa": "^3.3.5",
-    "eslint-config-prettier": "^8.8.0",
-    "prettier": "^2.8.7",
-    "sass": "^1.60.0",
-    "sass-loader": "^10.2.0"
-  }
+    "type": "module",
+    "devDependencies": {
+        "@leafphp/vite-plugin": "^0.1.2",
+        "vite": "^4.4.9"
+    },
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    }
 }
